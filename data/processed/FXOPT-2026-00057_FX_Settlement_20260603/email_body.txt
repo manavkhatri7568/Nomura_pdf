@@ -1,0 +1,31 @@
+Dear Team,
+
+Please find below the settlement details for the FX trade executed on 26/05/26:
+
+Trade Details:
+
+  * Deal Reference: FXOPT-2026-00057
+  * Currency Pair:
+  * Buy/Sell: Sell
+  * Amount: AUD 37,673,146.00
+  * Counterparty: Deutsche Bank AG
+  * Value Date:
+
+Settlement Instructions:
+
+  * Pay To: Deutsche Bank AG
+  * SWIFT Code: DEUTDEDB
+  * Account Number: DB-EUR-55502
+  * Beneficiary Name: Deutsche Bank AG
+  * Payment Method: MT103
+
+Kindly confirm receipt of these instructions and advise if there are any discrepancies at the earliest to ensure timely settlement.
+
+
+Regards,
+
+XYZ
+Associate
+ABCD LTD
+88567432
+xyz.com

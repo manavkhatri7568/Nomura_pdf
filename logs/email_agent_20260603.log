@@ -1,0 +1,543 @@
+07:26:52 | INFO    | connectors.local_connector | Fetched 37 emails from data\raw_emails\inbox
+07:26:52 | WARNING | email_agent            | AMBIGUOUS (0.30) | Settlement query – account reconciliation | subject['settlement']
+07:26:52 | WARNING | email_agent            | AMBIGUOUS (0.30) | Re: Confirmation needed | subject['confirm']
+07:26:52 | WARNING | email_agent            | AMBIGUOUS (0.30) | Pending transaction follow-up | subject['transaction']
+07:26:52 | WARNING | email_agent            | DUPLICATE trade_id FXOPT-2026-00053 — skipping (FX Trade Settlement[FXOPT-2026-00053] – USD/CAD – 26_05_26 - UTIY6WKTAKPUXQPHR62GDSW0053)
+07:26:52 | WARNING | email_agent            | DUPLICATE trade_id FXOPT-2026-00056 — skipping (FX Trade Settlement FXOPT-2026-00056 – 26/05/26 – UTIPTK93TYT7D5J60FKHMY40056)
+07:26:52 | INFO    | email_agent            | ========================================================
+07:26:52 | INFO    | email_agent            | [Phase 1 Run Complete]
+07:26:52 | INFO    | email_agent            |   Emails read:          37
+07:26:52 | INFO    | email_agent            |   RELEVANT (stored):    0
+07:26:52 | INFO    | email_agent            |   AMBIGUOUS (skipped):  3
+07:26:52 | INFO    | email_agent            |   IRRELEVANT (skipped): 10
+07:26:52 | INFO    | email_agent            |   DUPLICATE (skipped):  2
+07:26:52 | INFO    | email_agent            |   Already processed:    22
+07:26:52 | INFO    | email_agent            |   Trade rows extracted: 0
+07:26:52 | INFO    | email_agent            |   --- Ambiguous emails for manual review ---
+07:26:52 | INFO    | email_agent            |     • Settlement query – account reconciliation
+07:26:52 | INFO    | email_agent            |     • Re: Confirmation needed
+07:26:52 | INFO    | email_agent            |     • Pending transaction follow-up
+07:26:52 | INFO    | email_agent            | ========================================================
+07:26:52 | INFO    | api.agent              | agent.run source=local -> relevant=0 ambiguous=3 irrelevant=10 duplicate=2 cid=43f3f6d8-6bcc-4d02-b039-60188a4c43b5
+07:26:52 | INFO    | api                    | POST /agent/run -> 200 (96.6ms) cid=43f3f6d8-6bcc-4d02-b039-60188a4c43b5
+07:26:52 | INFO    | httpx                  | HTTP Request: POST http://testserver/agent/run "HTTP/1.1 200 OK"
+07:26:52 | INFO    | api.extract            | extract.trades -> 100 trade(s) from 3 file(s) across 17 case(s) cid=6c4e6441-6a27-47a9-9654-900d61cddcb2
+07:26:52 | INFO    | api                    | GET /extract/trades -> 200 (303.9ms) cid=6c4e6441-6a27-47a9-9654-900d61cddcb2
+07:26:52 | INFO    | httpx                  | HTTP Request: GET http://testserver/extract/trades "HTTP/1.1 200 OK"
+07:28:06 | INFO    | connectors.local_connector | Fetched 37 emails from data\raw_emails\inbox
+07:28:06 | INFO    | email_agent            | RELEVANT (0.95) | FX Trade Settlement FXOPT-2026-00055 – 26/05/26 – UTI7UUBCXULJYLJEXQ77AWU0055 | trade_id=FXOPT-2026-00055 (0 trade rows)
+07:28:06 | INFO    | email_agent            | RELEVANT (0.95) | FX Trade Settlement[FXOPT-2026-00056] – AUD/USD – 26_05_26 - UTIVSNUJZA7TZ0YNCXLL4ZK0056 | trade_id=FXOPT-2026-00056 (0 trade rows)
+07:28:06 | INFO    | email_agent            | RELEVANT (0.95) | FX Trade Settlement FXOPT-2026-00057 – 26/05/26 – UTIFPZUE8YFBNTPBN78BMYY0057 | trade_id=FXOPT-2026-00057 (0 trade rows)
+07:28:06 | INFO    | email_agent            | RELEVANT (0.95) | FX Trade Settlement[FXOPT-2026-00050] – AUD/USD – 26_05_26 - UTISDBDW2PCN9T84AZYTJXE0050 | trade_id=FXOPT-2026-00050 (0 trade rows)
+07:28:06 | WARNING | email_agent            | AMBIGUOUS (0.30) | Settlement query – account reconciliation | subject['settlement']
+07:28:06 | INFO    | email_agent            | RELEVANT (0.95) | FX Trade Settlement[FXOPT-2026-00053] – AUD/USD – 26/05/26 - UTIQ0Y9DOM5IGQPKI7P5TB90053 | trade_id=FXOPT-2026-00053 (0 trade rows)
+07:28:06 | WARNING | email_agent            | AMBIGUOUS (0.30) | Re: Confirmation needed | subject['confirm']
+07:28:06 | WARNING | email_agent            | AMBIGUOUS (0.30) | Pending transaction follow-up | subject['transaction']
+07:28:06 | INFO    | email_agent            | RELEVANT (0.95) | FX Trade Settlement[FXOPT-2026-00049] – GBP/USD – 26/05/26 - UTIQJ7YHL1C32OC6UZHR5XF0049 | trade_id=FXOPT-2026-00049 (0 trade rows)
+07:28:06 | INFO    | email_agent            | RELEVANT (0.95) | FX Trade Settlement[FXOPT-2026-00054] – USD/CAD – 26_05_26 - UTIFAO72KZ02XRGHC0CLBR70054 | trade_id=FXOPT-2026-00054 (0 trade rows)
+07:28:06 | INFO    | email_agent            | RELEVANT (0.95) | FX Trade Settlement[FXOPT-2026-00048] – AUD/USD – 26_05_26 - UTI30T9NT3W5UZBIKCIDKWN0048 | trade_id=FXOPT-2026-00048 (0 trade rows)
+07:28:06 | INFO    | email_agent            | RELEVANT (0.95) | FX Trade Settlement[FXOPT-2026-00047] – USD/JPY – 26_05_26 - UTIIFD0TVBDIVUZZPQK51FP0047 | trade_id=FXOPT-2026-00047 (0 trade rows)
+07:28:06 | INFO    | email_agent            | RELEVANT (0.95) | FX Trade Settlement[FXOPT-2026-00051] – USD/JPY – 26/05/26 - UTIF1T2TALA753LC58DRC110051 | trade_id=FXOPT-2026-00051 (0 trade rows)
+07:28:06 | INFO    | email_agent            | RELEVANT (0.80) | Fw: FX Trade Settlements_[FXOPT]_SSI_TD: 26/05/26 | trade_id=UNKNOWN_414bcaa903 (0 trade rows)
+07:28:06 | INFO    | email_agent            | RELEVANT (0.80) | FX Trade Settlements_[FXOPT]_SSI_TD: 26/05/26 | trade_id=UNKNOWN_7112a16f4b (0 trade rows)
+07:28:06 | INFO    | email_agent            | RELEVANT (0.95) | FX Trade Settlement FXOPT-2026-00058 – 26/05/26 – UTIJ2D54I3QK2IAGL58KXO90058 | trade_id=FXOPT-2026-00058 (0 trade rows)
+07:28:06 | INFO    | email_agent            | RELEVANT (0.80) | FX Trade Settlements_FXOPT_270526 | trade_id=UNKNOWN_e910f8289f (34 trade rows)
+07:28:06 | INFO    | email_agent            | RELEVANT (0.80) | FX Trade Settlements_FXOPT_280526 | trade_id=UNKNOWN_f686a78dbe (34 trade rows)
+07:28:06 | INFO    | email_agent            | RELEVANT (0.80) | FX Trade Settlements_FXOPT_290526 | trade_id=UNKNOWN_daf24cb5ad (32 trade rows)
+07:28:06 | WARNING | email_agent            | DUPLICATE trade_id FXOPT-2026-00053 — skipping (FX Trade Settlement[FXOPT-2026-00053] – USD/CAD – 26_05_26 - UTIY6WKTAKPUXQPHR62GDSW0053)
+07:28:06 | INFO    | email_agent            | RELEVANT (0.95) | FX Trade Settlement[FXOPT-2026-00052] – USD/CAD – 26/05/26 - UTIOYN6QICATVAZCCBLSKRT0052 | trade_id=FXOPT-2026-00052 (0 trade rows)
+07:28:06 | WARNING | email_agent            | DUPLICATE trade_id FXOPT-2026-00056 — skipping (FX Trade Settlement FXOPT-2026-00056 – 26/05/26 – UTIPTK93TYT7D5J60FKHMY40056)
+07:28:06 | INFO    | email_agent            | ========================================================
+07:28:06 | INFO    | email_agent            | [Phase 1 Run Complete]
+07:28:06 | INFO    | email_agent            |   Emails read:          37
+07:28:06 | INFO    | email_agent            |   RELEVANT (stored):    17
+07:28:06 | INFO    | email_agent            |   AMBIGUOUS (skipped):  3
+07:28:06 | INFO    | email_agent            |   IRRELEVANT (skipped): 10
+07:28:06 | INFO    | email_agent            |   DUPLICATE (skipped):  2
+07:28:06 | INFO    | email_agent            |   Already processed:    5
+07:28:06 | INFO    | email_agent            |   Trade rows extracted: 100
+07:28:06 | INFO    | email_agent            |   --- Ambiguous emails for manual review ---
+07:28:06 | INFO    | email_agent            |     • Settlement query – account reconciliation
+07:28:06 | INFO    | email_agent            |     • Re: Confirmation needed
+07:28:06 | INFO    | email_agent            |     • Pending transaction follow-up
+07:28:06 | INFO    | email_agent            | ========================================================
+07:28:06 | INFO    | api.agent              | agent.run source=local -> relevant=17 ambiguous=3 irrelevant=10 duplicate=2 cid=a7aa966e-e361-43bd-b2a4-aa80433e83ae
+07:28:06 | INFO    | api                    | POST /agent/run -> 200 (341.5ms) cid=a7aa966e-e361-43bd-b2a4-aa80433e83ae
+07:28:06 | INFO    | httpx                  | HTTP Request: POST http://testserver/agent/run "HTTP/1.1 200 OK"
+07:28:06 | INFO    | api.extract            | extract.trades -> 100 trade(s) from 3 file(s) across 17 case(s) cid=43105c8b-9eb6-4df7-af1b-85ea28593201
+07:28:06 | INFO    | api                    | GET /extract/trades -> 200 (35.6ms) cid=43105c8b-9eb6-4df7-af1b-85ea28593201
+07:28:06 | INFO    | httpx                  | HTTP Request: GET http://testserver/extract/trades "HTTP/1.1 200 OK"
+07:33:03 | INFO    | api                    | GET /health -> 200 (0.3ms) cid=ce12683d-d72a-4da2-a5bb-d980d882f6d4
+07:33:21 | INFO    | api.extract            | extract.trades -> 100 trade(s) from 3 file(s) across 17 case(s) cid=454f3ea4-3d49-47df-bb49-2e2b99365f2e
+07:33:21 | INFO    | api                    | GET /extract/trades -> 200 (216.4ms) cid=454f3ea4-3d49-47df-bb49-2e2b99365f2e
+07:36:58 | INFO    | api.extract            | extract.trades -> 100 trade(s) from 3 file(s) across 17 case(s) cid=977b9ae9-1a17-48cc-ac0a-bc20c2a0057a
+07:36:58 | INFO    | api                    | GET /extract/trades -> 200 (20.3ms) cid=977b9ae9-1a17-48cc-ac0a-bc20c2a0057a
+07:37:51 | INFO    | connectors.local_connector | Fetched 32 emails from data\raw_emails\inbox
+07:37:51 | INFO    | email_agent            | RELEVANT (0.95) | FX Trade Settlement FXOPT-2026-00055 – 26/05/26 – UTI7UUBCXULJYLJEXQ77AWU0055 | trade_id=FXOPT-2026-00055 (0 trade rows)
+07:37:51 | INFO    | email_agent            | RELEVANT (0.95) | FX Trade Settlement[FXOPT-2026-00056] – AUD/USD – 26_05_26 - UTIVSNUJZA7TZ0YNCXLL4ZK0056 | trade_id=FXOPT-2026-00056 (0 trade rows)
+07:37:51 | INFO    | email_agent            | RELEVANT (0.95) | FX Trade Settlement FXOPT-2026-00057 – 26/05/26 – UTIFPZUE8YFBNTPBN78BMYY0057 | trade_id=FXOPT-2026-00057 (0 trade rows)
+07:37:51 | INFO    | email_agent            | RELEVANT (0.95) | FX Trade Settlement[FXOPT-2026-00050] – AUD/USD – 26_05_26 - UTISDBDW2PCN9T84AZYTJXE0050 | trade_id=FXOPT-2026-00050 (0 trade rows)
+07:37:51 | WARNING | email_agent            | AMBIGUOUS (0.30) | Settlement query – account reconciliation | subject['settlement']
+07:37:51 | INFO    | email_agent            | RELEVANT (0.95) | FX Trade Settlement[FXOPT-2026-00053] – AUD/USD – 26/05/26 - UTIQ0Y9DOM5IGQPKI7P5TB90053 | trade_id=FXOPT-2026-00053 (0 trade rows)
+07:37:51 | WARNING | email_agent            | AMBIGUOUS (0.30) | Re: Confirmation needed | subject['confirm']
+07:37:51 | WARNING | email_agent            | AMBIGUOUS (0.30) | Pending transaction follow-up | subject['transaction']
+07:37:51 | INFO    | email_agent            | RELEVANT (0.95) | FX Trade Settlement[FXOPT-2026-00049] – GBP/USD – 26/05/26 - UTIQJ7YHL1C32OC6UZHR5XF0049 | trade_id=FXOPT-2026-00049 (0 trade rows)
+07:37:51 | INFO    | email_agent            | RELEVANT (0.95) | FX Trade Settlement[FXOPT-2026-00054] – USD/CAD – 26_05_26 - UTIFAO72KZ02XRGHC0CLBR70054 | trade_id=FXOPT-2026-00054 (0 trade rows)
+07:37:51 | INFO    | email_agent            | RELEVANT (0.95) | FX Trade Settlement[FXOPT-2026-00048] – AUD/USD – 26_05_26 - UTI30T9NT3W5UZBIKCIDKWN0048 | trade_id=FXOPT-2026-00048 (0 trade rows)
+07:37:51 | INFO    | email_agent            | RELEVANT (0.95) | FX Trade Settlement[FXOPT-2026-00047] – USD/JPY – 26_05_26 - UTIIFD0TVBDIVUZZPQK51FP0047 | trade_id=FXOPT-2026-00047 (0 trade rows)
+07:37:51 | INFO    | email_agent            | RELEVANT (0.95) | FX Trade Settlement[FXOPT-2026-00051] – USD/JPY – 26/05/26 - UTIF1T2TALA753LC58DRC110051 | trade_id=FXOPT-2026-00051 (0 trade rows)
+07:37:51 | INFO    | email_agent            | RELEVANT (0.95) | FX Trade Settlement FXOPT-2026-00058 – 26/05/26 – UTIJ2D54I3QK2IAGL58KXO90058 | trade_id=FXOPT-2026-00058 (0 trade rows)
+07:37:51 | INFO    | email_agent            | RELEVANT (0.80) | FX Trade Settlements_FXOPT_270526 | trade_id=UNKNOWN_e910f8289f (34 trade rows)
+07:37:51 | INFO    | email_agent            | RELEVANT (0.80) | FX Trade Settlements_FXOPT_280526 | trade_id=UNKNOWN_f686a78dbe (34 trade rows)
+07:37:51 | INFO    | email_agent            | RELEVANT (0.80) | FX Trade Settlements_FXOPT_290526 | trade_id=UNKNOWN_daf24cb5ad (32 trade rows)
+07:37:51 | INFO    | email_agent            | RELEVANT (0.80) | FX Trade Settlements_[FXOPT]_SSI_TD: 26/05/26 | trade_id=UNKNOWN_7112a16f4b (0 trade rows)
+07:37:51 | INFO    | email_agent            | RELEVANT (0.80) | Fw: FX Trade Settlements_[FXOPT]_SSI_TD: 26/05/26 | trade_id=UNKNOWN_414bcaa903 (0 trade rows)
+07:37:51 | WARNING | email_agent            | DUPLICATE trade_id FXOPT-2026-00053 — skipping (FX Trade Settlement[FXOPT-2026-00053] – USD/CAD – 26_05_26 - UTIY6WKTAKPUXQPHR62GDSW0053)
+07:37:51 | INFO    | email_agent            | RELEVANT (0.95) | FX Trade Settlement[FXOPT-2026-00052] – USD/CAD – 26/05/26 - UTIOYN6QICATVAZCCBLSKRT0052 | trade_id=FXOPT-2026-00052 (0 trade rows)
+07:37:51 | WARNING | email_agent            | DUPLICATE trade_id FXOPT-2026-00056 — skipping (FX Trade Settlement FXOPT-2026-00056 – 26/05/26 – UTIPTK93TYT7D5J60FKHMY40056)
+07:37:51 | INFO    | email_agent            | ========================================================
+07:37:51 | INFO    | email_agent            | [Phase 1 Run Complete]
+07:37:51 | INFO    | email_agent            |   Emails read:          32
+07:37:51 | INFO    | email_agent            |   RELEVANT (stored):    17
+07:37:51 | INFO    | email_agent            |   AMBIGUOUS (skipped):  3
+07:37:51 | INFO    | email_agent            |   IRRELEVANT (skipped): 10
+07:37:51 | INFO    | email_agent            |   DUPLICATE (skipped):  2
+07:37:51 | INFO    | email_agent            |   Already processed:    0
+07:37:51 | INFO    | email_agent            |   Trade rows extracted: 100
+07:37:51 | INFO    | email_agent            |   --- Ambiguous emails for manual review ---
+07:37:51 | INFO    | email_agent            |     • Settlement query – account reconciliation
+07:37:51 | INFO    | email_agent            |     • Re: Confirmation needed
+07:37:51 | INFO    | email_agent            |     • Pending transaction follow-up
+07:37:51 | INFO    | email_agent            | ========================================================
+07:37:51 | INFO    | api.agent              | agent.run source=local -> relevant=17 ambiguous=3 irrelevant=10 duplicate=2 cid=0bed9570-4df4-4b70-9e48-638f5c9b0601
+07:37:51 | INFO    | api                    | POST /agent/run -> 200 (301.4ms) cid=0bed9570-4df4-4b70-9e48-638f5c9b0601
+07:37:51 | INFO    | httpx                  | HTTP Request: POST http://testserver/agent/run "HTTP/1.1 200 OK"
+07:37:51 | INFO    | api.extract            | extract.trades -> 100 trade(s) from 3 file(s) across 17 case(s) cid=09b617be-9b90-4825-bda0-8847fb967cf8
+07:37:51 | INFO    | api                    | GET /extract/trades -> 200 (37.2ms) cid=09b617be-9b90-4825-bda0-8847fb967cf8
+07:37:51 | INFO    | httpx                  | HTTP Request: GET http://testserver/extract/trades "HTTP/1.1 200 OK"
+07:38:34 | INFO    | api                    | GET /health -> 200 (0.3ms) cid=ce0b24c1-c30e-4872-8b61-22a4ac55800f
+07:38:34 | INFO    | api.extract            | extract.trades -> 100 trade(s) from 3 file(s) across 17 case(s) cid=33d5210a-1e1c-48db-acba-68a841a33cc5
+07:38:34 | INFO    | api                    | GET /extract/trades -> 200 (213.8ms) cid=33d5210a-1e1c-48db-acba-68a841a33cc5
+07:42:02 | INFO    | api                    | GET /health -> 200 (0.3ms) cid=ee44104c-cd46-4b80-ba2e-5a5aa40acad4
+07:42:04 | INFO    | connectors.local_connector | Fetched 32 emails from data\raw_emails\inbox
+07:42:04 | INFO    | api.connector          | connector.fetch source=local -> 32 emails cid=d2b62b40-6527-44ae-8f49-4a78f1ab5120
+07:42:04 | INFO    | api                    | POST /connector/fetch -> 200 (33.4ms) cid=d2b62b40-6527-44ae-8f49-4a78f1ab5120
+07:42:23 | INFO    | api                    | GET /health -> 200 (0.6ms) cid=c51d0ec6-e36f-44aa-88ad-7248c2e96f74
+07:42:23 | INFO    | api                    | GET /config -> 200 (2.4ms) cid=310eb347-06bf-4671-9401-a4522cd611e8
+07:42:23 | INFO    | api                    | GET /health -> 200 (0.6ms) cid=94f3fa0a-00ec-4aba-8cdd-cd8679717c3f
+07:42:23 | INFO    | api                    | GET /config -> 200 (2.2ms) cid=66d1c9cd-3a81-4084-a293-8bd2225b5ae0
+07:42:26 | INFO    | api                    | GET /health -> 200 (0.3ms) cid=9dc35805-7225-45e6-9726-49f2d2d72911
+07:42:26 | INFO    | api                    | GET /health -> 200 (0.4ms) cid=e9faf632-3481-4048-854d-6f984ff7bf3a
+07:42:28 | INFO    | connectors.local_connector | Fetched 32 emails from data\raw_emails\inbox
+07:42:28 | INFO    | api.connector          | connector.fetch source=local -> 32 emails cid=46c700e1-5e1d-40c4-a51f-35cfe0525e77
+07:42:28 | INFO    | api                    | POST /connector/fetch -> 200 (55.3ms) cid=46c700e1-5e1d-40c4-a51f-35cfe0525e77
+07:42:41 | INFO    | connectors.local_connector | Fetched 32 emails from data\raw_emails\inbox
+07:42:41 | WARNING | email_agent            | AMBIGUOUS (0.30) | Settlement query – account reconciliation | subject['settlement']
+07:42:41 | WARNING | email_agent            | AMBIGUOUS (0.30) | Re: Confirmation needed | subject['confirm']
+07:42:41 | WARNING | email_agent            | AMBIGUOUS (0.30) | Pending transaction follow-up | subject['transaction']
+07:42:41 | WARNING | email_agent            | DUPLICATE trade_id FXOPT-2026-00053 — skipping (FX Trade Settlement[FXOPT-2026-00053] – USD/CAD – 26_05_26 - UTIY6WKTAKPUXQPHR62GDSW0053)
+07:42:41 | WARNING | email_agent            | DUPLICATE trade_id FXOPT-2026-00056 — skipping (FX Trade Settlement FXOPT-2026-00056 – 26/05/26 – UTIPTK93TYT7D5J60FKHMY40056)
+07:42:41 | INFO    | email_agent            | ========================================================
+07:42:41 | INFO    | email_agent            | [Phase 1 Run Complete]
+07:42:41 | INFO    | email_agent            |   Emails read:          32
+07:42:41 | INFO    | email_agent            |   RELEVANT (stored):    0
+07:42:41 | INFO    | email_agent            |   AMBIGUOUS (skipped):  3
+07:42:41 | INFO    | email_agent            |   IRRELEVANT (skipped): 10
+07:42:41 | INFO    | email_agent            |   DUPLICATE (skipped):  2
+07:42:41 | INFO    | email_agent            |   Already processed:    17
+07:42:41 | INFO    | email_agent            |   Trade rows extracted: 0
+07:42:41 | INFO    | email_agent            |   --- Ambiguous emails for manual review ---
+07:42:41 | INFO    | email_agent            |     • Settlement query – account reconciliation
+07:42:41 | INFO    | email_agent            |     • Re: Confirmation needed
+07:42:41 | INFO    | email_agent            |     • Pending transaction follow-up
+07:42:41 | INFO    | email_agent            | ========================================================
+07:42:41 | INFO    | api.agent              | agent.run source=local -> relevant=0 ambiguous=3 irrelevant=10 duplicate=2 cid=91eab188-e9db-425c-b858-f28e04080598
+07:42:41 | INFO    | api                    | POST /agent/run -> 200 (68.2ms) cid=91eab188-e9db-425c-b858-f28e04080598
+07:42:45 | INFO    | api.extract            | extract.trades -> 100 trade(s) from 3 file(s) across 17 case(s) cid=cdd19a33-168f-4441-903e-8e535da4d41b
+07:42:45 | INFO    | api                    | GET /extract/trades -> 200 (461.4ms) cid=cdd19a33-168f-4441-903e-8e535da4d41b
+07:54:19 | INFO    | connectors.local_connector | Fetched 32 emails from data\raw_emails\inbox
+07:54:19 | INFO    | api                    | POST /connector/preview -> 200 (50.9ms) cid=5a85b394-940c-40ee-ad88-06363af148a7
+07:54:21 | INFO    | connectors.local_connector | Fetched 32 emails from data\raw_emails\inbox
+07:54:21 | INFO    | api                    | POST /connector/preview -> 200 (52.8ms) cid=8b910b73-0745-47b6-b1f0-c8cfb8d75c05
+07:54:24 | INFO    | connectors.local_connector | Fetched 32 emails from data\raw_emails\inbox
+07:54:24 | INFO    | api                    | POST /connector/preview -> 200 (44.6ms) cid=7ea630d4-d594-413f-92fb-b3e5ce3287d3
+08:08:02 | INFO    | connectors.local_connector | Fetched 29 emails from data\raw_emails\inbox
+08:08:02 | INFO    | email_agent            | RELEVANT (0.95) | FX Trade Settlement FXOPT-2026-00055 – 26/05/26 – UTI7UUBCXULJYLJEXQ77AWU0055 | trade_id=FXOPT-2026-00055 (0 trade rows)
+08:08:02 | INFO    | email_agent            | RELEVANT (0.95) | FX Trade Settlement[FXOPT-2026-00056] – AUD/USD – 26_05_26 - UTIVSNUJZA7TZ0YNCXLL4ZK0056 | trade_id=FXOPT-2026-00056 (0 trade rows)
+08:08:02 | INFO    | email_agent            | RELEVANT (0.95) | FX Trade Settlement FXOPT-2026-00057 – 26/05/26 – UTIFPZUE8YFBNTPBN78BMYY0057 | trade_id=FXOPT-2026-00057 (0 trade rows)
+08:08:02 | INFO    | email_agent            | RELEVANT (0.95) | FX Trade Settlement[FXOPT-2026-00050] – AUD/USD – 26_05_26 - UTISDBDW2PCN9T84AZYTJXE0050 | trade_id=FXOPT-2026-00050 (0 trade rows)
+08:08:02 | WARNING | email_agent            | AMBIGUOUS (0.30) | Settlement query – account reconciliation | subject['settlement']
+08:08:02 | INFO    | email_agent            | RELEVANT (0.95) | FX Trade Settlement[FXOPT-2026-00053] – AUD/USD – 26/05/26 - UTIQ0Y9DOM5IGQPKI7P5TB90053 | trade_id=FXOPT-2026-00053 (0 trade rows)
+08:08:02 | WARNING | email_agent            | AMBIGUOUS (0.30) | Re: Confirmation needed | subject['confirm']
+08:08:02 | WARNING | email_agent            | AMBIGUOUS (0.30) | Pending transaction follow-up | subject['transaction']
+08:08:02 | INFO    | email_agent            | RELEVANT (0.95) | FX Trade Settlement[FXOPT-2026-00049] – GBP/USD – 26/05/26 - UTIQJ7YHL1C32OC6UZHR5XF0049 | trade_id=FXOPT-2026-00049 (0 trade rows)
+08:08:02 | INFO    | email_agent            | RELEVANT (0.95) | FX Trade Settlement[FXOPT-2026-00054] – USD/CAD – 26_05_26 - UTIFAO72KZ02XRGHC0CLBR70054 | trade_id=FXOPT-2026-00054 (0 trade rows)
+08:08:02 | INFO    | email_agent            | RELEVANT (0.95) | FX Trade Settlement[FXOPT-2026-00048] – AUD/USD – 26_05_26 - UTI30T9NT3W5UZBIKCIDKWN0048 | trade_id=FXOPT-2026-00048 (0 trade rows)
+08:08:02 | INFO    | email_agent            | RELEVANT (0.95) | FX Trade Settlement[FXOPT-2026-00047] – USD/JPY – 26_05_26 - UTIIFD0TVBDIVUZZPQK51FP0047 | trade_id=FXOPT-2026-00047 (0 trade rows)
+08:08:02 | INFO    | email_agent            | RELEVANT (0.95) | FX Trade Settlement[FXOPT-2026-00051] – USD/JPY – 26/05/26 - UTIF1T2TALA753LC58DRC110051 | trade_id=FXOPT-2026-00051 (0 trade rows)
+08:08:02 | INFO    | email_agent            | RELEVANT (0.80) | FX Trade Settlements_FXOPT_270526 | trade_id=UNKNOWN_e910f8289f (34 trade rows)
+08:08:02 | INFO    | email_agent            | RELEVANT (0.80) | FX Trade Settlements_FXOPT_280526 | trade_id=UNKNOWN_f686a78dbe (34 trade rows)
+08:08:02 | INFO    | email_agent            | RELEVANT (0.95) | FX Trade Settlement FXOPT-2026-00058 – 26/05/26 – UTIJ2D54I3QK2IAGL58KXO90058 | trade_id=FXOPT-2026-00058 (0 trade rows)
+08:08:02 | WARNING | email_agent            | DUPLICATE trade_id FXOPT-2026-00053 — skipping (FX Trade Settlement[FXOPT-2026-00053] – USD/CAD – 26_05_26 - UTIY6WKTAKPUXQPHR62GDSW0053)
+08:08:02 | INFO    | email_agent            | RELEVANT (0.95) | FX Trade Settlement[FXOPT-2026-00052] – USD/CAD – 26/05/26 - UTIOYN6QICATVAZCCBLSKRT0052 | trade_id=FXOPT-2026-00052 (0 trade rows)
+08:08:02 | WARNING | email_agent            | DUPLICATE trade_id FXOPT-2026-00056 — skipping (FX Trade Settlement FXOPT-2026-00056 – 26/05/26 – UTIPTK93TYT7D5J60FKHMY40056)
+08:08:02 | INFO    | email_agent            | ========================================================
+08:08:02 | INFO    | email_agent            | [Phase 1 Run Complete]
+08:08:02 | INFO    | email_agent            |   Emails read:          29
+08:08:02 | INFO    | email_agent            |   RELEVANT (stored):    14
+08:08:02 | INFO    | email_agent            |   AMBIGUOUS (skipped):  3
+08:08:02 | INFO    | email_agent            |   IRRELEVANT (skipped): 10
+08:08:02 | INFO    | email_agent            |   DUPLICATE (skipped):  2
+08:08:02 | INFO    | email_agent            |   Already processed:    0
+08:08:02 | INFO    | email_agent            |   Trade rows extracted: 68
+08:08:02 | INFO    | email_agent            |   --- Ambiguous emails for manual review ---
+08:08:02 | INFO    | email_agent            |     • Settlement query – account reconciliation
+08:08:02 | INFO    | email_agent            |     • Re: Confirmation needed
+08:08:02 | INFO    | email_agent            |     • Pending transaction follow-up
+08:08:02 | INFO    | email_agent            | ========================================================
+08:08:02 | INFO    | api.agent              | agent.run source=local -> relevant=14 ambiguous=3 irrelevant=10 duplicate=2 cid=804f9edb-e5b4-41b0-ba90-e6116771e053
+08:08:02 | INFO    | api                    | POST /agent/run -> 200 (409.2ms) cid=804f9edb-e5b4-41b0-ba90-e6116771e053
+08:08:02 | INFO    | httpx                  | HTTP Request: POST http://testserver/agent/run "HTTP/1.1 200 OK"
+08:08:02 | INFO    | api                    | GET /storage/cases -> 200 (2.9ms) cid=223c22ed-2cb1-4f6b-b56b-4e4b0e5eedae
+08:08:02 | INFO    | httpx                  | HTTP Request: GET http://testserver/storage/cases "HTTP/1.1 200 OK"
+08:08:02 | INFO    | api.extract            | extract.trades -> 68 trade(s) from 2 file(s) across 14 case(s) cid=e1f90916-a209-4b92-8fce-b91492ff6c29
+08:08:02 | INFO    | api                    | GET /extract/trades -> 200 (33.9ms) cid=e1f90916-a209-4b92-8fce-b91492ff6c29
+08:08:02 | INFO    | httpx                  | HTTP Request: GET http://testserver/extract/trades "HTTP/1.1 200 OK"
+08:08:27 | INFO    | api                    | GET /health -> 200 (0.3ms) cid=c400a99f-324e-4903-904c-505477fd5261
+08:08:28 | INFO    | api.extract            | extract.trades -> 68 trade(s) from 2 file(s) across 14 case(s) cid=cbc98441-4e03-4a81-8957-1752d62d61aa
+08:08:28 | INFO    | api                    | GET /extract/trades -> 200 (216.8ms) cid=cbc98441-4e03-4a81-8957-1752d62d61aa
+08:10:02 | INFO    | api.extract            | extract.trades -> 68 trade(s) from 2 file(s) across 14 case(s) cid=8d15fb85-55b1-441c-8dc6-35876566d298
+08:10:02 | INFO    | api                    | GET /extract/trades -> 200 (17.5ms) cid=8d15fb85-55b1-441c-8dc6-35876566d298
+08:10:02 | INFO    | api                    | GET /storage/cases -> 200 (1.4ms) cid=452ba55e-062d-41b5-acf1-82c5466c1d41
+08:10:38 | INFO    | api                    | GET /health -> 200 (0.4ms) cid=8c22e69c-46f4-4357-be4b-b08fbabb31ec
+08:10:38 | INFO    | api                    | GET /health -> 200 (0.3ms) cid=ebd9969c-9ffd-49df-bac4-1cb5fa219130
+08:10:48 | INFO    | connectors.local_connector | Fetched 29 emails from data\raw_emails\inbox
+08:10:48 | INFO    | api.connector          | connector.fetch source=local -> 29 emails cid=53f7d567-4051-4d4d-99e6-e20672fc1ff7
+08:10:48 | INFO    | api                    | POST /connector/fetch -> 200 (19.4ms) cid=53f7d567-4051-4d4d-99e6-e20672fc1ff7
+08:10:54 | INFO    | connectors.local_connector | Fetched 29 emails from data\raw_emails\inbox
+08:10:54 | WARNING | email_agent            | AMBIGUOUS (0.30) | Settlement query – account reconciliation | subject['settlement']
+08:10:54 | WARNING | email_agent            | AMBIGUOUS (0.30) | Re: Confirmation needed | subject['confirm']
+08:10:54 | WARNING | email_agent            | AMBIGUOUS (0.30) | Pending transaction follow-up | subject['transaction']
+08:10:54 | WARNING | email_agent            | DUPLICATE trade_id FXOPT-2026-00053 — skipping (FX Trade Settlement[FXOPT-2026-00053] – USD/CAD – 26_05_26 - UTIY6WKTAKPUXQPHR62GDSW0053)
+08:10:54 | WARNING | email_agent            | DUPLICATE trade_id FXOPT-2026-00056 — skipping (FX Trade Settlement FXOPT-2026-00056 – 26/05/26 – UTIPTK93TYT7D5J60FKHMY40056)
+08:10:54 | INFO    | email_agent            | ========================================================
+08:10:54 | INFO    | email_agent            | [Phase 1 Run Complete]
+08:10:54 | INFO    | email_agent            |   Emails read:          29
+08:10:54 | INFO    | email_agent            |   RELEVANT (stored):    0
+08:10:54 | INFO    | email_agent            |   AMBIGUOUS (skipped):  3
+08:10:54 | INFO    | email_agent            |   IRRELEVANT (skipped): 10
+08:10:54 | INFO    | email_agent            |   DUPLICATE (skipped):  2
+08:10:54 | INFO    | email_agent            |   Already processed:    14
+08:10:54 | INFO    | email_agent            |   Trade rows extracted: 0
+08:10:54 | INFO    | email_agent            |   --- Ambiguous emails for manual review ---
+08:10:54 | INFO    | email_agent            |     • Settlement query – account reconciliation
+08:10:54 | INFO    | email_agent            |     • Re: Confirmation needed
+08:10:54 | INFO    | email_agent            |     • Pending transaction follow-up
+08:10:54 | INFO    | email_agent            | ========================================================
+08:10:54 | INFO    | api.agent              | agent.run source=local -> relevant=0 ambiguous=3 irrelevant=10 duplicate=2 cid=ebdae251-8f20-4e3f-9395-16e3b178e816
+08:10:54 | INFO    | api                    | POST /agent/run -> 200 (24.5ms) cid=ebdae251-8f20-4e3f-9395-16e3b178e816
+08:10:57 | INFO    | api.extract            | extract.trades -> 68 trade(s) from 2 file(s) across 14 case(s) cid=8929a599-3213-4666-94b4-a9fbab9c3e8c
+08:10:57 | INFO    | api                    | GET /extract/trades -> 200 (34.4ms) cid=8929a599-3213-4666-94b4-a9fbab9c3e8c
+08:10:57 | INFO    | api.extract            | extract.trades -> 68 trade(s) from 2 file(s) across 14 case(s) cid=573bcdb2-5fd7-4d9a-af01-57a84a90ca10
+08:10:57 | INFO    | api                    | GET /extract/trades -> 200 (38.3ms) cid=573bcdb2-5fd7-4d9a-af01-57a84a90ca10
+08:10:57 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00055 -> 200 (30.6ms) cid=d6da5e8b-fab0-4010-8bda-dce79c6e9fa1
+08:10:57 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00057 -> 200 (28.8ms) cid=c8154d51-4da1-4759-be56-03bc0eec3dca
+08:10:57 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00049 -> 200 (35.0ms) cid=b0142dd1-f9c6-4252-a8f0-2bf9f692ed48
+08:10:57 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00056 -> 200 (36.6ms) cid=edcb1522-60d1-40d3-83db-fd8b3dd9af40
+08:10:57 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00053 -> 200 (37.2ms) cid=3bac8d16-0995-480f-8406-d5cc69159bbb
+08:10:57 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00054 -> 200 (14.4ms) cid=3af368d0-4fa0-428f-aeb2-48640ad0648d
+08:10:57 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00050 -> 200 (19.1ms) cid=c9bec35e-c454-4d58-829e-038eb087c8e4
+08:10:57 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00048 -> 200 (19.4ms) cid=eb820059-9125-4a9c-8a85-85ce5eb9e98b
+08:10:57 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00055 -> 200 (5.3ms) cid=1786ea5b-6f91-48d0-af62-efbc319d8549
+08:10:57 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00058 -> 200 (19.6ms) cid=95579be2-2ceb-4bc9-b46f-f00c1282e7f2
+08:10:57 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00052 -> 200 (18.6ms) cid=e499da43-9d44-4554-b71a-af13b1d3ec78
+08:10:57 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00047 -> 200 (23.1ms) cid=58b2fba5-0aa0-441f-9e0e-cb81d1816458
+08:10:57 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00051 -> 200 (20.4ms) cid=920e5b68-cf1f-4d5a-bb78-f941becdd96e
+08:10:57 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00057 -> 200 (6.7ms) cid=59f8bd06-e6b5-4018-855a-c4a8d31077ea
+08:10:57 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00049 -> 200 (5.9ms) cid=21b6248c-8e76-4512-8cf4-00f7ad138d85
+08:10:57 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00056 -> 200 (5.4ms) cid=937d34e4-103b-446d-bf97-17e5fb9b12c3
+08:10:57 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00053 -> 200 (7.1ms) cid=2c973660-9224-4a1c-a8a3-c486b8b3587d
+08:10:57 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00054 -> 200 (9.7ms) cid=fde16561-f396-4f5d-9de4-70e1bc212e7e
+08:10:57 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00050 -> 200 (7.5ms) cid=f9cbe596-2771-4d56-b509-5c743fb05625
+08:10:57 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00058 -> 200 (7.9ms) cid=02b13a60-40f7-433c-bcc6-38c3baa0bd99
+08:10:57 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00048 -> 200 (10.8ms) cid=b1cbd26a-9ece-4068-8dcf-1573b7e6b89d
+08:10:57 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00052 -> 200 (6.4ms) cid=35c111ef-1e78-4430-89dc-a2e8ae8aca59
+08:10:57 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00047 -> 200 (8.0ms) cid=e14c1ac9-b7ae-4f0d-8c92-ed5700da0200
+08:10:57 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00051 -> 200 (5.7ms) cid=2be1b091-656c-4aa3-9d6d-de21c0bfdfe5
+11:05:45 | INFO    | api                    | GET /health -> 200 (0.6ms) cid=1b8e5635-7d2c-4391-b1c5-d87510709540
+11:05:45 | INFO    | api                    | GET /config -> 200 (4.7ms) cid=5be0bc8c-ba6e-4a60-9633-274c5142686a
+11:05:45 | INFO    | api                    | GET /health -> 200 (0.2ms) cid=7e170e9e-7cc0-4712-a7ae-9ddb99957b08
+11:05:45 | INFO    | api                    | GET /config -> 200 (0.8ms) cid=1cb54044-76cc-4561-b105-1609ba2b3fed
+11:05:50 | INFO    | api                    | GET /health -> 200 (0.3ms) cid=d43bea1a-09ce-4374-9ae2-2288d33ad54d
+11:05:50 | INFO    | api                    | GET /health -> 200 (0.3ms) cid=15de5b50-5d98-40b5-9562-186a911379c1
+11:05:52 | INFO    | connectors.local_connector | Fetched 29 emails from data\raw_emails\inbox
+11:05:52 | INFO    | api.connector          | connector.fetch source=local -> 29 emails cid=826ad4f0-a3d1-4399-a2aa-556e1ec70d7c
+11:05:52 | INFO    | api                    | POST /connector/fetch -> 200 (13.1ms) cid=826ad4f0-a3d1-4399-a2aa-556e1ec70d7c
+11:06:04 | INFO    | connectors.local_connector | Fetched 29 emails from data\raw_emails\inbox
+11:06:04 | WARNING | email_agent            | AMBIGUOUS (0.30) | Settlement query – account reconciliation | subject['settlement']
+11:06:04 | WARNING | email_agent            | AMBIGUOUS (0.30) | Re: Confirmation needed | subject['confirm']
+11:06:04 | WARNING | email_agent            | AMBIGUOUS (0.30) | Pending transaction follow-up | subject['transaction']
+11:06:04 | WARNING | email_agent            | DUPLICATE trade_id FXOPT-2026-00053 — skipping (FX Trade Settlement[FXOPT-2026-00053] – USD/CAD – 26_05_26 - UTIY6WKTAKPUXQPHR62GDSW0053)
+11:06:04 | WARNING | email_agent            | DUPLICATE trade_id FXOPT-2026-00056 — skipping (FX Trade Settlement FXOPT-2026-00056 – 26/05/26 – UTIPTK93TYT7D5J60FKHMY40056)
+11:06:04 | INFO    | email_agent            | ========================================================
+11:06:04 | INFO    | email_agent            | [Phase 1 Run Complete]
+11:06:04 | INFO    | email_agent            |   Emails read:          29
+11:06:04 | INFO    | email_agent            |   RELEVANT (stored):    0
+11:06:04 | INFO    | email_agent            |   AMBIGUOUS (skipped):  3
+11:06:04 | INFO    | email_agent            |   IRRELEVANT (skipped): 10
+11:06:04 | INFO    | email_agent            |   DUPLICATE (skipped):  2
+11:06:04 | INFO    | email_agent            |   Already processed:    14
+11:06:04 | INFO    | email_agent            |   Trade rows extracted: 0
+11:06:04 | INFO    | email_agent            |   --- Ambiguous emails for manual review ---
+11:06:04 | INFO    | email_agent            |     • Settlement query – account reconciliation
+11:06:04 | INFO    | email_agent            |     • Re: Confirmation needed
+11:06:04 | INFO    | email_agent            |     • Pending transaction follow-up
+11:06:04 | INFO    | email_agent            | ========================================================
+11:06:04 | INFO    | api.agent              | agent.run source=local -> relevant=0 ambiguous=3 irrelevant=10 duplicate=2 cid=486532c8-8c0b-4d0d-99db-515780439c14
+11:06:04 | INFO    | api                    | POST /agent/run -> 200 (22.2ms) cid=486532c8-8c0b-4d0d-99db-515780439c14
+11:06:07 | INFO    | api.extract            | extract.trades -> 68 trade(s) from 2 file(s) across 14 case(s) cid=22c63cb1-2fc0-4601-865c-cec9bb24d667
+11:06:07 | INFO    | api                    | GET /extract/trades -> 200 (424.7ms) cid=22c63cb1-2fc0-4601-865c-cec9bb24d667
+11:06:07 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00050 -> 200 (15.0ms) cid=20e2bc99-ffce-4d3d-865e-b4ba2189b129
+11:06:07 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00053 -> 200 (15.1ms) cid=29a705ba-aa21-4e81-b078-d1e6eafdc2a1
+11:06:07 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00049 -> 200 (15.0ms) cid=5102bf2b-1e98-490e-b4c0-14a37bde9ba3
+11:06:07 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00055 -> 200 (18.1ms) cid=b8a8b6e6-233b-4f88-9112-6fdce2251af2
+11:06:07 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00057 -> 200 (17.7ms) cid=15c8798d-df54-4ae4-ae8c-d3d01a394e7e
+11:06:07 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00056 -> 200 (19.4ms) cid=084b7a7c-2af4-430d-b008-129ac019eba3
+11:06:07 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00054 -> 200 (11.5ms) cid=8c84861a-7ceb-4eba-9662-576f6cf1611c
+11:06:07 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00048 -> 200 (12.3ms) cid=c969d15c-87de-4fce-8af2-41a7769e1625
+11:06:07 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00047 -> 200 (18.2ms) cid=8a116c3d-1b41-4c90-8ac5-23ed8e07fcce
+11:06:07 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00058 -> 200 (17.7ms) cid=f0950a0b-2bda-43d0-b452-6dde98760346
+11:06:07 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00051 -> 200 (19.1ms) cid=267a549e-1673-4cd3-b05d-854d34558db9
+11:06:07 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00052 -> 200 (18.4ms) cid=29cb8be0-7bdf-4bb9-abe2-6a4e9cd6f550
+11:06:17 | INFO    | api.extract            | extract.trades -> 68 trade(s) from 2 file(s) across 14 case(s) cid=8f73427e-8903-4f64-85a9-04a4119976ac
+11:06:17 | INFO    | api                    | GET /extract/trades -> 200 (28.6ms) cid=8f73427e-8903-4f64-85a9-04a4119976ac
+11:06:17 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00057 -> 200 (6.6ms) cid=a712b5ae-88cd-4eb3-a062-986c6da9dee3
+11:06:17 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00056 -> 200 (8.0ms) cid=c225b8e1-e807-42e0-a837-f078be0e5457
+11:06:17 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00050 -> 200 (8.0ms) cid=f998bed0-e8b6-43f7-9286-aca935e412da
+11:06:17 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00055 -> 200 (10.7ms) cid=472a641f-c291-46e4-9cc3-79e5c7019c81
+11:06:17 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00053 -> 200 (8.8ms) cid=1eb94bde-4146-499e-800b-7d8f0f7cdd8a
+11:06:17 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00049 -> 200 (9.3ms) cid=4515898e-7ec5-478d-973e-212c263f07af
+11:06:17 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00054 -> 200 (2.8ms) cid=8d5908ed-2170-411b-b46a-8b34edf3cfca
+11:06:17 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00048 -> 200 (4.5ms) cid=de1cd18d-6267-4c65-ac46-dabda342b9c7
+11:06:17 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00047 -> 200 (5.7ms) cid=e87370c2-697c-400e-8a0a-6ccae5a576e0
+11:06:17 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00051 -> 200 (7.2ms) cid=62e803f0-c164-496d-905d-97ab180759ee
+11:06:17 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00058 -> 200 (7.5ms) cid=8756dd04-95a5-4b5c-b2b2-332f9045536f
+11:06:17 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00052 -> 200 (7.6ms) cid=4bb7af4b-1be1-4e66-a951-81e364c7ee04
+11:15:33 | INFO    | api                    | GET /api/status -> 404 (0.4ms) cid=c42738cf-43ba-4621-8dcd-855fe906ae49
+11:15:33 | INFO    | api                    | GET /favicon.ico -> 404 (0.4ms) cid=10491e7e-93fd-4afb-9977-a0b6c2d146b5
+11:15:52 | INFO    | api                    | POST /api/generate-pdf -> 404 (0.3ms) cid=203badee-9b11-456a-baa0-356fba6bba15
+11:16:13 | INFO    | api                    | POST /api/generate-pdf -> 404 (0.3ms) cid=05614e12-8465-4fed-9d2f-370e4cb72d45
+11:16:13 | INFO    | api                    | POST /api/generate-pdf -> 404 (0.3ms) cid=72497251-9150-4d79-a4ce-fdf3b84f180d
+11:16:13 | INFO    | api                    | POST /api/generate-pdf -> 404 (0.3ms) cid=448b4ff3-21fb-4242-a63d-807a53ffd9bc
+11:16:14 | INFO    | api                    | POST /api/generate-pdf -> 404 (0.3ms) cid=79849621-6c20-41e7-8d7c-59b3d8620589
+11:40:53 | INFO    | api                    | GET /health -> 200 (1.4ms) cid=92f1bdd8-3c0c-4ebf-9284-9fc10223c743
+11:40:53 | INFO    | api                    | GET /config -> 200 (6.7ms) cid=0dba9365-e541-4ec2-8a5c-20d2d13d215b
+11:40:53 | INFO    | api                    | GET /health -> 200 (0.7ms) cid=fc7dc722-7099-4cbf-bbab-2320c28d5c2c
+11:40:53 | INFO    | api                    | GET /config -> 200 (2.3ms) cid=62bfd9a6-17d6-4893-88b9-723d359d2132
+11:44:11 | INFO    | api                    | GET /health -> 200 (0.5ms) cid=3b5200f0-a471-45de-86d4-124c3c945d9d
+11:44:11 | INFO    | api                    | GET /health -> 200 (0.5ms) cid=d9a19ef8-cfad-417e-a0cb-1dba6f470bad
+11:45:21 | INFO    | connectors.local_connector | Fetched 29 emails from data\raw_emails\inbox
+11:45:21 | INFO    | api.connector          | connector.fetch source=local -> 29 emails cid=832f28f1-2158-4d0b-8783-4bc08b89d5d1
+11:45:21 | INFO    | api                    | POST /connector/fetch -> 200 (38.8ms) cid=832f28f1-2158-4d0b-8783-4bc08b89d5d1
+11:45:33 | INFO    | connectors.local_connector | Fetched 29 emails from data\raw_emails\inbox
+11:45:33 | INFO    | api                    | POST /connector/preview -> 200 (43.0ms) cid=ed0664cf-9a53-4c02-8f25-87ce30c42fe5
+11:45:44 | INFO    | connectors.local_connector | Fetched 29 emails from data\raw_emails\inbox
+11:45:44 | INFO    | api                    | POST /connector/preview -> 200 (24.2ms) cid=f1680941-15f8-4ca1-8ff9-efa474737293
+11:46:23 | INFO    | connectors.local_connector | Fetched 29 emails from data\raw_emails\inbox
+11:46:23 | WARNING | email_agent            | AMBIGUOUS (0.30) | Settlement query – account reconciliation | subject['settlement']
+11:46:23 | WARNING | email_agent            | AMBIGUOUS (0.30) | Re: Confirmation needed | subject['confirm']
+11:46:23 | WARNING | email_agent            | AMBIGUOUS (0.30) | Pending transaction follow-up | subject['transaction']
+11:46:23 | WARNING | email_agent            | DUPLICATE trade_id FXOPT-2026-00053 — skipping (FX Trade Settlement[FXOPT-2026-00053] – USD/CAD – 26_05_26 - UTIY6WKTAKPUXQPHR62GDSW0053)
+11:46:23 | WARNING | email_agent            | DUPLICATE trade_id FXOPT-2026-00056 — skipping (FX Trade Settlement FXOPT-2026-00056 – 26/05/26 – UTIPTK93TYT7D5J60FKHMY40056)
+11:46:23 | INFO    | email_agent            | ========================================================
+11:46:23 | INFO    | email_agent            | [Phase 1 Run Complete]
+11:46:23 | INFO    | email_agent            |   Emails read:          29
+11:46:23 | INFO    | email_agent            |   RELEVANT (stored):    0
+11:46:23 | INFO    | email_agent            |   AMBIGUOUS (skipped):  3
+11:46:23 | INFO    | email_agent            |   IRRELEVANT (skipped): 10
+11:46:23 | INFO    | email_agent            |   DUPLICATE (skipped):  2
+11:46:23 | INFO    | email_agent            |   Already processed:    14
+11:46:23 | INFO    | email_agent            |   Trade rows extracted: 0
+11:46:23 | INFO    | email_agent            |   --- Ambiguous emails for manual review ---
+11:46:23 | INFO    | email_agent            |     • Settlement query – account reconciliation
+11:46:23 | INFO    | email_agent            |     • Re: Confirmation needed
+11:46:23 | INFO    | email_agent            |     • Pending transaction follow-up
+11:46:23 | INFO    | email_agent            | ========================================================
+11:46:23 | INFO    | api.agent              | agent.run source=local -> relevant=0 ambiguous=3 irrelevant=10 duplicate=2 cid=e51fddc9-9072-4bbc-9af0-feff250444e7
+11:46:23 | INFO    | api                    | POST /agent/run -> 200 (64.5ms) cid=e51fddc9-9072-4bbc-9af0-feff250444e7
+11:46:27 | INFO    | api.extract            | extract.trades -> 68 trade(s) from 2 file(s) across 14 case(s) cid=df6e64c4-15f5-4f99-8c2f-d7f8310e70b6
+11:46:27 | INFO    | api                    | GET /extract/trades -> 200 (732.3ms) cid=df6e64c4-15f5-4f99-8c2f-d7f8310e70b6
+11:46:27 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00055 -> 200 (7.0ms) cid=d08783a5-299c-4e4a-b949-bac53bf0a77a
+11:46:27 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00049 -> 200 (13.3ms) cid=8acfdcae-5e5f-48a8-ac2c-031ff0fd7b1a
+11:46:27 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00056 -> 200 (19.9ms) cid=846d4200-2353-4203-8ea3-e7eb067ce1a0
+11:46:27 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00057 -> 200 (19.4ms) cid=db6440dd-1e27-43e9-a178-8ec7f1046767
+11:46:27 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00053 -> 200 (20.3ms) cid=80c98adc-34a3-4bd7-93b4-53904dda24b1
+11:46:27 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00050 -> 200 (22.2ms) cid=6c5ea287-cae2-4435-9ff9-40cebb752237
+11:46:27 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00054 -> 200 (15.4ms) cid=e2ad2bbc-699d-4199-b558-ba18980a803d
+11:46:27 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00048 -> 200 (9.9ms) cid=7a2d4820-3f82-49ba-981a-b87e02545b9d
+11:46:27 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00047 -> 200 (11.3ms) cid=9f3d96d3-33b1-4617-9b2f-f6255eedcf12
+11:46:27 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00058 -> 200 (11.7ms) cid=576dd86e-a51c-4f20-958a-28f6c5128f31
+11:46:27 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00051 -> 200 (15.1ms) cid=9e02aa03-b35c-4e5c-b76b-3e5b3360c136
+11:46:27 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00052 -> 200 (13.9ms) cid=be8f5dea-c67e-464f-981c-cd4a69f8f62b
+11:48:03 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00050 -> 200 (10.9ms) cid=d6c5bb70-674d-409d-a316-bf8413a27586
+12:04:47 | INFO    | api                    | GET /health -> 200 (0.6ms) cid=8c68ba50-0d0f-4d3e-acc8-0bf0352988b5
+12:04:47 | INFO    | api                    | GET /config -> 200 (1.6ms) cid=2a383816-cee0-4a39-9e67-91642b706383
+12:04:47 | INFO    | api                    | GET /health -> 200 (0.2ms) cid=7cf9a792-9329-440c-833d-8e804fecf7b5
+12:04:47 | INFO    | api                    | GET /config -> 200 (0.8ms) cid=16e5557c-b6a3-4224-b0b8-4b38952c3220
+12:12:57 | INFO    | api                    | GET /health -> 200 (0.3ms) cid=2befe3f9-a172-48cd-bd7a-6ffbf6c12d25
+12:12:57 | INFO    | api                    | GET /health -> 200 (0.3ms) cid=e80c3ff3-1c83-49f3-bdb7-d0d1eb7eaaed
+12:14:03 | INFO    | api                    | GET /health -> 200 (0.5ms) cid=715a31fc-0804-43f5-97b1-beb4da062d02
+12:14:03 | INFO    | api                    | GET /config -> 200 (2.2ms) cid=2191be3f-0fc6-4537-8c3f-b500fa21a7df
+12:14:03 | INFO    | api                    | GET /health -> 200 (0.3ms) cid=2bb70a2f-dedb-4444-9ae0-94e72025cdf4
+12:14:03 | INFO    | api                    | GET /config -> 200 (1.0ms) cid=4760c2f5-7b5f-4bf5-809f-df8257928436
+12:36:34 | INFO    | api                    | GET /health -> 200 (0.8ms) cid=3c42f8fd-1541-4b69-82c7-97c1f1b0ec8e
+12:36:34 | INFO    | api                    | GET /health -> 200 (1.9ms) cid=6a0c35ef-0419-45b4-ad44-6adaa43ae73e
+12:36:34 | INFO    | api                    | GET /config -> 200 (3.2ms) cid=bde65888-6c3e-461a-b839-fc13d6d54900
+12:36:34 | INFO    | api                    | GET /config -> 200 (3.4ms) cid=ac21e8d9-9d30-48d7-9086-3502047052ee
+13:56:42 | INFO    | api                    | GET /health -> 200 (0.7ms) cid=668d04c4-e49a-4af9-92fe-7bea9a4a6f73
+13:56:42 | INFO    | api                    | GET /config -> 200 (3.9ms) cid=99d3f693-33ff-434b-8f24-8c470011ddc8
+13:56:42 | INFO    | api                    | GET /health -> 200 (0.3ms) cid=dfd8c623-e385-47c5-a590-cd44b7a6a7bc
+13:56:42 | INFO    | api                    | GET /config -> 200 (0.9ms) cid=7cb7286a-ae00-4d9c-9f45-c8ee7a54d45e
+13:59:32 | INFO    | api                    | GET /health -> 200 (0.5ms) cid=55b1ac0d-c661-4e83-80d6-58315ab5a18d
+13:59:32 | INFO    | api                    | GET /config -> 200 (4.1ms) cid=e7638a7e-2481-4ec1-bc2a-62be649e2cd1
+13:59:32 | INFO    | api                    | GET /health -> 200 (0.2ms) cid=220d1cf1-0030-43ea-99b4-83f28a17536c
+13:59:32 | INFO    | api                    | GET /config -> 200 (0.8ms) cid=80c712b9-9f88-425c-8547-1b9dff8356ca
+13:59:49 | INFO    | api                    | GET /health -> 200 (0.4ms) cid=8017617e-7688-4ac0-b395-feeeba52415e
+13:59:49 | INFO    | api                    | GET /health -> 200 (0.3ms) cid=cc24b32a-3120-47f5-abde-2bca8b1d855f
+13:59:49 | INFO    | api                    | GET /config -> 200 (2.2ms) cid=61af1c50-1069-4df5-b206-ee0e2596a3f4
+13:59:49 | INFO    | api                    | GET /config -> 200 (3.1ms) cid=1b9a4598-0983-4696-a30d-963e7218307c
+13:59:53 | INFO    | api                    | GET /health -> 200 (0.3ms) cid=0bc06ec6-e16c-4c1e-890c-6ddf8bac6f4a
+13:59:53 | INFO    | api                    | GET /health -> 200 (0.2ms) cid=1e1d2631-dac7-4bd0-a431-c5ddd80b7d7c
+13:59:55 | INFO    | connectors.local_connector | Fetched 29 emails from data\raw_emails\inbox
+13:59:55 | INFO    | api.connector          | connector.fetch source=local -> 29 emails cid=4067b5d5-5b6d-4e64-8559-e14a8aaf0ad7
+13:59:55 | INFO    | api                    | POST /connector/fetch -> 200 (11.9ms) cid=4067b5d5-5b6d-4e64-8559-e14a8aaf0ad7
+14:00:02 | INFO    | connectors.local_connector | Fetched 29 emails from data\raw_emails\inbox
+14:00:03 | INFO    | email_agent            | RESTORED missing case folder | FX Trade Settlement FXOPT-2026-00055 – 26/05/26 – UTI7UUBCXULJYLJEXQ77AWU0055 | trade_id=FXOPT-2026-00055 (0 trade rows)
+14:00:03 | INFO    | email_agent            | RESTORED missing case folder | FX Trade Settlement[FXOPT-2026-00056] – AUD/USD – 26_05_26 - UTIVSNUJZA7TZ0YNCXLL4ZK0056 | trade_id=FXOPT-2026-00056 (0 trade rows)
+14:00:03 | INFO    | email_agent            | RESTORED missing case folder | FX Trade Settlement FXOPT-2026-00057 – 26/05/26 – UTIFPZUE8YFBNTPBN78BMYY0057 | trade_id=FXOPT-2026-00057 (0 trade rows)
+14:00:03 | INFO    | email_agent            | RESTORED missing case folder | FX Trade Settlement[FXOPT-2026-00050] – AUD/USD – 26_05_26 - UTISDBDW2PCN9T84AZYTJXE0050 | trade_id=FXOPT-2026-00050 (0 trade rows)
+14:00:03 | WARNING | email_agent            | AMBIGUOUS (0.30) | Settlement query – account reconciliation | subject['settlement']
+14:00:03 | INFO    | email_agent            | RESTORED missing case folder | FX Trade Settlement[FXOPT-2026-00053] – AUD/USD – 26/05/26 - UTIQ0Y9DOM5IGQPKI7P5TB90053 | trade_id=FXOPT-2026-00053 (0 trade rows)
+14:00:03 | WARNING | email_agent            | AMBIGUOUS (0.30) | Re: Confirmation needed | subject['confirm']
+14:00:03 | WARNING | email_agent            | AMBIGUOUS (0.30) | Pending transaction follow-up | subject['transaction']
+14:00:03 | INFO    | email_agent            | RESTORED missing case folder | FX Trade Settlement[FXOPT-2026-00049] – GBP/USD – 26/05/26 - UTIQJ7YHL1C32OC6UZHR5XF0049 | trade_id=FXOPT-2026-00049 (0 trade rows)
+14:00:03 | INFO    | email_agent            | RESTORED missing case folder | FX Trade Settlement[FXOPT-2026-00054] – USD/CAD – 26_05_26 - UTIFAO72KZ02XRGHC0CLBR70054 | trade_id=FXOPT-2026-00054 (0 trade rows)
+14:00:03 | INFO    | email_agent            | RESTORED missing case folder | FX Trade Settlement[FXOPT-2026-00048] – AUD/USD – 26_05_26 - UTI30T9NT3W5UZBIKCIDKWN0048 | trade_id=FXOPT-2026-00048 (0 trade rows)
+14:00:03 | INFO    | email_agent            | RESTORED missing case folder | FX Trade Settlement[FXOPT-2026-00047] – USD/JPY – 26_05_26 - UTIIFD0TVBDIVUZZPQK51FP0047 | trade_id=FXOPT-2026-00047 (0 trade rows)
+14:00:03 | INFO    | email_agent            | RESTORED missing case folder | FX Trade Settlement[FXOPT-2026-00051] – USD/JPY – 26/05/26 - UTIF1T2TALA753LC58DRC110051 | trade_id=FXOPT-2026-00051 (0 trade rows)
+14:00:03 | INFO    | email_agent            | RESTORED missing case folder | FX Trade Settlements_FXOPT_270526 | trade_id=UNKNOWN_e910f8289f (34 trade rows)
+14:00:03 | INFO    | email_agent            | RESTORED missing case folder | FX Trade Settlements_FXOPT_280526 | trade_id=UNKNOWN_f686a78dbe (34 trade rows)
+14:00:03 | INFO    | email_agent            | RESTORED missing case folder | FX Trade Settlement FXOPT-2026-00058 – 26/05/26 – UTIJ2D54I3QK2IAGL58KXO90058 | trade_id=FXOPT-2026-00058 (0 trade rows)
+14:00:03 | WARNING | email_agent            | DUPLICATE trade_id FXOPT-2026-00053 — skipping (FX Trade Settlement[FXOPT-2026-00053] – USD/CAD – 26_05_26 - UTIY6WKTAKPUXQPHR62GDSW0053)
+14:00:03 | INFO    | email_agent            | RESTORED missing case folder | FX Trade Settlement[FXOPT-2026-00052] – USD/CAD – 26/05/26 - UTIOYN6QICATVAZCCBLSKRT0052 | trade_id=FXOPT-2026-00052 (0 trade rows)
+14:00:03 | WARNING | email_agent            | DUPLICATE trade_id FXOPT-2026-00056 — skipping (FX Trade Settlement FXOPT-2026-00056 – 26/05/26 – UTIPTK93TYT7D5J60FKHMY40056)
+14:00:03 | INFO    | email_agent            | ========================================================
+14:00:03 | INFO    | email_agent            | [Phase 1 Run Complete]
+14:00:03 | INFO    | email_agent            |   Emails read:          29
+14:00:03 | INFO    | email_agent            |   RELEVANT (stored):    14
+14:00:03 | INFO    | email_agent            |   AMBIGUOUS (skipped):  3
+14:00:03 | INFO    | email_agent            |   IRRELEVANT (skipped): 10
+14:00:03 | INFO    | email_agent            |   DUPLICATE (skipped):  2
+14:00:03 | INFO    | email_agent            |   Already processed:    0
+14:00:03 | INFO    | email_agent            |   Trade rows extracted: 68
+14:00:03 | INFO    | email_agent            |   --- Ambiguous emails for manual review ---
+14:00:03 | INFO    | email_agent            |     • Settlement query – account reconciliation
+14:00:03 | INFO    | email_agent            |     • Re: Confirmation needed
+14:00:03 | INFO    | email_agent            |     • Pending transaction follow-up
+14:00:03 | INFO    | email_agent            | ========================================================
+14:00:03 | INFO    | api.agent              | agent.run source=local -> relevant=14 ambiguous=3 irrelevant=10 duplicate=2 cid=7993875f-5d91-4154-a0c7-454d1aadd649
+14:00:03 | INFO    | api                    | POST /agent/run -> 200 (293.1ms) cid=7993875f-5d91-4154-a0c7-454d1aadd649
+14:00:06 | INFO    | api.extract            | extract.trades -> 68 trade(s) from 2 file(s) across 14 case(s) cid=3fac288f-c444-4874-a043-caf05fb5233d
+14:00:06 | INFO    | api                    | GET /extract/trades -> 200 (37.2ms) cid=3fac288f-c444-4874-a043-caf05fb5233d
+14:00:06 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00053 -> 200 (12.8ms) cid=f8fa725a-6158-4488-9431-5a51313dd27b
+14:00:06 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00056 -> 200 (20.1ms) cid=b96f1f40-2746-47d2-a364-ff0ca3621053
+14:00:06 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00057 -> 200 (21.0ms) cid=7434cd3f-42e8-43bd-bbc9-ac650a632d5d
+14:00:06 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00055 -> 200 (22.7ms) cid=c3211594-6047-4497-9117-2e8422da3103
+14:00:06 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00049 -> 200 (22.1ms) cid=aa941f11-98e5-4321-8c28-1e963d9301dc
+14:00:06 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00050 -> 200 (22.8ms) cid=65b5d75d-1265-4c34-9c0f-6ef3d001966a
+14:00:06 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00054 -> 200 (16.3ms) cid=ee877036-569d-4857-8f49-8b1e8c425822
+14:00:06 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00048 -> 200 (14.1ms) cid=63ed19c1-1f9c-496e-8aa2-89f25de451ff
+14:00:06 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00047 -> 200 (15.2ms) cid=745ae40e-f79e-4e36-9806-7b649d94c1d9
+14:00:06 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00058 -> 200 (15.9ms) cid=db40b0de-3b2f-4b23-83f9-9d3aa2878939
+14:00:06 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00051 -> 200 (16.6ms) cid=676e8ddc-a879-4694-84c1-4a3d9b2d43c3
+14:00:06 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00052 -> 200 (16.8ms) cid=3b85a375-1633-4ce0-996b-a2ffa787e1ed
+14:58:23 | INFO    | api                    | GET /health -> 200 (1.9ms) cid=a53c03c8-4f53-4d51-b656-11dcaefb92e4
+14:58:23 | INFO    | api                    | GET /health -> 200 (0.3ms) cid=a9e6cc35-8bb6-411f-a334-f4c63078637d
+14:58:27 | INFO    | api.extract            | extract.trades -> 68 trade(s) from 2 file(s) across 14 case(s) cid=2667394e-d0d5-4b49-8432-81049a48bf9f
+14:58:27 | INFO    | api                    | GET /extract/trades -> 200 (41.2ms) cid=2667394e-d0d5-4b49-8432-81049a48bf9f
+14:58:27 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00055 -> 200 (6.4ms) cid=9520e710-8d85-420c-b79b-141404d226b1
+14:58:27 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00050 -> 200 (8.4ms) cid=22bf15c1-b66b-4695-a212-e353cc99ce39
+14:58:27 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00049 -> 200 (8.1ms) cid=add1b8d6-551c-4328-bb74-a93403a143dd
+14:58:27 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00056 -> 200 (10.7ms) cid=f539be23-87c1-478d-b748-3b28b43bf4ae
+14:58:27 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00053 -> 200 (10.8ms) cid=71bf814a-b25f-46ff-9cf4-adbf30786f4a
+14:58:27 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00057 -> 200 (11.9ms) cid=0725f98d-d47b-49ee-99a0-f8cafae7844f
+14:58:27 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00054 -> 200 (3.9ms) cid=b32b123a-5b74-43bd-b112-2f5048fd6e7b
+14:58:27 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00047 -> 200 (14.1ms) cid=850ec7d0-c1df-425a-9650-74b013479c3d
+14:58:27 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00051 -> 200 (15.0ms) cid=e65e0a91-6f82-4ade-852d-6c53535b9672
+14:58:27 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00058 -> 200 (14.4ms) cid=2d543b36-d47c-4217-adc1-cd14adc19bbd
+14:58:27 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00048 -> 200 (16.7ms) cid=cd3d2b28-21ef-4e1f-8784-40fc61f33f7d
+14:58:27 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00052 -> 200 (16.0ms) cid=dfb8c967-6552-4ccb-a24c-becdbc8f1461
+16:05:50 | INFO    | api                    | GET /health -> 200 (1.3ms) cid=8fe27044-1186-419a-9ae7-916eb9e57482
+16:05:50 | INFO    | api                    | GET /config -> 200 (5.0ms) cid=4f2842b7-34b2-4ef4-92a1-8c74bad98475
+16:05:50 | INFO    | api                    | GET /health -> 200 (0.5ms) cid=07a4137a-7f6b-4f44-b79a-e82d5f0be734
+16:05:50 | INFO    | api                    | GET /config -> 200 (1.8ms) cid=d06b0b97-9827-4e12-aa2c-af5a9fcb3029
+16:09:54 | INFO    | api                    | GET /health -> 200 (0.9ms) cid=ec76af70-d36d-4109-9fb4-4d7635b29dd7
+16:09:54 | INFO    | api                    | GET /health -> 200 (0.5ms) cid=e3a7d324-8e39-448f-9c42-74c7a8506cc0
+16:10:19 | INFO    | connectors.local_connector | Fetched 29 emails from data\raw_emails\inbox
+16:10:19 | INFO    | api.connector          | connector.fetch source=local -> 29 emails cid=ac952ff4-4dbe-4c2b-8405-9af105c648d0
+16:10:19 | INFO    | api                    | POST /connector/fetch -> 200 (33.8ms) cid=ac952ff4-4dbe-4c2b-8405-9af105c648d0
+16:10:30 | INFO    | connectors.local_connector | Fetched 29 emails from data\raw_emails\inbox
+16:10:30 | INFO    | api                    | POST /connector/preview -> 200 (36.7ms) cid=3f27c261-53e9-4a4b-ae62-7c115b7b2897
+16:10:38 | INFO    | connectors.local_connector | Fetched 29 emails from data\raw_emails\inbox
+16:10:38 | INFO    | api                    | POST /connector/preview -> 200 (29.3ms) cid=7cbb2933-e1f1-4345-a4bf-1a9885a764f8
+16:10:49 | INFO    | connectors.local_connector | Fetched 29 emails from data\raw_emails\inbox
+16:10:49 | INFO    | email_agent            | RESTORED missing case folder | FX Trade Settlement FXOPT-2026-00055 – 26/05/26 – UTI7UUBCXULJYLJEXQ77AWU0055 | trade_id=FXOPT-2026-00055 (0 trade rows)
+16:10:49 | INFO    | email_agent            | RESTORED missing case folder | FX Trade Settlement[FXOPT-2026-00056] – AUD/USD – 26_05_26 - UTIVSNUJZA7TZ0YNCXLL4ZK0056 | trade_id=FXOPT-2026-00056 (0 trade rows)
+16:10:49 | INFO    | email_agent            | RESTORED missing case folder | FX Trade Settlement FXOPT-2026-00057 – 26/05/26 – UTIFPZUE8YFBNTPBN78BMYY0057 | trade_id=FXOPT-2026-00057 (0 trade rows)
+16:10:49 | INFO    | email_agent            | RESTORED missing case folder | FX Trade Settlement[FXOPT-2026-00050] – AUD/USD – 26_05_26 - UTISDBDW2PCN9T84AZYTJXE0050 | trade_id=FXOPT-2026-00050 (0 trade rows)
+16:10:49 | WARNING | email_agent            | AMBIGUOUS (0.30) | Settlement query – account reconciliation | subject['settlement']
+16:10:49 | INFO    | email_agent            | RESTORED missing case folder | FX Trade Settlement[FXOPT-2026-00053] – AUD/USD – 26/05/26 - UTIQ0Y9DOM5IGQPKI7P5TB90053 | trade_id=FXOPT-2026-00053 (0 trade rows)
+16:10:49 | WARNING | email_agent            | AMBIGUOUS (0.30) | Re: Confirmation needed | subject['confirm']
+16:10:49 | WARNING | email_agent            | AMBIGUOUS (0.30) | Pending transaction follow-up | subject['transaction']
+16:10:49 | INFO    | email_agent            | RESTORED missing case folder | FX Trade Settlement[FXOPT-2026-00049] – GBP/USD – 26/05/26 - UTIQJ7YHL1C32OC6UZHR5XF0049 | trade_id=FXOPT-2026-00049 (0 trade rows)
+16:10:49 | INFO    | email_agent            | RESTORED missing case folder | FX Trade Settlement[FXOPT-2026-00054] – USD/CAD – 26_05_26 - UTIFAO72KZ02XRGHC0CLBR70054 | trade_id=FXOPT-2026-00054 (0 trade rows)
+16:10:49 | INFO    | email_agent            | RESTORED missing case folder | FX Trade Settlement[FXOPT-2026-00048] – AUD/USD – 26_05_26 - UTI30T9NT3W5UZBIKCIDKWN0048 | trade_id=FXOPT-2026-00048 (0 trade rows)
+16:10:49 | INFO    | email_agent            | RESTORED missing case folder | FX Trade Settlement[FXOPT-2026-00047] – USD/JPY – 26_05_26 - UTIIFD0TVBDIVUZZPQK51FP0047 | trade_id=FXOPT-2026-00047 (0 trade rows)
+16:10:49 | INFO    | email_agent            | RESTORED missing case folder | FX Trade Settlement[FXOPT-2026-00051] – USD/JPY – 26/05/26 - UTIF1T2TALA753LC58DRC110051 | trade_id=FXOPT-2026-00051 (0 trade rows)
+16:10:49 | INFO    | email_agent            | RESTORED missing case folder | FX Trade Settlements_FXOPT_270526 | trade_id=UNKNOWN_e910f8289f (34 trade rows)
+16:10:49 | INFO    | email_agent            | RESTORED missing case folder | FX Trade Settlements_FXOPT_280526 | trade_id=UNKNOWN_f686a78dbe (34 trade rows)
+16:10:49 | INFO    | email_agent            | RESTORED missing case folder | FX Trade Settlement FXOPT-2026-00058 – 26/05/26 – UTIJ2D54I3QK2IAGL58KXO90058 | trade_id=FXOPT-2026-00058 (0 trade rows)
+16:10:49 | WARNING | email_agent            | DUPLICATE trade_id FXOPT-2026-00053 — skipping (FX Trade Settlement[FXOPT-2026-00053] – USD/CAD – 26_05_26 - UTIY6WKTAKPUXQPHR62GDSW0053)
+16:10:49 | INFO    | email_agent            | RESTORED missing case folder | FX Trade Settlement[FXOPT-2026-00052] – USD/CAD – 26/05/26 - UTIOYN6QICATVAZCCBLSKRT0052 | trade_id=FXOPT-2026-00052 (0 trade rows)
+16:10:49 | WARNING | email_agent            | DUPLICATE trade_id FXOPT-2026-00056 — skipping (FX Trade Settlement FXOPT-2026-00056 – 26/05/26 – UTIPTK93TYT7D5J60FKHMY40056)
+16:10:49 | INFO    | email_agent            | ========================================================
+16:10:49 | INFO    | email_agent            | [Phase 1 Run Complete]
+16:10:49 | INFO    | email_agent            |   Emails read:          29
+16:10:49 | INFO    | email_agent            |   RELEVANT (stored):    14
+16:10:49 | INFO    | email_agent            |   AMBIGUOUS (skipped):  3
+16:10:49 | INFO    | email_agent            |   IRRELEVANT (skipped): 10
+16:10:49 | INFO    | email_agent            |   DUPLICATE (skipped):  2
+16:10:49 | INFO    | email_agent            |   Already processed:    0
+16:10:49 | INFO    | email_agent            |   Trade rows extracted: 68
+16:10:49 | INFO    | email_agent            |   --- Ambiguous emails for manual review ---
+16:10:49 | INFO    | email_agent            |     • Settlement query – account reconciliation
+16:10:49 | INFO    | email_agent            |     • Re: Confirmation needed
+16:10:49 | INFO    | email_agent            |     • Pending transaction follow-up
+16:10:49 | INFO    | email_agent            | ========================================================
+16:10:49 | INFO    | api.agent              | agent.run source=local -> relevant=14 ambiguous=3 irrelevant=10 duplicate=2 cid=842cf55d-52f8-48b5-9c81-0a3242f9b6d4
+16:10:49 | INFO    | api                    | POST /agent/run -> 200 (269.1ms) cid=842cf55d-52f8-48b5-9c81-0a3242f9b6d4
+16:10:52 | INFO    | api.extract            | extract.trades -> 68 trade(s) from 2 file(s) across 14 case(s) cid=78744bb7-1b40-4b3e-9378-5a88f6b4a166
+16:10:52 | INFO    | api                    | GET /extract/trades -> 200 (94.1ms) cid=78744bb7-1b40-4b3e-9378-5a88f6b4a166
+16:10:52 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00055 -> 200 (17.0ms) cid=83f4c22f-9231-4975-830a-3ea72d642d79
+16:10:52 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00057 -> 200 (18.1ms) cid=ced65b35-cae4-4760-a54b-8a9606791fe9
+16:10:52 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00053 -> 200 (19.7ms) cid=99ce26e9-1116-4b82-a263-22da96a0bf6c
+16:10:52 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00056 -> 200 (23.1ms) cid=049a3ac6-868b-4308-a6dd-3c96fc08f337
+16:10:52 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00050 -> 200 (21.9ms) cid=8a747663-c131-46a8-917c-2c64a9831691
+16:10:52 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00049 -> 200 (22.3ms) cid=c44896fd-2b28-422c-932a-823913e029dd
+16:10:52 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00054 -> 200 (9.5ms) cid=9d60e28f-6b2f-4566-afd6-a4b7b9d04a1e
+16:10:52 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00048 -> 200 (9.1ms) cid=d6711cf9-6d1c-4cad-adf3-1a9e9b34a046
+16:10:52 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00047 -> 200 (10.2ms) cid=52790043-25cc-4ede-b637-380ce6e9f276
+16:10:52 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00058 -> 200 (12.5ms) cid=a43fe4ce-90e4-4cbe-b249-ade1cfca76e6
+16:10:52 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00051 -> 200 (14.6ms) cid=85927a6a-5faf-4b62-bdea-4f503fd2e678
+16:10:52 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00052 -> 200 (15.3ms) cid=f9653b42-85ec-4960-8a31-ddfbb2534c44
+16:15:56 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00047 -> 200 (14.2ms) cid=7b94a620-09e4-4783-9578-28f104f332ad

@@ -1,0 +1,31 @@
+Dear Team,
+
+Please find below the settlement details for the FX trade executed on 26/05/26:
+
+Trade Details:
+
+  * Deal Reference: FXOPT-2026-00052
+  * Currency Pair: USD/CAD
+  * Buy/Sell: Sell
+  * Amount: USD 16,407,268.60
+  * Counterparty: HSBC Bank PLC
+  * Value Date: 19-Jul-2026
+
+Settlement Instructions:
+
+  * Pay To: HSBC Bank PLC
+  * SWIFT Code: MIDLGB22
+  * Account Number: HSBC-USD-77410
+  * Beneficiary Name: HSBC Bank PLC
+  * Payment Method: MT103
+
+Kindly confirm receipt of these instructions and advise if there are any discrepancies at the earliest to ensure timely settlement.
+
+
+Regards,
+
+XYZ
+Associate
+ABCD LTD
+88567432
+xyz.com

@@ -23,10 +23,10 @@ menv/
 *.pem
 *.key
 
-# Regenerable runtime data (recreate with tools/generate_test_emails.py)
-data/
-logs/
-*.db
+# A sample run (inbox, processed cases, SQLite index, logs) is tracked so the
+# output is visible on GitHub. Regenerate locally with demo.py / generate_test_emails.py.
+# Only the mutable runtime-config override (written by the /config API) is ignored.
+data/runtime_config.json
 
 # Next.js
 frontend/.next/

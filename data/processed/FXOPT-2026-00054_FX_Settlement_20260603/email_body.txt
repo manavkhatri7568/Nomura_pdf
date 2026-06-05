@@ -1,0 +1,31 @@
+Dear Team,
+
+Please find below the settlement details for the FX trade executed on 26/05/26:
+
+Trade Details:
+
+  * Deal Reference: FXOPT-2026-00054
+  * Currency Pair: USD/CAD
+  * Buy/Sell: Buy
+  * Amount: USD 3,917,123.00
+  * Counterparty: BNP Paribas
+  * Value Date: 12-Jul-2026
+
+Settlement Instructions:
+
+  * Pay To: BNP Paribas SA
+  * SWIFT Code: BNPAFRPP
+  * Account Number: BNP-EUR-41200
+  * Beneficiary Name: BNP Paribas SA
+  * Payment Method: MT202COV
+
+Kindly confirm receipt of these instructions and advise if there are any discrepancies at the earliest to ensure timely settlement.
+
+
+Regards,
+
+PQR
+Associate
+ABCD LTD
+8756762
+xyz.com

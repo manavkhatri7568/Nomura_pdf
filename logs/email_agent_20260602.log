@@ -1,0 +1,1229 @@
+13:38:35 | INFO    | api                    | GET /health -> 200 (0.4ms) cid=a8259de3-19e1-430d-b846-df90cda8c25e
+13:38:35 | INFO    | api                    | GET /health -> 200 (0.3ms) cid=6bb27964-6cd6-4bfb-b439-b40bad137b2b
+13:38:57 | INFO    | api                    | GET /health -> 200 (0.3ms) cid=8a55242d-0031-4877-a903-b3139e468c77
+13:38:57 | INFO    | api                    | GET /health -> 200 (0.2ms) cid=f2e2f6f0-3bce-4ae0-96a4-c4f57199360e
+13:41:29 | INFO    | api                    | GET /health -> 200 (0.3ms) cid=6048ff5c-ecdc-4618-a0aa-fd7e163a2adf
+13:41:29 | INFO    | api                    | GET /health -> 200 (0.2ms) cid=ab3aea40-d7c5-4439-bd71-e742e062a57a
+13:41:31 | INFO    | api                    | GET /health -> 200 (0.3ms) cid=e5fe62a6-4a47-4038-a2bb-4937cbac184a
+13:41:31 | INFO    | api                    | GET /health -> 200 (0.2ms) cid=b768730b-0e42-4746-bf47-6231b4602d8c
+13:41:33 | INFO    | api                    | GET /health -> 200 (0.2ms) cid=6f518059-6337-4bc7-83c5-b5d561603d31
+13:41:33 | INFO    | api                    | GET /health -> 200 (0.2ms) cid=efc6ab24-a86b-43ae-8aee-ab026e6d783d
+14:01:33 | INFO    | api                    | GET /health -> 200 (1.0ms) cid=d57c0345-b842-4f00-857f-3cdc63a1ff7a
+14:01:33 | INFO    | api                    | GET /config -> 200 (3.6ms) cid=d295054f-6aa5-4d09-9b4d-5cdc053e9419
+14:01:33 | INFO    | api                    | GET /health -> 200 (0.3ms) cid=2b55a591-9493-4dc4-a56c-28469c0e9e88
+14:01:33 | INFO    | api                    | GET /config -> 200 (0.8ms) cid=15351c16-c5b3-4738-93d6-9d4e5baabe23
+14:01:37 | INFO    | api                    | GET /health -> 200 (0.2ms) cid=f806857b-daf1-495e-bd84-d301a768713b
+14:01:37 | INFO    | api                    | GET /config -> 200 (1.9ms) cid=fd14be78-91d8-40af-badc-701f5f25ace7
+14:01:37 | INFO    | api                    | GET /health -> 200 (0.3ms) cid=10646196-5a34-4432-97c4-73824705c89a
+14:01:37 | INFO    | api                    | GET /config -> 200 (1.1ms) cid=6e1e0b3f-2059-4ba3-aa31-557bdc26eb5e
+14:11:16 | INFO    | api                    | GET /health -> 200 (0.4ms) cid=bb7b68ab-64c4-4381-bd43-1c5774a1391b
+14:11:16 | INFO    | api                    | GET /config -> 200 (1.7ms) cid=4feaaecf-4686-4a77-8251-a1b2360d791e
+14:11:16 | INFO    | api                    | GET /health -> 200 (0.4ms) cid=8282b231-5e11-40be-beac-73348e08d5ed
+14:11:16 | INFO    | api                    | GET /config -> 200 (0.9ms) cid=c6e319dc-d3b2-445e-8f80-d47585e21fb3
+14:11:27 | INFO    | api                    | GET /health -> 200 (0.4ms) cid=69a83fbe-67ac-456c-8673-bad0dd3735f6
+14:11:27 | INFO    | api                    | GET /config -> 200 (1.7ms) cid=3a79b6db-d962-4d81-bda4-520e1edaf255
+14:11:27 | INFO    | api                    | GET /health -> 200 (0.2ms) cid=18eb2d80-afa7-41f2-afe1-d0e338a92cbe
+14:11:27 | INFO    | api                    | GET /config -> 200 (1.1ms) cid=122fe7c7-7fa5-4fd8-a9d7-7e75b6d728ae
+14:11:29 | INFO    | api                    | GET /health -> 200 (0.4ms) cid=ebdf38db-02a7-4b97-bacb-c1e261502236
+14:11:29 | INFO    | api                    | GET /config -> 200 (1.1ms) cid=6e23ae84-ce6f-4285-8020-1f65754024a3
+14:11:29 | INFO    | api                    | GET /health -> 200 (0.2ms) cid=d6c5b62c-78ad-41b1-a841-1ed8aada9b51
+14:11:29 | INFO    | api                    | GET /config -> 200 (0.8ms) cid=a8c5f571-2bec-42ff-bf1e-58a74d320552
+15:38:22 | INFO    | api                    | GET /health -> 200 (0.6ms) cid=aaf2d4fa-a8a1-470a-8a76-0c0f05dade38
+15:38:22 | INFO    | api                    | GET /config -> 200 (3.2ms) cid=257c2ac4-55b4-4f23-8acc-3069961eaf8a
+15:38:22 | INFO    | api                    | GET /health -> 200 (0.2ms) cid=c332d508-a0df-45a7-9b5a-8c78babf28cb
+15:38:22 | INFO    | api                    | GET /config -> 200 (0.8ms) cid=51e1b519-aeae-4a0a-99ef-4617d98dceff
+15:38:59 | INFO    | api                    | GET /health -> 200 (0.3ms) cid=07d72ea0-862e-4cfd-a207-9e317409088d
+15:38:59 | INFO    | api                    | GET /health -> 200 (0.2ms) cid=d98726b5-506c-4c6d-831b-4bb309e25806
+15:39:01 | INFO    | connectors.local_connector | Fetched 27 emails from data\raw_emails\inbox
+15:39:01 | INFO    | api.connector          | connector.fetch source=local -> 27 emails cid=834d330a-7c5f-4442-8bb7-962c531255c5
+15:39:01 | INFO    | api                    | POST /connector/fetch -> 200 (9.8ms) cid=834d330a-7c5f-4442-8bb7-962c531255c5
+15:39:07 | INFO    | api                    | GET /health -> 200 (0.4ms) cid=5d976da9-ec9c-4774-8f3a-f067b9ef5b80
+15:39:07 | INFO    | api                    | GET /config -> 200 (1.5ms) cid=77925c42-c0f1-4d0c-99d8-5818893c6f68
+15:39:07 | INFO    | api                    | GET /health -> 200 (0.2ms) cid=94828c26-4703-4973-a259-c97927311824
+15:39:07 | INFO    | api                    | GET /config -> 200 (1.0ms) cid=a64c2880-a1e1-40d1-8b20-84ba24a42603
+15:39:08 | INFO    | api                    | GET /health -> 200 (0.3ms) cid=9fba80a4-6af6-4361-8f9f-b9c7775c98e8
+15:39:08 | INFO    | api                    | GET /health -> 200 (0.2ms) cid=7c396d49-cdc0-4a39-a599-f6874aaf6138
+15:49:04 | INFO    | api                    | GET /health -> 200 (0.7ms) cid=8ca619e1-3418-4482-b8da-35be070b2b75
+15:49:04 | INFO    | api                    | GET /health -> 200 (0.7ms) cid=39e7ee84-d891-4c45-9b1c-594ca60d2676
+15:49:04 | INFO    | api                    | GET /config -> 200 (3.0ms) cid=134e6925-d163-498f-8eb2-a4fa8ad24628
+15:49:04 | INFO    | api                    | GET /config -> 200 (3.0ms) cid=b650576c-1722-486a-8ad4-f889e97ee7b6
+15:49:05 | INFO    | api                    | GET /health -> 200 (0.3ms) cid=79e6d469-4c95-4d8c-8c4f-360967c3f82b
+15:49:05 | INFO    | api                    | GET /health -> 200 (0.3ms) cid=63e50410-2206-4246-9f69-e0def2691c1a
+15:49:07 | INFO    | connectors.local_connector | Fetched 27 emails from data\raw_emails\inbox
+15:49:07 | INFO    | api.connector          | connector.fetch source=local -> 27 emails cid=4ad08e0c-3970-4e5f-a345-4fa274cb2cf1
+15:49:07 | INFO    | api                    | POST /connector/fetch -> 200 (9.3ms) cid=4ad08e0c-3970-4e5f-a345-4fa274cb2cf1
+15:49:13 | INFO    | api                    | GET /health -> 200 (0.2ms) cid=2203b2b4-bace-4a87-b859-9fe35d077c2e
+15:49:13 | INFO    | api                    | GET /config -> 200 (0.9ms) cid=74d67e3a-9654-4919-889c-800694f914ed
+15:49:14 | INFO    | api                    | GET /config -> 200 (0.8ms) cid=33265073-7b61-4b5b-b964-cd178abf74bc
+15:49:37 | INFO    | api                    | GET /health -> 200 (0.2ms) cid=5998ff96-d551-4580-a774-99d71fb8e74b
+15:49:37 | INFO    | api                    | GET /config -> 200 (2.1ms) cid=0cf75a44-3cba-43f5-a7a2-f001b4db7972
+15:49:37 | INFO    | api                    | GET /health -> 200 (0.4ms) cid=85db207b-a631-4bbc-8f1e-ce577516c4ee
+15:49:37 | INFO    | api                    | GET /config -> 200 (1.1ms) cid=e3be369e-c141-44ed-a172-4decc8b23f08
+15:49:38 | INFO    | api                    | GET /health -> 200 (0.3ms) cid=1935687f-0dfd-4713-ba95-5156582065d2
+15:49:38 | INFO    | api                    | GET /health -> 200 (0.3ms) cid=ad3635d4-778e-433d-8be8-0c1f08c5b250
+15:50:52 | INFO    | connectors.local_connector | Fetched 27 emails from data\raw_emails\inbox
+15:50:52 | WARNING | email_agent            | AMBIGUOUS (0.30) | Settlement query – account reconciliation | subject['settlement']
+15:50:52 | WARNING | email_agent            | AMBIGUOUS (0.30) | Re: Confirmation needed | subject['confirm']
+15:50:52 | WARNING | email_agent            | AMBIGUOUS (0.30) | Pending transaction follow-up | subject['transaction']
+15:50:52 | WARNING | email_agent            | DUPLICATE trade_id FXOPT-2026-00053 — skipping (FX Trade Settlement[FXOPT-2026-00053] – USD/CAD – 26_05_26 - UTIY6WKTAKPUXQPHR62GDSW0053)
+15:50:52 | WARNING | email_agent            | DUPLICATE trade_id FXOPT-2026-00056 — skipping (FX Trade Settlement FXOPT-2026-00056 – 26/05/26 – UTIPTK93TYT7D5J60FKHMY40056)
+15:50:52 | INFO    | email_agent            | ========================================================
+15:50:52 | INFO    | email_agent            | [Phase 1 Run Complete]
+15:50:52 | INFO    | email_agent            |   Emails read:          27
+15:50:52 | INFO    | email_agent            |   RELEVANT (stored):    0
+15:50:52 | INFO    | email_agent            |   AMBIGUOUS (skipped):  3
+15:50:52 | INFO    | email_agent            |   IRRELEVANT (skipped): 10
+15:50:52 | INFO    | email_agent            |   DUPLICATE (skipped):  2
+15:50:52 | INFO    | email_agent            |   Already processed:    12
+15:50:52 | INFO    | email_agent            |   --- Ambiguous emails for manual review ---
+15:50:52 | INFO    | email_agent            |     • Settlement query – account reconciliation
+15:50:52 | INFO    | email_agent            |     • Re: Confirmation needed
+15:50:52 | INFO    | email_agent            |     • Pending transaction follow-up
+15:50:52 | INFO    | email_agent            | ========================================================
+15:50:52 | INFO    | api.agent              | agent.run source=local -> relevant=0 ambiguous=3 irrelevant=10 duplicate=2 cid=bffa75c9-a193-40cf-9b9a-719d32235833
+15:50:52 | INFO    | api                    | POST /agent/run -> 200 (15.7ms) cid=bffa75c9-a193-40cf-9b9a-719d32235833
+15:52:53 | INFO    | api                    | GET /health -> 200 (0.5ms) cid=a692c134-7ee5-40a9-bb8f-08aefc948322
+15:52:53 | INFO    | api                    | GET /health -> 200 (0.3ms) cid=e3326de9-cf0a-4df2-a011-b6d7a7be603f
+15:52:57 | INFO    | api                    | GET /health -> 200 (0.4ms) cid=52e2650c-9479-4d4b-b132-1cb9cc05fd94
+15:52:57 | INFO    | api                    | GET /config -> 200 (1.4ms) cid=729cec9a-b456-48df-bb4b-be752c3a4c4a
+15:52:57 | INFO    | api                    | GET /health -> 200 (0.3ms) cid=99106e03-1ffc-4af9-b336-b1c032465474
+15:52:57 | INFO    | api                    | GET /config -> 200 (0.8ms) cid=b90c09fa-b554-4b83-a7e4-da18be6ae932
+15:52:58 | INFO    | api                    | GET /health -> 200 (0.3ms) cid=5ff45454-e475-471a-8fc8-0dc8c9fec275
+15:52:58 | INFO    | api                    | GET /health -> 200 (0.3ms) cid=b7572e07-4f20-48f3-a97a-eb013b20c408
+15:53:09 | INFO    | connectors.local_connector | Fetched 27 emails from data\raw_emails\inbox
+15:53:09 | INFO    | api                    | POST /connector/preview -> 200 (8.1ms) cid=07c3d7f2-f833-4e46-96b7-1f5792b13e2f
+15:53:19 | INFO    | connectors.local_connector | Fetched 27 emails from data\raw_emails\inbox
+15:53:19 | INFO    | api                    | POST /connector/preview -> 200 (10.6ms) cid=2fd49037-f0dc-4368-b784-63c10d1aff34
+15:53:21 | INFO    | connectors.local_connector | Fetched 27 emails from data\raw_emails\inbox
+15:53:21 | INFO    | api                    | POST /connector/preview -> 200 (7.4ms) cid=35365c3a-1bc3-4420-aa46-42850f1df5dd
+15:53:27 | INFO    | connectors.local_connector | Fetched 27 emails from data\raw_emails\inbox
+15:53:27 | INFO    | api                    | POST /connector/preview -> 200 (7.5ms) cid=8b28600a-1f1c-4e4b-ac41-ace563db3b00
+15:53:29 | INFO    | connectors.local_connector | Fetched 27 emails from data\raw_emails\inbox
+15:53:29 | INFO    | api                    | POST /connector/preview -> 200 (7.4ms) cid=35c12554-7c3b-409c-8811-0356b02e455d
+15:53:43 | INFO    | connectors.local_connector | Fetched 27 emails from data\raw_emails\inbox
+15:53:43 | INFO    | api                    | POST /connector/preview -> 200 (7.8ms) cid=ba57544b-4321-495c-97f6-6f1737cce332
+16:01:01 | INFO    | api                    | GET /health -> 200 (0.3ms) cid=d20ef662-5874-400c-9b0a-802740c6906b
+16:01:01 | INFO    | api                    | GET /health -> 200 (0.2ms) cid=299fc29d-bad8-4318-bcab-6ce4ae4d1e20
+16:01:07 | INFO    | api                    | GET /health -> 200 (0.2ms) cid=f8bcc1b0-2791-404c-b8da-dc316701e1a4
+16:01:07 | INFO    | api                    | GET /health -> 200 (0.2ms) cid=2425f4c2-9d14-4d64-a920-48ae5c08b33d
+16:01:13 | INFO    | api                    | GET /health -> 200 (0.3ms) cid=391bb76b-edd3-430c-a462-71f7d8fa4593
+16:01:13 | INFO    | api                    | GET /health -> 200 (0.2ms) cid=04c057a2-4fbe-4192-b907-30d2dc430033
+16:01:33 | INFO    | connectors.local_connector | Fetched 27 emails from data\raw_emails\inbox
+16:01:33 | INFO    | api.connector          | connector.fetch source=local -> 27 emails cid=2f2675c7-4262-4711-a9cd-edb06f754e62
+16:01:33 | INFO    | api                    | POST /connector/fetch -> 200 (7.9ms) cid=2f2675c7-4262-4711-a9cd-edb06f754e62
+16:01:37 | INFO    | connectors.local_connector | Fetched 27 emails from data\raw_emails\inbox
+16:01:37 | INFO    | api                    | POST /connector/preview -> 200 (7.5ms) cid=cde9e304-0328-4c89-a354-7133b1e4aa26
+16:02:18 | INFO    | connectors.local_connector | Fetched 27 emails from data\raw_emails\inbox
+16:02:18 | INFO    | connectors.local_connector | Fetched 27 emails from data\raw_emails\inbox
+16:02:18 | INFO    | api                    | POST /connector/preview -> 200 (18.1ms) cid=3ebf58ef-5ded-4304-9bb0-773696c0ed98
+16:02:18 | INFO    | api                    | POST /connector/preview -> 200 (18.7ms) cid=c9371287-b6c5-4263-9410-60d2da7ca77c
+16:02:26 | INFO    | api                    | GET /health -> 200 (0.2ms) cid=833e509d-1463-4d59-a032-0ddc8a4b7a4f
+16:02:26 | INFO    | api                    | GET /health -> 200 (0.2ms) cid=26c0a984-986a-4cc7-b355-6adda69d9079
+16:02:34 | INFO    | api                    | GET /health -> 200 (0.2ms) cid=9544ebc5-e386-4826-b70a-5f74de26872b
+16:02:34 | INFO    | api                    | GET /health -> 200 (0.2ms) cid=62650286-c211-45db-bf8d-746d11951ee3
+16:02:36 | INFO    | connectors.local_connector | Fetched 27 emails from data\raw_emails\inbox
+16:02:36 | INFO    | api.connector          | connector.fetch source=local -> 27 emails cid=85ed7f6c-848d-4865-80ca-9d3ac83ab0b1
+16:02:36 | INFO    | api                    | POST /connector/fetch -> 200 (7.8ms) cid=85ed7f6c-848d-4865-80ca-9d3ac83ab0b1
+16:02:40 | INFO    | connectors.local_connector | Fetched 27 emails from data\raw_emails\inbox
+16:02:40 | INFO    | api                    | POST /connector/preview -> 200 (7.2ms) cid=73b57634-3816-4441-9d88-1d5196df5e36
+16:02:52 | INFO    | connectors.local_connector | Fetched 27 emails from data\raw_emails\inbox
+16:02:52 | INFO    | api                    | POST /connector/preview -> 200 (7.3ms) cid=33fecc34-71fe-4590-a69e-fc3f841a1c7d
+16:02:56 | INFO    | connectors.local_connector | Fetched 27 emails from data\raw_emails\inbox
+16:02:56 | INFO    | api                    | POST /connector/preview -> 200 (7.3ms) cid=f9dc94de-87ea-4394-b353-a8b048238bdc
+16:03:08 | INFO    | api                    | GET /health -> 200 (0.2ms) cid=f6b15529-e13e-4c91-b21d-54ea194479ea
+16:03:08 | INFO    | api                    | GET /health -> 200 (0.2ms) cid=c42833a3-b0dd-44b3-9015-19d00392fffe
+16:03:13 | INFO    | api                    | GET /health -> 200 (0.2ms) cid=736bfbaf-3641-4bd5-90ed-d1b43d5f4e9b
+16:03:13 | INFO    | api                    | GET /health -> 200 (0.2ms) cid=cc9a4409-2668-41c5-a4ca-00df6aa78e24
+16:03:28 | INFO    | connectors.local_connector | Fetched 27 emails from data\raw_emails\inbox
+16:03:28 | INFO    | api.connector          | connector.fetch source=local -> 27 emails cid=8c112dab-8562-4bab-99ec-51b903cdc024
+16:03:28 | INFO    | api                    | POST /connector/fetch -> 200 (7.9ms) cid=8c112dab-8562-4bab-99ec-51b903cdc024
+16:04:20 | INFO    | connectors.local_connector | Fetched 27 emails from data\raw_emails\inbox
+16:04:20 | INFO    | api                    | POST /connector/preview -> 200 (7.7ms) cid=b82db273-d314-43f7-97c6-653cf5234ded
+16:05:20 | INFO    | connectors.local_connector | Fetched 27 emails from data\raw_emails\inbox
+16:05:20 | INFO    | api                    | POST /connector/preview -> 200 (7.7ms) cid=b373c0ed-a1ea-4f13-9e4f-fcccaedb3bec
+16:05:30 | INFO    | api                    | GET /health -> 200 (0.2ms) cid=599ac8bc-371d-4204-b1bd-4d97f62fee35
+16:05:30 | INFO    | api                    | GET /health -> 200 (0.2ms) cid=2378a737-7a10-40f4-b9a3-7e3ffaa5e07a
+16:06:38 | INFO    | api                    | GET /health -> 200 (0.4ms) cid=1f2b261c-2fee-48ca-b881-83564a2338a4
+16:06:38 | INFO    | api                    | GET /health -> 200 (1.2ms) cid=d990a09b-1410-4367-ae29-44c2face6178
+16:06:40 | INFO    | connectors.local_connector | Fetched 27 emails from data\raw_emails\inbox
+16:06:40 | INFO    | api.connector          | connector.fetch source=local -> 27 emails cid=ce9d26e5-ed9a-4b6e-80d7-de990450b3e0
+16:06:40 | INFO    | api                    | POST /connector/fetch -> 200 (7.7ms) cid=ce9d26e5-ed9a-4b6e-80d7-de990450b3e0
+16:07:01 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00055 -> 200 (15.8ms) cid=23fe14e5-ebd3-40f1-a07c-26422c7bcef6
+16:07:12 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00055 -> 200 (2.2ms) cid=76440eb0-dec3-4ea0-a7d5-11d864d0ae6c
+16:09:34 | INFO    | api                    | GET /health -> 200 (0.5ms) cid=23a5b61a-6dcf-40df-bb17-8a5d20edab60
+16:09:34 | INFO    | api                    | GET /config -> 200 (1.8ms) cid=8ece62fc-9928-4adb-917f-725def521df1
+16:09:34 | INFO    | api                    | GET /health -> 200 (0.3ms) cid=ae76da17-bcb6-4009-aa48-59077b08d2ec
+16:09:34 | INFO    | api                    | GET /config -> 200 (1.1ms) cid=a0512b9b-df6d-44b6-9001-243fd0732852
+16:15:34 | INFO    | api                    | GET /health -> 200 (0.3ms) cid=2ddd02dd-d0e9-459b-9cb7-b47415fa515f
+16:15:34 | INFO    | api                    | GET /health -> 200 (0.2ms) cid=81da9941-ab34-4abc-9ddb-74e60467902a
+16:15:37 | INFO    | api                    | GET /health -> 200 (0.4ms) cid=a61fc346-a6f3-4c73-922e-76533414981e
+16:15:37 | INFO    | api                    | GET /config -> 200 (1.6ms) cid=bc490493-ef25-4e9b-8393-9a8eac4f6ba6
+16:15:37 | INFO    | api                    | GET /health -> 200 (0.3ms) cid=10e2c285-9edb-46f4-acfd-5dd680f8b342
+16:15:37 | INFO    | api                    | GET /config -> 200 (1.0ms) cid=dbd4e302-14b5-4275-ba39-be0385c6f608
+16:18:53 | INFO    | api                    | GET /health -> 200 (0.3ms) cid=bae00d29-32b0-4e08-ab16-c30de26c2a1a
+16:18:53 | INFO    | api                    | GET /storage/cases -> 200 (2.5ms) cid=1c664141-f0c7-4b00-904f-42807f578bac
+16:18:53 | INFO    | connectors.local_connector | Fetched 27 emails from data\raw_emails\inbox
+16:18:53 | WARNING | email_agent            | AMBIGUOUS (0.30) | Settlement query – account reconciliation | subject['settlement']
+16:18:53 | WARNING | email_agent            | AMBIGUOUS (0.30) | Re: Confirmation needed | subject['confirm']
+16:18:53 | WARNING | email_agent            | AMBIGUOUS (0.30) | Pending transaction follow-up | subject['transaction']
+16:18:53 | INFO    | email_agent            | RESTORED missing case folder | FX Trade Settlement[FXOPT-2026-00047] – USD/JPY – 26_05_26 - UTIIFD0TVBDIVUZZPQK51FP0047 | trade_id=FXOPT-2026-00047
+16:18:53 | WARNING | email_agent            | DUPLICATE trade_id FXOPT-2026-00053 — skipping (FX Trade Settlement[FXOPT-2026-00053] – USD/CAD – 26_05_26 - UTIY6WKTAKPUXQPHR62GDSW0053)
+16:18:53 | WARNING | email_agent            | DUPLICATE trade_id FXOPT-2026-00056 — skipping (FX Trade Settlement FXOPT-2026-00056 – 26/05/26 – UTIPTK93TYT7D5J60FKHMY40056)
+16:18:53 | INFO    | email_agent            | ========================================================
+16:18:53 | INFO    | email_agent            | [Phase 1 Run Complete]
+16:18:53 | INFO    | email_agent            |   Emails read:          27
+16:18:53 | INFO    | email_agent            |   RELEVANT (stored):    1
+16:18:53 | INFO    | email_agent            |   AMBIGUOUS (skipped):  3
+16:18:53 | INFO    | email_agent            |   IRRELEVANT (skipped): 10
+16:18:53 | INFO    | email_agent            |   DUPLICATE (skipped):  2
+16:18:53 | INFO    | email_agent            |   Already processed:    11
+16:18:53 | INFO    | email_agent            |   --- Ambiguous emails for manual review ---
+16:18:53 | INFO    | email_agent            |     • Settlement query – account reconciliation
+16:18:53 | INFO    | email_agent            |     • Re: Confirmation needed
+16:18:53 | INFO    | email_agent            |     • Pending transaction follow-up
+16:18:53 | INFO    | email_agent            | ========================================================
+16:18:53 | INFO    | api.agent              | agent.run source=local -> relevant=1 ambiguous=3 irrelevant=10 duplicate=2 cid=bb44c7c1-9b66-4f9f-a755-35ba704a27f9
+16:18:53 | INFO    | api                    | POST /agent/run -> 200 (15.7ms) cid=bb44c7c1-9b66-4f9f-a755-35ba704a27f9
+16:20:37 | INFO    | api                    | GET /health -> 200 (0.4ms) cid=afc66f1b-1cd9-4736-b450-69a5f755a25d
+16:20:37 | INFO    | api                    | GET /config -> 200 (1.4ms) cid=cc11bdc0-f0d0-4cc5-8c6a-709a811652cd
+16:20:37 | INFO    | api                    | GET /health -> 200 (0.2ms) cid=b05ea571-db78-40cc-925c-4b340f42f1b8
+16:20:37 | INFO    | api                    | GET /config -> 200 (0.8ms) cid=2ee0f157-c5d4-4e42-9f6d-482b708acb5e
+16:21:27 | INFO    | api                    | GET /health -> 200 (0.6ms) cid=22005e19-8ef3-4574-8935-fe89fe756647
+16:21:27 | INFO    | api                    | GET /health -> 200 (0.9ms) cid=d2fcb8aa-2566-41de-8df9-75faf09de140
+16:21:27 | INFO    | api                    | GET /config -> 200 (2.4ms) cid=f6e2e249-192b-439d-a2b5-80755d079875
+16:21:27 | INFO    | api                    | GET /config -> 200 (2.7ms) cid=dc8f1bfe-ed42-48b0-b1a9-fe0377796da7
+16:22:37 | INFO    | api                    | GET /health -> 200 (0.4ms) cid=2f17e0eb-c0cb-4cb3-9073-dce4bf9cd4c9
+16:22:37 | INFO    | api                    | GET /health -> 200 (0.6ms) cid=8b6b85ce-7f0b-4474-9fc4-dd1717e1eaa5
+16:22:37 | INFO    | api                    | GET /config -> 200 (1.6ms) cid=566433d1-b140-411e-93de-958636db33e9
+16:22:37 | INFO    | api                    | GET /config -> 200 (1.8ms) cid=f7e90b15-b8b0-48dd-85ad-b5bb3a5bde38
+16:22:54 | INFO    | api                    | GET /health -> 200 (0.3ms) cid=044f7c23-4f8a-4cf6-8ac1-8e57d5e8f06b
+16:22:54 | INFO    | api                    | GET /config -> 200 (1.0ms) cid=f267f1cc-224c-48cb-b947-e9c477bfcfea
+16:22:54 | INFO    | api                    | GET /health -> 200 (0.2ms) cid=c2d1349a-f739-4d30-98d9-aa813b4d4ef9
+16:22:54 | INFO    | api                    | GET /config -> 200 (0.8ms) cid=568f7061-df54-407b-a0d5-69d7941e5ef9
+16:22:55 | INFO    | api                    | GET /health -> 200 (0.2ms) cid=045a72ee-cc1c-4659-88e9-453973f4a4bd
+16:22:55 | INFO    | api                    | GET /health -> 200 (0.2ms) cid=754846e3-9838-476a-a28c-a664510ee2cc
+16:23:00 | INFO    | api                    | GET /health -> 200 (0.5ms) cid=37c557fb-4b96-4a83-9b80-7d8e46bba8f0
+16:23:00 | INFO    | api                    | GET /config -> 200 (1.3ms) cid=911a2192-31fb-4c51-889e-788c39ea3249
+16:23:00 | INFO    | api                    | GET /health -> 200 (0.3ms) cid=64893bd8-db75-40b9-a979-91f919963f53
+16:23:00 | INFO    | api                    | GET /config -> 200 (1.0ms) cid=566d8b03-762e-46e9-b0a4-5798c7621f38
+16:23:02 | INFO    | api                    | GET /health -> 200 (0.3ms) cid=74b84e35-98ba-44e5-a775-27cc056b295b
+16:23:02 | INFO    | api                    | GET /health -> 200 (0.3ms) cid=b2947f3e-3800-4470-aad6-0abf1e07ef09
+16:24:48 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00055 -> 200 (3.9ms) cid=e515550c-9ba0-49ff-8791-e3012c89a59c
+16:25:07 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00055 -> 200 (2.4ms) cid=a9da0bb4-e220-4947-b687-d2c01a2f8776
+16:25:32 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00055 -> 200 (2.2ms) cid=8811fbf6-3530-480e-a867-59d32216ca99
+16:36:18 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00055 -> 200 (5.4ms) cid=883b1ec7-7d4c-4b05-bd70-271580370dd3
+16:36:26 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00055 -> 200 (2.3ms) cid=6d40b68d-56f1-4d64-8d71-97cb106610f5
+16:41:24 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00055 -> 200 (2.5ms) cid=b23be16f-1ecf-460e-ad37-aaca94f777aa
+16:51:10 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00055 -> 200 (5.0ms) cid=f8541219-3c64-4104-89ae-087a252f08bc
+16:51:10 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00050 -> 200 (11.2ms) cid=ec69af7c-0956-48fe-b71a-3083c8c0175b
+16:51:10 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00057 -> 200 (12.6ms) cid=2daa9cc1-01ac-4c86-9507-64de7cf4c8bc
+16:51:10 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00049 -> 200 (16.1ms) cid=2c12946e-cc13-4f6a-90d3-10d18e709c11
+16:51:10 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00053 -> 200 (17.7ms) cid=df70a980-d697-4b29-824d-0192747e1d62
+16:51:10 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00056 -> 200 (18.2ms) cid=83c9e49c-436a-4186-a9d9-aa53d1717a45
+16:51:10 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00054 -> 200 (13.4ms) cid=dc830404-bb1b-4d08-8d52-a93a1c1064f9
+16:51:10 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00048 -> 200 (12.8ms) cid=607c48e4-dabe-43be-af74-463e1ecea6bf
+16:51:10 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00055 -> 200 (2.2ms) cid=b3e28c6c-d8a0-4c00-ba9c-aa7ef89d433b
+16:51:10 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00047 -> 200 (14.1ms) cid=ca03a0fa-53d0-4e6f-bf64-d7a830c7831a
+16:51:10 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00052 -> 200 (14.2ms) cid=ffbd9edc-6d03-40d7-8345-2d1e32eb874b
+16:51:10 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00058 -> 200 (14.7ms) cid=d30b5d51-14de-4fce-a79e-fd827cd22118
+16:51:10 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00051 -> 200 (16.2ms) cid=e4699f34-9bcf-463c-a3f1-b64ab2dc20b8
+16:51:10 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00050 -> 200 (4.9ms) cid=13578159-e08f-452f-a1c3-812a57d784fb
+16:51:10 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00057 -> 200 (4.9ms) cid=4bb95cb0-019b-4254-b5b3-94623d2e5db0
+16:51:10 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00049 -> 200 (2.8ms) cid=d9d68f89-0882-4f20-a6e3-1018fcf52761
+16:51:10 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00053 -> 200 (4.2ms) cid=2a2d2930-aeda-4e10-895e-9e2d9011e67b
+16:51:10 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00056 -> 200 (5.4ms) cid=c538f8c5-88b8-4a40-ba68-db0ba305fc20
+16:51:10 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00054 -> 200 (5.0ms) cid=65d827bb-d52e-421d-bb91-c28c46ec6804
+16:51:10 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00048 -> 200 (5.2ms) cid=e7634ed5-1349-4472-88d8-a225d533729d
+16:51:10 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00055 -> 200 (5.9ms) cid=61681c5e-afbc-496d-b8cb-d5d505f91243
+16:51:10 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00047 -> 200 (5.3ms) cid=82ca2355-16a0-48db-b8f4-ecba953ba39b
+16:51:10 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00052 -> 200 (1.8ms) cid=5bc5c432-a4eb-4f87-990a-978a50d8fbd4
+16:51:10 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00058 -> 200 (2.2ms) cid=fcbbe5f4-8a2f-44c9-97d5-169bda30f91c
+16:51:10 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00051 -> 200 (5.7ms) cid=e3ed1756-a2c8-4757-a0dc-06b102b066e8
+16:51:10 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00050 -> 200 (5.8ms) cid=f315ba6d-1f33-4ca1-9d83-eb212ad8158b
+16:51:10 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00049 -> 200 (5.8ms) cid=0b1e6314-aaf6-4bfa-bfaa-c3402c8c30c1
+16:51:10 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00057 -> 200 (7.2ms) cid=d62e764b-dda8-47bd-a665-4c7dc2ecb818
+16:51:10 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00053 -> 200 (5.2ms) cid=ec29f33d-6117-4535-8c42-220e41f40af6
+16:51:10 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00056 -> 200 (2.9ms) cid=bf4a0d5c-e880-47b3-9992-9dd1fce0bad3
+16:51:10 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00054 -> 200 (2.1ms) cid=1533226e-2e5a-4974-8d52-dd49010b1400
+16:51:10 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00048 -> 200 (3.4ms) cid=8f875b11-f38b-4dec-9ca9-7203c5499838
+16:51:10 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00052 -> 200 (3.9ms) cid=1b4f8247-70dc-49ef-a9f4-273ed8c4bd58
+16:51:10 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00047 -> 200 (4.3ms) cid=a3aae102-41bf-4330-a979-aa9cc77fa3e8
+16:51:10 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00058 -> 200 (4.1ms) cid=96b31c66-09a8-4875-b4dc-f1bd37a59a0b
+16:51:10 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00051 -> 200 (4.4ms) cid=200e97b1-cb9f-4f68-8333-633868809536
+16:51:48 | INFO    | api                    | GET /storage/cases -> 200 (1.8ms) cid=89aa7c79-750f-4f24-8f44-5eb1691e2644
+16:51:48 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00055 -> 200 (1.7ms) cid=2b3d218d-5275-4ae2-b324-ef192a628054
+16:53:28 | INFO    | api                    | GET /storage/cases -> 200 (1.6ms) cid=b686cf46-e9b8-4ba1-b86b-1ec6a0932174
+16:53:28 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00055 -> 200 (2.0ms) cid=cadbc607-7873-4456-b924-dcf603aa8560
+16:53:28 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00056 -> 200 (1.7ms) cid=3a2911bc-8ea9-42c2-a306-ea1b8208b050
+16:53:28 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00057 -> 200 (1.8ms) cid=a159e42a-e54d-4896-a9de-814bae6d7146
+16:53:29 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00050 -> 200 (1.7ms) cid=d32facd2-3f1d-437e-84d3-e38bdb85f732
+16:53:29 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00053 -> 200 (1.8ms) cid=e9d20c0f-e5a8-4c34-a1e6-442f536159af
+16:53:29 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00049 -> 200 (1.7ms) cid=795e9485-b6ff-42e3-9a7c-6982bfa6dffb
+16:55:29 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00055 -> 200 (2.3ms) cid=b148a62c-0b39-41b9-a5eb-5096eb742331
+16:55:40 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00057 -> 200 (2.3ms) cid=d36c0066-5500-4970-8de3-3594d00f8ef0
+16:57:13 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00055 -> 200 (2.4ms) cid=6c632bd1-82c3-48f6-b62d-21638571f842
+16:58:04 | INFO    | api                    | GET /health -> 200 (0.3ms) cid=01b95b0f-ce24-433a-9465-96db90f89f8d
+16:58:04 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00055 -> 200 (5.2ms) cid=b61fe46e-29d4-4e88-aaae-9d83d9a41651
+16:58:04 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00057 -> 200 (6.1ms) cid=75816c36-2900-40ee-81a3-c764fa13b16d
+16:58:04 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00056 -> 200 (7.8ms) cid=980e758a-ab68-499c-8bed-28a2c25b9a2f
+16:58:04 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00053 -> 200 (7.3ms) cid=6c7e8837-05d4-4452-8ad8-3cbd3073c9a8
+16:58:04 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00050 -> 200 (7.8ms) cid=2b6c1e59-a4a0-410d-886f-182a470e39c1
+16:58:04 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00049 -> 200 (7.2ms) cid=78699236-05dd-4acf-a2a9-135344ed6fdb
+16:58:04 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00054 -> 200 (3.1ms) cid=5a4439c0-fe18-4ec4-a5e6-372945e41839
+16:58:04 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00048 -> 200 (2.4ms) cid=b661fc6e-0348-4046-b14c-87b9b7448de8
+16:58:04 | INFO    | api                    | GET /health -> 200 (0.2ms) cid=8fb0d5bc-5b9d-4758-9900-4400f8b45879
+16:58:04 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00047 -> 200 (4.9ms) cid=54f18ab3-1969-49ac-9bbc-a5e47ed721e3
+16:58:04 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00052 -> 200 (5.3ms) cid=66ace452-267a-4f19-9b20-c62154e6cbfb
+16:58:04 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00058 -> 200 (5.8ms) cid=bd66e7ee-c1be-4e04-8821-807c69984203
+16:58:04 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00051 -> 200 (5.5ms) cid=2f88d5e0-84d5-433d-bb04-cc2cbdc8e6f1
+16:58:10 | INFO    | api                    | GET /health -> 200 (0.2ms) cid=6b64b078-1c87-4695-8a67-e8ad30c17715
+16:58:10 | INFO    | api                    | GET /health -> 200 (0.2ms) cid=9b028100-369e-4d7e-881f-65abb78d9e62
+16:58:10 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00055 -> 200 (5.3ms) cid=4fcd39dd-3120-4901-af78-e9f87106266f
+16:58:10 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00056 -> 200 (5.4ms) cid=3b30b1d4-856a-4c8f-9802-0422b95b71d8
+16:58:10 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00050 -> 200 (6.2ms) cid=1958483d-3af2-4ba5-93a3-392b339394b5
+16:58:10 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00053 -> 200 (6.5ms) cid=bf1c80ba-9be8-4a33-95ce-4d4cfd8672e1
+16:58:10 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00049 -> 200 (4.7ms) cid=a47dcafb-23a3-4b13-9eed-a37005e23e54
+16:58:10 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00057 -> 200 (7.0ms) cid=d72640c2-d7a3-4a27-892b-dc4c78fc3aa4
+16:58:10 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00054 -> 200 (2.2ms) cid=b545f684-0491-4bd5-b416-67b463c374de
+16:58:10 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00048 -> 200 (1.9ms) cid=13ee4ccb-eeb4-452e-9dd3-2f3b4ed7b7da
+16:58:10 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00051 -> 200 (3.8ms) cid=321e0318-490f-427d-a3f3-915c7fcae39b
+16:58:10 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00052 -> 200 (3.9ms) cid=322fc3bf-6f44-4995-b9bc-c05963f1a7b7
+16:58:10 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00047 -> 200 (4.6ms) cid=aaed7f7c-9a57-4820-9b0c-6a7bac14dfff
+16:58:10 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00058 -> 200 (4.6ms) cid=4af2c998-60dc-4611-ba90-10da4f5e9766
+16:58:25 | INFO    | api                    | GET /health -> 200 (0.5ms) cid=bf8c4be4-285d-468f-b939-32fa15fa5707
+16:58:25 | INFO    | api                    | GET /config -> 200 (1.8ms) cid=35c2dda8-1f72-4608-981d-fa804c466917
+16:58:25 | INFO    | api                    | GET /health -> 200 (0.2ms) cid=af5c1b4e-6de4-49f4-9417-ffb4f015cce8
+16:58:25 | INFO    | api                    | GET /config -> 200 (0.9ms) cid=f789a4f5-d33f-4d66-8f64-5a4bf83429e8
+17:02:06 | INFO    | api                    | GET /health -> 200 (0.9ms) cid=d5838bf7-e2f6-40c1-a8e0-a8cfa48612a4
+17:02:06 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00055 -> 200 (7.6ms) cid=ba157e31-c2f2-4fe0-aa62-c7df925ddaa9
+17:02:06 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00056 -> 200 (8.3ms) cid=bd9b19a0-9548-49c3-bbc5-8b134c737a8e
+17:02:06 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00057 -> 200 (8.5ms) cid=7644f11f-0395-4bf5-bc4e-011d88b70142
+17:02:06 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00053 -> 200 (8.9ms) cid=a0a49aa2-e700-4c47-a050-83ae68318fae
+17:02:06 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00050 -> 200 (9.5ms) cid=543c27bd-9f84-43f0-b431-3cb74c063f4a
+17:02:06 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00049 -> 200 (5.7ms) cid=a521b2b1-5b29-46cb-8ce1-272ac7ee21b7
+17:02:06 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00054 -> 200 (2.4ms) cid=c8ef0ffa-cbc9-40f1-b8b8-d7a2dbe326a6
+17:02:06 | INFO    | api                    | GET /health -> 200 (0.2ms) cid=3bae5305-a487-4289-ba0e-4fccb2471fff
+17:02:06 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00048 -> 200 (5.6ms) cid=2c5064f8-6848-4b58-ac31-9f6d0af2e7eb
+17:02:06 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00047 -> 200 (6.9ms) cid=011811ee-94f7-4da0-954a-c1f9afd68349
+17:02:06 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00051 -> 200 (6.4ms) cid=dedb4ad3-fb29-4d93-ab5b-65f6b6287903
+17:02:06 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00052 -> 200 (6.4ms) cid=b13d3f09-a0f9-4137-892f-b56ec547ca4d
+17:02:06 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00058 -> 200 (6.6ms) cid=45dc5cc4-e6e5-49dc-b158-8cc544cd7044
+17:02:06 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00055 -> 200 (2.3ms) cid=73604e0b-3965-4699-8d8b-2ee1d2ffd079
+17:02:06 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00056 -> 200 (5.8ms) cid=72ad1990-0819-436e-a1be-56cac7eb5000
+17:02:06 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00057 -> 200 (5.8ms) cid=41c27a37-01e6-448a-9c7a-5031bc19bee7
+17:02:06 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00053 -> 200 (6.4ms) cid=f02f7d41-956b-4fee-9a9e-e6b427cb802c
+17:02:06 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00050 -> 200 (5.8ms) cid=9dcc1bb4-bb88-4e01-9ae6-f1168613a623
+17:02:06 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00049 -> 200 (5.8ms) cid=c0d0e26a-ed1f-4fb4-bd0f-a3c443010fe2
+17:02:06 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00054 -> 200 (5.0ms) cid=66816849-8a6e-4a33-a0c4-8ab4f5749683
+17:02:06 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00048 -> 200 (3.6ms) cid=2ff4e423-3c42-469b-922b-15c061be89bc
+17:02:06 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00047 -> 200 (3.6ms) cid=a237b432-9ae1-49e4-a220-5571fc196211
+17:02:06 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00055 -> 200 (4.0ms) cid=cbeea687-c3e7-4118-998a-3c22fad37bd6
+17:02:06 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00051 -> 200 (5.3ms) cid=fa92b165-9625-4e70-bbea-2ba124d54bc6
+17:02:06 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00058 -> 200 (5.1ms) cid=6373672e-5b43-4966-904b-59e7959e6a56
+17:02:06 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00052 -> 200 (5.1ms) cid=12df32c3-a644-414c-9399-3420d4dea5dd
+17:02:06 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00056 -> 200 (2.8ms) cid=84c7a7d5-f19d-4bce-8152-44c2377a184f
+17:02:06 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00057 -> 200 (2.9ms) cid=5f4cec0a-8b0a-4a87-93d8-197146bad70a
+17:02:06 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00053 -> 200 (6.8ms) cid=87c58e27-7616-45aa-902c-9b89fabd040a
+17:02:06 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00050 -> 200 (6.8ms) cid=a70a0892-de58-4b6d-bde7-bd6adbb116cd
+17:02:06 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00054 -> 200 (5.6ms) cid=f790a803-aed0-43e3-a6a4-a09b4d1a7151
+17:02:06 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00049 -> 200 (8.1ms) cid=2edb8b1d-4393-4e54-b7e4-bf2ed76ffeb3
+17:02:06 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00048 -> 200 (5.2ms) cid=44088abe-c7fa-4cf5-9561-4c9bc8150bdc
+17:02:06 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00047 -> 200 (4.7ms) cid=55a1c643-83f7-4b5a-af07-8923f8b76b5a
+17:02:06 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00052 -> 200 (3.3ms) cid=d940beb3-db8b-4f6a-af90-074b076bc0cc
+17:02:06 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00058 -> 200 (3.8ms) cid=aa0bf21d-cf0a-4e1a-8c8c-d1d1cbc4bf8c
+17:02:06 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00051 -> 200 (4.9ms) cid=d3d7f384-3214-47c3-872b-508a49c14978
+17:04:48 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00055 -> 200 (6.6ms) cid=c58891da-c146-4af7-9932-c5075a232c5c
+17:04:48 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00056 -> 200 (7.4ms) cid=dfd474ff-7f06-4023-a08e-a89fed83a73d
+17:04:48 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00050 -> 200 (8.0ms) cid=75513406-5a10-4e9d-9861-1e08de87e898
+17:04:48 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00049 -> 200 (5.1ms) cid=421334e8-ae7d-46bb-b1f5-21bc157dd429
+17:04:48 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00053 -> 200 (8.3ms) cid=ae1e9ede-1665-41fc-9965-18401d7cb51b
+17:04:48 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00057 -> 200 (9.5ms) cid=9915af0f-626c-4af3-b1bc-bcc5ed5b27c1
+17:04:48 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00054 -> 200 (5.4ms) cid=de71b0f5-0e35-4c8f-9177-07c8e62caeb4
+17:04:48 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00051 -> 200 (5.8ms) cid=2756d900-2cd7-4ae7-b4c2-ed23ad87b80e
+17:04:48 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00047 -> 200 (6.3ms) cid=d3dffc2e-fa32-4a1f-b634-27464a7d05ef
+17:04:48 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00048 -> 200 (6.8ms) cid=c9c3d073-6ff3-4c33-a5c0-294c0acde2fb
+17:04:48 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00058 -> 200 (7.1ms) cid=4ab0cb55-f2f8-4dcd-8f6a-c19b857c2022
+17:04:48 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00052 -> 200 (5.8ms) cid=628fda6c-cbff-4370-99fc-4c548f585d38
+17:05:46 | INFO    | api                    | GET /health -> 200 (0.5ms) cid=fb7c6134-96db-4ccc-9259-5fa9decbb610
+17:05:46 | INFO    | api                    | GET /health -> 200 (0.6ms) cid=5db5ca43-c79e-4490-8bb9-ce007a7c5168
+17:05:46 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00057 -> 200 (5.6ms) cid=0c5e9096-93d3-48bd-9857-c8db238570ad
+17:05:46 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00050 -> 200 (6.8ms) cid=c7546840-fa9e-472d-8271-1205024240a2
+17:05:46 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00056 -> 200 (7.5ms) cid=36275749-d22a-4b43-871d-972cbcc27b27
+17:05:46 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00055 -> 200 (8.5ms) cid=4648fa05-10b3-4edb-85cd-bce65f8a12af
+17:05:46 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00053 -> 200 (6.1ms) cid=ffb7b0b6-20d0-444f-87ba-d006eeda8ff6
+17:05:46 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00049 -> 200 (5.5ms) cid=a789c7ab-4cd9-4e7e-9ca3-f182ccefd380
+17:05:46 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00054 -> 200 (2.4ms) cid=799f407b-69d4-4ff2-96e9-de684b230e89
+17:05:46 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00047 -> 200 (4.2ms) cid=b764ae89-97ad-43bb-b0a0-c6eaf6957cc0
+17:05:46 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00048 -> 200 (5.7ms) cid=949b3f1b-15fe-4185-8c3b-4a0b6125b4cc
+17:05:46 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00052 -> 200 (4.5ms) cid=6994e156-44d3-434d-bfb9-28a33c12d203
+17:05:46 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00058 -> 200 (5.1ms) cid=ff453545-7e7d-4a9a-92aa-79ea61978820
+17:05:46 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00051 -> 200 (6.0ms) cid=4c090a82-588f-4427-a725-c7544cd10fa6
+17:05:51 | INFO    | connectors.local_connector | Fetched 27 emails from data\raw_emails\inbox
+17:05:51 | INFO    | api.connector          | connector.fetch source=local -> 27 emails cid=daa9e6d2-efab-4dd5-bde5-90782a27cad9
+17:05:51 | INFO    | api                    | POST /connector/fetch -> 200 (8.4ms) cid=daa9e6d2-efab-4dd5-bde5-90782a27cad9
+17:05:58 | INFO    | connectors.local_connector | Fetched 27 emails from data\raw_emails\inbox
+17:05:58 | WARNING | email_agent            | AMBIGUOUS (0.30) | Settlement query – account reconciliation | subject['settlement']
+17:05:58 | WARNING | email_agent            | AMBIGUOUS (0.30) | Re: Confirmation needed | subject['confirm']
+17:05:58 | WARNING | email_agent            | AMBIGUOUS (0.30) | Pending transaction follow-up | subject['transaction']
+17:05:58 | WARNING | email_agent            | DUPLICATE trade_id FXOPT-2026-00053 — skipping (FX Trade Settlement[FXOPT-2026-00053] – USD/CAD – 26_05_26 - UTIY6WKTAKPUXQPHR62GDSW0053)
+17:05:58 | WARNING | email_agent            | DUPLICATE trade_id FXOPT-2026-00056 — skipping (FX Trade Settlement FXOPT-2026-00056 – 26/05/26 – UTIPTK93TYT7D5J60FKHMY40056)
+17:05:58 | INFO    | email_agent            | ========================================================
+17:05:58 | INFO    | email_agent            | [Phase 1 Run Complete]
+17:05:58 | INFO    | email_agent            |   Emails read:          27
+17:05:58 | INFO    | email_agent            |   RELEVANT (stored):    0
+17:05:58 | INFO    | email_agent            |   AMBIGUOUS (skipped):  3
+17:05:58 | INFO    | email_agent            |   IRRELEVANT (skipped): 10
+17:05:58 | INFO    | email_agent            |   DUPLICATE (skipped):  2
+17:05:58 | INFO    | email_agent            |   Already processed:    12
+17:05:58 | INFO    | email_agent            |   --- Ambiguous emails for manual review ---
+17:05:58 | INFO    | email_agent            |     • Settlement query – account reconciliation
+17:05:58 | INFO    | email_agent            |     • Re: Confirmation needed
+17:05:58 | INFO    | email_agent            |     • Pending transaction follow-up
+17:05:58 | INFO    | email_agent            | ========================================================
+17:05:58 | INFO    | api.agent              | agent.run source=local -> relevant=0 ambiguous=3 irrelevant=10 duplicate=2 cid=8106c4c4-44c9-4654-ac2a-fae6c5c1d03a
+17:05:58 | INFO    | api                    | POST /agent/run -> 200 (13.7ms) cid=8106c4c4-44c9-4654-ac2a-fae6c5c1d03a
+17:06:01 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00050 -> 200 (6.5ms) cid=f6025a4a-bfd6-44ce-8125-920981fe830e
+17:06:01 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00057 -> 200 (7.3ms) cid=158561d7-7d59-487c-93d8-73798c842cf1
+17:06:01 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00055 -> 200 (7.8ms) cid=df5f801e-450d-4af7-835b-643e3e9b8c7c
+17:06:01 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00053 -> 200 (7.5ms) cid=c616397c-a2ce-4bc8-870d-cdb2a4b42789
+17:06:01 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00056 -> 200 (8.2ms) cid=63b4ae32-be7a-462c-ab04-1e63688837b5
+17:06:01 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00049 -> 200 (7.6ms) cid=a31dfd1a-b8f0-4336-9101-e0923cf431c6
+17:06:01 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00048 -> 200 (4.4ms) cid=288c967e-f56a-48df-b107-6168c81907d5
+17:06:01 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00054 -> 200 (5.1ms) cid=ef80ea34-67d2-486b-9fce-d56f28ef12b8
+17:06:01 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00047 -> 200 (5.4ms) cid=ef5def99-59c9-48cd-b45c-a80a41e2ec8c
+17:06:01 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00058 -> 200 (5.9ms) cid=3c40cd9b-0da7-44fd-8613-b88b2d4ba59d
+17:06:01 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00052 -> 200 (6.4ms) cid=57d853f9-5c97-493a-902f-182f735b711e
+17:06:01 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00051 -> 200 (6.8ms) cid=1e55b61e-06c7-4119-8e0f-e4c6bb118a5e
+17:09:40 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00055 -> 200 (2.8ms) cid=028468f1-59f3-4ce9-ba88-8d5d456cbc22
+17:21:29 | INFO    | api                    | GET /health -> 200 (0.7ms) cid=f0c6e756-6ea9-4b0a-a75e-69f16d015423
+17:21:29 | INFO    | api                    | GET /config -> 200 (3.5ms) cid=f53a1e8f-c39e-484e-9452-648589cc1fa7
+17:21:29 | INFO    | api                    | GET /health -> 200 (0.2ms) cid=7844c416-abb4-4cc0-8327-0eec0b0a8f65
+17:21:29 | INFO    | api                    | GET /config -> 200 (1.0ms) cid=5c1f0707-3fb4-45d2-b8e2-0ebfa5183f65
+17:21:46 | INFO    | api                    | GET /health -> 200 (0.3ms) cid=f8fe82c3-fb5c-4c8a-b0c5-19ddc17cd18d
+17:21:46 | INFO    | api                    | GET /health -> 200 (0.3ms) cid=a8edf8f2-ff95-4d1e-981e-e8544f8bce8b
+17:21:53 | INFO    | connectors.local_connector | Fetched 27 emails from data\raw_emails\inbox
+17:21:53 | INFO    | api.connector          | connector.fetch source=local -> 27 emails cid=72e836fc-3137-4e26-bf45-76e8d488e300
+17:21:53 | INFO    | api                    | POST /connector/fetch -> 200 (9.9ms) cid=72e836fc-3137-4e26-bf45-76e8d488e300
+17:41:06 | INFO    | api                    | GET /health -> 200 (0.6ms) cid=95f14f26-3bc0-4e73-b530-f71b97b03e00
+17:41:06 | INFO    | api                    | GET /config -> 200 (3.3ms) cid=04123e33-5d9b-4e07-aab3-a044c2a7ef62
+17:41:06 | INFO    | api                    | GET /health -> 200 (0.2ms) cid=78b6bd3e-1ea2-4531-976e-09b2916cc2b8
+17:41:06 | INFO    | api                    | GET /config -> 200 (0.8ms) cid=7afb67c0-dab9-41c6-8381-12cacbb589f6
+17:42:21 | INFO    | api                    | GET /health -> 200 (0.3ms) cid=d138e402-c4a0-4711-bcd4-49ffd1830ad7
+17:42:21 | INFO    | api                    | GET /health -> 200 (0.3ms) cid=7d6875aa-afcf-4f6d-8c04-0e8f2a34fe25
+17:42:28 | INFO    | connectors.local_connector | Fetched 27 emails from data\raw_emails\inbox
+17:42:28 | INFO    | api.connector          | connector.fetch source=local -> 27 emails cid=f042a4e3-5a01-4629-bcb0-ec2122b6340f
+17:42:28 | INFO    | api                    | POST /connector/fetch -> 200 (9.8ms) cid=f042a4e3-5a01-4629-bcb0-ec2122b6340f
+17:42:46 | INFO    | connectors.local_connector | Fetched 27 emails from data\raw_emails\inbox
+17:42:46 | INFO    | api                    | POST /connector/preview -> 200 (8.2ms) cid=490195e3-542b-49c1-9435-fe00dd7840ca
+17:42:55 | INFO    | connectors.local_connector | Fetched 27 emails from data\raw_emails\inbox
+17:42:55 | INFO    | api                    | POST /connector/preview -> 200 (7.6ms) cid=e75a1ceb-8416-4291-ba83-d6001c87c2a6
+17:43:00 | INFO    | connectors.local_connector | Fetched 27 emails from data\raw_emails\inbox
+17:43:00 | INFO    | api                    | POST /connector/preview -> 200 (7.6ms) cid=434c7a3b-6f1a-4a5c-9d1e-2651debdcb2f
+17:43:14 | INFO    | connectors.local_connector | Fetched 27 emails from data\raw_emails\inbox
+17:43:14 | INFO    | email_agent            | RESTORED missing case folder | FX Trade Settlement FXOPT-2026-00055 – 26/05/26 – UTI7UUBCXULJYLJEXQ77AWU0055 | trade_id=FXOPT-2026-00055
+17:43:14 | INFO    | email_agent            | RESTORED missing case folder | FX Trade Settlement[FXOPT-2026-00056] – AUD/USD – 26_05_26 - UTIVSNUJZA7TZ0YNCXLL4ZK0056 | trade_id=FXOPT-2026-00056
+17:43:14 | INFO    | email_agent            | RESTORED missing case folder | FX Trade Settlement FXOPT-2026-00057 – 26/05/26 – UTIFPZUE8YFBNTPBN78BMYY0057 | trade_id=FXOPT-2026-00057
+17:43:14 | INFO    | email_agent            | RESTORED missing case folder | FX Trade Settlement[FXOPT-2026-00050] – AUD/USD – 26_05_26 - UTISDBDW2PCN9T84AZYTJXE0050 | trade_id=FXOPT-2026-00050
+17:43:14 | WARNING | email_agent            | AMBIGUOUS (0.30) | Settlement query – account reconciliation | subject['settlement']
+17:43:14 | INFO    | email_agent            | RESTORED missing case folder | FX Trade Settlement[FXOPT-2026-00053] – AUD/USD – 26/05/26 - UTIQ0Y9DOM5IGQPKI7P5TB90053 | trade_id=FXOPT-2026-00053
+17:43:14 | WARNING | email_agent            | AMBIGUOUS (0.30) | Re: Confirmation needed | subject['confirm']
+17:43:14 | WARNING | email_agent            | AMBIGUOUS (0.30) | Pending transaction follow-up | subject['transaction']
+17:43:14 | INFO    | email_agent            | RESTORED missing case folder | FX Trade Settlement[FXOPT-2026-00049] – GBP/USD – 26/05/26 - UTIQJ7YHL1C32OC6UZHR5XF0049 | trade_id=FXOPT-2026-00049
+17:43:14 | INFO    | email_agent            | RESTORED missing case folder | FX Trade Settlement[FXOPT-2026-00054] – USD/CAD – 26_05_26 - UTIFAO72KZ02XRGHC0CLBR70054 | trade_id=FXOPT-2026-00054
+17:43:14 | INFO    | email_agent            | RESTORED missing case folder | FX Trade Settlement[FXOPT-2026-00048] – AUD/USD – 26_05_26 - UTI30T9NT3W5UZBIKCIDKWN0048 | trade_id=FXOPT-2026-00048
+17:43:14 | INFO    | email_agent            | RESTORED missing case folder | FX Trade Settlement[FXOPT-2026-00047] – USD/JPY – 26_05_26 - UTIIFD0TVBDIVUZZPQK51FP0047 | trade_id=FXOPT-2026-00047
+17:43:14 | INFO    | email_agent            | RESTORED missing case folder | FX Trade Settlement[FXOPT-2026-00051] – USD/JPY – 26/05/26 - UTIF1T2TALA753LC58DRC110051 | trade_id=FXOPT-2026-00051
+17:43:14 | INFO    | email_agent            | RESTORED missing case folder | FX Trade Settlement FXOPT-2026-00058 – 26/05/26 – UTIJ2D54I3QK2IAGL58KXO90058 | trade_id=FXOPT-2026-00058
+17:43:14 | WARNING | email_agent            | DUPLICATE trade_id FXOPT-2026-00053 — skipping (FX Trade Settlement[FXOPT-2026-00053] – USD/CAD – 26_05_26 - UTIY6WKTAKPUXQPHR62GDSW0053)
+17:43:14 | INFO    | email_agent            | RESTORED missing case folder | FX Trade Settlement[FXOPT-2026-00052] – USD/CAD – 26/05/26 - UTIOYN6QICATVAZCCBLSKRT0052 | trade_id=FXOPT-2026-00052
+17:43:14 | WARNING | email_agent            | DUPLICATE trade_id FXOPT-2026-00056 — skipping (FX Trade Settlement FXOPT-2026-00056 – 26/05/26 – UTIPTK93TYT7D5J60FKHMY40056)
+17:43:14 | INFO    | email_agent            | ========================================================
+17:43:14 | INFO    | email_agent            | [Phase 1 Run Complete]
+17:43:14 | INFO    | email_agent            |   Emails read:          27
+17:43:14 | INFO    | email_agent            |   RELEVANT (stored):    12
+17:43:14 | INFO    | email_agent            |   AMBIGUOUS (skipped):  3
+17:43:14 | INFO    | email_agent            |   IRRELEVANT (skipped): 10
+17:43:14 | INFO    | email_agent            |   DUPLICATE (skipped):  2
+17:43:14 | INFO    | email_agent            |   Already processed:    0
+17:43:14 | INFO    | email_agent            |   --- Ambiguous emails for manual review ---
+17:43:14 | INFO    | email_agent            |     • Settlement query – account reconciliation
+17:43:14 | INFO    | email_agent            |     • Re: Confirmation needed
+17:43:14 | INFO    | email_agent            |     • Pending transaction follow-up
+17:43:14 | INFO    | email_agent            | ========================================================
+17:43:14 | INFO    | api.agent              | agent.run source=local -> relevant=12 ambiguous=3 irrelevant=10 duplicate=2 cid=d16f03f8-3781-4927-8981-6ad5bb5b5a5d
+17:43:14 | INFO    | api                    | POST /agent/run -> 200 (72.4ms) cid=d16f03f8-3781-4927-8981-6ad5bb5b5a5d
+17:43:17 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00057 -> 200 (6.9ms) cid=963647ab-59c2-489d-a310-cfa86b6be2b0
+17:43:17 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00055 -> 200 (12.3ms) cid=fd7ac6e0-db7f-4dc6-9e0d-709a18ccdf16
+17:43:17 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00056 -> 200 (12.4ms) cid=85feef65-c2d5-4179-8d48-77f9c1832157
+17:43:17 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00053 -> 200 (12.6ms) cid=a176652e-4d26-4183-a3f9-2842d08146f7
+17:43:17 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00050 -> 200 (13.5ms) cid=4d452007-9975-48ee-af8e-a12d2529a087
+17:43:17 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00049 -> 200 (9.7ms) cid=0be7ec40-f32e-472a-8f11-24148940e2ca
+17:43:17 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00054 -> 200 (11.1ms) cid=3d82be7d-d67b-494a-9684-0722b732fd26
+17:43:17 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00051 -> 200 (6.3ms) cid=add169b9-a996-46a0-9c20-dd6b5c7bbe56
+17:43:17 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00058 -> 200 (6.5ms) cid=35f96e49-cff7-402e-af90-71fce90d8f90
+17:43:17 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00048 -> 200 (8.0ms) cid=4b9767b7-9c0b-4151-8d6b-df36a87f9892
+17:43:17 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00052 -> 200 (6.9ms) cid=f20da47c-5d5d-4f2e-b07b-28c71c2b0fbc
+17:43:17 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00047 -> 200 (8.4ms) cid=91158c6d-a2a6-452f-84b6-8db326f4b545
+17:48:19 | INFO    | api                    | GET /health -> 200 (0.6ms) cid=a5bb17f5-b705-41d0-bcce-0f34615fe3a7
+17:48:19 | INFO    | api                    | GET /config -> 200 (2.2ms) cid=dc56cf9a-7917-4ee7-a830-11570cdcb032
+17:48:19 | INFO    | api                    | GET /health -> 200 (0.2ms) cid=b7339a58-9806-40f8-b227-f84de121fcc1
+17:48:19 | INFO    | api                    | GET /config -> 200 (0.9ms) cid=8687e86f-b932-406a-989b-cfce93aa16f9
+17:49:47 | INFO    | api                    | GET /health -> 200 (0.3ms) cid=df39e5fe-b74d-41f7-a91d-89a7d136605d
+17:49:47 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00056 -> 200 (6.6ms) cid=bb3cd9ff-54f0-464f-89b1-e1f74d1cef92
+17:49:47 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00055 -> 200 (7.9ms) cid=4de70cae-dda1-4261-856e-e522e87db32d
+17:49:47 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00057 -> 200 (8.8ms) cid=6626e385-a7ef-49a0-87b8-44a6ee20a09b
+17:49:47 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00053 -> 200 (8.3ms) cid=7ae408b8-e0da-42ff-aaa8-f40e40c41f86
+17:49:47 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00050 -> 200 (8.7ms) cid=bffc0b56-7ae0-48a2-9f2e-37bd6beedd79
+17:49:47 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00049 -> 200 (7.0ms) cid=56b74658-daaa-4f91-9f21-895d58bda961
+17:49:47 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00054 -> 200 (2.5ms) cid=c3b1db27-a163-4b36-a28d-bd142940ddfa
+17:49:47 | INFO    | api                    | GET /health -> 200 (0.4ms) cid=c68dbc98-cdeb-41e5-b7a7-a09a5d827f0b
+17:49:47 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00051 -> 200 (5.6ms) cid=94f21f46-0b81-4697-9cc4-273a4fbbf666
+17:49:47 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00048 -> 200 (6.8ms) cid=d84ad932-4a64-4f97-8b46-7f63c51d1eb5
+17:49:47 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00058 -> 200 (7.4ms) cid=b6b19ba0-ac3f-43c4-aad4-435c0aadf24b
+17:49:47 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00047 -> 200 (8.2ms) cid=530fe059-16e9-4b66-ab07-ee516f78c991
+17:49:47 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00052 -> 200 (8.1ms) cid=6ea12e79-f9d9-42f4-9951-9dc70515dddf
+17:49:47 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00056 -> 200 (3.1ms) cid=64299c05-32d3-4ba3-ae16-66422b0c9fe3
+17:49:47 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00053 -> 200 (5.6ms) cid=aa06003d-654e-46dd-b871-28889f284611
+17:49:47 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00050 -> 200 (5.9ms) cid=4f39e6e8-218c-4676-9254-9b84d3c310db
+17:49:47 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00055 -> 200 (6.1ms) cid=283eb29e-0d9c-4499-9e5e-f9c317785556
+17:49:47 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00057 -> 200 (7.0ms) cid=2a0a812b-4483-486c-91bf-fdb65bbdd836
+17:49:47 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00049 -> 200 (6.7ms) cid=57913915-ec62-4d6e-947b-37831465a036
+17:49:47 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00054 -> 200 (6.1ms) cid=cdc8e84d-d9d9-4997-9482-f147b78293d2
+17:49:47 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00051 -> 200 (3.4ms) cid=5677f26a-75bc-42b8-be84-10b17191b2a7
+17:49:47 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00048 -> 200 (3.9ms) cid=bf02ec7b-b3db-4e1e-9dce-4567b0cdbe2e
+17:49:47 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00058 -> 200 (3.7ms) cid=73852124-87e3-4257-9640-3776223b15b6
+17:49:47 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00047 -> 200 (4.2ms) cid=93936ddb-83b3-4a5c-b185-a3569dd96f83
+17:49:47 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00052 -> 200 (4.4ms) cid=5275292b-a35c-4330-bcc3-8e8108b9d53b
+17:49:47 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00056 -> 200 (4.6ms) cid=b4b3347d-f9e5-421a-9bb0-d39a32376a48
+17:49:47 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00053 -> 200 (3.4ms) cid=131ac5dc-9c23-47f2-b1ff-b1cd40b59cbf
+17:49:47 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00055 -> 200 (3.2ms) cid=6c0f1090-74d8-4c27-9c57-d4472bb934f9
+17:49:47 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00050 -> 200 (4.2ms) cid=dabf0cf0-f6c3-41cf-a144-eaa00e2e3173
+17:49:47 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00049 -> 200 (4.2ms) cid=3d3d5292-d838-4808-9a2c-e73ea774d5fa
+17:49:47 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00054 -> 200 (4.0ms) cid=523b681e-4aea-46a4-87ed-b1811e0ed9f9
+17:49:47 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00057 -> 200 (4.9ms) cid=c1fb782e-7afb-4a96-8942-2b7bfba4e11e
+17:49:47 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00051 -> 200 (3.7ms) cid=cd763134-18a6-4866-bb00-52a2c2e61fa4
+17:49:47 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00058 -> 200 (3.5ms) cid=4e9459fe-1009-4177-9dc7-fe1880cff2e8
+17:49:47 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00048 -> 200 (4.6ms) cid=2e25f3ce-10c9-4abf-9739-20ecb2989fbc
+17:49:47 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00047 -> 200 (2.6ms) cid=7079711e-46df-4928-810d-5bf189a4661e
+17:49:47 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00052 -> 200 (3.1ms) cid=6d2349bb-b6c0-471d-8a54-0250e94c34a5
+17:50:18 | INFO    | api                    | GET /health -> 200 (0.4ms) cid=de452669-c3db-49f3-84f2-4ec20bb8e938
+17:50:18 | INFO    | api                    | GET /config -> 200 (1.4ms) cid=8575d052-5547-4941-a337-f15f77729c2f
+17:50:18 | INFO    | api                    | GET /health -> 200 (0.2ms) cid=1b9bad3b-1eba-4626-a125-bb03c76251c1
+17:50:18 | INFO    | api                    | GET /config -> 200 (0.9ms) cid=35eb5091-f986-4d0b-bcf3-2c98465d968d
+17:53:51 | INFO    | api                    | GET /health -> 200 (0.6ms) cid=c2d114a1-c424-49b0-98af-f59ee1001c6c
+17:53:51 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00055 -> 200 (7.2ms) cid=95aa9ab3-6294-4b7a-b6cd-0b9a9718a77c
+17:53:51 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00057 -> 200 (7.8ms) cid=7057256b-b2f8-41e8-8079-9e297bd9a0ad
+17:53:51 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00053 -> 200 (7.4ms) cid=d1921305-1e42-4bda-8122-dc7b36920a0c
+17:53:51 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00056 -> 200 (9.5ms) cid=731ddf91-fe79-488d-a6a2-4684e5e8ad6b
+17:53:51 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00050 -> 200 (9.2ms) cid=83d56e04-ecdf-4fc4-a660-6fa70d412030
+17:53:51 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00049 -> 200 (6.6ms) cid=50372aae-3718-407f-bf9f-23258b8613dc
+17:53:51 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00054 -> 200 (2.5ms) cid=5281fb71-2c0e-4bc0-bc78-58aad236f2d2
+17:53:51 | INFO    | api                    | GET /health -> 200 (0.8ms) cid=afa3e2fc-3757-4ec9-980f-c3a18f038ffb
+17:53:51 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00048 -> 200 (7.3ms) cid=9e5eb013-c995-4af7-a4fe-645fe1ae7a09
+17:53:51 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00047 -> 200 (7.5ms) cid=f249afc8-7f72-4d42-b304-e77eaadf82fb
+17:53:51 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00058 -> 200 (6.7ms) cid=82471882-c6fa-4d60-b721-3f8c9366643d
+17:53:51 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00052 -> 200 (6.8ms) cid=e054401f-2e59-40db-a603-da4eaf44162e
+17:53:51 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00051 -> 200 (8.3ms) cid=27ceee39-6c51-4573-b44b-fa2942f10aee
+17:53:51 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00055 -> 200 (2.3ms) cid=0f08908b-af5b-44c8-9a17-a9b5b8db1dd8
+17:53:51 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00053 -> 200 (5.9ms) cid=619aa70e-0d8e-42f9-9da7-d3e3c08e1afd
+17:53:51 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00056 -> 200 (7.0ms) cid=04a04256-087f-4ce7-bd3b-567113df177d
+17:53:51 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00057 -> 200 (7.9ms) cid=c96bc3e6-0ad5-489d-8f83-b96fd79f1888
+17:53:51 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00050 -> 200 (7.1ms) cid=54f3039b-cd82-40bd-aaa2-a53d5dc2ca6a
+17:53:51 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00049 -> 200 (6.5ms) cid=45aa6922-6b04-4524-95fa-ac3fece27066
+17:53:51 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00054 -> 200 (5.5ms) cid=3813660f-f54b-4ce6-a53e-93f9a29da526
+17:53:51 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00048 -> 200 (3.4ms) cid=247dd2be-f345-47c6-a47c-30bc104b20fa
+17:53:51 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00047 -> 200 (4.8ms) cid=d5861a56-7dc7-4b96-b816-d958d2b9d8b4
+17:53:51 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00058 -> 200 (6.4ms) cid=b6a54bd4-7df8-4bde-88cd-ae28ce18e93c
+17:53:51 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00051 -> 200 (5.5ms) cid=1ca77ffe-3b11-4fb7-b799-bdd18e0d18b7
+17:53:51 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00052 -> 200 (7.0ms) cid=623d82d7-b89c-4dd9-a68f-2422dd0ea7be
+17:53:51 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00055 -> 200 (6.9ms) cid=3d7e82b8-ce1b-4fd8-82fa-3952ed9df02a
+17:53:51 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00053 -> 200 (6.6ms) cid=c89227b7-d984-45e1-8bfc-b0ccec0bdf59
+17:53:51 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00056 -> 200 (6.6ms) cid=94132173-9ebb-400b-9026-02c6b2921444
+17:53:51 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00057 -> 200 (4.4ms) cid=c9baa5c6-7fea-43f4-8a19-ae8e3e97b779
+17:53:51 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00054 -> 200 (2.9ms) cid=a27ebfaa-4704-4183-809f-1216daa55aad
+17:53:51 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00050 -> 200 (3.1ms) cid=5c95e6eb-9ffc-4272-9a7c-4be337b90285
+17:53:51 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00049 -> 200 (3.9ms) cid=f5e45c44-dd67-42c6-81fe-9bc44a33789c
+17:53:51 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00048 -> 200 (2.2ms) cid=5d779942-d80e-4ef0-97d5-c1686b8c1cd2
+17:53:51 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00051 -> 200 (3.4ms) cid=c3afd58e-1bc8-433d-8560-6afcf326c836
+17:53:51 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00047 -> 200 (5.0ms) cid=9cac06d3-54b9-4734-a21d-02f5b8dfe2e2
+17:53:51 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00058 -> 200 (5.7ms) cid=dfa5ba1c-9c72-46e5-a537-4616b10bf900
+17:53:51 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00052 -> 200 (4.1ms) cid=a92ebc3e-6b40-4234-a5ff-0c4941e32743
+17:56:58 | INFO    | api                    | GET /health -> 200 (0.5ms) cid=17f1273d-5d66-49f7-b98f-c368d651d513
+17:56:58 | INFO    | api                    | GET /config -> 200 (2.3ms) cid=8ef283dd-3722-4aa0-894e-783c12016909
+17:56:58 | INFO    | api                    | GET /health -> 200 (0.3ms) cid=250af200-15e9-4b72-8083-6e22d8e92d1f
+17:56:58 | INFO    | api                    | GET /config -> 200 (0.9ms) cid=3ea07155-c5c2-439d-b2e8-9268394a5458
+17:58:11 | INFO    | api                    | GET /health -> 200 (0.3ms) cid=94521aed-7066-4926-97d1-b91eadf34337
+17:58:11 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00053 -> 200 (5.8ms) cid=ca28fce5-5a9b-46b9-a4ce-5c734797fae7
+17:58:11 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00050 -> 200 (6.5ms) cid=06311150-2ffc-4251-b412-a90376e620ad
+17:58:11 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00057 -> 200 (7.4ms) cid=169ab72b-06de-4336-a569-12f38150ec5b
+17:58:11 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00055 -> 200 (9.6ms) cid=15f2c9c1-813b-47d9-a93b-645be9b3be62
+17:58:11 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00056 -> 200 (10.0ms) cid=9a56d109-e805-452c-ad59-afc30a258719
+17:58:11 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00049 -> 200 (6.8ms) cid=cefc03af-4332-408a-8a24-df163bdd144b
+17:58:11 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00054 -> 200 (4.6ms) cid=9d6d4c38-9f53-44ba-9dd5-7e7fa06b12db
+17:58:11 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00048 -> 200 (4.8ms) cid=c227f946-6f01-4ac3-a6a4-ad33b512f208
+17:58:11 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00047 -> 200 (4.9ms) cid=256e7043-aace-4edb-9123-c21f8032f9b5
+17:58:11 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00051 -> 200 (5.5ms) cid=2a43e378-10fe-413c-aa6b-a07de0e51dcc
+17:58:11 | INFO    | api                    | GET /health -> 200 (0.7ms) cid=3b0b5db5-b856-4e39-be5f-9041d4dfccec
+17:58:11 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00052 -> 200 (6.5ms) cid=f1a978f9-8c0b-402a-a120-b30c366f0cdf
+17:58:11 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00058 -> 200 (7.5ms) cid=a1739988-97fd-407d-9c6b-eb34c046a247
+17:58:11 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00053 -> 200 (4.5ms) cid=c9db2dab-f675-41d5-8ead-99b04d12f1d1
+17:58:11 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00050 -> 200 (3.2ms) cid=d843e7e8-4514-4777-af31-417515ee04f0
+17:58:11 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00055 -> 200 (2.1ms) cid=25272351-1b5e-4424-b613-aa11ccae1122
+17:58:11 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00057 -> 200 (3.8ms) cid=8eebeee1-6d2a-417d-9725-f39a20104357
+17:58:11 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00056 -> 200 (6.7ms) cid=4a450c95-dc22-42c7-bcb3-1dec0c7ccaa3
+17:58:11 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00049 -> 200 (6.6ms) cid=636ed558-a1cd-4b00-a636-258ad17f476f
+17:58:11 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00048 -> 200 (6.1ms) cid=039af785-44ad-444a-8876-6a898f455e59
+17:58:11 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00054 -> 200 (6.8ms) cid=27c61e42-de27-4699-a978-9b6a4eeebe48
+17:58:11 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00047 -> 200 (5.7ms) cid=1404eab4-5252-4458-bd23-c802cd9823de
+17:58:11 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00051 -> 200 (4.4ms) cid=f0455111-7dbc-4aac-99d5-95e43abd220f
+17:58:11 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00052 -> 200 (3.3ms) cid=ca1e9c26-d032-4794-b8ee-0ae650de186c
+17:58:11 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00058 -> 200 (2.8ms) cid=766ea041-b134-4459-b3a2-5b35890626dc
+17:58:11 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00050 -> 200 (5.0ms) cid=1c66dc52-f18d-4875-a64e-bf43b0510ccf
+17:58:11 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00053 -> 200 (6.4ms) cid=708fdf2a-bfa3-4931-8920-5d1ccfa7125b
+17:58:11 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00055 -> 200 (6.5ms) cid=a169d25d-41df-4729-a8ca-6a091bcb852a
+17:58:11 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00057 -> 200 (6.2ms) cid=ba732bd2-d6bc-435e-872b-7d284b6ea462
+17:58:11 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00056 -> 200 (5.4ms) cid=dbde0071-68c8-436b-b348-e416a849fc8d
+17:58:11 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00049 -> 200 (5.6ms) cid=b1d38fe0-da31-4c51-b875-d54de0d9f89c
+17:58:11 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00054 -> 200 (2.7ms) cid=5791510a-a455-435a-95e7-448355b6fa36
+17:58:11 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00048 -> 200 (3.7ms) cid=8417e26d-efbb-4099-b4dc-9815640e2316
+17:58:11 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00047 -> 200 (4.7ms) cid=1848d25e-c0eb-409b-b25c-8f12093f5b07
+17:58:11 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00051 -> 200 (5.6ms) cid=67763f87-8ba1-4e3c-b222-e9b6c375598d
+17:58:11 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00058 -> 200 (4.1ms) cid=718fd97f-65d5-47ee-b3a2-9c2e49390012
+17:58:11 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00052 -> 200 (4.8ms) cid=47ee7ce2-e67b-489c-986d-9b1c718e7517
+18:01:09 | INFO    | api                    | GET /health -> 200 (0.3ms) cid=9aa4c37f-6b02-401b-8f35-e0153714ced2
+18:01:09 | INFO    | api                    | GET /health -> 200 (0.3ms) cid=8b2d799a-4cb5-4da5-8853-e8cab21ab1e8
+18:01:13 | INFO    | api                    | GET /health -> 200 (0.5ms) cid=e4378d6d-4858-4777-a697-87bf4af741d0
+18:01:13 | INFO    | api                    | GET /config -> 200 (2.1ms) cid=358d2471-49ec-4018-bd4f-98a863e2cb88
+18:01:13 | INFO    | api                    | GET /health -> 200 (0.3ms) cid=7da7821b-43b6-418a-aa6c-9a78a6d0580b
+18:01:13 | INFO    | api                    | GET /config -> 200 (1.1ms) cid=0ef2ac1e-975a-436c-a3ce-41b2207396d4
+20:33:13 | INFO    | api                    | GET /health -> 200 (0.6ms) cid=c8df23ff-1858-49cd-b1a6-334182a55e88
+20:33:13 | INFO    | api                    | GET /config -> 200 (3.2ms) cid=f5002de9-000b-4196-8210-1fd4ed1ff32c
+20:33:13 | INFO    | api                    | GET /health -> 200 (0.3ms) cid=7f8fd5d6-4416-4b97-8946-744e1edf3243
+20:33:13 | INFO    | api                    | GET /config -> 200 (0.8ms) cid=b56337d7-07b9-4ce9-bc7a-f61a1b6cce66
+20:33:21 | INFO    | api                    | GET /health -> 200 (0.3ms) cid=f31b6ef2-b64b-4f72-a2c4-5d7e5080ef41
+20:33:21 | INFO    | api                    | GET /health -> 200 (0.3ms) cid=21a7cfd5-b33c-476d-a5f9-40066bd78053
+20:33:29 | INFO    | connectors.local_connector | Fetched 27 emails from data\raw_emails\inbox
+20:33:29 | INFO    | api.connector          | connector.fetch source=local -> 27 emails cid=d4e2d758-9bd9-4aac-aa3a-1fa9776a2894
+20:33:29 | INFO    | api                    | POST /connector/fetch -> 200 (9.7ms) cid=d4e2d758-9bd9-4aac-aa3a-1fa9776a2894
+20:33:44 | INFO    | connectors.local_connector | Fetched 27 emails from data\raw_emails\inbox
+20:33:44 | WARNING | email_agent            | AMBIGUOUS (0.30) | Settlement query – account reconciliation | subject['settlement']
+20:33:44 | WARNING | email_agent            | AMBIGUOUS (0.30) | Re: Confirmation needed | subject['confirm']
+20:33:44 | WARNING | email_agent            | AMBIGUOUS (0.30) | Pending transaction follow-up | subject['transaction']
+20:33:44 | WARNING | email_agent            | DUPLICATE trade_id FXOPT-2026-00053 — skipping (FX Trade Settlement[FXOPT-2026-00053] – USD/CAD – 26_05_26 - UTIY6WKTAKPUXQPHR62GDSW0053)
+20:33:44 | WARNING | email_agent            | DUPLICATE trade_id FXOPT-2026-00056 — skipping (FX Trade Settlement FXOPT-2026-00056 – 26/05/26 – UTIPTK93TYT7D5J60FKHMY40056)
+20:33:44 | INFO    | email_agent            | ========================================================
+20:33:44 | INFO    | email_agent            | [Phase 1 Run Complete]
+20:33:44 | INFO    | email_agent            |   Emails read:          27
+20:33:44 | INFO    | email_agent            |   RELEVANT (stored):    0
+20:33:44 | INFO    | email_agent            |   AMBIGUOUS (skipped):  3
+20:33:44 | INFO    | email_agent            |   IRRELEVANT (skipped): 10
+20:33:44 | INFO    | email_agent            |   DUPLICATE (skipped):  2
+20:33:44 | INFO    | email_agent            |   Already processed:    12
+20:33:44 | INFO    | email_agent            |   --- Ambiguous emails for manual review ---
+20:33:44 | INFO    | email_agent            |     • Settlement query – account reconciliation
+20:33:44 | INFO    | email_agent            |     • Re: Confirmation needed
+20:33:44 | INFO    | email_agent            |     • Pending transaction follow-up
+20:33:44 | INFO    | email_agent            | ========================================================
+20:33:44 | INFO    | api.agent              | agent.run source=local -> relevant=0 ambiguous=3 irrelevant=10 duplicate=2 cid=aa6ac17b-6596-4320-bd60-a736836897fd
+20:33:44 | INFO    | api                    | POST /agent/run -> 200 (15.7ms) cid=aa6ac17b-6596-4320-bd60-a736836897fd
+20:33:47 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00050 -> 200 (7.5ms) cid=456dde6b-f4d9-4005-aa1c-05775d9b52d2
+20:33:47 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00055 -> 200 (9.8ms) cid=6f965f53-59df-48c3-948a-88cd6498080a
+20:33:47 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00057 -> 200 (9.7ms) cid=a589f7e1-1cec-4640-a79f-8a7c96bafc9e
+20:33:47 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00049 -> 200 (7.8ms) cid=1884e8e4-9f4b-4443-a78b-2b3bc3ab2007
+20:33:47 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00053 -> 200 (11.3ms) cid=12eb00d6-1fec-43e6-993d-9f98d1b15c4e
+20:33:47 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00056 -> 200 (11.9ms) cid=5d53ce27-b550-45a5-b542-bf0ef22b8734
+20:33:47 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00054 -> 200 (2.6ms) cid=7e05f80a-4f9b-4f22-9768-21fff64d1e16
+20:33:47 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00047 -> 200 (4.3ms) cid=b98f4dce-f70f-4315-8a36-105609c388d4
+20:33:47 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00048 -> 200 (6.1ms) cid=c8f41550-a4ed-4102-8c03-375a62c734ff
+20:33:47 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00052 -> 200 (4.9ms) cid=86f0906c-5cf8-4a27-b372-57a1b1ee2fa0
+20:33:47 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00058 -> 200 (5.5ms) cid=7ffb6218-1777-4c69-825e-6f4f2ce1b977
+20:33:47 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00051 -> 200 (6.1ms) cid=fed106b0-1641-4b8a-b5dd-66713a4b174c
+20:38:53 | INFO    | api                    | GET /health -> 200 (0.7ms) cid=eb632dba-c48d-4060-aac4-3a974fba6777
+20:38:53 | INFO    | api                    | GET /config -> 200 (1.5ms) cid=235dea4f-2e63-447c-b3d4-8f77e07f698d
+20:38:53 | INFO    | api                    | GET /health -> 200 (0.2ms) cid=96ef918d-b636-4a79-a806-63042d692c11
+20:38:53 | INFO    | api                    | GET /config -> 200 (0.9ms) cid=b727c8f7-78cd-450b-af53-b5bee39ff10e
+20:43:00 | INFO    | api                    | GET /health -> 200 (0.6ms) cid=44d2050e-f493-4e07-905a-dd1608fdd1a3
+20:43:00 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00055 -> 200 (3.9ms) cid=975fec3a-b334-482f-b4ee-fa6ce0be7522
+20:43:00 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00056 -> 200 (7.1ms) cid=31007c7d-985a-4909-ab57-8747c2032186
+20:43:00 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00057 -> 200 (7.6ms) cid=cd70e349-f329-4115-8e6f-52da3849d083
+20:43:00 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00050 -> 200 (7.8ms) cid=dc7f9f46-2de6-4ea6-bc9f-46d20848011b
+20:43:00 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00049 -> 200 (6.4ms) cid=feeb6a8e-5589-4339-89d2-bb2c43e0e0fc
+20:43:00 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00053 -> 200 (8.7ms) cid=60282c4d-5dda-448a-b9f6-0bfd0d7128e7
+20:43:00 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00054 -> 200 (5.4ms) cid=fe96611d-dd68-4661-a286-d08ee2a80263
+20:43:00 | INFO    | api                    | GET /health -> 200 (0.5ms) cid=90b3f045-f86a-4e9f-99c6-a3b5ca118ea5
+20:43:00 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00048 -> 200 (6.1ms) cid=9c74d5cc-40ce-4f66-9f64-5cb47ca01a54
+20:43:00 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00047 -> 200 (6.4ms) cid=21b309ec-66bb-466b-9091-bc93287208a3
+20:43:00 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00051 -> 200 (7.3ms) cid=28e7bdeb-8374-46bf-8f77-c14c6e8ca188
+20:43:00 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00052 -> 200 (8.1ms) cid=704bf8f7-9661-4e4b-893f-e9910f4dfd60
+20:43:00 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00058 -> 200 (8.1ms) cid=2ddba320-6a04-440d-b3b4-f4a852f41116
+20:43:00 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00055 -> 200 (3.6ms) cid=f3afde68-b577-425b-bb00-06a434bdd3c8
+20:43:00 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00056 -> 200 (3.0ms) cid=4fbcec62-f7b2-430a-b0a5-d37173daa8ef
+20:43:00 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00057 -> 200 (2.8ms) cid=890212c9-63f9-461c-843f-a09f8c11b0be
+20:43:00 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00050 -> 200 (1.9ms) cid=2fcab857-4215-416a-9df1-4977fcf572d1
+20:43:00 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00049 -> 200 (3.1ms) cid=68c0a275-42b7-4fc5-aec9-7a0621ac88d7
+20:43:00 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00053 -> 200 (4.1ms) cid=9b07feec-80e0-4511-8c47-9744b356606f
+20:43:00 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00054 -> 200 (3.7ms) cid=aa832a4d-a7ff-40e3-bc66-d503db8184d3
+20:43:00 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00048 -> 200 (3.7ms) cid=c6ec4595-07dd-4243-a64e-3932ffab4742
+20:43:00 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00047 -> 200 (3.5ms) cid=45af700a-8c24-4230-8981-ac3a5deb1f19
+20:43:00 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00051 -> 200 (3.6ms) cid=8f38ad6d-ad83-45f0-9426-13d0b49e65a4
+20:43:00 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00052 -> 200 (3.8ms) cid=4c09d9e8-6959-4179-8fbb-fc7f95442169
+20:43:00 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00058 -> 200 (3.9ms) cid=97fcb4ba-f9ee-4f1e-82e6-9d219f810744
+20:43:00 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00055 -> 200 (3.7ms) cid=22cf4f8e-8c87-4fc0-962d-af357be9149b
+20:43:00 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00056 -> 200 (4.4ms) cid=650778bf-5f1c-4f37-8514-3acd4d4203cc
+20:43:00 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00057 -> 200 (4.9ms) cid=f1dd8b13-12f4-430a-96cd-2d21403cfa83
+20:43:00 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00050 -> 200 (5.2ms) cid=6d52fe08-d622-4882-80b9-075add67f5e0
+20:43:00 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00053 -> 200 (2.8ms) cid=880c07e3-d0f8-48c2-a058-2d0837dd6c11
+20:43:00 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00054 -> 200 (4.2ms) cid=7f875066-cf4d-4218-a2da-d7f4a5905a07
+20:43:00 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00049 -> 200 (5.0ms) cid=fcd8d2e3-822c-46db-8804-37f5aa0996f0
+20:43:00 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00048 -> 200 (3.2ms) cid=a04b93d5-7c7c-43c9-a68f-06689a1192e3
+20:43:00 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00047 -> 200 (3.8ms) cid=c58f1ff0-e13b-4002-a4cd-e5dcbd49dd57
+20:43:00 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00051 -> 200 (4.6ms) cid=a8caf148-c735-4794-9048-894afb0bbd8b
+20:43:01 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00058 -> 200 (2.4ms) cid=157e1083-2be5-4261-ad07-0dbc40746f68
+20:43:01 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00052 -> 200 (4.6ms) cid=877cf8d3-0e0c-4178-b0bd-8cc5e0d2c7d0
+20:46:48 | INFO    | api                    | GET /health -> 200 (0.5ms) cid=4de332c6-cb66-4149-8f47-c36d0ddca492
+20:46:48 | INFO    | api                    | GET /config -> 200 (2.2ms) cid=b9fc15a9-8e62-432f-ad71-6c9875649109
+20:46:48 | INFO    | api                    | GET /health -> 200 (0.3ms) cid=7a010485-0290-468c-a5da-7cb24e1145be
+20:46:48 | INFO    | api                    | GET /config -> 200 (1.2ms) cid=74f6526b-bbf8-494f-a041-33815964072f
+20:46:50 | INFO    | api                    | GET /health -> 200 (0.3ms) cid=a3143140-db18-483b-a9bd-272eac81bc40
+20:46:50 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00056 -> 200 (6.3ms) cid=768e359f-1495-482d-bee5-390005472113
+20:46:50 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00055 -> 200 (8.7ms) cid=6b852006-837f-4a5b-b415-af8d62529dff
+20:46:50 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00050 -> 200 (7.8ms) cid=7a0d3e3b-008c-4276-897d-579ae6a99670
+20:46:50 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00057 -> 200 (8.7ms) cid=97445202-89d5-4b3e-9aca-1a41acd9b8e1
+20:46:50 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00053 -> 200 (8.5ms) cid=ff978ce1-36a7-42db-aea4-b0befce48da1
+20:46:50 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00049 -> 200 (6.9ms) cid=a51e6809-e136-43fb-827e-e8d8eba8a388
+20:46:50 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00054 -> 200 (2.9ms) cid=eef1d544-b1e7-4377-8cee-d4822c5b47b5
+20:46:50 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00048 -> 200 (3.1ms) cid=758ca92f-2455-4843-84cd-bec346a2d782
+20:46:50 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00047 -> 200 (4.2ms) cid=7854ec1e-fe1f-4fc0-8e99-33228ecbeb25
+20:46:50 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00058 -> 200 (5.3ms) cid=45e4ae7f-f1aa-4c9a-ae72-2d29384a3120
+20:46:50 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00052 -> 200 (5.3ms) cid=30863ba3-4ec2-4b13-9606-1a76ea453d28
+20:46:50 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00051 -> 200 (6.3ms) cid=704cfa7e-bcd4-4b6d-98d3-457df122dd73
+20:46:50 | INFO    | api                    | GET /health -> 200 (1.9ms) cid=117e0f84-013c-4b27-b2c3-9e51acae67f7
+20:46:50 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00056 -> 200 (4.5ms) cid=8fb405e1-3cd7-4668-a246-3b051afb4c9f
+20:46:50 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00055 -> 200 (2.3ms) cid=0f2b6a11-4805-4af6-983d-5e0f3504b0ca
+20:46:50 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00057 -> 200 (3.6ms) cid=3b9c2365-9912-4573-8911-d1616f629ba4
+20:46:50 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00050 -> 200 (5.7ms) cid=ce4ee0ea-5bbe-4268-8451-0ef6a5960b34
+20:46:50 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00053 -> 200 (7.2ms) cid=1fc99bfc-7530-4c4f-b7b7-de4179da5182
+20:46:50 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00049 -> 200 (8.4ms) cid=655eeb1d-8266-45a9-baf8-92ac60a74f40
+20:46:50 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00054 -> 200 (6.8ms) cid=dfff1d8c-c2d2-46b8-81b9-826b8e1e38f3
+20:46:50 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00048 -> 200 (6.1ms) cid=7a92ddcd-d167-4d47-b2b9-7f221ff5041e
+20:46:50 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00047 -> 200 (4.5ms) cid=a9e4ac87-fd7e-45a8-a62d-a3e94fd23868
+20:46:50 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00058 -> 200 (2.2ms) cid=b72deea4-fb53-4e9d-bf33-c3580943af64
+20:46:50 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00052 -> 200 (5.2ms) cid=865c9bfc-65b7-49be-8838-4717a2e5a6e9
+20:46:50 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00051 -> 200 (5.8ms) cid=2f2940b2-9794-4bf8-9157-0803cb8a0f26
+20:46:50 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00056 -> 200 (6.4ms) cid=c5d61eb7-7a0d-4707-9229-272f9cfc8950
+20:46:50 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00057 -> 200 (6.1ms) cid=2e98a69b-ea16-43cc-94a1-a6ad21c71f00
+20:46:50 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00055 -> 200 (7.4ms) cid=c34b8210-1a4a-4af5-ba69-37a64b94963e
+20:46:50 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00050 -> 200 (6.2ms) cid=d3829781-4ab2-4ce8-9909-9d551f59f68d
+20:46:50 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00053 -> 200 (2.3ms) cid=5aaab72e-f84b-4663-8883-58739583f43b
+20:46:50 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00054 -> 200 (4.3ms) cid=34f048ca-1e0a-40fd-899d-e9107108600c
+20:46:50 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00049 -> 200 (5.3ms) cid=2267e763-412f-4f0c-a89d-dd331a892163
+20:46:50 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00047 -> 200 (6.4ms) cid=acd7a1ba-4627-4a14-a9d6-6833c09a780a
+20:46:50 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00048 -> 200 (8.4ms) cid=f4d69465-362f-458a-b675-8cc9ce61b028
+20:46:50 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00058 -> 200 (8.0ms) cid=f5670dca-9f7d-4b4a-b5b7-ccca4e1d8614
+20:46:50 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00052 -> 200 (6.1ms) cid=cd41457b-b6e7-4201-83c1-8841bb13786a
+20:46:50 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00051 -> 200 (3.8ms) cid=0b036489-bf39-4c9a-98a7-87d69756de32
+20:47:03 | INFO    | api                    | GET /health -> 200 (0.4ms) cid=3b1807c5-937f-4fc4-a03a-2c8acfa1e7ac
+20:47:03 | INFO    | api                    | GET /config -> 200 (2.0ms) cid=2574b6f0-8557-4a81-87cf-c4dce008a605
+20:47:03 | INFO    | api                    | GET /health -> 200 (0.3ms) cid=99274a14-f1a5-40d6-9ad4-c99f9387326a
+20:47:03 | INFO    | api                    | GET /config -> 200 (0.7ms) cid=c85472f6-94ba-4c75-9218-f48460903974
+20:47:08 | INFO    | api                    | GET /health -> 200 (0.3ms) cid=222d3ea9-1654-42e5-8424-6d11267306a4
+20:47:08 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00057 -> 200 (6.6ms) cid=52232393-08ad-426b-bad4-169302fd489c
+20:47:08 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00056 -> 200 (7.4ms) cid=888cf5a6-8922-4f6e-ae73-d571ff9ada8d
+20:47:08 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00055 -> 200 (8.7ms) cid=e5910404-cfae-4038-bd18-1be530869c5a
+20:47:08 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00050 -> 200 (8.1ms) cid=73936e98-fbb3-4257-bcd0-90492e53e07f
+20:47:08 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00053 -> 200 (8.8ms) cid=4fe2b37f-33a8-48b8-b0a5-8cee1af8b7b5
+20:47:08 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00049 -> 200 (5.9ms) cid=54398e52-44e6-41c4-b9b4-e5e2bc4badf1
+20:47:08 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00054 -> 200 (5.1ms) cid=349e5703-627d-4902-8158-65829e9fe118
+20:47:08 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00048 -> 200 (5.5ms) cid=88545a34-ca74-4f4b-a8a4-f4758bbe4b0a
+20:47:08 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00047 -> 200 (5.5ms) cid=0260386a-b40e-4f7d-858b-7d6e7622a8e3
+20:47:08 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00051 -> 200 (5.1ms) cid=601f3987-b66d-4c00-b667-00c22b9bd620
+20:47:08 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00052 -> 200 (5.4ms) cid=8e697b2d-d9a6-43b6-a2e9-a82f4cc1a5bb
+20:47:08 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00058 -> 200 (6.0ms) cid=aed66184-8a82-44db-898e-11c621e7c74f
+20:47:08 | INFO    | api                    | GET /health -> 200 (0.6ms) cid=b8fdaa3a-3f35-49ba-9ff3-690b765ceee4
+20:47:08 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00057 -> 200 (3.6ms) cid=92951ab7-780e-4baf-bd70-2d8fb0a9ed82
+20:47:08 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00056 -> 200 (2.9ms) cid=c76c1088-2b73-43eb-b982-764a9af6883f
+20:47:08 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00055 -> 200 (3.7ms) cid=d476710f-1300-45f2-a52d-bd85549d096d
+20:47:08 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00050 -> 200 (3.9ms) cid=db612276-6ab1-44f6-80f9-423bd67b9ef2
+20:47:08 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00049 -> 200 (4.4ms) cid=69b0c10c-7da4-4097-8ded-d532b122ea0d
+20:47:08 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00053 -> 200 (2.9ms) cid=cf31c134-2a98-494a-8bcc-548f7f597d7b
+20:47:08 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00054 -> 200 (2.9ms) cid=c4d92bdd-1946-4ccf-82b6-75b0ea71757f
+20:47:08 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00048 -> 200 (3.1ms) cid=05f17490-389b-4813-999e-d83aab5982f8
+20:47:08 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00047 -> 200 (1.9ms) cid=cf8bf25c-62c3-416d-85f3-2177fa5bbe15
+20:47:08 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00051 -> 200 (3.2ms) cid=c119b126-ecf4-4bb7-9ab7-54c429876720
+20:47:08 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00058 -> 200 (3.7ms) cid=0e926fed-eaed-40dd-9bf2-2dafd7541340
+20:47:08 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00052 -> 200 (4.4ms) cid=13be1820-b9c3-4332-80da-bfe91d9b3958
+20:47:08 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00057 -> 200 (3.7ms) cid=3950e1a7-1453-4121-ae64-d667487a5929
+20:47:08 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00056 -> 200 (4.0ms) cid=5160d410-499a-4c85-b487-0fc44327961c
+20:47:08 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00055 -> 200 (3.3ms) cid=fb106c65-77b8-456e-878b-5772b8d241a8
+20:47:08 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00050 -> 200 (3.3ms) cid=5297668c-42a6-4beb-9386-034beef81240
+20:47:08 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00049 -> 200 (3.8ms) cid=46f9f829-8085-4abd-b34b-2c2c200b1f7d
+20:47:08 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00053 -> 200 (3.5ms) cid=5d5a4e66-7942-4202-9fc1-6aff641872c9
+20:47:08 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00054 -> 200 (3.8ms) cid=2856dd55-98cf-4663-8302-4e1979532227
+20:47:08 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00047 -> 200 (3.8ms) cid=08d8be1e-ad61-453b-8356-4a02e021dd5d
+20:47:08 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00048 -> 200 (4.8ms) cid=e4fa11fa-4d8c-452e-b805-86b5102f216d
+20:47:08 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00051 -> 200 (2.3ms) cid=0343ed99-3bef-47df-ad36-08bde6507929
+20:47:08 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00058 -> 200 (2.6ms) cid=fa0a1f71-00b6-4151-9ff7-345e95b520d4
+20:47:08 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00052 -> 200 (3.7ms) cid=fe5b9e11-f9ec-4f1b-9879-ad84b5a85e53
+20:47:12 | INFO    | api                    | GET /health -> 200 (0.4ms) cid=d5cf1916-4947-4602-a94e-33d281718eb4
+20:47:12 | INFO    | api                    | GET /config -> 200 (1.0ms) cid=cc8e053f-f31d-48aa-8595-6d7767f71b16
+20:47:12 | INFO    | api                    | GET /health -> 200 (0.2ms) cid=496cc7ee-9d5f-48e4-9645-b26edf1d282a
+20:47:12 | INFO    | api                    | GET /config -> 200 (0.8ms) cid=fdc4ab2a-eb23-48ef-9a1b-303ebcdde00a
+20:47:18 | INFO    | api                    | GET /health -> 200 (0.3ms) cid=c4c00ee5-ee2d-48c1-937a-dac90ca75761
+20:47:18 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00056 -> 200 (7.0ms) cid=d70e4f42-9671-4ada-8d63-1576878f45eb
+20:47:18 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00055 -> 200 (8.5ms) cid=b3474a5f-9006-4ce6-8712-2955e8d00d06
+20:47:18 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00057 -> 200 (8.3ms) cid=8e01c816-d32d-437e-81d8-bb4a9290e03d
+20:47:18 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00050 -> 200 (8.4ms) cid=51f55d5b-6d24-4c05-bbe4-a842aa364b06
+20:47:18 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00053 -> 200 (8.5ms) cid=052e16fc-e3da-406e-a8d9-05e2dd6c9929
+20:47:18 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00049 -> 200 (6.2ms) cid=27b9656c-7a7d-4a8e-93b6-f9e682b932a0
+20:47:18 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00054 -> 200 (2.4ms) cid=e21c26e8-a5a1-49bf-af5e-9049eb1aa76d
+20:47:18 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00048 -> 200 (2.0ms) cid=fe87ea82-9669-4280-8c63-39a11c6785d1
+20:47:18 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00047 -> 200 (3.7ms) cid=ffc395b8-899c-4675-bab6-27178e6c1968
+20:47:18 | INFO    | api                    | GET /health -> 200 (0.5ms) cid=58591b50-62e4-4b07-9b84-a1c412ebaace
+20:47:18 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00051 -> 200 (5.6ms) cid=2f679462-ce44-462a-b9de-696218499a47
+20:47:18 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00058 -> 200 (6.1ms) cid=1e4cb614-ca8a-494c-8ee2-1a256d0ea664
+20:47:18 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00052 -> 200 (6.2ms) cid=cf394bdd-40dc-4074-bf0b-4eb033ae5fab
+20:47:18 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00056 -> 200 (3.3ms) cid=3da6ffa1-efc3-43a6-953a-55753626d7db
+20:47:18 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00055 -> 200 (2.3ms) cid=8b9eb244-a4ac-4cec-9732-58a4dfba8630
+20:47:18 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00057 -> 200 (1.9ms) cid=ef79ea71-feef-4bce-b9c5-d7d8d4a8e999
+20:47:18 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00050 -> 200 (2.6ms) cid=aa3a3db0-6fa2-404c-9976-31b551e6ce7d
+20:47:18 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00053 -> 200 (4.0ms) cid=94e2b32b-68ba-4fbe-9cb6-56a71c58eac2
+20:47:18 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00049 -> 200 (3.7ms) cid=8b584547-cc30-47ef-b0c7-468f18ff5537
+20:47:18 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00054 -> 200 (3.8ms) cid=794f81bc-dcc2-4128-a552-d0af5f70429a
+20:47:18 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00048 -> 200 (2.6ms) cid=3c7aa09f-39e0-4d0d-b05f-0288ec263567
+20:47:18 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00047 -> 200 (3.3ms) cid=c21eb11f-5543-42cc-aeff-d7903afde3df
+20:47:18 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00051 -> 200 (2.6ms) cid=726435d6-3986-4f98-be72-e86791ea8ca6
+20:47:18 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00058 -> 200 (3.4ms) cid=c7dea786-4f26-4e98-8690-f08285e62dd1
+20:47:18 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00052 -> 200 (3.8ms) cid=dbda6cfe-95ca-4a2e-a598-f9d60ea7a1a2
+20:47:18 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00056 -> 200 (4.6ms) cid=49cb57f4-7668-4fea-91c4-e35c703361ec
+20:47:18 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00055 -> 200 (4.3ms) cid=7737aa01-469e-4ab6-bb3e-a43492bc0bd4
+20:47:18 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00057 -> 200 (4.2ms) cid=56f19405-6836-4ea6-b5ae-f5bb8123e6ab
+20:47:18 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00050 -> 200 (4.5ms) cid=72639d8e-d36e-4601-b822-67ba68fc5244
+20:47:18 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00053 -> 200 (2.6ms) cid=fb6afabe-6675-4cae-9ccb-6f4503b722c5
+20:47:18 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00049 -> 200 (2.6ms) cid=51034168-a54f-4df9-abe1-1a6f368d230e
+20:47:18 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00054 -> 200 (2.3ms) cid=1d02507b-e5cd-4723-9f3e-fb96c083b63f
+20:47:18 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00048 -> 200 (2.2ms) cid=0b7976ea-e1d0-4cda-a4c9-81a6d593ebf5
+20:47:18 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00047 -> 200 (2.8ms) cid=939100fc-7a12-4cac-9095-9bc24ba1fbd5
+20:47:18 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00051 -> 200 (3.5ms) cid=5778545f-c541-4af7-8335-76d2569da18b
+20:47:18 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00052 -> 200 (3.2ms) cid=4577f00f-ece9-45a3-9e87-f9b46b2fb4bc
+20:47:18 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00058 -> 200 (4.3ms) cid=2185cb9f-f68e-4c9c-952f-6eb608c6ef02
+20:47:34 | INFO    | api                    | GET /health -> 200 (0.5ms) cid=a678d191-6d5e-4f1e-b1b3-bbbe8b9cc977
+20:47:34 | INFO    | api                    | GET /config -> 200 (2.3ms) cid=79e23be6-0edb-4bdc-a10d-3b44478c4e1f
+20:47:34 | INFO    | api                    | GET /health -> 200 (0.3ms) cid=4b658e9f-f31f-4af6-aa79-8d10ee5306db
+20:47:34 | INFO    | api                    | GET /config -> 200 (0.9ms) cid=c6f4f7e0-d6d9-4dc2-8466-ca0824fbc18d
+20:47:48 | INFO    | api                    | GET /health -> 200 (0.3ms) cid=68f4c891-090c-48c6-bb61-65bb9502e5ff
+20:47:48 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00055 -> 200 (5.4ms) cid=50fad0fe-158e-4802-b19d-b8f034cdc396
+20:47:48 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00050 -> 200 (7.4ms) cid=144a1c7a-36f4-4ff6-8f41-8d55a464a795
+20:47:48 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00057 -> 200 (8.2ms) cid=579c18c5-9bc6-4863-8c28-c2bec529f8cb
+20:47:48 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00053 -> 200 (8.1ms) cid=6924c39b-ac12-48eb-9bd7-59f4487f81ff
+20:47:48 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00056 -> 200 (9.7ms) cid=b5b0e889-bac9-4f25-9e39-c967a237f2f0
+20:47:48 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00049 -> 200 (6.2ms) cid=b209d10c-95f2-4f02-9504-62afce1599ed
+20:47:48 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00054 -> 200 (2.6ms) cid=90b720a0-983f-4ece-9dc1-c98d45e6c98b
+20:47:49 | INFO    | api                    | GET /health -> 200 (0.2ms) cid=5552bc07-e880-4da3-8f13-7ac1c912be01
+20:47:49 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00047 -> 200 (6.2ms) cid=1d3cd97f-1d92-44e9-ac09-187019ffdac2
+20:47:49 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00051 -> 200 (6.5ms) cid=4aa2da89-e677-4020-9397-6c3cfc70e647
+20:47:49 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00048 -> 200 (7.5ms) cid=3f8e1b0f-8014-4efe-b458-cb4f85894cca
+20:47:49 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00058 -> 200 (6.2ms) cid=a99e585e-d5ac-4b35-9372-5623204b83ca
+20:47:49 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00052 -> 200 (5.1ms) cid=494addc3-0a0a-46d3-8296-dbf1fc3e7bf2
+20:47:49 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00055 -> 200 (2.3ms) cid=786d5aca-fe93-4414-993d-1d9536072173
+20:47:49 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00053 -> 200 (4.8ms) cid=5b0a4e3d-d6c6-444d-9968-43f34de6a254
+20:47:49 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00050 -> 200 (5.9ms) cid=87b514f5-56cc-4ef4-ad29-546c6cf272e6
+20:47:49 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00057 -> 200 (6.2ms) cid=4f593daa-b4dc-47c1-9683-768108e45f44
+20:47:49 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00049 -> 200 (5.8ms) cid=6f5e3a57-0b23-4b59-96e3-be07818710bc
+20:47:49 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00056 -> 200 (6.2ms) cid=38aeb3ff-145f-4a61-af57-013d75e5ebe8
+20:47:49 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00054 -> 200 (4.8ms) cid=35e67347-d437-47c4-816d-f65e82558f78
+20:47:49 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00047 -> 200 (2.2ms) cid=7ef65a75-b2d3-4691-b519-20ad81d901fc
+20:47:49 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00058 -> 200 (4.9ms) cid=0f68d2d7-bab7-4917-b657-0c44bd97e88a
+20:47:49 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00051 -> 200 (7.2ms) cid=c7169254-fec9-47ba-88cf-8af11a0b4d08
+20:47:49 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00048 -> 200 (7.8ms) cid=ce7444c5-b381-4bf2-b7af-ebe0ee28eb0a
+20:47:49 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00055 -> 200 (6.9ms) cid=6661472c-7518-4a9e-b65b-9bab8311d43a
+20:47:49 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00052 -> 200 (7.9ms) cid=22e876db-6e13-48db-90ff-9eb908ea21fd
+20:47:49 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00053 -> 200 (6.4ms) cid=08a0d5e1-cd11-43bd-9064-2397c0d38987
+20:47:49 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00057 -> 200 (3.3ms) cid=4abd5831-2349-463b-b0e3-12d61d9c5abb
+20:47:49 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00050 -> 200 (2.5ms) cid=413c72b9-f967-4df9-90ed-7dc595511186
+20:47:49 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00049 -> 200 (2.0ms) cid=46ad9f1b-0e14-4b05-a905-da3de4c36dbe
+20:47:49 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00054 -> 200 (3.3ms) cid=aa8add08-b256-465c-bb04-93d124bd3382
+20:47:49 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00056 -> 200 (4.2ms) cid=2114284d-a977-4b46-962b-10fcc20d37d8
+20:47:49 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00047 -> 200 (3.6ms) cid=7299cb47-486d-48ba-b7bc-206b54e90ba2
+20:47:49 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00058 -> 200 (3.2ms) cid=8531b18c-40be-4e8c-a78f-7f9a8b6dcec7
+20:47:49 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00051 -> 200 (3.7ms) cid=824b8c9a-2588-4fda-9964-d94763321614
+20:47:49 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00048 -> 200 (4.3ms) cid=bf0dec1f-f117-443a-ad07-cb6693b0a1a5
+20:47:49 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00052 -> 200 (3.2ms) cid=5355e23b-34dc-4b0a-b3a7-1d2d5bf6c816
+20:47:52 | INFO    | api                    | GET /health -> 200 (0.3ms) cid=7e14db02-7ac8-46d5-b937-718aac179f52
+20:47:52 | INFO    | api                    | GET /config -> 200 (1.0ms) cid=687c9d7b-a5de-4231-bd6b-a9d75d42f2ca
+20:47:52 | INFO    | api                    | GET /health -> 200 (0.3ms) cid=20504c03-23da-4484-8864-da944f775f27
+20:47:52 | INFO    | api                    | GET /config -> 200 (1.4ms) cid=54f22513-55ec-4c18-917e-84207561bb4b
+20:47:53 | INFO    | api                    | GET /health -> 200 (0.8ms) cid=af8f1190-3d05-4e61-b762-ef2cb4b319b7
+20:47:53 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00050 -> 200 (6.1ms) cid=8633fd95-21ae-4aaa-a1b4-4aa9a286f880
+20:47:53 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00055 -> 200 (7.9ms) cid=a335f701-9f80-4f81-af8d-aec10c0743df
+20:47:53 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00057 -> 200 (8.4ms) cid=bbf3a6bd-6989-44eb-9ff0-6176956d1f8e
+20:47:53 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00056 -> 200 (9.4ms) cid=b0c95b62-4fc8-41ff-b96d-1f520c01a145
+20:47:53 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00053 -> 200 (7.9ms) cid=3f8ac5e1-0eaa-40a6-97de-bfe5e5d32b3e
+20:47:53 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00049 -> 200 (3.0ms) cid=7bca3752-8a6c-4745-bd84-e3b0318a1b45
+20:47:53 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00054 -> 200 (5.1ms) cid=daa8eaef-c4e9-4e02-a6e4-fdb9f483b52c
+20:47:53 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00051 -> 200 (6.2ms) cid=406fe84c-5d3f-4ebe-bf52-a1739ac4fd54
+20:47:53 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00047 -> 200 (6.9ms) cid=0b26a881-b901-459b-ade4-98126f4a8264
+20:47:53 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00048 -> 200 (7.6ms) cid=460e9f7a-e9c5-4e9d-b16a-e7c23be5dc38
+20:47:53 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00058 -> 200 (7.4ms) cid=3d394ac7-71e1-40d7-8c31-459a8d203490
+20:47:53 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00052 -> 200 (6.3ms) cid=887a585f-b2d3-417b-968a-07e1b16676e6
+20:47:53 | INFO    | api                    | GET /health -> 200 (0.2ms) cid=11c39eb7-e849-4a9a-bbb3-8dcc5cb5e674
+20:47:53 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00050 -> 200 (4.6ms) cid=3ccd77e2-4bd4-4e34-a13a-dd6c0b723ac9
+20:47:53 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00055 -> 200 (6.0ms) cid=04cffbee-a0ec-4b8c-89f7-df4bd78dcb5a
+20:47:53 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00057 -> 200 (6.1ms) cid=694dd12b-17d4-425a-b3c9-9983b9fcb4f1
+20:47:53 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00056 -> 200 (7.5ms) cid=b4bcfa7d-8b26-4308-bf26-6014c1336a21
+20:47:53 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00053 -> 200 (7.9ms) cid=73269d9a-ba22-49e5-82ad-8267770da1d9
+20:47:53 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00049 -> 200 (7.8ms) cid=89230351-879d-4c0a-b51f-47b1ae37442f
+20:47:53 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00054 -> 200 (2.8ms) cid=dd608aa4-77b4-4c8a-8ba5-959470b20884
+20:47:53 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00047 -> 200 (2.0ms) cid=3d3a8226-259d-4b9d-8260-b24710dc2122
+20:47:53 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00051 -> 200 (2.0ms) cid=a4f34004-7557-4c88-97f8-ad9470aa8d23
+20:47:53 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00048 -> 200 (3.7ms) cid=2523d354-07e8-4eb5-a82b-3940ff027dde
+20:47:53 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00058 -> 200 (4.3ms) cid=105c64c9-33a6-4911-b8df-5c9ea8741661
+20:47:53 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00052 -> 200 (4.5ms) cid=5ef6c650-37e6-4c96-9a70-4058912d3496
+20:47:53 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00050 -> 200 (4.2ms) cid=03690c3f-ab11-4d21-bc58-5dce9da3eb0b
+20:47:53 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00057 -> 200 (3.9ms) cid=b532e853-a23a-41c1-bde5-036825af8e78
+20:47:53 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00055 -> 200 (5.0ms) cid=5d29d759-8a81-41a9-9af1-f031841e3f17
+20:47:53 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00056 -> 200 (3.2ms) cid=92c8c655-a485-47b4-9a33-6976164f1661
+20:47:53 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00049 -> 200 (2.8ms) cid=0633f843-9e6b-4fb9-97bf-93645599b504
+20:47:53 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00053 -> 200 (4.2ms) cid=917f09c8-5b11-4beb-b3d0-37fb05d0c681
+20:47:53 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00054 -> 200 (3.3ms) cid=b65727b8-e003-4a7e-99a9-a0589a870c16
+20:47:53 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00047 -> 200 (3.3ms) cid=aaca5041-522f-41aa-82ef-93da4e0f1bb1
+20:47:53 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00051 -> 200 (3.8ms) cid=597c0e6a-dbb7-4b75-808a-8f7d1081315e
+20:47:53 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00048 -> 200 (3.3ms) cid=6e3a9b4a-130c-49ab-ab94-c03cb45e7fc5
+20:47:53 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00058 -> 200 (2.4ms) cid=1d539d4a-1dac-4e9f-a595-3d11c2a2c319
+20:47:53 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00052 -> 200 (3.3ms) cid=89cd5a6d-1fa0-462a-8b3e-8451306f5b0f
+20:48:58 | INFO    | api                    | GET /health -> 200 (0.2ms) cid=8136a902-3df2-4be8-bc21-dd51f3d15c37
+20:48:58 | INFO    | api                    | GET /config -> 200 (2.6ms) cid=59098823-abf5-4fd2-8c15-2532af42b991
+20:48:58 | INFO    | api                    | GET /health -> 200 (0.3ms) cid=4d70949d-c7a7-443e-8b36-ceb6ff448d79
+20:48:58 | INFO    | api                    | GET /config -> 200 (1.0ms) cid=d53b0161-88fd-4be2-b596-e65ff0c91e61
+20:49:01 | INFO    | api                    | GET /health -> 200 (0.4ms) cid=a7b54c51-5a1e-469f-a7bd-c012e6514127
+20:49:01 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00055 -> 200 (8.6ms) cid=253dead1-0223-4f52-ab90-df0c6fb16c29
+20:49:01 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00056 -> 200 (8.9ms) cid=f1044461-e10f-4a5c-a147-d2b0ebba4d1f
+20:49:01 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00053 -> 200 (8.9ms) cid=f7602cea-7419-47ea-adbb-1593a859550b
+20:49:01 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00057 -> 200 (10.1ms) cid=1b00f688-641c-47f1-92ce-c7543738ea91
+20:49:01 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00050 -> 200 (10.4ms) cid=f5a2318f-5563-4969-8dff-3f6c5e6619a8
+20:49:01 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00049 -> 200 (5.8ms) cid=799fab46-ba89-4e01-b86c-4c358bfa8374
+20:49:01 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00054 -> 200 (4.2ms) cid=babeabb7-125b-4bbd-a7e3-d6c03ec2728c
+20:49:01 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00048 -> 200 (4.9ms) cid=d924c5cd-56cf-4b80-b31e-d579929fa8d2
+20:49:01 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00047 -> 200 (5.0ms) cid=7def4f95-4faa-40a7-b198-686bdfb1be32
+20:49:01 | INFO    | api                    | GET /health -> 200 (0.3ms) cid=47dcc830-bb1d-48a1-beeb-a4342e4ae3a1
+20:49:01 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00058 -> 200 (6.7ms) cid=f3127e94-dd28-46e9-95aa-0076a3ca3665
+20:49:01 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00051 -> 200 (7.2ms) cid=d32d6f09-fb03-4776-8f76-d23e3ef7e661
+20:49:01 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00052 -> 200 (6.5ms) cid=c89af8f9-3ea6-4320-a9a3-9e5c304d1f02
+20:49:01 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00055 -> 200 (3.2ms) cid=8b8375f9-e81f-44c8-9320-f4267f277ad7
+20:49:01 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00056 -> 200 (3.5ms) cid=cfcf96e4-6e79-48f8-9bcb-211689d0e3ce
+20:49:01 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00057 -> 200 (3.2ms) cid=3e4d1308-851a-49cd-a41f-7c9a00ea9ddb
+20:49:01 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00049 -> 200 (3.3ms) cid=6bc4472e-f4e8-4548-9eff-05aa12b37570
+20:49:01 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00050 -> 200 (4.1ms) cid=5da1bd2c-6c89-4107-9a8a-1ffd63d9aecc
+20:49:01 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00053 -> 200 (4.5ms) cid=db447890-c853-4652-ae08-fd21a7552139
+20:49:02 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00048 -> 200 (2.9ms) cid=f6eea102-1a86-4c5c-8664-051b0d260a16
+20:49:02 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00054 -> 200 (4.3ms) cid=0568b5de-acfd-4dfe-be3c-7cc427e713fe
+20:49:02 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00047 -> 200 (3.4ms) cid=334acf01-5d87-4523-ba3c-dbf0de5de953
+20:49:02 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00052 -> 200 (3.3ms) cid=713aabc4-3eb9-46d4-af0a-ec74ed18f667
+20:49:02 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00058 -> 200 (4.2ms) cid=0b59086a-f0c1-46f7-b735-11225c9990e9
+20:49:02 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00051 -> 200 (5.0ms) cid=c96f25fe-6ce7-4534-a9eb-ebfa6c92e5b3
+20:49:02 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00055 -> 200 (3.7ms) cid=612a76c3-2528-4228-9e0c-0492a5ed8731
+20:49:02 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00057 -> 200 (4.1ms) cid=82ed4431-73b6-4047-a680-5cecbac26bdf
+20:49:02 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00056 -> 200 (4.8ms) cid=f59e9438-73bb-4e73-b701-e93eb038a05c
+20:49:02 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00050 -> 200 (3.3ms) cid=02b619b5-d3ec-4a91-bb6c-95c9fd5c327b
+20:49:02 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00053 -> 200 (3.5ms) cid=5d546f55-d865-4551-96ee-cae454c9bbc1
+20:49:02 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00049 -> 200 (3.4ms) cid=73fe8f60-8d38-44c2-8bcc-d185a724f50f
+20:49:02 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00048 -> 200 (3.5ms) cid=9013a002-66d1-4441-b6fe-93243250cadb
+20:49:02 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00054 -> 200 (3.7ms) cid=7bc91bbc-0543-4c68-8dbe-80370798d69c
+20:49:02 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00047 -> 200 (3.2ms) cid=d4070e71-5e1c-4e7b-ae4d-8c8c34bed2b7
+20:49:02 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00051 -> 200 (2.8ms) cid=3116b2ce-9eba-4a30-a33c-7e35886fccf2
+20:49:02 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00058 -> 200 (4.0ms) cid=c1f7cbab-07f9-431a-8705-3b1588f9f56a
+20:49:02 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00052 -> 200 (4.0ms) cid=f3c987e5-5a06-4cbc-b402-ae4ff3d317a6
+20:51:25 | INFO    | api                    | GET /health -> 200 (0.3ms) cid=b3d52686-0fe1-474d-ab38-ac884713f50f
+20:51:25 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00055 -> 200 (6.2ms) cid=7f5a83f8-d958-41f4-8c04-97dfafa9513f
+20:51:25 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00056 -> 200 (6.6ms) cid=f843e5b1-4636-4ae2-a716-2811ad191b37
+20:51:25 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00057 -> 200 (7.9ms) cid=6b3be09d-0770-4822-aa74-1b86af599413
+20:51:25 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00049 -> 200 (8.2ms) cid=37847d28-9f5c-444f-b344-65ea80b94201
+20:51:25 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00050 -> 200 (9.3ms) cid=790fab67-15b5-41a0-9462-b654293629e5
+20:51:25 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00053 -> 200 (9.9ms) cid=3b8e837a-1eb9-47d7-bdf6-6ac110e0db39
+20:51:25 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00048 -> 200 (2.4ms) cid=4a9fde97-d148-44b8-9aa0-5534557b602d
+20:51:25 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00054 -> 200 (3.5ms) cid=22b52f7a-89f0-41d1-b76f-0286a900c846
+20:51:25 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00047 -> 200 (4.1ms) cid=f69365b6-cd5d-4531-bc1d-e7a758773782
+20:51:25 | INFO    | api                    | GET /health -> 200 (0.2ms) cid=4588d4e0-f45a-4390-a54c-146c0212675d
+20:51:25 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00058 -> 200 (5.6ms) cid=614b947f-0cdb-4d8a-b513-9296082a5ffd
+20:51:25 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00051 -> 200 (6.2ms) cid=c4cf9678-7dd9-4ae9-889c-37d48795951b
+20:51:25 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00052 -> 200 (6.2ms) cid=9a93c8bb-54b8-49ec-a72a-bf2081c88535
+20:51:32 | INFO    | api                    | GET /health -> 200 (0.3ms) cid=70a9140d-0faa-462e-a6ce-38e039c7a60c
+20:51:32 | INFO    | api                    | GET /health -> 200 (0.4ms) cid=6e894e62-05a6-4fba-866d-9ec889435ab6
+20:51:32 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00057 -> 200 (5.4ms) cid=edfd29b4-d400-4df8-b3a5-a5faca11142d
+20:51:32 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00055 -> 200 (7.6ms) cid=655e5e31-8310-4271-be34-34deab430507
+20:51:32 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00053 -> 200 (6.6ms) cid=0bb955d1-30c5-42b9-8525-97bbdc75c68e
+20:51:32 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00056 -> 200 (8.3ms) cid=27c56706-9314-4748-b610-2f400eb7ea82
+20:51:32 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00050 -> 200 (8.4ms) cid=e1486947-5a9f-41a9-b295-098305a7b428
+20:51:32 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00049 -> 200 (5.4ms) cid=cb0eb3c4-d9c1-45c0-ab59-baba384b74fb
+20:51:32 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00054 -> 200 (3.1ms) cid=8a1a3799-86bd-481c-bf40-f2aafb41196b
+20:51:32 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00048 -> 200 (2.7ms) cid=6bed5e43-096e-4692-a421-f24920afe492
+20:51:32 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00058 -> 200 (4.6ms) cid=2f6a4a8c-9fce-4f67-a5a4-75b6fbdd6026
+20:51:32 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00052 -> 200 (4.2ms) cid=295c8613-2ad4-4c32-9145-894168b30515
+20:51:32 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00051 -> 200 (5.5ms) cid=2a7ea0d5-9bb4-4f10-a5f2-51bde26d3d3c
+20:51:32 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00047 -> 200 (6.3ms) cid=2f31e843-2016-4bc6-b976-03feb50e5d0c
+20:53:27 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00056 -> 200 (6.9ms) cid=2ecc346c-1f82-4a3f-b85b-245894b37092
+20:53:27 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00050 -> 200 (7.1ms) cid=d5c7c86a-3a26-4e6f-a287-96a08f9575af
+20:53:27 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00057 -> 200 (8.6ms) cid=2b70dd52-2075-40a3-95e3-d72ba27df6d5
+20:53:27 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00049 -> 200 (8.6ms) cid=6bcb7e4e-8659-4ec1-9c87-4a1d8ccb00bd
+20:53:27 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00055 -> 200 (9.8ms) cid=7821ff21-068b-43f1-8ef6-eca34d147733
+20:53:27 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00053 -> 200 (9.8ms) cid=58da8f94-3c44-402a-a7f5-8aea04f0e23c
+20:53:27 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00054 -> 200 (2.5ms) cid=b6c31fc3-7b34-420b-98bc-4f3097599caf
+20:53:27 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00048 -> 200 (5.3ms) cid=798e1b3e-94b9-4bfd-96a5-0e8ef864eaf2
+20:53:27 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00047 -> 200 (5.8ms) cid=8aadf338-4344-4695-85a2-cbf7b258ea71
+20:53:27 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00051 -> 200 (6.6ms) cid=9244bad4-dafd-4f2d-b933-1b0561bc3b04
+20:53:27 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00058 -> 200 (6.4ms) cid=d8cef372-1e68-4ca6-8c0f-578a79c8aa90
+20:53:27 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00052 -> 200 (6.4ms) cid=d91031e9-67ed-4ce2-b588-0c0e2a427e23
+20:53:27 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00056 -> 200 (2.5ms) cid=9aa4d1eb-fa4c-4e52-8dcb-06de3db7ced3
+20:53:27 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00050 -> 200 (3.7ms) cid=551c594b-d275-42db-9ee0-dc80df6f3104
+20:53:27 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00055 -> 200 (4.4ms) cid=a292fd28-4be7-487d-8747-363b657185f9
+20:53:27 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00049 -> 200 (5.4ms) cid=e09a8d01-3c14-4c4c-9cbe-84087c476ec2
+20:53:27 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00057 -> 200 (5.6ms) cid=ceef327f-3a18-4ed5-a456-e0fad5ce1c17
+20:53:27 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00053 -> 200 (2.3ms) cid=4e8c0194-2959-4ba2-9fe3-94a07a243000
+20:53:27 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00054 -> 200 (3.0ms) cid=51dbdbec-3201-4b27-a43e-226bcee1b1fd
+20:53:27 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00048 -> 200 (3.5ms) cid=841fd3a4-ca2d-4a15-8ac3-42b402b44171
+20:53:28 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00052 -> 200 (5.9ms) cid=96e1d74d-4b94-458a-a4e5-7cbb52246835
+20:53:28 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00047 -> 200 (7.6ms) cid=fc7c774a-f935-446a-b66e-eb1ab3ad0ca7
+20:53:28 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00058 -> 200 (8.1ms) cid=4d1d2c3a-174c-412c-bf9d-42340668e090
+20:53:28 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00051 -> 200 (5.8ms) cid=8257483a-ced9-421f-8c26-5d4e9523d045
+20:54:07 | INFO    | api                    | GET /health -> 200 (0.4ms) cid=8d3970df-b2c0-4d24-910e-0027d85ec2ef
+20:54:07 | INFO    | api                    | GET /config -> 200 (1.4ms) cid=d64f2a3b-28fd-4417-bf60-8f930485379d
+20:54:07 | INFO    | api                    | GET /health -> 200 (0.2ms) cid=12c014b5-ffb7-4d7c-ae47-ffe95adb3273
+20:54:07 | INFO    | api                    | GET /config -> 200 (0.7ms) cid=df8c91f2-1256-45ab-908b-e72b8c78d1d6
+20:54:08 | INFO    | api                    | GET /health -> 200 (0.3ms) cid=d352f8d7-c720-432e-8df2-10c085aae23b
+20:54:08 | INFO    | api                    | GET /health -> 200 (0.3ms) cid=587e6647-19f3-4785-a90b-85221af38fea
+20:54:11 | INFO    | api                    | GET /health -> 200 (0.4ms) cid=e9e7dac0-6c31-4bba-a4bc-9e4a3a4fd1de
+20:54:11 | INFO    | api                    | GET /config -> 200 (1.1ms) cid=3bba0e23-94c0-4c57-9f3b-6ed632d4dbda
+20:54:11 | INFO    | api                    | GET /health -> 200 (0.2ms) cid=bfe86932-025a-48ee-ab27-e34ac2c9668a
+20:54:11 | INFO    | api                    | GET /config -> 200 (0.9ms) cid=3f4c2a7d-2aa3-4b33-a5ab-159877b3375f
+20:54:12 | INFO    | api                    | GET /health -> 200 (0.2ms) cid=3952ba4e-2d81-4f61-8b90-68122a54fce1
+20:54:12 | INFO    | api                    | GET /health -> 200 (0.3ms) cid=91273120-0dcd-44de-9968-bc8e8f44c995
+20:54:17 | INFO    | api                    | GET /health -> 200 (0.4ms) cid=d243d40d-e8dd-41ae-bc2f-9cc33d375199
+20:54:17 | INFO    | api                    | GET /config -> 200 (1.9ms) cid=13ba8ee9-952f-4d56-8951-712ad9cb00de
+20:54:17 | INFO    | api                    | GET /health -> 200 (0.3ms) cid=53b1ccf0-a4b1-4e5d-8952-7ae428e59eaf
+20:54:17 | INFO    | api                    | GET /config -> 200 (1.0ms) cid=12a7b63f-6dd8-4727-a5ff-ee6ea8bef26e
+20:54:20 | INFO    | api                    | GET /health -> 200 (0.2ms) cid=bf0ea7d3-4847-4b0d-a141-37fa14c124e2
+20:54:20 | INFO    | api                    | GET /health -> 200 (0.3ms) cid=99728d11-311d-4c0f-8cfe-8ad05e31de07
+20:57:24 | INFO    | api                    | GET /health -> 200 (0.3ms) cid=0524d6a5-c7e0-4d38-ba0e-e5b188db360f
+20:57:24 | INFO    | api                    | GET /health -> 200 (0.3ms) cid=b38a2b75-4c13-4f1f-a15e-d80c4224b961
+20:58:34 | INFO    | connectors.local_connector | Fetched 27 emails from data\raw_emails\inbox
+20:58:34 | INFO    | api.connector          | connector.fetch source=local -> 27 emails cid=c4971b98-0ccf-4c70-9098-ff2c714537bb
+20:58:34 | INFO    | api                    | POST /connector/fetch -> 200 (10.0ms) cid=c4971b98-0ccf-4c70-9098-ff2c714537bb
+20:58:49 | INFO    | api                    | GET /health -> 200 (0.4ms) cid=e4af26c8-d548-46d8-ae02-bce22ad191f5
+20:58:49 | INFO    | api                    | GET /config -> 200 (1.0ms) cid=457e498d-0dae-49c3-921b-b0098ff31bd6
+20:58:49 | INFO    | api                    | GET /health -> 200 (0.2ms) cid=c31f8a7c-bf26-4a2c-ab97-88c4ea194482
+20:58:49 | INFO    | api                    | GET /config -> 200 (0.8ms) cid=e94c5ffc-046b-4ba8-bebf-fc6ab554cc1c
+20:59:35 | INFO    | api                    | GET /health -> 200 (0.3ms) cid=a842e430-4458-4957-b5af-17deab19b997
+20:59:35 | INFO    | api                    | GET /health -> 200 (0.3ms) cid=2faa8e97-5348-4b07-9ada-951aa9d3df9b
+21:01:40 | INFO    | api                    | GET /health -> 200 (0.4ms) cid=57d8fc53-b853-4d54-a0cb-b911b5a9f4fe
+21:01:40 | INFO    | api                    | GET /config -> 200 (1.8ms) cid=a8133ec1-d0db-482a-ab77-24b1eebbbf07
+21:01:40 | INFO    | api                    | GET /health -> 200 (0.2ms) cid=42666db1-99e9-4604-a77d-30150fea37bb
+21:01:40 | INFO    | api                    | GET /config -> 200 (0.9ms) cid=da8eb53b-b6b1-441e-82af-59563fb9e55c
+21:05:00 | INFO    | api                    | GET /health -> 200 (0.7ms) cid=e88f4496-0670-4618-aa8f-8034c01f44b9
+21:05:00 | INFO    | api                    | GET /health -> 200 (1.1ms) cid=57fe5f9b-46e2-4c8f-a4f7-81f067dd0514
+21:05:00 | INFO    | api                    | GET /config -> 200 (3.3ms) cid=8debef30-676b-4e75-99be-60242d86bd5a
+21:05:00 | INFO    | api                    | GET /config -> 200 (2.9ms) cid=98cdce14-c6ba-4d56-8569-98cce63ed75c
+21:05:44 | INFO    | api                    | GET /health -> 200 (0.6ms) cid=6a4f336a-8dc9-4997-a811-f13e131c3a3a
+21:05:44 | INFO    | api                    | GET /config -> 200 (3.3ms) cid=abbd3dbd-98f7-4882-a40b-5c7a0c021561
+21:05:44 | INFO    | api                    | GET /health -> 200 (0.2ms) cid=54375e0d-1c5b-4642-82f1-78e77fee32e1
+21:05:44 | INFO    | api                    | GET /config -> 200 (0.8ms) cid=d48c0062-3984-4fb5-8642-76565e71e3cd
+21:05:45 | INFO    | api                    | GET /health -> 200 (0.3ms) cid=65609b93-2327-46e8-a2fc-2f36dc459cab
+21:05:45 | INFO    | api                    | GET /health -> 200 (0.3ms) cid=cbaca25c-d03a-4d49-ba42-527a02b73c49
+21:05:47 | INFO    | api                    | GET /health -> 200 (0.4ms) cid=a90f6a37-361d-4b09-b599-7443a901b1d4
+21:05:47 | INFO    | api                    | GET /config -> 200 (1.7ms) cid=82617988-cfa6-49b4-b51a-5b2fcd1e57f3
+21:05:47 | INFO    | api                    | GET /health -> 200 (0.3ms) cid=25bae347-d067-4d8e-aba3-f13f43a4eb30
+21:05:47 | INFO    | api                    | GET /config -> 200 (0.9ms) cid=4881a760-5cff-45c8-b18b-925fed95543f
+21:05:51 | INFO    | api                    | GET /health -> 200 (0.3ms) cid=4c207b92-13a1-439f-83d3-c2496337e3b3
+21:05:51 | INFO    | api                    | GET /health -> 200 (0.2ms) cid=5d192d6b-9870-44d9-b7e9-0e29e67277fd
+21:06:06 | INFO    | connectors.local_connector | Fetched 27 emails from data\raw_emails\inbox
+21:06:06 | INFO    | api.connector          | connector.fetch source=local -> 27 emails cid=6be3477b-cb6d-46d1-84b0-a5c19250a8f0
+21:06:06 | INFO    | api                    | POST /connector/fetch -> 200 (10.1ms) cid=6be3477b-cb6d-46d1-84b0-a5c19250a8f0
+21:06:14 | INFO    | connectors.local_connector | Fetched 27 emails from data\raw_emails\inbox
+21:06:14 | WARNING | email_agent            | AMBIGUOUS (0.30) | Settlement query – account reconciliation | subject['settlement']
+21:06:14 | WARNING | email_agent            | AMBIGUOUS (0.30) | Re: Confirmation needed | subject['confirm']
+21:06:14 | WARNING | email_agent            | AMBIGUOUS (0.30) | Pending transaction follow-up | subject['transaction']
+21:06:14 | WARNING | email_agent            | DUPLICATE trade_id FXOPT-2026-00053 — skipping (FX Trade Settlement[FXOPT-2026-00053] – USD/CAD – 26_05_26 - UTIY6WKTAKPUXQPHR62GDSW0053)
+21:06:14 | WARNING | email_agent            | DUPLICATE trade_id FXOPT-2026-00056 — skipping (FX Trade Settlement FXOPT-2026-00056 – 26/05/26 – UTIPTK93TYT7D5J60FKHMY40056)
+21:06:14 | INFO    | email_agent            | ========================================================
+21:06:14 | INFO    | email_agent            | [Phase 1 Run Complete]
+21:06:14 | INFO    | email_agent            |   Emails read:          27
+21:06:14 | INFO    | email_agent            |   RELEVANT (stored):    0
+21:06:14 | INFO    | email_agent            |   AMBIGUOUS (skipped):  3
+21:06:14 | INFO    | email_agent            |   IRRELEVANT (skipped): 10
+21:06:14 | INFO    | email_agent            |   DUPLICATE (skipped):  2
+21:06:14 | INFO    | email_agent            |   Already processed:    12
+21:06:14 | INFO    | email_agent            |   --- Ambiguous emails for manual review ---
+21:06:14 | INFO    | email_agent            |     • Settlement query – account reconciliation
+21:06:14 | INFO    | email_agent            |     • Re: Confirmation needed
+21:06:14 | INFO    | email_agent            |     • Pending transaction follow-up
+21:06:14 | INFO    | email_agent            | ========================================================
+21:06:14 | INFO    | api.agent              | agent.run source=local -> relevant=0 ambiguous=3 irrelevant=10 duplicate=2 cid=7f26a855-f3c3-4d28-84c9-596fccc4f641
+21:06:14 | INFO    | api                    | POST /agent/run -> 200 (16.3ms) cid=7f26a855-f3c3-4d28-84c9-596fccc4f641
+21:06:17 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00057 -> 200 (8.5ms) cid=cc1e8353-ce22-41a4-9918-f247df191b14
+21:06:17 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00049 -> 200 (6.2ms) cid=ad20549e-f0ab-459b-8c36-9ce8cb098820
+21:06:17 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00055 -> 200 (11.3ms) cid=29da206e-d584-4b08-be8a-802965ea8558
+21:06:17 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00056 -> 200 (11.3ms) cid=6a8270c4-4458-4fb4-b4fb-b99d51c3473b
+21:06:17 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00053 -> 200 (8.2ms) cid=954448b5-1524-4354-9e3e-b28c599829c8
+21:06:17 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00050 -> 200 (12.0ms) cid=be631b65-1598-47cc-ade2-50e829c4f7b9
+21:06:17 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00054 -> 200 (2.3ms) cid=5087bc99-886d-4847-baf0-ab2eea98ac81
+21:06:17 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00048 -> 200 (4.3ms) cid=81160f28-7ed8-4ac0-91fe-371397b2d45e
+21:06:17 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00052 -> 200 (4.9ms) cid=ce586044-d00b-457d-81a6-62b1163448b7
+21:06:17 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00051 -> 200 (5.6ms) cid=ce36aa81-d852-4f9d-a761-db3ee56a27cd
+21:06:17 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00047 -> 200 (6.5ms) cid=6727f859-1cea-4c11-800f-20051ef805bc
+21:06:17 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00058 -> 200 (7.4ms) cid=79e3b3e2-89a7-4495-b180-20e71ab81457
+21:08:10 | INFO    | api                    | GET /health -> 200 (0.4ms) cid=25d4335d-38d8-49ae-8b77-a81121f309fe
+21:08:10 | INFO    | api                    | GET /config -> 200 (1.4ms) cid=a0f321d2-e9c1-4225-9fa1-61db1ddb512b
+21:08:10 | INFO    | api                    | GET /health -> 200 (0.2ms) cid=a9fd2d6f-b3ab-4071-adfa-0478321c51e7
+21:08:10 | INFO    | api                    | GET /config -> 200 (1.0ms) cid=edf43e5e-1167-47c5-9a49-97768e10404e
+21:12:40 | INFO    | api                    | GET /health -> 200 (0.3ms) cid=99e1114d-4c71-4b5c-83c5-df2760c692ca
+21:12:40 | INFO    | api                    | GET /health -> 200 (0.2ms) cid=1f7ca335-3efe-4012-b465-132e0de656f8
+21:12:42 | INFO    | api                    | GET /health -> 200 (0.3ms) cid=0f609485-ef95-4287-b138-c44fbd861a2d
+21:12:42 | INFO    | api                    | GET /health -> 200 (0.2ms) cid=95b0cddb-a2db-465a-92b8-77adb435fe4f
+21:15:28 | INFO    | api                    | GET /health -> 200 (0.3ms) cid=24de0664-2023-47cf-b75a-4d210d3bcab1
+21:15:28 | INFO    | api                    | GET /health -> 200 (0.3ms) cid=8c02e885-135b-472b-9d0f-06771a3c2c0d
+21:15:28 | INFO    | api                    | GET /health -> 200 (0.4ms) cid=555d9fb1-b22e-482d-94fd-5d07832f341d
+21:15:28 | INFO    | api                    | GET /config -> 200 (1.6ms) cid=c13b3c5c-d223-44dc-b2ee-80d429e61bf3
+21:15:28 | INFO    | api                    | GET /health -> 200 (0.2ms) cid=ce297f64-c286-454a-a015-a264a9642038
+21:15:28 | INFO    | api                    | GET /config -> 200 (0.8ms) cid=93076f7e-89e4-4c06-8f5b-a50647159501
+21:17:03 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00055 -> 200 (5.6ms) cid=f34eeb8b-f356-443b-9f38-82221dbd4e43
+21:17:03 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00056 -> 200 (6.9ms) cid=5e680c78-fbd8-4026-b9bd-771eb58e7027
+21:17:03 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00050 -> 200 (6.9ms) cid=60d87731-cb75-4fbc-9f4e-c6f1ccf84009
+21:17:03 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00057 -> 200 (8.3ms) cid=48afd46d-7a19-4c9c-8f81-5148fcbf6510
+21:17:03 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00053 -> 200 (8.5ms) cid=d8feea7a-826d-43cd-b211-1cc2221d0ba5
+21:17:03 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00049 -> 200 (4.3ms) cid=67cec833-b1e0-41ec-a71b-2f7b1d30c454
+21:17:03 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00051 -> 200 (5.2ms) cid=99d418db-eb5b-4d71-a63d-4cd14d57ebeb
+21:17:03 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00054 -> 200 (6.8ms) cid=9b4e55ba-7de2-4822-bcaf-562af2b5fd5d
+21:17:03 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00048 -> 200 (7.0ms) cid=cd834365-94f1-4e59-9d62-b9b325ce57ca
+21:17:03 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00047 -> 200 (7.7ms) cid=d66fbc06-1b46-427a-86ce-6edb483aab7f
+21:17:03 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00058 -> 200 (2.7ms) cid=4a9193bb-1c83-4aa5-ba93-a8a1af42f31b
+21:17:03 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00052 -> 200 (2.1ms) cid=4a4e825f-ab20-411d-904a-be2f10b5a9df
+21:18:00 | INFO    | api                    | GET /health -> 200 (0.4ms) cid=a2ff71b1-4cc6-4bb3-b5df-bc054c2a5f80
+21:18:00 | INFO    | api                    | GET /config -> 200 (1.3ms) cid=ad969d2b-1889-4971-bd5f-11aa1405c596
+21:18:00 | INFO    | api                    | GET /health -> 200 (0.2ms) cid=5a78bc39-9ec9-4a00-8cbb-d97e1cbd79d5
+21:18:00 | INFO    | api                    | GET /config -> 200 (1.0ms) cid=9d3559c3-9905-41cf-b9cd-acfa0570fe97
+21:18:09 | INFO    | api                    | GET /health -> 200 (0.2ms) cid=bd89bf50-3500-4a55-81f9-96f3fa153389
+21:18:09 | INFO    | api                    | GET /health -> 200 (0.2ms) cid=7dbe1371-cdb1-424a-9f1d-9ce3019fe5b8
+21:26:03 | INFO    | api                    | GET /health -> 200 (0.5ms) cid=0e988e0d-5a4b-43f4-bd51-5a6973403f1b
+21:26:03 | INFO    | api                    | GET /config -> 200 (2.2ms) cid=31e86b6d-97b6-4c17-ade3-6e569b6112d1
+21:26:03 | INFO    | api                    | GET /health -> 200 (0.3ms) cid=7d73558e-072f-48a6-9787-3bfc768d3fa4
+21:26:03 | INFO    | api                    | GET /config -> 200 (0.7ms) cid=c92c0a12-054a-4b49-8a33-9dbb31038625
+21:26:04 | INFO    | api                    | GET /health -> 200 (0.2ms) cid=b336649f-e895-4f41-8a73-e30841a4f1bf
+21:26:04 | INFO    | api                    | GET /health -> 200 (0.2ms) cid=2afb70ab-c663-403e-88b3-5195fcc974e4
+21:26:06 | INFO    | connectors.local_connector | Fetched 27 emails from data\raw_emails\inbox
+21:26:06 | INFO    | api.connector          | connector.fetch source=local -> 27 emails cid=8ac8b937-8109-4d1e-9321-7a05f3e505b5
+21:26:06 | INFO    | api                    | POST /connector/fetch -> 200 (36.2ms) cid=8ac8b937-8109-4d1e-9321-7a05f3e505b5
+21:26:17 | INFO    | connectors.local_connector | Fetched 27 emails from data\raw_emails\inbox
+21:26:17 | INFO    | api                    | POST /connector/preview -> 200 (8.8ms) cid=0b99fe92-0904-43e3-ba61-a82cc80ef280
+21:26:22 | INFO    | connectors.local_connector | Fetched 27 emails from data\raw_emails\inbox
+21:26:22 | INFO    | api                    | POST /connector/preview -> 200 (7.4ms) cid=59039ce4-20a1-4d01-9265-b56d9f957188
+21:30:43 | INFO    | api                    | GET /health -> 200 (0.5ms) cid=1f574b65-8b7b-4eb8-b5b2-e00a93574404
+21:30:43 | INFO    | api                    | GET /config -> 200 (2.0ms) cid=7c463cc9-692b-44f8-845c-3463c0bb361b
+21:30:43 | INFO    | api                    | GET /health -> 200 (0.3ms) cid=66ebc162-c121-4015-8c17-ca85ba4d6c1c
+21:30:43 | INFO    | api                    | GET /config -> 200 (0.7ms) cid=5325666a-6b11-4434-8064-311c1022d654
+21:31:23 | INFO    | api                    | GET /health -> 200 (0.3ms) cid=63cdbe48-dbb0-4cf8-ab63-8f39cae87fb2
+21:31:23 | INFO    | api                    | GET /health -> 200 (0.2ms) cid=d9886583-7568-4f2b-b659-8cf9b4231202
+21:31:26 | INFO    | connectors.local_connector | Fetched 27 emails from data\raw_emails\inbox
+21:31:26 | WARNING | email_agent            | AMBIGUOUS (0.30) | Settlement query – account reconciliation | subject['settlement']
+21:31:26 | WARNING | email_agent            | AMBIGUOUS (0.30) | Re: Confirmation needed | subject['confirm']
+21:31:26 | WARNING | email_agent            | AMBIGUOUS (0.30) | Pending transaction follow-up | subject['transaction']
+21:31:26 | WARNING | email_agent            | DUPLICATE trade_id FXOPT-2026-00053 — skipping (FX Trade Settlement[FXOPT-2026-00053] – USD/CAD – 26_05_26 - UTIY6WKTAKPUXQPHR62GDSW0053)
+21:31:26 | WARNING | email_agent            | DUPLICATE trade_id FXOPT-2026-00056 — skipping (FX Trade Settlement FXOPT-2026-00056 – 26/05/26 – UTIPTK93TYT7D5J60FKHMY40056)
+21:31:26 | INFO    | email_agent            | ========================================================
+21:31:26 | INFO    | email_agent            | [Phase 1 Run Complete]
+21:31:26 | INFO    | email_agent            |   Emails read:          27
+21:31:26 | INFO    | email_agent            |   RELEVANT (stored):    0
+21:31:26 | INFO    | email_agent            |   AMBIGUOUS (skipped):  3
+21:31:26 | INFO    | email_agent            |   IRRELEVANT (skipped): 10
+21:31:26 | INFO    | email_agent            |   DUPLICATE (skipped):  2
+21:31:26 | INFO    | email_agent            |   Already processed:    12
+21:31:26 | INFO    | email_agent            |   --- Ambiguous emails for manual review ---
+21:31:26 | INFO    | email_agent            |     • Settlement query – account reconciliation
+21:31:26 | INFO    | email_agent            |     • Re: Confirmation needed
+21:31:26 | INFO    | email_agent            |     • Pending transaction follow-up
+21:31:26 | INFO    | email_agent            | ========================================================
+21:31:26 | INFO    | api.agent              | agent.run source=local -> relevant=0 ambiguous=3 irrelevant=10 duplicate=2 cid=610d28a1-74e5-4e91-a2d4-dc57d85892e0
+21:31:26 | INFO    | api                    | POST /agent/run -> 200 (16.2ms) cid=610d28a1-74e5-4e91-a2d4-dc57d85892e0
+21:31:29 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00056 -> 200 (7.5ms) cid=5297153f-770a-4ac2-b9cd-2d580887ef7b
+21:31:29 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00055 -> 200 (8.3ms) cid=cb360a22-ea89-4ca3-a7a1-da7da1037d48
+21:31:29 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00050 -> 200 (8.9ms) cid=7c50338c-9fbe-4906-9ba8-3cb7046ad630
+21:31:29 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00053 -> 200 (9.3ms) cid=2a9d1f00-ab41-4eb4-972e-96b17fe2384b
+21:31:29 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00057 -> 200 (10.1ms) cid=49fd174d-6c9e-4475-afb5-bbdd2919e393
+21:31:29 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00049 -> 200 (11.9ms) cid=4e14ae94-1644-4475-89e6-0c875fd12e50
+21:31:29 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00054 -> 200 (6.6ms) cid=cfb4f217-0fcd-46ca-baba-b67db953fcea
+21:31:29 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00048 -> 200 (6.4ms) cid=e2356ea3-0e13-4cc1-84c8-29d7a2a4f04b
+21:31:29 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00058 -> 200 (5.7ms) cid=e57190eb-044b-422d-b15b-b225c7a4b4ec
+21:31:29 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00051 -> 200 (7.1ms) cid=97d0c300-8c50-4e44-9614-6d0e1be1666f
+21:31:29 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00052 -> 200 (8.4ms) cid=dbbfb026-458b-43e7-bc42-474c91331ff0
+21:31:29 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00047 -> 200 (11.0ms) cid=c705b243-617c-4bb0-85dc-505e4377c328
+21:31:34 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00055 -> 200 (2.3ms) cid=8fb10877-84e2-450a-ba0c-b179dd536d07
+21:37:20 | INFO    | api                    | GET /health -> 200 (0.5ms) cid=b5c51183-85b1-41c8-b0a9-bd26264aff45
+21:37:20 | INFO    | api                    | GET /config -> 200 (2.1ms) cid=bb9d66ce-a0f9-44b6-b9e3-9055e3f471fa
+21:37:20 | INFO    | api                    | GET /health -> 200 (0.2ms) cid=b5f0ba08-003f-4410-8a46-3d4c113a3b8c
+21:37:20 | INFO    | api                    | GET /config -> 200 (0.9ms) cid=97bc8687-d291-49b7-a2dd-23b9b78bf0e5
+21:38:01 | INFO    | api                    | GET /health -> 200 (0.3ms) cid=4f359f2d-3549-415b-b2af-4a4134c48012
+21:38:01 | INFO    | api                    | GET /health -> 200 (0.3ms) cid=94568330-349b-4ad5-ba9f-6a20c987d5be
+21:38:03 | INFO    | api                    | GET /health -> 200 (0.4ms) cid=af0ccd55-a496-46d2-86c6-250d75414272
+21:38:03 | INFO    | api                    | GET /config -> 200 (1.7ms) cid=f218b03c-ef20-415f-aa8e-fd5d3510079f
+21:38:03 | INFO    | api                    | GET /health -> 200 (0.3ms) cid=ae3a8b5e-62fd-44b4-93af-6d264f627f5c
+21:38:03 | INFO    | api                    | GET /config -> 200 (0.9ms) cid=f7b68a74-a687-4a5b-89c5-89e037c265be
+21:45:11 | INFO    | api                    | GET /health -> 200 (0.4ms) cid=2bc88990-a3d1-4890-b013-d2d749d4a1f0
+21:45:11 | INFO    | api                    | GET /health -> 200 (0.3ms) cid=649a8b2e-ac9c-4d91-a15a-f51a8ea4eaa7
+21:45:13 | INFO    | api                    | GET /health -> 200 (0.5ms) cid=e3740fce-8eba-4e30-a576-b8b77094e59c
+21:45:13 | INFO    | api                    | GET /config -> 200 (1.6ms) cid=eb7b5365-d82f-4e2b-98fc-7fdef5762d49
+21:45:13 | INFO    | api                    | GET /health -> 200 (0.3ms) cid=665fbbd5-f0d8-4524-a3bb-cc28051321c5
+21:45:13 | INFO    | api                    | GET /config -> 200 (0.9ms) cid=cea4de1b-becb-4911-bd75-c5584e7881b1
+21:48:56 | INFO    | api                    | GET /health -> 200 (0.3ms) cid=0a6cf8ba-2c05-47c1-9925-f6a118b9cc5d
+21:48:56 | INFO    | api                    | GET /health -> 200 (0.3ms) cid=9316dead-269b-4a2a-88f5-55c8f9232abd
+21:49:12 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00055 -> 200 (2.6ms) cid=7fa182e7-e3be-4b24-8eba-160d5275d00d
+22:58:43 | INFO    | api                    | GET /health -> 200 (0.6ms) cid=5b117974-b42e-4386-a1ea-ee076d6a8fe6
+22:58:43 | INFO    | api                    | GET /config -> 200 (3.3ms) cid=d890d999-0e48-4875-8df9-a0bcb94fbb99
+22:58:43 | INFO    | api                    | GET /health -> 200 (0.2ms) cid=54480e94-9440-4d7a-a3d1-1f6ea829bce9
+22:58:43 | INFO    | api                    | GET /config -> 200 (0.9ms) cid=85548252-a261-4136-bc12-dc5faaf855a4
+22:58:46 | INFO    | api                    | GET /health -> 200 (0.3ms) cid=b5989c82-4b17-40f1-9abb-4c79abba83e8
+22:58:46 | INFO    | api                    | GET /health -> 200 (0.3ms) cid=c4239f38-7cdb-4e57-8315-75ab8fe20cd3
+22:58:49 | INFO    | connectors.local_connector | Fetched 32 emails from data\raw_emails\inbox
+22:58:49 | INFO    | api.connector          | connector.fetch source=local -> 32 emails cid=83da4601-caed-49a0-88e1-c21971ba943c
+22:58:49 | INFO    | api                    | POST /connector/fetch -> 200 (38.8ms) cid=83da4601-caed-49a0-88e1-c21971ba943c
+22:59:22 | INFO    | connectors.local_connector | Fetched 32 emails from data\raw_emails\inbox
+22:59:22 | WARNING | email_agent            | AMBIGUOUS (0.30) | Settlement query – account reconciliation | subject['settlement']
+22:59:22 | WARNING | email_agent            | AMBIGUOUS (0.30) | Re: Confirmation needed | subject['confirm']
+22:59:22 | WARNING | email_agent            | AMBIGUOUS (0.30) | Pending transaction follow-up | subject['transaction']
+22:59:22 | INFO    | email_agent            | RELEVANT (0.80) | Fw: FX Trade Settlements_[FXOPT]_SSI_TD: 26/05/26 | trade_id=UNKNOWN_414bcaa903 (0 trade rows)
+22:59:22 | INFO    | email_agent            | RELEVANT (0.80) | FX Trade Settlements_[FXOPT]_SSI_TD: 26/05/26 | trade_id=UNKNOWN_7112a16f4b (0 trade rows)
+22:59:23 | INFO    | email_agent            | RELEVANT (0.80) | FX Trade Settlements_FXOPT_270526 | trade_id=UNKNOWN_e910f8289f (34 trade rows)
+22:59:23 | INFO    | email_agent            | RELEVANT (0.80) | FX Trade Settlements_FXOPT_280526 | trade_id=UNKNOWN_f686a78dbe (34 trade rows)
+22:59:23 | INFO    | email_agent            | RELEVANT (0.80) | FX Trade Settlements_FXOPT_290526 | trade_id=UNKNOWN_daf24cb5ad (32 trade rows)
+22:59:23 | WARNING | email_agent            | DUPLICATE trade_id FXOPT-2026-00053 — skipping (FX Trade Settlement[FXOPT-2026-00053] – USD/CAD – 26_05_26 - UTIY6WKTAKPUXQPHR62GDSW0053)
+22:59:23 | WARNING | email_agent            | DUPLICATE trade_id FXOPT-2026-00056 — skipping (FX Trade Settlement FXOPT-2026-00056 – 26/05/26 – UTIPTK93TYT7D5J60FKHMY40056)
+22:59:23 | INFO    | email_agent            | ========================================================
+22:59:23 | INFO    | email_agent            | [Phase 1 Run Complete]
+22:59:23 | INFO    | email_agent            |   Emails read:          32
+22:59:23 | INFO    | email_agent            |   RELEVANT (stored):    5
+22:59:23 | INFO    | email_agent            |   AMBIGUOUS (skipped):  3
+22:59:23 | INFO    | email_agent            |   IRRELEVANT (skipped): 10
+22:59:23 | INFO    | email_agent            |   DUPLICATE (skipped):  2
+22:59:23 | INFO    | email_agent            |   Already processed:    12
+22:59:23 | INFO    | email_agent            |   Trade rows extracted: 100
+22:59:23 | INFO    | email_agent            |   --- Ambiguous emails for manual review ---
+22:59:23 | INFO    | email_agent            |     • Settlement query – account reconciliation
+22:59:23 | INFO    | email_agent            |     • Re: Confirmation needed
+22:59:23 | INFO    | email_agent            |     • Pending transaction follow-up
+22:59:23 | INFO    | email_agent            | ========================================================
+22:59:23 | INFO    | api.agent              | agent.run source=local -> relevant=5 ambiguous=3 irrelevant=10 duplicate=2 cid=5f38cf0d-2b1a-4c0a-a587-622d4b523717
+22:59:23 | INFO    | api                    | POST /agent/run -> 200 (329.5ms) cid=5f38cf0d-2b1a-4c0a-a587-622d4b523717
+22:59:25 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00055 -> 200 (7.3ms) cid=fc0c1e53-23c4-4664-9abd-4057df160daa
+22:59:25 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00049 -> 200 (9.5ms) cid=a7703d80-fd12-4fa4-b8c4-9b9734c5428a
+22:59:25 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00050 -> 200 (15.7ms) cid=4192dd55-a702-489e-b84d-40f1bfa88543
+22:59:25 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00057 -> 200 (16.5ms) cid=076f4010-e36f-473e-9187-8288a9912a57
+22:59:25 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00056 -> 200 (18.0ms) cid=340860a6-6aa3-46e7-857c-228aabd47333
+22:59:25 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00053 -> 200 (17.6ms) cid=aa587cf7-401a-467a-9b9c-da04921ee4fc
+22:59:26 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00054 -> 200 (14.0ms) cid=a16a5272-533f-42cd-8612-58cbfbceec3e
+22:59:26 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00048 -> 200 (10.7ms) cid=9d687127-c230-4de9-a936-0e29e586d6dd
+22:59:26 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00047 -> 200 (11.6ms) cid=9a1f7199-cbd0-44cd-87f1-4451e3eb6850
+22:59:26 | INFO    | api                    | GET /storage/cases/UNKNOWN_e910f8289f -> 200 (13.0ms) cid=e6a5f101-6c8e-461c-82f4-fc784edc4988
+22:59:26 | INFO    | api                    | GET /storage/cases/UNKNOWN_414bcaa903 -> 200 (16.8ms) cid=e90f6717-0ca1-4ded-9e63-b7d859d2b4f6
+22:59:26 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00051 -> 200 (18.7ms) cid=4301de83-6d81-4302-bee6-98a7d3f5513a
+22:59:26 | INFO    | api                    | GET /storage/cases/UNKNOWN_7112a16f4b -> 200 (18.3ms) cid=d1b656e5-e156-4c10-b524-d8f4f8d2de83
+22:59:26 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00058 -> 200 (14.0ms) cid=f088fedf-562b-4ee1-8dc6-232fb4d840ae
+22:59:26 | INFO    | api                    | GET /storage/cases/UNKNOWN_f686a78dbe -> 200 (13.4ms) cid=a7ee8298-eea7-4df7-9882-cb8f507a51e1
+22:59:26 | INFO    | api                    | GET /storage/cases/UNKNOWN_daf24cb5ad -> 200 (11.8ms) cid=82815185-2502-4344-8870-914718548756
+22:59:26 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00052 -> 200 (13.0ms) cid=e174c310-3668-4011-b8dd-8299fa453208
+22:59:56 | INFO    | api                    | GET /storage/cases/UNKNOWN_414bcaa903 -> 200 (2.6ms) cid=47ff835b-6753-4d01-bfd8-5092a55555f0
