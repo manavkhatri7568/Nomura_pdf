@@ -10,7 +10,7 @@ so callers get a single, predictable shape for positive and negative outcomes.
 """
 
 from datetime import datetime, timezone
-from typing import Any, Literal, Optional
+from typing import Any, List, Literal, Optional
 
 from pydantic import BaseModel, Field
 
@@ -62,3 +62,20 @@ class RunRequest(BaseModel):
 class PreviewRequest(BaseModel):
     source: Source = "local"
     message_id: str
+
+
+class ConfigUpdate(BaseModel):
+    """Partial update of the tunable classifier config. All fields optional;
+    only those supplied are changed (validated server-side in ConfigStore)."""
+    asset_keywords: Optional[List[str]] = None
+    subject_keywords: Optional[List[str]] = None
+    negative_keywords: Optional[List[str]] = None
+    trade_id_patterns: Optional[List[str]] = None
+    asset_weight: Optional[float] = None
+    subject_weight: Optional[float] = None
+    trade_id_weight: Optional[float] = None
+    relevant_threshold: Optional[float] = None
+    ambiguous_threshold: Optional[float] = None
+    default_asset_class: Optional[str] = None
+    extract_fields: Optional[List[str]] = None
+    sync_frequency_hours: Optional[int] = None

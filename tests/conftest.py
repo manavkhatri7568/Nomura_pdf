@@ -32,6 +32,7 @@ os.environ["EMAIL_DB_PATH"] = str(TMP / "index.db")
 os.environ["EMAIL_LOG_DIR"] = str(TMP / "logs")
 os.environ["EMAIL_AUDIT_LOG_DIR"] = str(TMP / "logs")
 os.environ["EMAIL_INBOX_PATH"] = str(PROJ / "data" / "raw_emails" / "inbox")
+os.environ["EMAIL_CONFIG_PATH"] = str(TMP / "runtime_config.json")
 
 import httpx  # noqa: E402
 import uvicorn  # noqa: E402
@@ -123,8 +124,15 @@ def clean_state():
 @pytest.fixture()
 def api_client(mock_server):
     from api.app import app
+    from api.deps import get_config_store
+
+    # Reset runtime config to defaults so a /config edit in one test can't leak
+    # into another (the config store is a process-wide singleton).
+    get_config_store().reset()
+
     app.state.graph_client = httpx.Client(base_url=mock_server, timeout=30)
     with TestClient(app) as client:
         yield client
     app.state.graph_client.close()
     app.state.graph_client = None
+    get_config_store().reset()

@@ -18,6 +18,8 @@ class EmailAgentConfig:
     db_path: str = field(default_factory=lambda: _env("EMAIL_DB_PATH", "data/email_index.db"))
     log_dir: str = field(default_factory=lambda: _env("EMAIL_LOG_DIR", "logs"))
     audit_log_dir: str = field(default_factory=lambda: _env("EMAIL_AUDIT_LOG_DIR", _env("EMAIL_LOG_DIR", "logs")))
+    # Runtime config overrides (edited via the /config API) are persisted here.
+    config_path: str = field(default_factory=lambda: _env("EMAIL_CONFIG_PATH", "data/runtime_config.json"))
 
     # -- Strong asset-level signals (any hit => +asset_weight) --
     # These phrases are specific to FX trade settlement notifications and do
@@ -74,6 +76,25 @@ class EmailAgentConfig:
 
     # -- Default asset class label for relevant emails --
     default_asset_class: str = "FX Settlement"
+
+    # -- Attachment extraction (tabular blotters in .xlsx/.csv attachments) --
+    # Real FX-settlement emails carry the trades as a table in an attachment.
+    # When enabled, RELEVANT emails have their .xlsx/.csv attachments parsed into
+    # normalized trade rows written to the case folder + summarized in the manifest.
+    attachment_extract_enabled: bool = True
+    attachment_extract_exts: List[str] = field(default_factory=lambda: [".xlsx", ".xlsm", ".csv"])
+    attachment_max_rows: int = 10_000
+
+    # -- Fields the (future) extraction agent should pull from each case. --
+    # Not used by the rule classifier; persisted so the UI is the single source
+    # of truth and Phase 2 can consume it.
+    extract_fields: List[str] = field(default_factory=lambda: [
+        "trade id", "currency pair", "asset class", "amount", "counterparty", "direction",
+    ])
+
+    # -- How often the (future) scheduler re-runs the pipeline, in hours. --
+    # Metadata today (no scheduler is wired); surfaced + editable in the UI.
+    sync_frequency_hours: int = 24
 
     # -- Graph / mock-Graph connector (env-overridable) --
     # Points at the mock Graph service in dev; swap base_url + real credentials

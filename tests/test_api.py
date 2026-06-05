@@ -119,6 +119,30 @@ def test_agent_rerun_is_idempotent(api_client, clean_state):
     assert second["already_processed"] == 12
 
 
+def test_run_recreates_deleted_case_folders(api_client, clean_state):
+    """Demo reset: delete data/processed (keep the DB) -> a run rebuilds it."""
+    import os
+    import pathlib
+    import shutil
+
+    proc = pathlib.Path(os.environ["EMAIL_PROCESSED_PATH"])
+
+    first = api_client.post("/agent/run", json={"source": "graph"}).json()["data"]["stats"]
+    assert first["relevant"] == 12
+    assert len([p for p in proc.iterdir() if p.is_dir()]) == 12
+
+    # delete the processed folder but keep the SQLite index
+    shutil.rmtree(proc)
+    assert not proc.exists()
+
+    second = api_client.post("/agent/run", json={"source": "graph"}).json()["data"]["stats"]
+    assert second["relevant"] == 12            # restored, not skipped as "already processed"
+    assert second["already_processed"] == 0
+    recreated = [p for p in proc.iterdir() if p.is_dir()]
+    assert len(recreated) == 12
+    assert all((d / "manifest.json").exists() for d in recreated)
+
+
 # ---- audit trail ------------------------------------------------------------
 
 def test_audit_log_written(api_client, clean_state):

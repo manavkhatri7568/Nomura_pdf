@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Email Agent — UI/UX Prototype Showcase</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: #0f1623;
+  color: #e2e8f0;
+  min-height: 100vh;
+}
+
+/* ─── Hero ─── */
+.hero {
+  background: linear-gradient(135deg, #0f1623 0%, #1a2540 50%, #0f1623 100%);
+  border-bottom: 1px solid #1e2d45;
+  padding: 60px 48px 48px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -80px; left: 50%;
+  transform: translateX(-50%);
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(79,70,229,0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero-eyebrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(79,70,229,0.15); border: 1px solid rgba(79,70,229,0.3);
+  border-radius: 100px; padding: 4px 14px; font-size: 12px; font-weight: 600;
+  color: #818cf8; letter-spacing: 0.5px; text-transform: uppercase;
+  margin-bottom: 20px;
+}
+.hero-eyebrow .dot {
+  width: 6px; height: 6px; border-radius: 50%; background: #818cf8;
+  animation: pulse 2s infinite;
+}
+@keyframes pulse {
+  0%,100% { opacity: 1; } 50% { opacity: 0.4; }
+}
+.hero h1 {
+  font-size: 40px; font-weight: 800; letter-spacing: -1px;
+  background: linear-gradient(135deg, #f1f5f9, #94a3b8);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text; margin-bottom: 12px;
+}
+.hero h1 span {
+  background: linear-gradient(135deg, #818cf8, #c084fc);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.hero-sub {
+  font-size: 16px; color: #64748b; max-width: 600px; margin: 0 auto 32px;
+  line-height: 1.6;
+}
+.hero-meta {
+  display: flex; align-items: center; justify-content: center; gap: 24px;
+  font-size: 12px; color: #475569;
+}
+.hero-meta span { display: flex; align-items: center; gap: 6px; }
+.hero-meta .pill {
+  background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 100px; padding: 4px 12px;
+}
+
+/* ─── Grid ─── */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  max-width: 1200px;
+  margin: 48px auto;
+  padding: 0 48px 64px;
+}
+@media (max-width: 900px) { .grid { grid-template-columns: 1fr; } }
+
+/* ─── Cards ─── */
+.card {
+  background: #141e30;
+  border: 1px solid #1e2d45;
+  border-radius: 16px;
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  cursor: pointer;
+  text-decoration: none;
+  display: block;
+  position: relative;
+}
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+}
+.card.current:hover { border-color: #4f46e5; box-shadow: 0 20px 60px rgba(79,70,229,0.2); }
+.card.nomura:hover { border-color: #C8102E; box-shadow: 0 20px 60px rgba(200,16,46,0.2); }
+.card.terminal:hover { border-color: #00d68f; box-shadow: 0 20px 60px rgba(0,214,143,0.2); }
+.card.modern:hover { border-color: #7c3aed; box-shadow: 0 20px 60px rgba(124,58,237,0.2); }
+
+/* Preview banner */
+.preview {
+  height: 200px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 12px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase;
+  position: relative; overflow: hidden;
+}
+.card.current  .preview { background: linear-gradient(135deg, #0f172a, #1e293b); }
+.card.nomura   .preview { background: linear-gradient(135deg, #1a0308, #3d0a12); }
+.card.terminal .preview { background: linear-gradient(135deg, #070b14, #0d1a2e); }
+.card.modern   .preview { background: linear-gradient(135deg, #1e1b4b, #2d1b69); }
+
+/* Mockup inside preview */
+.mockup {
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column;
+  padding: 12px;
+  transform: scale(0.9);
+  transform-origin: top center;
+  opacity: 0.85;
+}
+.mockup-nav {
+  height: 24px; border-radius: 4px; margin-bottom: 8px;
+  display: flex; align-items: center; padding: 0 8px; gap: 6px;
+}
+.card.current  .mockup-nav { background: #1e40af; }
+.card.nomura   .mockup-nav { background: #C8102E; }
+.card.terminal .mockup-nav { background: #0d1421; border: 1px solid #1e2d45; }
+.card.modern   .mockup-nav { background: white; border-bottom: 1px solid #e2e8f0; }
+.mockup-nav-dot { width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,0.3); }
+.mockup-logo { font-size: 8px; font-weight: 800; color: white; margin-right: 6px; }
+.card.modern .mockup-logo { color: #4f46e5; }
+.mockup-body { flex: 1; display: flex; gap: 8px; }
+.mockup-sidebar { width: 40px; background: rgba(255,255,255,0.04); border-radius: 4px; }
+.card.modern .mockup-sidebar { background: white; border: 1px solid #e2e8f0; }
+.mockup-main { flex: 1; display: flex; flex-direction: column; gap: 6px; }
+
+.mockup-stats { display: flex; gap: 4px; }
+.mockup-stat { flex: 1; height: 24px; border-radius: 3px; }
+.card.current  .mockup-stat { background: rgba(255,255,255,0.08); }
+.card.nomura   .mockup-stat { background: white; border-top: 2px solid #C8102E; }
+.card.terminal .mockup-stat { background: #0d1421; border: 1px solid #1e2d45; }
+.card.modern   .mockup-stat { background: white; border-radius: 8px; box-shadow: 0 1px 4px rgba(0,0,0,0.1); }
+
+.mockup-table { flex: 1; border-radius: 4px; overflow: hidden; }
+.card.current  .mockup-table { background: rgba(255,255,255,0.05); }
+.card.nomura   .mockup-table { background: white; border: 1px solid #e5e5e5; }
+.card.terminal .mockup-table { background: #0d1421; border: 1px solid #1e2d45; }
+.mockup-row { height: 10px; margin: 4px 6px; border-radius: 2px; background: rgba(255,255,255,0.07); }
+.card.nomura .mockup-row { background: #f5f5f5; }
+.card.terminal .mockup-row { background: rgba(0,214,143,0.08); }
+
+/* Kanban preview for modern */
+.mockup-kanban { flex: 1; display: flex; gap: 4px; }
+.mockup-col { flex: 1; border-radius: 4px; padding: 4px; }
+.col-rel { background: rgba(5,150,105,0.1); border-top: 2px solid #059669; }
+.col-amb { background: rgba(217,119,6,0.1); border-top: 2px solid #d97706; }
+.col-irr { background: rgba(100,116,139,0.1); border-top: 2px solid #64748b; }
+.mockup-card { height: 20px; border-radius: 3px; margin-bottom: 3px; background: rgba(255,255,255,0.12); }
+
+/* Badge on card */
+.card-badge {
+  position: absolute; top: 12px; right: 12px;
+  font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;
+  padding: 3px 10px; border-radius: 100px;
+}
+.card.current  .card-badge { background: rgba(79,70,229,0.2); color: #818cf8; border: 1px solid rgba(79,70,229,0.3); }
+.card.nomura   .card-badge { background: rgba(200,16,46,0.2); color: #f87171; border: 1px solid rgba(200,16,46,0.3); }
+.card.terminal .card-badge { background: rgba(0,214,143,0.15); color: #00d68f; border: 1px solid rgba(0,214,143,0.25); }
+.card.modern   .card-badge { background: rgba(124,58,237,0.2); color: #c084fc; border: 1px solid rgba(124,58,237,0.3); }
+
+/* Card body */
+.card-body { padding: 24px; }
+.card-num {
+  font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;
+  color: #475569; margin-bottom: 8px;
+}
+.card-title {
+  font-size: 20px; font-weight: 700; margin-bottom: 8px; line-height: 1.2;
+}
+.card.current  .card-title { color: #e2e8f0; }
+.card.nomura   .card-title { color: #e2e8f0; }
+.card.terminal .card-title { color: #e2e8f0; }
+.card.modern   .card-title { color: #e2e8f0; }
+
+.card-desc { font-size: 14px; color: #64748b; line-height: 1.6; margin-bottom: 20px; }
+
+.card-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 20px; }
+.tag {
+  font-size: 11px; font-weight: 500; padding: 3px 10px;
+  border-radius: 100px; background: rgba(255,255,255,0.05); color: #94a3b8;
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+.card-cta {
+  display: flex; align-items: center; justify-content: space-between;
+  padding-top: 16px; border-top: 1px solid #1e2d45;
+}
+.cta-link {
+  font-size: 13px; font-weight: 600;
+  display: flex; align-items: center; gap: 6px;
+  transition: gap 0.15s ease;
+}
+.card:hover .cta-link { gap: 10px; }
+.card.current  .cta-link { color: #818cf8; }
+.card.nomura   .cta-link { color: #f87171; }
+.card.terminal .cta-link { color: #00d68f; }
+.card.modern   .cta-link { color: #c084fc; }
+
+.cta-arrow {
+  width: 24px; height: 24px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  transition: transform 0.15s ease;
+}
+.card.current  .cta-arrow { background: rgba(79,70,229,0.15); }
+.card.nomura   .cta-arrow { background: rgba(200,16,46,0.15); }
+.card.terminal .cta-arrow { background: rgba(0,214,143,0.12); }
+.card.modern   .cta-arrow { background: rgba(124,58,237,0.15); }
+.card:hover .cta-arrow { transform: translateX(4px); }
+
+.cta-status {
+  font-size: 11px; font-weight: 600; display: flex; align-items: center; gap: 5px;
+}
+.status-dot { width: 7px; height: 7px; border-radius: 50%; background: #22c55e; }
+.status-live { color: #22c55e; }
+.status-new  { color: #f59e0b; }
+.status-dot.amber { background: #f59e0b; }
+
+/* ─── Section label ─── */
+.section-label {
+  text-align: center;
+  font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+  color: #475569; padding: 32px 0 0;
+}
+
+/* ─── Bottom strip ─── */
+.bottom {
+  border-top: 1px solid #1e2d45;
+  padding: 24px 48px;
+  display: flex; align-items: center; justify-content: space-between;
+  max-width: 1200px; margin: 0 auto;
+  font-size: 12px; color: #475569;
+}
+.bottom strong { color: #64748b; }
+
+/* ─── Running app note ─── */
+.running-note {
+  background: rgba(34,197,94,0.08);
+  border: 1px solid rgba(34,197,94,0.2);
+  border-radius: 8px;
+  padding: 12px 20px;
+  font-size: 13px; color: #86efac;
+  display: flex; align-items: center; gap: 10px;
+  max-width: 560px; margin: 0 auto 20px;
+}
+.running-note .dot { width: 8px; height: 8px; border-radius: 50%; background: #22c55e; animation: pulse 2s infinite; flex-shrink: 0; }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-eyebrow"><span class="dot"></span>Nomura SSG · Agentic AI PoC · Phase 1</div>
+  <h1>Email Agent &mdash; <span>UI / UX Prototypes</span></h1>
+  <p class="hero-sub">Four distinct design directions for the FX Settlement Email Agent. Same mock data, same features — different visual language and interaction patterns.</p>
+  <div class="hero-meta">
+    <span class="pill">29 emails · 80 trades extracted</span>
+    <span class="pill">4 design directions</span>
+    <span class="pill">Fully interactive</span>
+  </div>
+</div>
+
+<div style="max-width:1200px;margin:0 auto;padding:40px 48px 0;">
+  <div class="running-note">
+    <span class="dot"></span>
+    <span><strong>Prototype 1 is live:</strong> run <code style="background:rgba(255,255,255,0.08);padding:1px 6px;border-radius:4px;">launch.bat</code> from <code style="background:rgba(255,255,255,0.08);padding:1px 6px;border-radius:4px;">agentic-workflows/</code> to open the current app at <strong>http://localhost:3000</strong></span>
+  </div>
+</div>
+
+<p class="section-label">Select a prototype to preview</p>
+
+<div class="grid">
+
+  <!-- ── Prototype 1: Current ── -->
+  <a class="card current" href="http://localhost:3000" target="_blank">
+    <span class="card-badge">Live App</span>
+    <div class="preview">
+      <div class="mockup">
+        <div class="mockup-nav">
+          <span class="mockup-nav-dot"></span>
+          <span class="mockup-logo">EmailAgent</span>
+          <span style="font-size:7px;color:rgba(255,255,255,0.4);font-weight:600;">Classify &amp; Extract</span>
+        </div>
+        <div class="mockup-body">
+          <div class="mockup-sidebar"></div>
+          <div class="mockup-main">
+            <div class="mockup-stats">
+              <div class="mockup-stat"></div>
+              <div class="mockup-stat"></div>
+              <div class="mockup-stat"></div>
+              <div class="mockup-stat"></div>
+            </div>
+            <div class="mockup-table">
+              <div class="mockup-row" style="width:90%"></div>
+              <div class="mockup-row" style="width:80%"></div>
+              <div class="mockup-row" style="width:95%"></div>
+              <div class="mockup-row" style="width:70%"></div>
+              <div class="mockup-row" style="width:85%"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <p class="card-num">Prototype 1 · Current</p>
+      <h2 class="card-title">Modern Tailwind Dashboard</h2>
+      <p class="card-desc">The existing running application. Tab-based pipeline (Sync → Classify → Extract), sidebar navigation, sky-blue accent palette, Tailwind CSS, Next.js 14.</p>
+      <div class="card-tags">
+        <span class="tag">Next.js 14</span>
+        <span class="tag">Tailwind CSS</span>
+        <span class="tag">Tab pipeline</span>
+        <span class="tag">Sidebar nav</span>
+        <span class="tag">Side drawer detail</span>
+      </div>
+      <div class="card-cta">
+        <span class="cta-link">Open live app <span class="cta-arrow">→</span></span>
+        <span class="cta-status"><span class="status-dot"></span><span class="status-live">Running at :3000</span></span>
+      </div>
+    </div>
+  </a>
+
+  <!-- ── Prototype 2: Nomura ── -->
+  <a class="card nomura" href="prototype-2-nomura.html" target="_blank">
+    <span class="card-badge">Nomura Style</span>
+    <div class="preview">
+      <div class="mockup">
+        <div class="mockup-nav">
+          <span class="mockup-logo">NOMURA</span>
+          <span style="font-size:7px;color:rgba(255,255,255,0.5);margin-left:8px;">Who We Are</span>
+          <span style="font-size:7px;color:rgba(255,255,255,0.5);margin-left:8px;">Sustainability</span>
+          <span style="font-size:7px;color:rgba(255,255,255,0.5);margin-left:8px;">Careers</span>
+        </div>
+        <div class="mockup-body" style="flex-direction:column;gap:6px;margin-top:4px;">
+          <div class="mockup-stats">
+            <div class="mockup-stat" style="border-top:2px solid #C8102E;background:white;"></div>
+            <div class="mockup-stat" style="border-top:2px solid #C8102E;background:white;"></div>
+            <div class="mockup-stat" style="border-top:2px solid #C8102E;background:white;"></div>
+            <div class="mockup-stat" style="border-top:2px solid #C8102E;background:white;"></div>
+            <div class="mockup-stat" style="border-top:2px solid #C8102E;background:white;"></div>
+          </div>
+          <div class="mockup-table" style="background:white;border:1px solid #e5e5e5;">
+            <div style="height:10px;background:#C8102E;opacity:0.08;margin:3px 6px;border-radius:2px;"></div>
+            <div class="mockup-row" style="background:#f5f5f5;width:90%;"></div>
+            <div class="mockup-row" style="background:#f5f5f5;width:80%;"></div>
+            <div class="mockup-row" style="background:#f5f5f5;width:95%;"></div>
+            <div class="mockup-row" style="background:#f5f5f5;width:75%;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <p class="card-num">Prototype 2 · Nomura Inspired</p>
+      <h2 class="card-title">Corporate Red — Nomura Brand</h2>
+      <p class="card-desc">Matches Nomura's own website aesthetic. Deep red (#C8102E) navigation, white card surfaces with red top-border KPIs, bordered data tables, right-side detail drawer, accordion rows.</p>
+      <div class="card-tags">
+        <span class="tag">Pure HTML/CSS</span>
+        <span class="tag">Nomura red #C8102E</span>
+        <span class="tag">Corporate grid</span>
+        <span class="tag">Table-heavy</span>
+        <span class="tag">Right drawer</span>
+      </div>
+      <div class="card-cta">
+        <span class="cta-link">Open prototype <span class="cta-arrow">→</span></span>
+        <span class="cta-status"><span class="status-dot amber"></span><span class="status-new">Standalone HTML</span></span>
+      </div>
+    </div>
+  </a>
+
+  <!-- ── Prototype 3: Terminal ── -->
+  <a class="card terminal" href="prototype-3-terminal.html" target="_blank">
+    <span class="card-badge">Dark Terminal</span>
+    <div class="preview">
+      <div class="mockup">
+        <div class="mockup-nav" style="background:#0d1421;border:1px solid #1e2d45;font-family:monospace;font-size:7px;color:#00d68f;">
+          ⬡ NOMURA SSG · EMAIL AGENT · v1.0.0
+          <span style="margin-left:auto;color:#38bdf8;">14:32:08</span>
+        </div>
+        <div class="mockup-body" style="gap:6px;">
+          <div style="flex:0.55;display:flex;flex-direction:column;gap:4px;">
+            <div style="height:8px;background:#0d1421;border:1px solid #1e2d45;border-radius:2px;font-size:5px;padding:1px 3px;color:#00d68f;font-family:monospace;">● RELEVANT &nbsp;&nbsp; ○ AMBIG &nbsp;&nbsp; ○ IRRELEVANT</div>
+            <div style="flex:1;background:#0d1421;border:1px solid #1e2d45;border-radius:2px;overflow:hidden;">
+              <div style="height:8px;margin:2px 4px;background:rgba(0,214,143,0.1);border-radius:1px;border-left:2px solid #00d68f;"></div>
+              <div style="height:8px;margin:2px 4px;background:rgba(0,214,143,0.07);border-radius:1px;border-left:2px solid #00d68f;"></div>
+              <div style="height:8px;margin:2px 4px;background:rgba(245,158,11,0.07);border-radius:1px;border-left:2px solid #f59e0b;"></div>
+              <div style="height:8px;margin:2px 4px;background:rgba(100,116,139,0.07);border-radius:1px;border-left:2px solid #64748b;"></div>
+              <div style="height:8px;margin:2px 4px;background:rgba(0,214,143,0.07);border-radius:1px;border-left:2px solid #00d68f;"></div>
+            </div>
+          </div>
+          <div style="flex:0.45;background:#0d1421;border:1px solid #1e2d45;border-radius:2px;padding:4px;font-family:monospace;font-size:5px;color:#64748b;line-height:1.6;">
+            STATUS .... RELEVANT<br>
+            TRADE_ID .. FXOPT-2026-00047<br>
+            CONF ...... 0.85<br>
+            ─────────────────<br>
+            <span style="color:#38bdf8;">TRADES: 80 EXTRACTED</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <p class="card-num">Prototype 3 · Dark Terminal</p>
+      <h2 class="card-title">Bloomberg / Trading Desk</h2>
+      <p class="card-desc">Dense, data-first terminal aesthetic for quant/trading audiences. Live clock, monospace data, two-panel layout, terminal-command tabs, green glow accents, animated progress bar.</p>
+      <div class="card-tags">
+        <span class="tag">Pure HTML/CSS</span>
+        <span class="tag">Dark #070b14</span>
+        <span class="tag">Two-panel split</span>
+        <span class="tag">Live clock</span>
+        <span class="tag">Monospace data</span>
+      </div>
+      <div class="card-cta">
+        <span class="cta-link">Open prototype <span class="cta-arrow">→</span></span>
+        <span class="cta-status"><span class="status-dot amber"></span><span class="status-new">Standalone HTML</span></span>
+      </div>
+    </div>
+  </a>
+
+  <!-- ── Prototype 4: Modern ── -->
+  <a class="card modern" href="prototype-4-modern.html" target="_blank">
+    <span class="card-badge">Modern Kanban</span>
+    <div class="preview">
+      <div class="mockup">
+        <div class="mockup-nav" style="background:white;border-bottom:1px solid #e2e8f0;">
+          <span class="mockup-logo" style="color:#4f46e5;font-size:9px;">EmailAgent</span>
+          <span style="font-size:7px;color:#64748b;margin-left:8px;">Classify &amp; Extract</span>
+          <span style="margin-left:auto;width:28px;height:10px;background:linear-gradient(135deg,#4f46e5,#7c3aed);border-radius:3px;"></span>
+        </div>
+        <div class="mockup-body">
+          <div class="mockup-sidebar" style="background:white;border:1px solid #e2e8f0;padding:4px;display:flex;flex-direction:column;gap:3px;">
+            <div style="height:6px;background:#4f46e5;border-radius:2px;opacity:0.2;"></div>
+            <div style="height:6px;background:#4f46e5;border-radius:2px;"></div>
+            <div style="height:6px;background:#e2e8f0;border-radius:2px;"></div>
+            <div style="height:6px;background:#e2e8f0;border-radius:2px;"></div>
+          </div>
+          <div class="mockup-main">
+            <div class="mockup-stats">
+              <div class="mockup-stat" style="background:white;box-shadow:0 1px 4px rgba(0,0,0,0.08);border-radius:6px;"></div>
+              <div class="mockup-stat" style="background:white;box-shadow:0 1px 4px rgba(0,0,0,0.08);border-radius:6px;"></div>
+              <div class="mockup-stat" style="background:white;box-shadow:0 1px 4px rgba(0,0,0,0.08);border-radius:6px;"></div>
+              <div class="mockup-stat" style="background:white;box-shadow:0 1px 4px rgba(0,0,0,0.08);border-radius:6px;"></div>
+            </div>
+            <div class="mockup-kanban">
+              <div class="mockup-col col-rel">
+                <div class="mockup-card"></div>
+                <div class="mockup-card"></div>
+                <div class="mockup-card"></div>
+              </div>
+              <div class="mockup-col col-amb">
+                <div class="mockup-card"></div>
+              </div>
+              <div class="mockup-col col-irr">
+                <div class="mockup-card"></div>
+                <div class="mockup-card"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <p class="card-num">Prototype 4 · Modern Kanban</p>
+      <h2 class="card-title">Indigo SaaS &amp; Kanban Board</h2>
+      <p class="card-desc">Modern product design with a left sidebar, three-column Kanban for email classification (Relevant / Ambiguous / Irrelevant), centered modal on card click, gradient accents, hover-lift cards.</p>
+      <div class="card-tags">
+        <span class="tag">Pure HTML/CSS</span>
+        <span class="tag">Indigo #4f46e5</span>
+        <span class="tag">Kanban columns</span>
+        <span class="tag">Centered modal</span>
+        <span class="tag">Left sidebar</span>
+      </div>
+      <div class="card-cta">
+        <span class="cta-link">Open prototype <span class="cta-arrow">→</span></span>
+        <span class="cta-status"><span class="status-dot amber"></span><span class="status-new">Standalone HTML</span></span>
+      </div>
+    </div>
+  </a>
+
+</div>
+
+<div style="max-width:1200px;margin:0 auto;">
+  <div class="bottom">
+    <span>Nomura SSG · Agentic AI PoC · Phase 1 &mdash; UI/UX Prototype Showcase</span>
+    <span>All prototypes use <strong>mock data only</strong> · No backend required</span>
+  </div>
+</div>
+
+</body>
+</html>

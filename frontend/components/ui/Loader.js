@@ -54,8 +54,8 @@ export function ProcessLoader({ steps = [], currentStep = 0, title }) {
                 pending && 'border-neutral-200 bg-white',
               )}>
                 {done ? (
-                  <svg viewBox="0 0 12 12" fill="currentColor" className="w-2.5 h-2.5 text-white">
-                    <path fillRule="evenodd" d="M9.28 2.28a.75.75 0 0 1 .01 1.06l-4.75 5a.75.75 0 0 1-1.08 0L1.21 6.09a.75.75 0 0 1 1.08-1.05L4.99 7.83l4.23-4.54a.75.75 0 0 1 1.06-.01Z" clipRule="evenodd" />
+                  <svg viewBox="0 0 16 16" fill="none" className="w-3 h-3 text-white">
+                    <path d="M3.5 8.5L6.5 11.5L12.5 4.5" stroke="currentColor" strokeWidth="2.25" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>
                 ) : active ? (
                   <span className="w-1.5 h-1.5 rounded-full bg-brand-500 animate-pulse" />

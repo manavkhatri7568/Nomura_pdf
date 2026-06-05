@@ -52,6 +52,14 @@ export const api = {
   getCase:   (tradeId) => call('GET', `/storage/cases/${encodeURIComponent(tradeId)}`),
   getStats:  () => call('GET', '/storage/stats'),
 
+  // Trade rows parsed from stored xlsx/csv attachments (one row per trade).
+  getExtractedTrades: () => call('GET', '/extract/trades'),
+
   classify: (subject, body) =>
     call('POST', '/classifier/classify', { subject, body }),
+
+  // Runtime classifier configuration (keywords, weights, thresholds)
+  getConfig:    () => call('GET', '/config'),
+  updateConfig: (patch) => call('PUT', '/config', patch),
+  resetConfig:  () => call('POST', '/config/reset'),
 };

@@ -1,0 +1,1771 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NOMURA SSG · EMAIL AGENT · PHASE 1</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg:          #070b14;
+    --panel:       #0d1421;
+    --panel-alt:   #0a101a;
+    --border:      #1e2d45;
+    --border-dim:  #141f30;
+    --green:       #00d68f;
+    --green-dim:   rgba(0,214,143,0.15);
+    --green-glow:  0 0 10px rgba(0,214,143,0.4);
+    --green-glow2: 0 0 20px rgba(0,214,143,0.2);
+    --amber:       #f59e0b;
+    --amber-dim:   rgba(245,158,11,0.15);
+    --red:         #ef4444;
+    --red-dim:     rgba(239,68,68,0.15);
+    --blue:        #38bdf8;
+    --blue-dim:    rgba(56,189,248,0.15);
+    --purple:      #a78bfa;
+    --purple-dim:  rgba(167,139,250,0.15);
+    --text:        #e2e8f0;
+    --muted:       #94a3b8;
+    --dimmed:      #64748b;
+    --mono:        'JetBrains Mono', 'Courier New', monospace;
+    --sans:        'Inter', sans-serif;
+  }
+
+  html, body {
+    height: 100%;
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    font-size: 13px;
+    overflow: hidden;
+  }
+
+  /* ═══════════════════════════════════════════
+     TOP BAR
+  ═══════════════════════════════════════════ */
+  #topbar {
+    height: 40px;
+    background: var(--panel);
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 16px;
+    flex-shrink: 0;
+    position: relative;
+    z-index: 100;
+  }
+
+  .topbar-left {
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--green);
+    text-shadow: var(--green-glow);
+    letter-spacing: 0.08em;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .topbar-hex {
+    font-size: 16px;
+    line-height: 1;
+  }
+
+  .topbar-sep {
+    color: var(--border);
+    margin: 0 2px;
+  }
+
+  .topbar-center {
+    font-family: var(--mono);
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--blue);
+    letter-spacing: 0.05em;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .topbar-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .source-toggle {
+    display: flex;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    overflow: hidden;
+    font-family: var(--mono);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+  }
+
+  .source-toggle button {
+    background: none;
+    border: none;
+    padding: 4px 10px;
+    cursor: pointer;
+    color: var(--dimmed);
+    transition: all 0.15s;
+    font-family: var(--mono);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+  }
+
+  .source-toggle button.active {
+    background: var(--green-dim);
+    color: var(--green);
+    text-shadow: var(--green-glow);
+  }
+
+  .user-icon {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #1e3a5f, #0f2340);
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--blue);
+    cursor: pointer;
+  }
+
+  /* ═══════════════════════════════════════════
+     TAB STRIP
+  ═══════════════════════════════════════════ */
+  #tabstrip {
+    height: 38px;
+    background: var(--panel-alt);
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: stretch;
+    padding: 0 16px;
+    gap: 2px;
+    flex-shrink: 0;
+  }
+
+  .tab-btn {
+    background: none;
+    border: none;
+    border-bottom: 2px solid transparent;
+    padding: 0 18px;
+    cursor: pointer;
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    color: var(--dimmed);
+    transition: all 0.15s;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    position: relative;
+    top: 1px;
+  }
+
+  .tab-btn:hover { color: var(--muted); }
+
+  .tab-btn.active {
+    color: var(--green);
+    border-bottom-color: var(--green);
+    text-shadow: var(--green-glow);
+  }
+
+  .tab-bracket { color: var(--dimmed); }
+
+  .tab-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--dimmed);
+  }
+
+  .tab-btn.active .tab-dot { background: var(--green); box-shadow: 0 0 6px var(--green); }
+
+  .tab-run-btn {
+    margin-left: auto;
+    align-self: center;
+    background: var(--green-dim);
+    border: 1px solid var(--green);
+    color: var(--green);
+    font-family: var(--mono);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    padding: 4px 14px;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: all 0.15s;
+    text-shadow: var(--green-glow);
+  }
+
+  .tab-run-btn:hover { background: rgba(0,214,143,0.25); }
+
+  /* ═══════════════════════════════════════════
+     MAIN AREA
+  ═══════════════════════════════════════════ */
+  #main {
+    display: flex;
+    height: calc(100vh - 78px);
+    overflow: hidden;
+  }
+
+  /* ═══════════════════════════════════════════
+     TAB PANELS
+  ═══════════════════════════════════════════ */
+  .tab-panel { display: none; width: 100%; }
+  .tab-panel.active { display: flex; }
+
+  /* ═══════════════════════════════════════════
+     LEFT PANEL — EMAIL FEED
+  ═══════════════════════════════════════════ */
+  #left-panel {
+    width: 55%;
+    border-right: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+
+  .panel-header {
+    background: var(--panel);
+    border-bottom: 1px solid var(--border);
+    padding: 8px 14px;
+    flex-shrink: 0;
+  }
+
+  .panel-title-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 6px;
+  }
+
+  .panel-title {
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: var(--green);
+    text-shadow: var(--green-glow);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .blink-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--green);
+    box-shadow: 0 0 8px var(--green);
+    animation: blink-dot 1.2s step-end infinite;
+  }
+
+  @keyframes blink-dot {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.1; }
+  }
+
+  .stats-row {
+    display: flex;
+    gap: 14px;
+    font-family: var(--mono);
+    font-size: 10px;
+    flex-wrap: wrap;
+  }
+
+  .stat-item { display: flex; align-items: center; gap: 3px; }
+  .stat-key { color: var(--dimmed); }
+  .stat-val { font-weight: 700; }
+  .stat-val.green { color: var(--green); text-shadow: 0 0 6px rgba(0,214,143,0.3); }
+  .stat-val.amber { color: var(--amber); }
+  .stat-val.red { color: var(--red); }
+  .stat-val.blue { color: var(--blue); }
+  .stat-val.purple { color: var(--purple); }
+  .stat-val.white { color: var(--text); }
+
+  /* Filter + Search row */
+  .filter-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 14px;
+    background: var(--panel-alt);
+    border-bottom: 1px solid var(--border-dim);
+    flex-shrink: 0;
+  }
+
+  .filter-btn {
+    background: none;
+    border: 1px solid var(--border);
+    color: var(--dimmed);
+    font-family: var(--mono);
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    padding: 3px 8px;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: all 0.12s;
+  }
+
+  .filter-btn:hover { border-color: var(--muted); color: var(--muted); }
+
+  .filter-btn.active {
+    background: var(--green-dim);
+    border-color: var(--green);
+    color: var(--green);
+  }
+
+  .filter-btn.f-amb.active { background: var(--amber-dim); border-color: var(--amber); color: var(--amber); }
+  .filter-btn.f-irr.active { background: var(--red-dim); border-color: var(--red); color: var(--red); }
+  .filter-btn.f-dup.active { background: var(--purple-dim); border-color: var(--purple); color: var(--purple); }
+
+  .search-wrap {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    margin-left: auto;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    padding: 3px 8px;
+    font-family: var(--mono);
+    font-size: 10px;
+  }
+
+  .search-prompt { color: var(--green); }
+
+  #search-input {
+    background: none;
+    border: none;
+    outline: none;
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--text);
+    width: 140px;
+    caret-color: transparent;
+  }
+
+  .search-cursor {
+    display: inline-block;
+    width: 7px;
+    height: 12px;
+    background: var(--green);
+    animation: blink-cursor 0.9s step-end infinite;
+    vertical-align: middle;
+    margin-left: 1px;
+    box-shadow: 0 0 4px var(--green);
+  }
+
+  @keyframes blink-cursor {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+  }
+
+  /* Email list column headers */
+  .email-col-header {
+    display: grid;
+    grid-template-columns: 14px 130px 1fr 80px 90px 46px;
+    gap: 0;
+    padding: 4px 14px;
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+    font-family: var(--mono);
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    color: var(--dimmed);
+    flex-shrink: 0;
+  }
+
+  /* Email list */
+  #email-list-wrap {
+    flex: 1;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: var(--border) transparent;
+  }
+
+  #email-list-wrap::-webkit-scrollbar { width: 4px; }
+  #email-list-wrap::-webkit-scrollbar-track { background: transparent; }
+  #email-list-wrap::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+
+  .email-row {
+    display: grid;
+    grid-template-columns: 14px 130px 1fr 80px 90px 46px;
+    gap: 0;
+    padding: 0 14px;
+    height: 38px;
+    align-items: center;
+    cursor: pointer;
+    border-left: 3px solid transparent;
+    transition: all 0.1s;
+    font-family: var(--mono);
+    font-size: 10px;
+  }
+
+  .email-row:nth-child(odd) { background: var(--panel); }
+  .email-row:nth-child(even) { background: var(--panel-alt); }
+
+  .email-row:hover { background: #111c2e; }
+
+  .email-row.selected {
+    border-left-color: var(--green);
+    background: #0d1e30 !important;
+  }
+
+  .row-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .dot-green { background: var(--green); box-shadow: 0 0 5px var(--green); }
+  .dot-amber { background: var(--amber); box-shadow: 0 0 5px var(--amber); }
+  .dot-red { background: #555e6e; }
+  .dot-purple { background: var(--purple); box-shadow: 0 0 5px var(--purple); }
+
+  .row-trade {
+    color: var(--blue);
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding-right: 8px;
+  }
+
+  .row-subject {
+    color: var(--text);
+    font-size: 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding-right: 8px;
+  }
+
+  .row-sender {
+    color: var(--muted);
+    font-size: 9px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding-right: 8px;
+  }
+
+  .row-time {
+    color: var(--dimmed);
+    font-size: 9px;
+    white-space: nowrap;
+  }
+
+  .row-conf {
+    text-align: right;
+    font-size: 9px;
+    font-weight: 600;
+  }
+
+  .conf-green { color: var(--green); }
+  .conf-amber { color: var(--amber); }
+  .conf-red   { color: var(--red); }
+  .conf-purple{ color: var(--purple); }
+
+  /* Pagination */
+  .pagination-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 6px 14px;
+    background: var(--panel-alt);
+    border-top: 1px solid var(--border-dim);
+    flex-shrink: 0;
+  }
+
+  .page-info {
+    font-family: var(--mono);
+    font-size: 9px;
+    color: var(--dimmed);
+  }
+
+  .page-btns {
+    display: flex;
+    gap: 4px;
+  }
+
+  .page-btn {
+    background: none;
+    border: 1px solid var(--border);
+    color: var(--dimmed);
+    font-family: var(--mono);
+    font-size: 9px;
+    padding: 2px 8px;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: all 0.12s;
+  }
+
+  .page-btn:hover, .page-btn.active { border-color: var(--green); color: var(--green); }
+  .page-btn:disabled { opacity: 0.3; cursor: default; }
+
+  /* ═══════════════════════════════════════════
+     RIGHT PANEL — DETAIL
+  ═══════════════════════════════════════════ */
+  #right-panel {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    background: var(--panel-alt);
+  }
+
+  .detail-header {
+    background: var(--panel);
+    border-bottom: 1px solid var(--border);
+    padding: 8px 14px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-shrink: 0;
+  }
+
+  .detail-title {
+    font-family: var(--mono);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+  }
+
+  .detail-tabs {
+    display: flex;
+    gap: 2px;
+  }
+
+  .detail-tab {
+    background: none;
+    border: 1px solid var(--border);
+    color: var(--dimmed);
+    font-family: var(--mono);
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    padding: 3px 10px;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: all 0.12s;
+  }
+
+  .detail-tab.active {
+    background: var(--green-dim);
+    border-color: var(--green);
+    color: var(--green);
+  }
+
+  /* Empty state */
+  #detail-empty {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    gap: 16px;
+    overflow-y: auto;
+  }
+
+  .empty-msg {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--dimmed);
+    text-align: center;
+    padding: 12px;
+    border: 1px dashed var(--border);
+    border-radius: 3px;
+    letter-spacing: 0.05em;
+  }
+
+  .stat-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .stat-card {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    padding: 14px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .stat-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 2px;
+    background: var(--green);
+    box-shadow: 0 0 8px var(--green);
+  }
+
+  .stat-card.amber-card::before { background: var(--amber); box-shadow: 0 0 8px var(--amber); }
+  .stat-card.blue-card::before { background: var(--blue); box-shadow: 0 0 8px var(--blue); }
+  .stat-card.purple-card::before { background: var(--purple); box-shadow: 0 0 8px var(--purple); }
+
+  .sc-label {
+    font-family: var(--mono);
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    color: var(--dimmed);
+    margin-bottom: 8px;
+  }
+
+  .sc-value {
+    font-family: var(--mono);
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--green);
+    text-shadow: var(--green-glow);
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+
+  .sc-value.amber { color: var(--amber); text-shadow: 0 0 10px rgba(245,158,11,0.4); }
+  .sc-value.blue { color: var(--blue); text-shadow: 0 0 10px rgba(56,189,248,0.4); }
+  .sc-value.purple { color: var(--purple); text-shadow: 0 0 10px rgba(167,139,250,0.4); }
+
+  .sc-sub {
+    font-family: var(--mono);
+    font-size: 9px;
+    color: var(--dimmed);
+  }
+
+  .sparkline {
+    display: flex;
+    align-items: flex-end;
+    gap: 2px;
+    height: 20px;
+    margin-top: 8px;
+  }
+
+  .spark-bar {
+    flex: 1;
+    background: var(--green-dim);
+    border-top: 1px solid rgba(0,214,143,0.3);
+    min-height: 2px;
+  }
+
+  .spark-bar.amber { background: var(--amber-dim); border-top-color: rgba(245,158,11,0.3); }
+  .spark-bar.blue  { background: var(--blue-dim);  border-top-color: rgba(56,189,248,0.3); }
+  .spark-bar.purple{ background: var(--purple-dim);border-top-color: rgba(167,139,250,0.3); }
+
+  /* Detail view */
+  #detail-content {
+    flex: 1;
+    overflow-y: auto;
+    padding: 14px;
+    scrollbar-width: thin;
+    scrollbar-color: var(--border) transparent;
+  }
+
+  #detail-content::-webkit-scrollbar { width: 4px; }
+  #detail-content::-webkit-scrollbar-thumb { background: var(--border); }
+
+  .detail-section {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    padding: 12px 14px;
+    margin-bottom: 12px;
+    font-family: var(--mono);
+    font-size: 11px;
+  }
+
+  .detail-section-title {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    color: var(--dimmed);
+    margin-bottom: 10px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid var(--border-dim);
+  }
+
+  .detail-sep {
+    color: var(--border);
+    font-size: 10px;
+    letter-spacing: 0.02em;
+    margin: 6px 0;
+    overflow: hidden;
+    white-space: nowrap;
+    user-select: none;
+  }
+
+  .detail-field {
+    display: flex;
+    align-items: baseline;
+    gap: 0;
+    line-height: 1.9;
+  }
+
+  .df-key {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    color: var(--dimmed);
+    width: 110px;
+    flex-shrink: 0;
+  }
+
+  .df-dots {
+    flex: 1;
+    color: var(--border);
+    font-size: 10px;
+    overflow: hidden;
+    white-space: nowrap;
+    margin: 0 4px;
+  }
+
+  .df-val {
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--text);
+    white-space: nowrap;
+  }
+
+  .df-val.green { color: var(--green); text-shadow: 0 0 6px rgba(0,214,143,0.3); }
+  .df-val.amber { color: var(--amber); }
+  .df-val.red   { color: var(--red); }
+  .df-val.blue  { color: var(--blue); }
+  .df-val.purple{ color: var(--purple); }
+
+  .label-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 1px 7px;
+    border-radius: 2px;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+  }
+
+  .badge-relevant  { background: var(--green-dim);  color: var(--green);  border: 1px solid rgba(0,214,143,0.3); }
+  .badge-ambiguous { background: var(--amber-dim);  color: var(--amber);  border: 1px solid rgba(245,158,11,0.3); }
+  .badge-irrelevant{ background: var(--red-dim);    color: var(--red);    border: 1px solid rgba(239,68,68,0.3); }
+  .badge-duplicate { background: var(--purple-dim); color: var(--purple); border: 1px solid rgba(167,139,250,0.3); }
+
+  .no-att-msg {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--dimmed);
+    text-align: center;
+    padding: 10px;
+    border: 1px dashed var(--border);
+    border-radius: 2px;
+    letter-spacing: 0.05em;
+  }
+
+  .att-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 8px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--blue);
+  }
+
+  .att-icon { color: var(--blue); font-size: 12px; }
+
+  /* ═══════════════════════════════════════════
+     TAB 2 — CLASSIFY
+  ═══════════════════════════════════════════ */
+  #tab-classify {
+    flex-direction: column;
+    padding: 20px 24px;
+    overflow-y: auto;
+    gap: 16px;
+  }
+
+  .classify-header {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--green);
+    text-shadow: var(--green-glow);
+    letter-spacing: 0.08em;
+    font-weight: 700;
+  }
+
+  .classify-terminal {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 16px;
+    font-family: var(--mono);
+    font-size: 11px;
+    line-height: 1.7;
+  }
+
+  .term-line { color: var(--muted); }
+  .term-line .t-green { color: var(--green); }
+  .term-line .t-blue  { color: var(--blue); }
+  .term-line .t-amber { color: var(--amber); }
+  .term-line .t-red   { color: var(--red); }
+  .term-line .t-dim   { color: var(--dimmed); }
+
+  .progress-wrap {
+    margin: 8px 0;
+  }
+
+  .progress-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--muted);
+    margin-bottom: 4px;
+  }
+
+  .progress-bar-outer {
+    background: var(--border-dim);
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    height: 14px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .progress-bar-inner {
+    height: 100%;
+    background: linear-gradient(90deg, var(--green), rgba(0,214,143,0.6));
+    box-shadow: 0 0 8px var(--green);
+    transition: width 0.05s linear;
+    width: 0%;
+  }
+
+  .progress-pct {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--green);
+    margin-top: 4px;
+    text-align: right;
+  }
+
+  .classify-results {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+  }
+
+  .cr-card {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    padding: 12px;
+    text-align: center;
+  }
+
+  .cr-card .cr-num {
+    font-family: var(--mono);
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+
+  .cr-card .cr-lbl {
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    color: var(--dimmed);
+  }
+
+  /* ═══════════════════════════════════════════
+     TAB 3 — EXTRACT / TRADE TABLE
+  ═══════════════════════════════════════════ */
+  #tab-extract {
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  .extract-toolbar {
+    background: var(--panel);
+    border-bottom: 1px solid var(--border);
+    padding: 8px 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-shrink: 0;
+  }
+
+  .extract-count {
+    font-family: var(--mono);
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--green);
+    text-shadow: var(--green-glow);
+    letter-spacing: 0.06em;
+  }
+
+  .source-filter-btns { display: flex; gap: 4px; margin-left: auto; }
+
+  .sf-btn {
+    background: none;
+    border: 1px solid var(--border);
+    color: var(--dimmed);
+    font-family: var(--mono);
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    padding: 3px 10px;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: all 0.12s;
+  }
+
+  .sf-btn:hover { border-color: var(--muted); color: var(--muted); }
+  .sf-btn.active { background: var(--green-dim); border-color: var(--green); color: var(--green); }
+
+  .trade-table-wrap {
+    flex: 1;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: var(--border) transparent;
+  }
+
+  .trade-table-wrap::-webkit-scrollbar { width: 4px; }
+  .trade-table-wrap::-webkit-scrollbar-thumb { background: var(--border); }
+
+  .trade-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: var(--mono);
+    font-size: 10px;
+  }
+
+  .trade-table thead tr {
+    background: var(--bg);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+
+  .trade-table th {
+    padding: 7px 12px;
+    text-align: left;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: var(--dimmed);
+    border-bottom: 1px solid var(--border);
+    white-space: nowrap;
+  }
+
+  .trade-table td {
+    padding: 6px 12px;
+    border-bottom: 1px solid var(--border-dim);
+    white-space: nowrap;
+  }
+
+  .trade-table tbody tr:nth-child(odd) { background: var(--panel); }
+  .trade-table tbody tr:nth-child(even) { background: var(--panel-alt); }
+  .trade-table tbody tr:hover { background: #111c2e; }
+
+  .td-trade  { color: var(--blue); font-weight: 600; font-size: 9.5px; }
+  .td-uti    { color: var(--dimmed); font-size: 9px; }
+  .td-pair   { color: var(--text); font-weight: 500; }
+  .td-buy    { color: var(--green); font-weight: 700; }
+  .td-sell   { color: var(--red); font-weight: 700; }
+  .td-not    { color: var(--text); }
+  .td-date   { color: var(--muted); }
+  .td-src-body { color: rgba(0,214,143,0.55); font-size: 9px; font-weight: 600; }
+  .td-src-att  { color: rgba(56,189,248,0.6); font-size: 9px; font-weight: 600; }
+
+  /* ═══════════════════════════════════════════
+     SCROLLBAR GLOBAL
+  ═══════════════════════════════════════════ */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--border) transparent;
+  }
+
+  /* ═══════════════════════════════════════════
+     HIDDEN
+  ═══════════════════════════════════════════ */
+  .hidden { display: none !important; }
+
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════
+     TOP BAR
+═══════════════════════════════════════════ -->
+<div id="topbar">
+  <div class="topbar-left">
+    <span class="topbar-hex">⬡</span>
+    <span>NOMURA SSG</span>
+    <span class="topbar-sep">·</span>
+    <span>EMAIL AGENT</span>
+    <span class="topbar-sep">·</span>
+    <span>PHASE 1 v1.0.0</span>
+  </div>
+  <div class="topbar-center" id="live-clock">--:--:--</div>
+  <div class="topbar-right">
+    <div class="source-toggle">
+      <button class="active" id="src-local" onclick="toggleSource('local')">LOCAL</button>
+      <button id="src-graph" onclick="toggleSource('graph')">GRAPH</button>
+    </div>
+    <div class="user-icon" title="akshit.mahajan0703@gmail.com">AM</div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     TAB STRIP
+═══════════════════════════════════════════ -->
+<div id="tabstrip">
+  <button class="tab-btn active" onclick="switchTab('sync')" id="tab-btn-sync">
+    <span class="tab-dot"></span>
+    <span class="tab-bracket">[</span>SYS:SYNC<span class="tab-bracket">]</span>
+  </button>
+  <button class="tab-btn" onclick="switchTab('classify')" id="tab-btn-classify">
+    <span class="tab-dot"></span>
+    <span class="tab-bracket">[</span>SYS:CLASSIFY<span class="tab-bracket">]</span>
+  </button>
+  <button class="tab-btn" onclick="switchTab('extract')" id="tab-btn-extract">
+    <span class="tab-dot"></span>
+    <span class="tab-bracket">[</span>SYS:EXTRACT<span class="tab-bracket">]</span>
+  </button>
+  <button class="tab-run-btn" onclick="runAgent()">▶ RUN AGENT</button>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     MAIN
+═══════════════════════════════════════════ -->
+<div id="main">
+
+  <!-- ═══ TAB 1: SYNC (email feed + detail) ═══ -->
+  <div class="tab-panel active" id="tab-sync">
+
+    <!-- LEFT: EMAIL FEED -->
+    <div id="left-panel">
+      <div class="panel-header">
+        <div class="panel-title-row">
+          <div class="panel-title">
+            <div class="blink-dot"></div>
+            INBOX MONITOR // 29 MSGS
+          </div>
+        </div>
+        <div class="stats-row">
+          <div class="stat-item"><span class="stat-key">TOTAL:</span><span class="stat-val white">29</span></div>
+          <div class="stat-item"><span class="stat-key">RELEVANT:</span><span class="stat-val green">14</span></div>
+          <div class="stat-item"><span class="stat-key">AMBIG:</span><span class="stat-val amber">3</span></div>
+          <div class="stat-item"><span class="stat-key">IRRELEVANT:</span><span class="stat-val red">10</span></div>
+          <div class="stat-item"><span class="stat-key">DUPES:</span><span class="stat-val purple">2</span></div>
+          <div class="stat-item"><span class="stat-key">TRADES:</span><span class="stat-val blue">80</span></div>
+        </div>
+      </div>
+
+      <!-- Filter + Search -->
+      <div class="filter-row">
+        <button class="filter-btn active" onclick="setFilter('ALL',this)">ALL</button>
+        <button class="filter-btn" onclick="setFilter('RELEVANT',this)">RELVNT</button>
+        <button class="filter-btn f-amb" onclick="setFilter('AMBIGUOUS',this)">AMBIG</button>
+        <button class="filter-btn f-irr" onclick="setFilter('IRRELEVANT',this)">IRRELEVANT</button>
+        <button class="filter-btn f-dup" onclick="setFilter('DUPLICATE',this)">DUPES</button>
+        <div class="search-wrap">
+          <span class="search-prompt">&gt;&nbsp;</span>
+          <span style="color:var(--dimmed);font-family:var(--mono);font-size:10px;">SEARCH:&nbsp;</span>
+          <input type="text" id="search-input" placeholder="" oninput="onSearch(this.value)" autocomplete="off" spellcheck="false">
+          <span class="search-cursor" id="search-cursor"></span>
+        </div>
+      </div>
+
+      <!-- Column headers -->
+      <div class="email-col-header">
+        <div></div>
+        <div>TRADE_ID</div>
+        <div>SUBJECT</div>
+        <div>SENDER</div>
+        <div>RECEIVED</div>
+        <div style="text-align:right">CONF</div>
+      </div>
+
+      <!-- Email list -->
+      <div id="email-list-wrap">
+        <div id="email-list"></div>
+      </div>
+
+      <!-- Pagination -->
+      <div class="pagination-bar">
+        <div class="page-info" id="page-info">SHOWING 1–15 OF 29</div>
+        <div class="page-btns">
+          <button class="page-btn" id="prev-btn" onclick="changePage(-1)" disabled>◀ PREV</button>
+          <button class="page-btn active" id="page-1" onclick="goPage(1)">1</button>
+          <button class="page-btn" id="page-2" onclick="goPage(2)">2</button>
+          <button class="page-btn" id="next-btn" onclick="changePage(1)">NEXT ▶</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT: DETAIL PANEL -->
+    <div id="right-panel">
+      <div class="detail-header">
+        <div class="detail-title" id="detail-title-label">// SELECT AN EMAIL TO INSPECT</div>
+        <div class="detail-tabs">
+          <button class="detail-tab active" onclick="setDetailTab('fields')">FIELDS</button>
+          <button class="detail-tab" onclick="setDetailTab('stats')">OVERVIEW</button>
+        </div>
+      </div>
+
+      <!-- EMPTY / OVERVIEW STATE -->
+      <div id="detail-empty">
+        <div class="empty-msg">// NO EMAIL SELECTED — CLICK A ROW TO INSPECT</div>
+        <div class="stat-cards">
+          <div class="stat-card">
+            <div class="sc-label">EMAILS PROCESSED</div>
+            <div class="sc-value">29</div>
+            <div class="sc-sub">total in mailbox</div>
+            <div class="sparkline" id="spark-processed"></div>
+          </div>
+          <div class="stat-card amber-card">
+            <div class="sc-label">RELEVANT RATE</div>
+            <div class="sc-value amber">48.3%</div>
+            <div class="sc-sub">14 of 29 classified</div>
+            <div class="sparkline" id="spark-rate"></div>
+          </div>
+          <div class="stat-card blue-card">
+            <div class="sc-label">AVG CONFIDENCE</div>
+            <div class="sc-value blue">0.81</div>
+            <div class="sc-sub">across relevant set</div>
+            <div class="sparkline" id="spark-conf"></div>
+          </div>
+          <div class="stat-card purple-card">
+            <div class="sc-label">TRADES EXTRACTED</div>
+            <div class="sc-value purple">80</div>
+            <div class="sc-sub">12 body + 68 xlsx</div>
+            <div class="sparkline" id="spark-trades"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- DETAIL CONTENT -->
+      <div id="detail-content" class="hidden">
+        <div class="detail-section" id="detail-fields"></div>
+        <div class="detail-section" id="detail-att-section"></div>
+      </div>
+    </div>
+
+  </div><!-- /tab-sync -->
+
+  <!-- ═══ TAB 2: CLASSIFY ═══ -->
+  <div class="tab-panel" id="tab-classify" style="flex-direction:column;padding:20px 24px;overflow-y:auto;gap:14px;">
+
+    <div style="font-family:var(--mono);font-size:11px;color:var(--green);text-shadow:var(--green-glow);letter-spacing:0.08em;font-weight:700;">
+      // CLASSIFICATION PIPELINE · RULE-BASED SPAR ENGINE
+    </div>
+
+    <div class="classify-terminal" id="classify-terminal">
+      <div class="term-line"><span class="t-dim">$</span> <span class="t-green">agent.run</span><span class="t-dim">(source=local, inbox=email_agent/data/inbox/)</span></div>
+      <div class="term-line"><span class="t-dim">  [SENSE]   </span> <span class="t-blue">LocalEmailConnector</span> <span class="t-dim">→ loaded 29 .eml files</span></div>
+      <div class="term-line"><span class="t-dim">  [PLAN]    </span> <span class="t-blue">RuleClassifier</span> <span class="t-dim">→ applying keyword/regex scoring</span></div>
+      <div class="term-line"><span class="t-dim">  [ACT]     </span> <span class="t-blue">FileStore + DBIndex</span> <span class="t-dim">→ writing case folders + SQLite</span></div>
+      <div class="term-line"><span class="t-dim">  [REFLECT] </span> <span class="t-dim">dedup check via message_id_exists / trade_id_exists</span></div>
+      <div class="term-line" id="agent-running-line" style="display:none;margin-top:6px;">
+        <span class="t-amber">  RUNNING...</span>
+      </div>
+    </div>
+
+    <div id="progress-section" class="hidden">
+      <div class="progress-label">// AGENT PIPELINE PROGRESS</div>
+      <div class="progress-bar-outer">
+        <div class="progress-bar-inner" id="progress-bar"></div>
+      </div>
+      <div class="progress-pct" id="progress-pct">0%</div>
+    </div>
+
+    <div id="classify-results" class="hidden">
+      <div style="font-family:var(--mono);font-size:10px;color:var(--dimmed);letter-spacing:0.08em;margin-bottom:10px;">// PIPELINE RESULTS</div>
+      <div class="classify-results">
+        <div class="cr-card">
+          <div class="cr-num" style="color:var(--green);text-shadow:var(--green-glow);">14</div>
+          <div class="cr-lbl">RELEVANT</div>
+        </div>
+        <div class="cr-card">
+          <div class="cr-num" style="color:var(--amber);">3</div>
+          <div class="cr-lbl">AMBIGUOUS</div>
+        </div>
+        <div class="cr-card">
+          <div class="cr-num" style="color:var(--red);">10</div>
+          <div class="cr-lbl">IRRELEVANT</div>
+        </div>
+        <div class="cr-card">
+          <div class="cr-num" style="color:var(--purple);">2</div>
+          <div class="cr-lbl">DUPLICATES</div>
+        </div>
+      </div>
+
+      <div style="margin-top:14px;" class="classify-terminal">
+        <div class="term-line"><span class="t-dim">  [OK]  </span><span class="t-green">12 body-trade emails → manifest.json written</span></div>
+        <div class="term-line"><span class="t-dim">  [OK]  </span><span class="t-green">2 blotter attachments saved → FX_Options_Blotter_*.xlsx</span></div>
+        <div class="term-line"><span class="t-dim">  [SKIP] </span><span class="t-amber">3 AMBIGUOUS → flagged for human review, not silently dropped</span></div>
+        <div class="term-line"><span class="t-dim">  [SKIP] </span><span class="t-amber">2 DUPLICATE → trade_id_exists guard fired (FXOPT-2026-00047/48)</span></div>
+        <div class="term-line"><span class="t-dim">  [SKIP] </span><span class="t-red">10 IRRELEVANT → hard-negative early exit</span></div>
+        <div class="term-line" style="margin-top:4px;"><span class="t-dim">  [DONE] </span><span class="t-green">Run complete. 0 errors. Audit log: logs/audit_20260526.log</span></div>
+      </div>
+
+      <div style="margin-top:14px;" class="classify-terminal">
+        <div class="term-line" style="font-weight:700;color:var(--text);">Classification Engine Parameters</div>
+        <div style="height:8px;"></div>
+        <div class="term-line"><span class="t-dim">  asset_keywords   → subject+body  </span><span class="t-blue">weight=0.50</span><span class="t-dim">  ("settlement instructions","deal reference",...)</span></div>
+        <div class="term-line"><span class="t-dim">  subject_keywords → subject only  </span><span class="t-blue">weight=0.30</span><span class="t-dim">  ("FX","trade","FXOPT",...)</span></div>
+        <div class="term-line"><span class="t-dim">  trade_id_regex   → anywhere      </span><span class="t-blue">weight=0.20</span><span class="t-dim">  (FXOPT-\d{4}-\d{5})</span></div>
+        <div style="height:4px;"></div>
+        <div class="term-line"><span class="t-dim">  RELEVANT   ≥ 0.70  │  AMBIGUOUS 0.30–0.70  │  IRRELEVANT &lt; 0.30</span></div>
+        <div class="term-line"><span class="t-dim">  hard-negative: negative_keyword present AND no asset_keyword → IRRELEVANT</span></div>
+      </div>
+    </div>
+
+  </div><!-- /tab-classify -->
+
+  <!-- ═══ TAB 3: EXTRACT ═══ -->
+  <div class="tab-panel" id="tab-extract">
+
+    <div class="extract-toolbar">
+      <div class="extract-count" id="extract-count">DISPLAYING 80/80 RECORDS</div>
+      <div style="font-family:var(--mono);font-size:9px;color:var(--dimmed);">
+        SOURCE:&nbsp;12×BODY&nbsp;+&nbsp;68×ATT:XLSX
+      </div>
+      <div class="source-filter-btns">
+        <button class="sf-btn active" onclick="setSourceFilter('ALL',this)">ALL</button>
+        <button class="sf-btn" onclick="setSourceFilter('BODY',this)">BODY ONLY</button>
+        <button class="sf-btn" onclick="setSourceFilter('ATT',this)">ATT ONLY</button>
+      </div>
+    </div>
+
+    <div class="trade-table-wrap">
+      <table class="trade-table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>TRADE_ID</th>
+            <th>COUNTERPARTY</th>
+            <th>CCY_PAIR</th>
+            <th>B/S</th>
+            <th style="text-align:right">NOTIONAL</th>
+            <th>CCY</th>
+            <th>SETTLE_DT</th>
+            <th>SOURCE</th>
+          </tr>
+        </thead>
+        <tbody id="trade-tbody"></tbody>
+      </table>
+    </div>
+
+  </div><!-- /tab-extract -->
+
+</div><!-- /main -->
+
+<script>
+// ═══════════════════════════════════════════════════════
+//  DATA
+// ═══════════════════════════════════════════════════════
+const EMAILS = [
+  {id:1, subject:"FX Trade Settlement[FXOPT-2026-00047] – EUR/USD",                   sender:"A.Makkar",  received:"26-May-26 09:30", label:"RELEVANT",    conf:0.85, trade_id:"FXOPT-2026-00047",   atts:0},
+  {id:2, subject:"FX Trade Settlement[FXOPT-2026-00048] – USD/JPY",                   sender:"A.Makkar",  received:"26-May-26 09:33", label:"RELEVANT",    conf:0.85, trade_id:"FXOPT-2026-00048",   atts:0},
+  {id:3, subject:"FX Trade Settlement[FXOPT-2026-00049] – GBP/USD",                   sender:"A.Makkar",  received:"26-May-26 09:36", label:"RELEVANT",    conf:0.85, trade_id:"FXOPT-2026-00049",   atts:0},
+  {id:4, subject:"FX Trade Settlement[FXOPT-2026-00050] – USD/CAD",                   sender:"A.Makkar",  received:"26-May-26 09:39", label:"RELEVANT",    conf:0.85, trade_id:"FXOPT-2026-00050",   atts:0},
+  {id:5, subject:"FX Trade Settlement[FXOPT-2026-00051] – EUR/GBP",                   sender:"A.Makkar",  received:"26-May-26 09:42", label:"RELEVANT",    conf:0.85, trade_id:"FXOPT-2026-00051",   atts:0},
+  {id:6, subject:"FX Trade Settlement[FXOPT-2026-00052] – AUD/USD",                   sender:"A.Makkar",  received:"26-May-26 09:45", label:"RELEVANT",    conf:0.85, trade_id:"FXOPT-2026-00052",   atts:0},
+  {id:7, subject:"FX Trade Settlement[FXOPT-2026-00053] – USD/SGD",                   sender:"A.Makkar",  received:"26-May-26 09:48", label:"RELEVANT",    conf:0.80, trade_id:"FXOPT-2026-00053",   atts:0},
+  {id:8, subject:"FX Trade Settlement[FXOPT-2026-00054] – USD/CHF",                   sender:"A.Makkar",  received:"26-May-26 09:51", label:"RELEVANT",    conf:0.80, trade_id:"FXOPT-2026-00054",   atts:0},
+  {id:9, subject:"FX Trade Settlement[FXOPT-2026-00055] – EUR/USD (partial)",         sender:"A.Makkar",  received:"26-May-26 09:54", label:"RELEVANT",    conf:0.75, trade_id:"FXOPT-2026-00055",   atts:0},
+  {id:10,subject:"FX Trade Settlement[FXOPT-2026-00056] – USD/JPY (partial)",         sender:"A.Makkar",  received:"26-May-26 09:57", label:"RELEVANT",    conf:0.75, trade_id:"FXOPT-2026-00056",   atts:0},
+  {id:11,subject:"FX Trade Settlement[FXOPT-2026-00057] – GBP/USD (partial)",         sender:"A.Makkar",  received:"26-May-26 10:00", label:"RELEVANT",    conf:0.75, trade_id:"FXOPT-2026-00057",   atts:0},
+  {id:12,subject:"FX Trade Settlement[FXOPT-2026-00058] – USD/CAD (partial)",         sender:"A.Makkar",  received:"26-May-26 10:03", label:"RELEVANT",    conf:0.75, trade_id:"FXOPT-2026-00058",   atts:0},
+  {id:13,subject:"FX Trade Settlements_FXOPT_270526 [Blotter – 34 trades]",           sender:"A.Makkar",  received:"26-May-26 10:06", label:"RELEVANT",    conf:0.80, trade_id:"UNKNOWN_a1b2c3",     atts:1, att_name:"FX_Options_Blotter_270526.xlsx"},
+  {id:14,subject:"FX Trade Settlements_FXOPT_280526 [Blotter – 34 trades]",           sender:"A.Makkar",  received:"26-May-26 10:09", label:"RELEVANT",    conf:0.80, trade_id:"UNKNOWN_f6g7h8",     atts:1, att_name:"FX_Options_Blotter_280526.xlsx"},
+  {id:15,subject:"FX Trade Settlement[FXOPT-2026-00047] – EUR/USD (resent)",          sender:"A.Makkar",  received:"26-May-26 10:12", label:"DUPLICATE",   conf:0.85, trade_id:"FXOPT-2026-00047",   atts:0},
+  {id:16,subject:"FX Trade Settlement[FXOPT-2026-00048] – USD/JPY (resent)",          sender:"A.Makkar",  received:"26-May-26 10:15", label:"DUPLICATE",   conf:0.85, trade_id:"FXOPT-2026-00048",   atts:0},
+  {id:17,subject:"Settlement query – account reconciliation",                          sender:"Ops.Desk",  received:"26-May-26 10:18", label:"AMBIGUOUS",   conf:0.30, trade_id:null,                 atts:0},
+  {id:18,subject:"Re: Confirmation needed",                                            sender:"R.Verma",   received:"26-May-26 10:21", label:"AMBIGUOUS",   conf:0.30, trade_id:null,                 atts:0},
+  {id:19,subject:"Pending transaction follow-up",                                      sender:"Fin.SS",    received:"26-May-26 10:24", label:"AMBIGUOUS",   conf:0.30, trade_id:null,                 atts:0},
+  {id:20,subject:"Happy Birthday Akshit!",                                             sender:"P.Sharma",  received:"26-May-26 10:27", label:"IRRELEVANT",  conf:0.90, trade_id:null,                 atts:0},
+  {id:21,subject:"5 Years at Protiviti – Congratulations Manav!",                     sender:"HR",        received:"26-May-26 10:30", label:"IRRELEVANT",  conf:0.90, trade_id:null,                 atts:0},
+  {id:22,subject:"Great work on the Q1 presentation!",                                 sender:"D.Khatri",  received:"26-May-26 10:33", label:"IRRELEVANT",  conf:0.90, trade_id:null,                 atts:0},
+  {id:23,subject:"[IT Support] Your request #TKT-44821 resolved",                     sender:"IT.Sup",    received:"26-May-26 10:36", label:"IRRELEVANT",  conf:0.90, trade_id:null,                 atts:0},
+  {id:24,subject:"Updated Remote Work Policy – June 2026",                             sender:"HR",        received:"26-May-26 10:39", label:"IRRELEVANT",  conf:0.90, trade_id:null,                 atts:0},
+  {id:25,subject:"Protiviti Monthly Update – May 2026",                                sender:"Comms",     received:"26-May-26 10:42", label:"IRRELEVANT",  conf:0.90, trade_id:null,                 atts:0},
+  {id:26,subject:"Action Required: Reset VPN password by 30-May",                     sender:"IT.Sec",    received:"26-May-26 10:45", label:"IRRELEVANT",  conf:0.90, trade_id:null,                 atts:0},
+  {id:27,subject:"Out of Office: Satyadarshi (returns 2-Jun-2026)",                   sender:"S.Mohanty", received:"26-May-26 10:48", label:"IRRELEVANT",  conf:0.90, trade_id:null,                 atts:0},
+  {id:28,subject:"Team Sync – Phase 1 Review – Friday 3pm",                           sender:"A.Makkar",  received:"26-May-26 10:51", label:"IRRELEVANT",  conf:0.90, trade_id:null,                 atts:0},
+  {id:29,subject:"Lunch this Friday at 1pm – Sector 18",                              sender:"M.Khatri",  received:"26-May-26 10:54", label:"IRRELEVANT",  conf:0.90, trade_id:null,                 atts:0},
+];
+
+const CPTYS  = ["Barclays PLC","Goldman Sachs","Deutsche Bank AG","HSBC Bank PLC","JPMorgan Chase","Soc.Generale","BNP Paribas","Citibank NA"];
+const PAIRS  = ["EUR/USD","USD/JPY","GBP/USD","USD/CAD","EUR/GBP","AUD/USD","USD/SGD","USD/CHF"];
+const CCYS   = ["EUR","USD","GBP","USD","EUR","AUD","USD","USD"];
+const NOTS   = [5250000,8750000,3100000,12500000,2800000,6400000,4200000,9800000];
+const DATES  = ["13-Oct-2026","25-Aug-2026","11-Nov-2026","05-Sep-2026","22-Oct-2026","19-Aug-2026","30-Nov-2026","08-Sep-2026"];
+
+const TRADES = [
+  ...Array.from({length:12},(_,i)=>({
+    trade_id:`FXOPT-2026-000${47+i}`,
+    cpty:CPTYS[i%8], pair:PAIRS[i%8], bs:i%2===0?"BUY":"SELL",
+    notional:NOTS[i%8], ccy:CCYS[i%8], settle:DATES[i%8], source:"BODY"
+  })),
+  ...Array.from({length:34},(_,i)=>({
+    trade_id:`FXOPT-2026-${String(i+1).padStart(5,'0')}`,
+    cpty:CPTYS[i%8], pair:PAIRS[i%8], bs:i%2===0?"BUY":"SELL",
+    notional:NOTS[i%8], ccy:CCYS[i%8], settle:DATES[i%8], source:"ATT:XLSX"
+  })),
+  ...Array.from({length:34},(_,i)=>({
+    trade_id:`FXOPT-2026-${String(i+67).padStart(5,'0')}`,
+    cpty:CPTYS[i%8], pair:PAIRS[i%8], bs:i%2===0?"BUY":"SELL",
+    notional:NOTS[i%8], ccy:CCYS[i%8], settle:DATES[i%8], source:"ATT:XLSX"
+  })),
+];
+
+// ═══════════════════════════════════════════════════════
+//  STATE
+// ═══════════════════════════════════════════════════════
+let currentFilter   = 'ALL';
+let currentSearch   = '';
+let currentPage     = 1;
+const PAGE_SIZE     = 15;
+let selectedEmail   = null;
+let detailTab       = 'fields';
+let agentRunning    = false;
+let classifyDone    = false;
+let tradeSourceFilter = 'ALL';
+
+// ═══════════════════════════════════════════════════════
+//  CLOCK
+// ═══════════════════════════════════════════════════════
+function updateClock() {
+  document.getElementById('live-clock').textContent =
+    new Date().toLocaleTimeString('en-GB', {hour12:false});
+}
+updateClock();
+setInterval(updateClock, 1000);
+
+// ═══════════════════════════════════════════════════════
+//  SPARKLINES (generate random bar heights)
+// ═══════════════════════════════════════════════════════
+function buildSparkline(id, cls) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  const heights = [30,55,40,70,50,65,45,80,60,75,55,90,65,70,85];
+  heights.forEach(h => {
+    const bar = document.createElement('div');
+    bar.className = 'spark-bar' + (cls ? ' '+cls : '');
+    bar.style.height = h + '%';
+    el.appendChild(bar);
+  });
+}
+buildSparkline('spark-processed', '');
+buildSparkline('spark-rate', 'amber');
+buildSparkline('spark-conf', 'blue');
+buildSparkline('spark-trades', 'purple');
+
+// ═══════════════════════════════════════════════════════
+//  SOURCE TOGGLE
+// ═══════════════════════════════════════════════════════
+function toggleSource(src) {
+  document.getElementById('src-local').classList.toggle('active', src==='local');
+  document.getElementById('src-graph').classList.toggle('active', src==='graph');
+}
+
+// ═══════════════════════════════════════════════════════
+//  TAB SWITCHING
+// ═══════════════════════════════════════════════════════
+function switchTab(tab) {
+  ['sync','classify','extract'].forEach(t => {
+    document.getElementById('tab-btn-'+t).classList.toggle('active', t===tab);
+    document.getElementById('tab-'+t).classList.toggle('active', t===tab);
+  });
+}
+
+// ═══════════════════════════════════════════════════════
+//  FILTER
+// ═══════════════════════════════════════════════════════
+function setFilter(f, btn) {
+  currentFilter = f;
+  currentPage   = 1;
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  if (btn) btn.classList.add('active');
+  renderEmailList();
+}
+
+function onSearch(val) {
+  currentSearch = val.toLowerCase();
+  currentPage   = 1;
+  // show/hide blinking cursor when input has text
+  document.getElementById('search-cursor').style.display = val ? 'none' : 'inline-block';
+  renderEmailList();
+}
+
+function getFiltered() {
+  return EMAILS.filter(e => {
+    const matchFilter = currentFilter==='ALL' || e.label===currentFilter;
+    const matchSearch = !currentSearch ||
+      e.subject.toLowerCase().includes(currentSearch) ||
+      e.sender.toLowerCase().includes(currentSearch) ||
+      (e.trade_id && e.trade_id.toLowerCase().includes(currentSearch));
+    return matchFilter && matchSearch;
+  });
+}
+
+// ═══════════════════════════════════════════════════════
+//  RENDER EMAIL LIST
+// ═══════════════════════════════════════════════════════
+function dotClass(label) {
+  if (label==='RELEVANT')   return 'dot-green';
+  if (label==='AMBIGUOUS')  return 'dot-amber';
+  if (label==='DUPLICATE')  return 'dot-purple';
+  return 'dot-red';
+}
+
+function confClass(label) {
+  if (label==='RELEVANT')   return 'conf-green';
+  if (label==='AMBIGUOUS')  return 'conf-amber';
+  if (label==='DUPLICATE')  return 'conf-purple';
+  return 'conf-red';
+}
+
+function renderEmailList() {
+  const filtered = getFiltered();
+  const totalPages = Math.ceil(filtered.length / PAGE_SIZE) || 1;
+  if (currentPage > totalPages) currentPage = totalPages;
+
+  const start = (currentPage-1)*PAGE_SIZE;
+  const page  = filtered.slice(start, start+PAGE_SIZE);
+
+  const list = document.getElementById('email-list');
+  list.innerHTML = '';
+
+  page.forEach(e => {
+    const row = document.createElement('div');
+    row.className = 'email-row' + (selectedEmail && selectedEmail.id===e.id ? ' selected' : '');
+    row.dataset.id = e.id;
+
+    const tradeDisplay = e.trade_id
+      ? (e.trade_id.startsWith('UNKNOWN') ? '<span style="color:var(--dimmed)">UNKNOWN_*</span>' : e.trade_id)
+      : '<span style="color:var(--dimmed)">——</span>';
+
+    const subjTrunc = e.subject.length > 38 ? e.subject.slice(0,37)+'…' : e.subject;
+
+    row.innerHTML = `
+      <div class="row-dot ${dotClass(e.label)}"></div>
+      <div class="row-trade">${tradeDisplay}</div>
+      <div class="row-subject">${subjTrunc}</div>
+      <div class="row-sender">${e.sender}</div>
+      <div class="row-time">${e.received}</div>
+      <div class="row-conf ${confClass(e.label)}">[${e.conf.toFixed(2)}]</div>
+    `;
+    row.addEventListener('click', () => selectEmail(e));
+    list.appendChild(row);
+  });
+
+  // pagination UI
+  const from = filtered.length ? start+1 : 0;
+  const to   = Math.min(start+PAGE_SIZE, filtered.length);
+  document.getElementById('page-info').textContent = `SHOWING ${from}–${to} OF ${filtered.length}`;
+
+  document.getElementById('prev-btn').disabled = currentPage<=1;
+  document.getElementById('next-btn').disabled = currentPage>=totalPages;
+
+  const p1 = document.getElementById('page-1');
+  const p2 = document.getElementById('page-2');
+  p1.classList.toggle('active', currentPage===1);
+  p2.classList.toggle('active', currentPage===2);
+
+  if (totalPages===1) {
+    p2.style.display = 'none';
+    document.getElementById('next-btn').disabled = true;
+  } else {
+    p2.style.display = '';
+  }
+}
+
+function changePage(delta) {
+  const filtered   = getFiltered();
+  const totalPages = Math.ceil(filtered.length / PAGE_SIZE) || 1;
+  currentPage = Math.max(1, Math.min(totalPages, currentPage+delta));
+  renderEmailList();
+}
+
+function goPage(p) {
+  currentPage = p;
+  renderEmailList();
+}
+
+// ═══════════════════════════════════════════════════════
+//  EMAIL SELECTION → DETAIL PANEL
+// ═══════════════════════════════════════════════════════
+function selectEmail(e) {
+  selectedEmail = e;
+  renderEmailList(); // re-render to update selected highlight
+
+  document.getElementById('detail-empty').classList.add('hidden');
+  document.getElementById('detail-content').classList.remove('hidden');
+  document.getElementById('detail-title-label').textContent =
+    `// ${e.label} · MSG #${String(e.id).padStart(3,'0')}`;
+
+  renderDetailFields(e);
+}
+
+function dots(n) {
+  return '·'.repeat(Math.max(1, n));
+}
+
+function makeDots(keyLen, maxLen) {
+  return dots(maxLen - keyLen + 2);
+}
+
+function labelBadge(label) {
+  const cls = {
+    RELEVANT:'badge-relevant', AMBIGUOUS:'badge-ambiguous',
+    IRRELEVANT:'badge-irrelevant', DUPLICATE:'badge-duplicate'
+  }[label] || 'badge-irrelevant';
+  return `<span class="label-badge ${cls}">${label}</span>`;
+}
+
+function renderDetailFields(e) {
+  const section = document.getElementById('detail-fields');
+
+  // Determine reason string
+  let reason = '';
+  if (e.label==='RELEVANT')   reason = 'asset_kw + subject_kw + trade_id_regex match';
+  if (e.label==='AMBIGUOUS')  reason = 'score 0.30–0.70; flagged for human review';
+  if (e.label==='IRRELEVANT') reason = 'negative_keyword present, no asset_keyword';
+  if (e.label==='DUPLICATE')  reason = 'trade_id_exists guard fired in DBIndex';
+
+  const tradeVal = e.trade_id
+    ? `<span class="df-val blue">${e.trade_id}</span>`
+    : `<span class="df-val" style="color:var(--dimmed)">——</span>`;
+
+  const confClass2 = {
+    RELEVANT:'green', AMBIGUOUS:'amber', IRRELEVANT:'red', DUPLICATE:'purple'
+  }[e.label];
+
+  const fields = [
+    ['STATUS',      labelBadge(e.label)],
+    ['TRADE_ID',    tradeVal],
+    ['CONFIDENCE',  `<span class="df-val ${confClass2}">${e.conf.toFixed(2)}</span>`],
+    ['SENDER',      `<span class="df-val">${e.sender}</span>`],
+    ['RECEIVED',    `<span class="df-val">${e.received}</span>`],
+    ['SUBJECT',     `<span class="df-val" style="font-size:9px;color:var(--muted);white-space:normal;line-height:1.4;">${e.subject}</span>`],
+    ['REASON',      `<span class="df-val" style="font-size:9px;color:var(--muted);white-space:normal;line-height:1.4;">${reason}</span>`],
+    ['ATTACHMENTS', `<span class="df-val ${e.atts>0?'blue':''}"> ${e.atts>0 ? e.atts+' FILE(S)' : 'NONE'}</span>`],
+  ];
+
+  const maxKey = 10;
+  let html = `<div class="detail-section-title">EMAIL METADATA</div>`;
+  fields.forEach(([k,v], idx) => {
+    const dots = '·'.repeat(Math.max(2, maxKey - k.length + 4));
+    html += `
+      <div class="detail-field">
+        <span class="df-key">${k}</span>
+        <span class="df-dots">${dots}</span>
+        ${v}
+      </div>`;
+    if (idx===2 || idx===4) {
+      html += `<div class="detail-sep">──────────────────────────────────</div>`;
+    }
+  });
+
+  section.innerHTML = html;
+
+  // Attachment section
+  const attSection = document.getElementById('detail-att-section');
+  if (e.atts > 0 && e.att_name) {
+    attSection.innerHTML = `
+      <div class="detail-section-title">ATTACHMENT DATA</div>
+      <div class="att-item">
+        <span class="att-icon">◈</span>
+        <span>${e.att_name}</span>
+        <span style="margin-left:auto;color:var(--dimmed);font-size:9px;">XLSX · RAW BYTES SAVED</span>
+      </div>
+      <div style="margin-top:8px;font-family:var(--mono);font-size:9px;color:var(--dimmed);padding:6px 8px;background:var(--bg);border:1px solid var(--border-dim);border-radius:2px;line-height:1.7;">
+        <span style="color:var(--amber)">NOTE:</span> Attachment-content parsing not yet implemented.<br>
+        pdfplumber / openpyxl deps commented out in requirements.txt.<br>
+        File saved raw to data/processed/${e.trade_id}_FX_OPTIONS_*/attachments/
+      </div>
+    `;
+  } else if (e.label === 'RELEVANT') {
+    attSection.innerHTML = `
+      <div class="detail-section-title">ATTACHMENT DATA</div>
+      <div class="no-att-msg">// NO ATTACHMENT DATA — BODY-ONLY TRADE</div>
+      <div style="margin-top:8px;font-family:var(--mono);font-size:9px;color:var(--dimmed);padding:6px 8px;background:var(--bg);border:1px solid var(--border-dim);border-radius:2px;line-height:1.7;">
+        manifest.json → ready_for_extraction: true<br>
+        path: data/processed/${e.trade_id}_FX_OPTIONS_20260526/<br>
+        files: email_body.txt, email_metadata.json, manifest.json
+      </div>
+    `;
+  } else {
+    attSection.innerHTML = `
+      <div class="detail-section-title">ATTACHMENT DATA</div>
+      <div class="no-att-msg">// NO CASE FOLDER CREATED — ${e.label}</div>
+    `;
+  }
+}
+
+// ═══════════════════════════════════════════════════════
+//  DETAIL TAB SWITCHING
+// ═══════════════════════════════════════════════════════
+function setDetailTab(tab) {
+  detailTab = tab;
+  document.querySelectorAll('.detail-tab').forEach((b,i) => {
+    b.classList.toggle('active', (i===0&&tab==='fields') || (i===1&&tab==='stats'));
+  });
+
+  if (tab === 'stats') {
+    // always show overview
+    document.getElementById('detail-empty').classList.remove('hidden');
+    document.getElementById('detail-content').classList.add('hidden');
+    document.getElementById('detail-title-label').textContent = '// PIPELINE OVERVIEW';
+  } else {
+    if (selectedEmail) {
+      document.getElementById('detail-empty').classList.add('hidden');
+      document.getElementById('detail-content').classList.remove('hidden');
+      document.getElementById('detail-title-label').textContent =
+        `// ${selectedEmail.label} · MSG #${String(selectedEmail.id).padStart(3,'0')}`;
+    } else {
+      document.getElementById('detail-empty').classList.remove('hidden');
+      document.getElementById('detail-content').classList.add('hidden');
+      document.getElementById('detail-title-label').textContent = '// SELECT AN EMAIL TO INSPECT';
+    }
+  }
+}
+
+// ═══════════════════════════════════════════════════════
+//  RUN AGENT — progress animation
+// ═══════════════════════════════════════════════════════
+function runAgent() {
+  if (agentRunning) return;
+  agentRunning = true;
+  switchTab('classify');
+
+  const progressSection = document.getElementById('progress-section');
+  const bar             = document.getElementById('progress-bar');
+  const pct             = document.getElementById('progress-pct');
+  const results         = document.getElementById('classify-results');
+  const runningLine     = document.getElementById('agent-running-line');
+
+  progressSection.classList.remove('hidden');
+  results.classList.add('hidden');
+  runningLine.style.display = '';
+
+  let progress = 0;
+  const total  = 1800; // ms
+  const interval = 30; // ms
+  const step   = (interval / total) * 100;
+
+  const timer = setInterval(() => {
+    progress = Math.min(progress + step, 100);
+    bar.style.width = progress.toFixed(1) + '%';
+
+    const filled = Math.round(progress / 5);
+    const empty  = 20 - filled;
+    pct.textContent =
+      '  [' + '█'.repeat(filled) + '░'.repeat(empty) + ']  ' +
+      Math.round(progress) + '%';
+
+    if (progress >= 100) {
+      clearInterval(timer);
+      agentRunning  = false;
+      classifyDone  = true;
+      runningLine.style.display = 'none';
+      setTimeout(() => {
+        results.classList.remove('hidden');
+      }, 200);
+    }
+  }, interval);
+}
+
+// ═══════════════════════════════════════════════════════
+//  TRADE TABLE
+// ═══════════════════════════════════════════════════════
+function fmt(n) {
+  return n.toLocaleString('en-US');
+}
+
+function getFilteredTrades() {
+  if (tradeSourceFilter === 'BODY') return TRADES.filter(t => t.source === 'BODY');
+  if (tradeSourceFilter === 'ATT')  return TRADES.filter(t => t.source !== 'BODY');
+  return TRADES;
+}
+
+function renderTradeTable() {
+  const trades = getFilteredTrades();
+  document.getElementById('extract-count').textContent =
+    `DISPLAYING ${trades.length}/${TRADES.length} RECORDS`;
+
+  const tbody = document.getElementById('trade-tbody');
+  tbody.innerHTML = '';
+
+  trades.forEach((t, i) => {
+    const tr = document.createElement('tr');
+    const srcClass = t.source==='BODY' ? 'td-src-body' : 'td-src-att';
+    const uti = t.trade_id.replace('FXOPT','UTI') + '-' + Math.random().toString(36).slice(2,7).toUpperCase();
+    tr.innerHTML = `
+      <td style="color:var(--dimmed);font-size:9px;">${String(i+1).padStart(3,'0')}</td>
+      <td class="td-trade">${t.trade_id}</td>
+      <td style="color:var(--muted);font-size:9.5px;">${t.cpty}</td>
+      <td class="td-pair">${t.pair}</td>
+      <td class="${t.bs==='BUY'?'td-buy':'td-sell'}">${t.bs}</td>
+      <td class="td-not" style="text-align:right;">${fmt(t.notional)}</td>
+      <td style="color:var(--dimmed);font-size:9px;">${t.ccy}</td>
+      <td class="td-date">${t.settle}</td>
+      <td class="${srcClass}">${t.source}</td>
+    `;
+    tbody.appendChild(tr);
+  });
+}
+
+function setSourceFilter(f, btn) {
+  tradeSourceFilter = f;
+  document.querySelectorAll('.sf-btn').forEach(b => b.classList.remove('active'));
+  if (btn) btn.classList.add('active');
+  renderTradeTable();
+}
+
+// ═══════════════════════════════════════════════════════
+//  SEARCH CURSOR — hide when typing
+// ═══════════════════════════════════════════════════════
+document.getElementById('search-input').addEventListener('focus', () => {
+  document.getElementById('search-cursor').style.display = 'none';
+});
+document.getElementById('search-input').addEventListener('blur', () => {
+  if (!document.getElementById('search-input').value) {
+    document.getElementById('search-cursor').style.display = 'inline-block';
+  }
+});
+
+// ═══════════════════════════════════════════════════════
+//  INIT
+// ═══════════════════════════════════════════════════════
+renderEmailList();
+renderTradeTable();
+</script>
+</body>
+</html>

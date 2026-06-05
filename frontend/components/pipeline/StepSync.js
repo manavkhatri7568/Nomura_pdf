@@ -1,5 +1,6 @@
 'use client';
 import { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { api } from '@/lib/api';
 import { Card, CardHeader } from '@/components/ui/Card';
 import Button from '@/components/ui/Button';
@@ -7,7 +8,7 @@ import StatCard from '@/components/ui/StatCard';
 import EmptyState from '@/components/ui/EmptyState';
 import Badge from '@/components/ui/Badge';
 import { ProcessLoader, useStagedLoader } from '@/components/ui/Loader';
-import { EnvelopeIcon, PaperClipIcon, ServerStackIcon, ClockIcon } from '@/components/ui/Icons';
+import { EnvelopeIcon, PaperClipIcon, ClockIcon } from '@/components/ui/Icons';
 
 const SYNC_STEPS = [
   'Establishing connection',
@@ -29,9 +30,12 @@ function fmt(dateStr) {
 /* ─── Email body drawer ────────────────────────────────────── */
 function EmailDrawer({ email, source, onClose }) {
   const open = !!email;
+  const [mounted, setMounted] = useState(false);
   const [body,    setBody]    = useState(null);
   const [loading, setLoading] = useState(false);
   const [error,   setError]   = useState(null);
+
+  useEffect(() => setMounted(true), []);
 
   useEffect(() => {
     if (!email) { setBody(null); setError(null); return; }
@@ -45,13 +49,15 @@ function EmailDrawer({ email, source, onClose }) {
     return () => { cancelled = true; };
   }, [email?.message_id]);
 
-  return (
+  if (!mounted) return null;
+
+  return createPortal(
     <>
       <div
         className={`drawer-backdrop fixed inset-0 z-40 bg-neutral-900/25 backdrop-blur-[2px] ${open ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
         onClick={onClose}
       />
-      <div className={`drawer-slide fixed top-0 right-0 z-50 h-full w-full max-w-xl bg-white border-l border-neutral-200 shadow-2xl flex flex-col ${open ? 'translate-x-0' : 'translate-x-full'}`}>
+      <div className={`drawer-slide fixed top-0 right-0 bottom-0 z-50 h-screen w-full max-w-xl bg-white border-l border-neutral-200 shadow-2xl flex flex-col ${open ? 'translate-x-0' : 'translate-x-full'}`}>
         {!email ? null : (
           <>
             {/* Header */}
@@ -144,15 +150,16 @@ function EmailDrawer({ email, source, onClose }) {
           </>
         )}
       </div>
-    </>
+    </>,
+    document.body,
   );
 }
 
-export default function StepSync({ source, onSynced }) {
+export default function StepSync({ source, onSynced, initialEmails = null, initialTs = null }) {
   const [loading,  setLoading]  = useState(false);
-  const [emails,   setEmails]   = useState(null);
+  const [emails,   setEmails]   = useState(initialEmails);  // seeded from restored session
   const [error,    setError]    = useState(null);
-  const [ts,       setTs]       = useState(null);
+  const [ts,       setTs]       = useState(initialTs);
   const [search,   setSearch]   = useState('');
   const [preview,  setPreview]  = useState(null);   // email being viewed
 
@@ -167,9 +174,13 @@ export default function StepSync({ source, onSynced }) {
         api.fetchEmails(source),
         new Promise(r => setTimeout(r, SYNC_STEPS.length * 480 + 300)),
       ]);
+      const tsVal = new Date().toLocaleString('en-GB', {
+        day: '2-digit', month: 'short', year: 'numeric',
+        hour: '2-digit', minute: '2-digit', second: '2-digit',
+      });
       setEmails(data.emails ?? []);
-      setTs(new Date().toLocaleTimeString('en-GB'));
-      onSynced?.(data.emails ?? []);
+      setTs(tsVal);
+      onSynced?.(data.emails ?? [], tsVal);
     } catch (e) {
       setError(e.message);
     } finally {
@@ -192,11 +203,13 @@ export default function StepSync({ source, onSynced }) {
 
       <div className="space-y-4">
         {emails && !loading && (
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
             <StatCard label="Emails Synced"    value={emails.length} icon={<EnvelopeIcon />}    color="blue"    />
             <StatCard label="With Attachments" value={withAttach}    icon={<PaperClipIcon />}   color="neutral" />
-            <StatCard label="Source"           value={source === 'graph' ? 'Graph API' : 'Local'} icon={<ServerStackIcon />} color="neutral" />
-            <StatCard label="Last Sync"        value={ts}            icon={<ClockIcon />}        color="neutral" />
+            <StatCard label="Last Sync"
+              value={ts ? (ts.split(', ')[1] ?? ts) : ts}
+              sub={ts && ts.includes(', ') ? ts.split(', ')[0] : undefined}
+              icon={<ClockIcon />} color="neutral" />
           </div>
         )}
 
@@ -268,18 +281,20 @@ export default function StepSync({ source, onSynced }) {
                 <table className="w-full text-xs data-table">
                   <thead>
                     <tr className="bg-neutral-50 border-b border-neutral-150">
-                      {['#', 'Subject', 'Sender', 'Received', 'Attachments', 'Body', ''].map(h => (
+                      {['#', 'Subject', 'Sender', 'Received', 'Attachments'].map(h => (
                         <th key={h} className="px-3 py-2.5 text-left text-[11px] font-semibold text-neutral-400 uppercase tracking-wide whitespace-nowrap">{h}</th>
                       ))}
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-neutral-100">
                     {filtered.length === 0 ? (
-                      <tr><td colSpan={7} className="px-3 py-8 text-center text-neutral-400">No results.</td></tr>
+                      <tr><td colSpan={5} className="px-3 py-8 text-center text-neutral-400">No results.</td></tr>
                     ) : (
                       filtered.map((email, i) => (
                         <tr key={email.message_id ?? i}
-                          className={`transition-colors ${preview?.message_id === email.message_id ? 'bg-brand-50' : ''}`}
+                          onClick={() => setPreview(email)}
+                          title="Click to read this email"
+                          className={`cursor-pointer transition-colors ${preview?.message_id === email.message_id ? 'bg-brand-50' : 'hover:bg-neutral-50/70'}`}
                         >
                           <td className="px-3 py-2.5 text-neutral-400 font-mono">{i + 1}</td>
                           <td className="px-3 py-2.5 max-w-xs">
@@ -300,23 +315,6 @@ export default function StepSync({ source, onSynced }) {
                               </span>
                             ) : <span className="text-neutral-300">—</span>}
                           </td>
-                          <td className="px-3 py-2.5">
-                            <Badge variant={email.has_body ? 'synced' : 'pending'} dot>
-                              {email.has_body ? 'Yes' : 'No'}
-                            </Badge>
-                          </td>
-                          <td className="px-3 py-2.5">
-                            <button
-                              onClick={() => setPreview(email)}
-                              className="inline-flex items-center gap-1 text-[10px] font-semibold text-brand-500 hover:text-brand-700 transition-colors whitespace-nowrap"
-                            >
-                              View
-                              <svg viewBox="0 0 20 20" fill="currentColor" className="w-3.5 h-3.5">
-                                <path d="M10 12.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z" />
-                                <path fillRule="evenodd" d="M.664 10.59a1.651 1.651 0 0 1 0-1.186A10.004 10.004 0 0 1 10 3c4.257 0 7.893 2.66 9.336 6.41.147.381.146.804 0 1.186A10.004 10.004 0 0 1 10 17c-4.257 0-7.893-2.66-9.336-6.41ZM14 10a4 4 0 1 1-8 0 4 4 0 0 1 8 0Z" clipRule="evenodd" />
-                              </svg>
-                            </button>
-                          </td>
                         </tr>
                       ))
                     )}
@@ -328,7 +326,7 @@ export default function StepSync({ source, onSynced }) {
                 <svg viewBox="0 0 20 20" fill="currentColor" className="w-3.5 h-3.5">
                   <path fillRule="evenodd" d="M18 10a8 8 0 1 1-16 0 8 8 0 0 1 16 0Zm-7-4a1 1 0 1 1-2 0 1 1 0 0 1 2 0ZM9 9a.75.75 0 0 0 0 1.5h.253a.25.25 0 0 1 .244.304l-.459 2.066A1.75 1.75 0 0 0 10.747 15H11a.75.75 0 0 0 0-1.5h-.253a.25.25 0 0 1-.244-.304l.459-2.066A1.75 1.75 0 0 0 9.253 9H9Z" clipRule="evenodd" />
                 </svg>
-                Scheduled sync · every 24h · auto-syncs from Microsoft Graph in production · click <strong>View</strong> on any row to read the email
+                Scheduled sync · every 24h · auto-syncs from Microsoft Graph in production · click <strong>any row</strong> to read the email
               </div>
             </>
           )}

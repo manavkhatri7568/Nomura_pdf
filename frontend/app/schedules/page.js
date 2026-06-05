@@ -1,6 +1,7 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
+import { api } from "@/lib/api";
 import Header from "@/components/layout/Header";
 import Badge from "@/components/ui/Badge";
 import Button from "@/components/ui/Button";
@@ -28,14 +29,27 @@ const DEFAULT_EXTRACT_FIELDS = [
 const SEED = [
   {
     id: 1,
-    name: "Compare & Match",
+    name: "Classify & Extract",
     description:
-      "Sync  mailboxes, shortlist FX settlement emails, extract trade data and compare",
+      "Sync mailboxes, shortlist FX settlement emails",
     frequency: 24,
     lastRun: "2026-06-01T00:00:00Z",
     enabled: true,
     health: "healthy",
     href: "/pipeline",
+    keywords: [...DEFAULT_KEYWORDS],
+    extractFields: [...DEFAULT_EXTRACT_FIELDS],
+    syncsBackend: true, // this agent drives the live rule classifier via /config
+  },
+];
+
+/* ─── agent capability templates (the "Agent name" dropdown) ─── */
+const AGENT_TEMPLATES = [
+  {
+    name: "Classify & Extract",
+    description: "Sync mailboxes, shortlist FX settlement emails",
+    href: "/pipeline",
+    frequency: 24,
     keywords: [...DEFAULT_KEYWORDS],
     extractFields: [...DEFAULT_EXTRACT_FIELDS],
   },
@@ -122,7 +136,7 @@ function ChipInput({ chips, onChange }) {
 }
 
 /* ─── Edit frequency modal ──────────────────────────────────── */
-function EditModal({ workflow, onSave, onClose }) {
+function EditModal({ workflow, onSave, onReset, onClose }) {
   const [freq, setFreq] = useState(String(workflow.frequency));
   const [unit, setUnit] = useState("hours");
   const [keywords, setKeywords] = useState(
@@ -131,12 +145,44 @@ function EditModal({ workflow, onSave, onClose }) {
   const [extractFields, setExtractFields] = useState(
     workflow.extractFields ? [...workflow.extractFields] : [...DEFAULT_EXTRACT_FIELDS]
   );
+  const [saving, setSaving] = useState(false);
+  const [resetting, setResetting] = useState(false);
+  const [err, setErr] = useState(null);
 
-  function handleSave() {
+  async function handleSave() {
     const n = parseInt(freq);
-    if (!isNaN(n) && n > 0) {
-      onSave({ frequency: n, keywords, extractFields });
+    if (isNaN(n) || n < 1) {
+      setErr("Run frequency must be a positive whole number.");
+      return;
+    }
+    if (keywords.length === 0) {
+      setErr("Add at least one shortlisting keyword.");
+      return;
+    }
+    setSaving(true);
+    setErr(null);
+    try {
+      await onSave({ frequency: n, keywords, extractFields });
       onClose();
+    } catch (e) {
+      setErr(e.message || "Failed to save configuration.");
+    } finally {
+      setSaving(false);
+    }
+  }
+
+  async function handleReset() {
+    setResetting(true);
+    setErr(null);
+    try {
+      const cfg = await onReset();
+      setKeywords([...(cfg.asset_keywords ?? DEFAULT_KEYWORDS)]);
+      setExtractFields([...(cfg.extract_fields ?? DEFAULT_EXTRACT_FIELDS)]);
+      setFreq(String(cfg.sync_frequency_hours ?? 24));
+    } catch (e) {
+      setErr(e.message || "Failed to reset configuration.");
+    } finally {
+      setResetting(false);
     }
   }
 
@@ -213,14 +259,36 @@ function EditModal({ workflow, onSave, onClose }) {
             </p>
             <ChipInput chips={extractFields} onChange={setExtractFields} />
           </div>
+
+          {/* loop explainer */}
+          <div className="flex items-start gap-2 p-3 bg-brand-50 border border-brand-200 rounded-lg text-[11px] text-brand-700">
+            <svg viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4 flex-shrink-0 mt-px">
+              <path fillRule="evenodd" d="M18 10a8 8 0 1 1-16 0 8 8 0 0 1 16 0Zm-7-4a1 1 0 1 1-2 0 1 1 0 0 1 2 0ZM9 9a.75.75 0 0 0 0 1.5h.253a.25.25 0 0 1 .244.304l-.459 2.066A1.75 1.75 0 0 0 10.747 15H11a.75.75 0 0 0 0-1.5h-.253a.25.25 0 0 1-.244-.304l.459-2.066A1.75 1.75 0 0 0 9.253 9H9Z" clipRule="evenodd" />
+            </svg>
+            <span>Shortlisting keywords feed the rule classifier directly (asset-level signal, <strong>+0.5</strong>). Saving updates the live pipeline — re-run <strong>Classify &amp; Extract</strong> to see the new classifications.</span>
+          </div>
+
+          {err && (
+            <div className="flex items-start gap-2 p-3 bg-red-50 border border-red-200 rounded-lg text-[11px] text-red-700">
+              <svg viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4 flex-shrink-0 mt-px">
+                <path fillRule="evenodd" d="M18 10a8 8 0 1 1-16 0 8 8 0 0 1 16 0Zm-8-5a.75.75 0 0 1 .75.75v4.5a.75.75 0 0 1-1.5 0v-4.5A.75.75 0 0 1 10 5Zm0 10a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z" clipRule="evenodd" />
+              </svg>
+              {err}
+            </div>
+          )}
         </div>
-        <div className="px-5 py-4 border-t border-neutral-150 flex justify-end gap-2 flex-shrink-0">
-          <Button variant="secondary" size="sm" onClick={onClose}>
-            Cancel
+        <div className="px-5 py-4 border-t border-neutral-150 flex items-center justify-between gap-2 flex-shrink-0">
+          <Button variant="ghost" size="sm" onClick={handleReset} loading={resetting} disabled={saving}>
+            Reset to defaults
           </Button>
-          <Button variant="primary" size="sm" onClick={handleSave}>
-            Save changes
-          </Button>
+          <div className="flex gap-2">
+            <Button variant="secondary" size="sm" onClick={onClose} disabled={saving || resetting}>
+              Cancel
+            </Button>
+            <Button variant="primary" size="sm" onClick={handleSave} loading={saving} disabled={resetting}>
+              {saving ? "Saving…" : "Save changes"}
+            </Button>
+          </div>
         </div>
       </div>
     </div>
@@ -278,25 +346,293 @@ function DeleteModal({ workflow, onConfirm, onClose }) {
   );
 }
 
+/* ─── Add agent modal ───────────────────────────────────────── */
+function AddModal({ templates, onAdd, onClose }) {
+  const [templateName, setTemplateName] = useState(templates[0]?.name ?? "");
+  const template = templates.find((t) => t.name === templateName) ?? templates[0];
+  const [description, setDescription] = useState(template?.description ?? "");
+  const [freq, setFreq] = useState(String(template?.frequency ?? 24));
+  const [unit, setUnit] = useState("hours");
+  const [keywords, setKeywords] = useState([...(template?.keywords ?? DEFAULT_KEYWORDS)]);
+  const [extractFields, setExtractFields] = useState([...(template?.extractFields ?? DEFAULT_EXTRACT_FIELDS)]);
+  const [saving, setSaving] = useState(false);
+  const [err, setErr] = useState(null);
+
+  // Selecting a different capability pre-fills its defaults (user can edit).
+  function selectTemplate(name) {
+    setTemplateName(name);
+    const t = templates.find((x) => x.name === name);
+    if (t) {
+      setDescription(t.description);
+      setFreq(String(t.frequency));
+      setKeywords([...t.keywords]);
+      setExtractFields([...t.extractFields]);
+    }
+  }
+
+  async function handleAdd() {
+    const n = parseInt(freq);
+    if (!templateName) { setErr("Select an agent."); return; }
+    if (!description.trim()) { setErr("Add a description."); return; }
+    if (isNaN(n) || n < 1) { setErr("Run frequency must be a positive whole number."); return; }
+    if (keywords.length === 0) { setErr("Add at least one shortlisting keyword."); return; }
+    setSaving(true);
+    setErr(null);
+    try {
+      await onAdd({
+        name: templateName,
+        description: description.trim(),
+        frequency: n,
+        keywords,
+        extractFields,
+        href: template?.href ?? "/pipeline",
+      });
+      onClose();
+    } catch (e) {
+      setErr(e.message || "Failed to add agent.");
+    } finally {
+      setSaving(false);
+    }
+  }
+
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+      <div className="absolute inset-0 bg-neutral-900/30 backdrop-blur-sm" onClick={onClose} />
+      <div className="relative z-10 w-full max-w-lg bg-white rounded-xl shadow-card-lg border border-neutral-200 flex flex-col max-h-[90vh]">
+        <div className="px-5 py-4 border-b border-neutral-150 flex items-center justify-between flex-shrink-0">
+          <div>
+            <h2 className="text-sm font-semibold text-neutral-900">Add Agent</h2>
+            <p className="text-xs text-neutral-400 mt-0.5">Configure a new agent from a capability template</p>
+          </div>
+          <button onClick={onClose} className="w-7 h-7 rounded hover:bg-neutral-100 flex items-center justify-center text-neutral-400 transition-colors">
+            <svg viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4">
+              <path d="M6.28 5.22a.75.75 0 0 0-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 1 0 1.06 1.06L10 11.06l3.72 3.72a.75.75 0 1 0 1.06-1.06L11.06 10l3.72-3.72a.75.75 0 0 0-1.06-1.06L10 8.94 6.28 5.22Z" />
+            </svg>
+          </button>
+        </div>
+
+        <div className="px-5 py-5 space-y-5 overflow-y-auto flex-1">
+          {/* Agent name (dropdown of configured capabilities) */}
+          <div>
+            <label className="block text-xs font-semibold text-neutral-600 mb-1.5">Agent name</label>
+            <select
+              value={templateName}
+              onChange={(e) => selectTemplate(e.target.value)}
+              className="w-full px-3 py-2 text-sm border border-neutral-200 rounded-md bg-white focus:outline-none focus:ring-2 focus:ring-brand-500"
+            >
+              {templates.map((t) => (
+                <option key={t.name} value={t.name}>{t.name}</option>
+              ))}
+            </select>
+            <p className="mt-1.5 text-[11px] text-neutral-400">Choose from the available agent capabilities.</p>
+          </div>
+
+          {/* Description (free text) */}
+          <div>
+            <label className="block text-xs font-semibold text-neutral-600 mb-1.5">Description</label>
+            <textarea
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+              rows={2}
+              placeholder="e.g. Sync mailboxes, shortlist FX settlement emails"
+              className="w-full px-3 py-2 text-sm border border-neutral-200 rounded-md focus:outline-none focus:ring-2 focus:ring-brand-500 resize-none"
+            />
+          </div>
+
+          {/* Frequency */}
+          <div>
+            <label className="block text-xs font-semibold text-neutral-600 mb-1.5">Run frequency</label>
+            <div className="flex gap-2">
+              <input
+                type="number"
+                min="1"
+                value={freq}
+                onChange={(e) => setFreq(e.target.value)}
+                className="flex-1 px-3 py-2 text-sm border border-neutral-200 rounded-md focus:outline-none focus:ring-2 focus:ring-brand-500"
+              />
+              <select
+                value={unit}
+                onChange={(e) => setUnit(e.target.value)}
+                className="px-3 py-2 text-sm border border-neutral-200 rounded-md focus:outline-none focus:ring-2 focus:ring-brand-500 bg-white"
+              >
+                <option value="hours">Hours</option>
+                <option value="days">Days</option>
+                <option value="minutes">Minutes</option>
+              </select>
+            </div>
+          </div>
+
+          {/* Shortlisting keywords */}
+          <div>
+            <label className="block text-xs font-semibold text-neutral-600 mb-0.5">Shortlisting keywords</label>
+            <p className="text-[11px] text-neutral-400 mb-2">Emails matching these keywords will be shortlisted for processing.</p>
+            <ChipInput chips={keywords} onChange={setKeywords} />
+          </div>
+
+          {/* Fields to extract */}
+          <div>
+            <label className="block text-xs font-semibold text-neutral-600 mb-0.5">Fields to extract</label>
+            <p className="text-[11px] text-neutral-400 mb-2">Data fields the agent will extract from each matched email.</p>
+            <ChipInput chips={extractFields} onChange={setExtractFields} />
+          </div>
+
+          {err && (
+            <div className="flex items-start gap-2 p-3 bg-red-50 border border-red-200 rounded-lg text-[11px] text-red-700">
+              <svg viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4 flex-shrink-0 mt-px">
+                <path fillRule="evenodd" d="M18 10a8 8 0 1 1-16 0 8 8 0 0 1 16 0Zm-8-5a.75.75 0 0 1 .75.75v4.5a.75.75 0 0 1-1.5 0v-4.5A.75.75 0 0 1 10 5Zm0 10a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z" clipRule="evenodd" />
+              </svg>
+              {err}
+            </div>
+          )}
+        </div>
+
+        <div className="px-5 py-4 border-t border-neutral-150 flex items-center justify-end gap-2 flex-shrink-0">
+          <Button variant="secondary" size="sm" onClick={onClose} disabled={saving}>Cancel</Button>
+          <Button variant="primary" size="sm" onClick={handleAdd} loading={saving}>
+            {saving ? "Adding…" : "Add agent"}
+          </Button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 /* ─── main page ─────────────────────────────────────────────── */
 export default function SchedulesPage() {
   const router = useRouter();
   const [workflows, setWorkflows] = useState(SEED);
   const [editing, setEditing] = useState(null);
   const [deleting, setDeleting] = useState(null);
+  const [adding, setAdding] = useState(false);
+  const [savedMsg, setSavedMsg] = useState(null);
+  const [loadErr, setLoadErr] = useState(null);
+
+  function flashSaved(msg) {
+    setSavedMsg(msg);
+    setTimeout(() => setSavedMsg(null), 6000);
+  }
+
+  // Hydrate the workflow's live settings from the backend config on mount, so
+  // the editor shows what the classifier is actually using.
+  useEffect(() => {
+    let cancelled = false;
+    api
+      .getConfig()
+      .then((cfg) => {
+        if (cancelled) return;
+        setWorkflows((ws) =>
+          ws.map((w) =>
+            w.id === 1
+              ? {
+                  ...w,
+                  keywords: cfg.asset_keywords ?? w.keywords,
+                  extractFields: cfg.extract_fields ?? w.extractFields,
+                  frequency: cfg.sync_frequency_hours ?? w.frequency,
+                }
+              : w,
+          ),
+        );
+      })
+      .catch((e) => {
+        if (!cancelled) setLoadErr(e.message);
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, []);
 
   function toggleEnabled(id) {
     setWorkflows((ws) =>
       ws.map((w) => (w.id === id ? { ...w, enabled: !w.enabled } : w)),
     );
   }
-  function saveWorkflow(id, { frequency, keywords, extractFields }) {
+
+  // Persist an edit. The primary agent (syncsBackend) drives the live rule
+  // classifier via /config; additional catalog agents are saved locally.
+  // Throws on backend failure so the modal can surface it and stay open.
+  async function saveWorkflow(id, { frequency, keywords, extractFields }) {
+    const wf = workflows.find((w) => w.id === id);
+    if (wf?.syncsBackend) {
+      const cfg = await api.updateConfig({
+        asset_keywords: keywords,
+        extract_fields: extractFields,
+        sync_frequency_hours: frequency,
+      });
+      setWorkflows((ws) =>
+        ws.map((w) =>
+          w.id === id
+            ? {
+                ...w,
+                frequency: cfg.sync_frequency_hours ?? frequency,
+                keywords: cfg.asset_keywords ?? keywords,
+                extractFields: cfg.extract_fields ?? extractFields,
+              }
+            : w,
+        ),
+      );
+      flashSaved(
+        "Configuration saved and applied to the live pipeline. Re-run Classify & Extract to see the updated classifications.",
+      );
+    } else {
+      setWorkflows((ws) =>
+        ws.map((w) => (w.id === id ? { ...w, frequency, keywords, extractFields } : w)),
+      );
+      flashSaved("Agent configuration saved.");
+    }
+  }
+
+  // Create a new catalog agent from the Add modal.
+  function addWorkflow({ name, description, frequency, keywords, extractFields, href }) {
+    setWorkflows((ws) => {
+      const nextId = ws.reduce((m, w) => Math.max(m, w.id), 0) + 1;
+      return [
+        ...ws,
+        {
+          id: nextId,
+          name,
+          description,
+          frequency,
+          lastRun: null,
+          enabled: true,
+          health: "healthy",
+          href: href ?? "/pipeline",
+          keywords,
+          extractFields,
+          syncsBackend: false,
+        },
+      ];
+    });
+    flashSaved(`Agent “${name}” added.`);
+  }
+
+  // Reset within the editor: backend reset for the primary agent, local reset
+  // to defaults for catalog agents. Returns the config the modal re-reads.
+  async function resetConfigFor(workflow) {
+    let cfg;
+    if (workflow?.syncsBackend) {
+      cfg = await api.resetConfig();
+    } else {
+      cfg = {
+        asset_keywords: [...DEFAULT_KEYWORDS],
+        extract_fields: [...DEFAULT_EXTRACT_FIELDS],
+        sync_frequency_hours: 24,
+      };
+    }
     setWorkflows((ws) =>
       ws.map((w) =>
-        w.id === id ? { ...w, frequency, keywords, extractFields } : w
-      )
+        w.id === workflow?.id
+          ? {
+              ...w,
+              keywords: cfg.asset_keywords,
+              extractFields: cfg.extract_fields,
+              frequency: cfg.sync_frequency_hours,
+            }
+          : w,
+      ),
     );
+    return cfg;
   }
+
   function deleteWorkflow(id) {
     setWorkflows((ws) => ws.filter((w) => w.id !== id));
   }
@@ -307,13 +643,21 @@ export default function SchedulesPage() {
 
   return (
     <div className="flex flex-col flex-1 min-h-screen">
-      <Header breadcrumbs={["Agentic Workflows", "Schedules"]} />
+      <Header breadcrumbs={["Agentic Capabilities", "Configure Agents"]} />
 
       {editing && (
         <EditModal
           workflow={editing}
           onSave={(data) => saveWorkflow(editing.id, data)}
+          onReset={() => resetConfigFor(editing)}
           onClose={() => setEditing(null)}
+        />
+      )}
+      {adding && (
+        <AddModal
+          templates={AGENT_TEMPLATES}
+          onAdd={addWorkflow}
+          onClose={() => setAdding(false)}
         />
       )}
       {deleting && (
@@ -329,26 +673,40 @@ export default function SchedulesPage() {
         <div className="flex items-start justify-between mb-5 gap-4">
           <div>
             <h1 className="text-base font-semibold text-neutral-900 heading-underline mb-3">
-              Agentic Workflows Configuration
+              Agentic Capabilities Configuration
             </h1>
           </div>
           <Button
             variant="primary"
             size="sm"
+            onClick={() => setAdding(true)}
             icon={
               <svg viewBox="0 0 20 20" fill="currentColor">
                 <path d="M10.75 4.75a.75.75 0 0 0-1.5 0v4.5h-4.5a.75.75 0 0 0 0 1.5h4.5v4.5a.75.75 0 0 0 1.5 0v-4.5h4.5a.75.75 0 0 0 0-1.5h-4.5v-4.5Z" />
               </svg>
             }
           >
-            New workflow
+            Add Agent
           </Button>
         </div>
+
+        {/* Save confirmation / load error */}
+        {savedMsg && (
+          <div className="mb-4 flex items-center gap-2 p-3 bg-emerald-50 border border-emerald-200 rounded-lg text-emerald-700 text-xs">
+            <CheckCircleIcon className="w-4 h-4 flex-shrink-0" />
+            <span>{savedMsg}</span>
+          </div>
+        )}
+        {loadErr && (
+          <div className="mb-4 flex items-center gap-2 p-3 bg-amber-50 border border-amber-200 rounded-lg text-amber-700 text-xs">
+            <span>Could not load saved configuration ({loadErr}). Showing defaults.</span>
+          </div>
+        )}
 
         {/* Stats */}
         <div className="grid grid-cols-3 gap-3 mb-5">
           <StatCard
-            label="Total Workflows"
+            label="Total Agents"
             value={total}
             icon={<ClockIcon />}
             color="blue"
@@ -372,11 +730,11 @@ export default function SchedulesPage() {
           <div className="px-5 py-4 border-b border-neutral-150 flex items-center justify-between">
             <div>
               <h2 className="text-sm font-semibold text-neutral-900">
-                Scheduled Workflows
+                Scheduled Agents
               </h2>
               <p className="text-xs text-neutral-400 mt-0.5">
                 Configure execution frequency, monitor health and enable/disable
-                workflows
+                agents
               </p>
             </div>
           </div>
@@ -387,10 +745,10 @@ export default function SchedulesPage() {
                 <ClockIcon className="w-6 h-6" />
               </div>
               <p className="text-sm font-semibold text-neutral-700">
-                No workflows configured
+                No agents configured
               </p>
               <p className="text-xs text-neutral-400 mt-1">
-                Add a workflow to get started.
+                Add an agent to get started.
               </p>
             </div>
           ) : (
@@ -399,7 +757,7 @@ export default function SchedulesPage() {
                 <thead>
                   <tr className="bg-neutral-50 border-b border-neutral-150">
                     {[
-                      "Workflow Name",
+                      "Agent Name",
                       "Frequency",
                       "Last Executed",
                       "Health",

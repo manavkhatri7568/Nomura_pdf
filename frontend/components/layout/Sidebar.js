@@ -7,7 +7,7 @@ const nav = [
     section: 'Workflows',
     items: [
       {
-        label: 'Compare & Match',
+        label: 'Classify & Extract',
         href: '/pipeline',
         icon: (
           <svg viewBox="0 0 20 20" fill="currentColor" className="w-[15px] h-[15px]">
@@ -21,7 +21,7 @@ const nav = [
     section: 'System',
     items: [
       {
-        label: 'Workflow Schedules',
+        label: 'Configure Agents',
         href: '/schedules',
         icon: (
           <svg viewBox="0 0 20 20" fill="currentColor" className="w-[15px] h-[15px]">
@@ -64,7 +64,7 @@ export default function Sidebar() {
           </svg>
         </div>
         <div className="min-w-0">
-          <p className="text-sm font-semibold leading-none truncate" style={{ color: '#e8f0fe' }}>Agentic Workflows</p>
+          <p className="text-sm font-semibold leading-none truncate" style={{ color: '#e8f0fe' }}>Agentic Capabilities</p>
           <p className="text-[11px] leading-none mt-1 truncate" style={{ color: 'rgba(255,255,255,0.55)', letterSpacing: '0.05em' }}>NOMURA · SSG</p>
         </div>
       </div>

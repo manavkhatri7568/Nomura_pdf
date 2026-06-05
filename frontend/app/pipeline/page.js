@@ -1,5 +1,6 @@
 "use client";
-import { useState } from "react";
+import { useMemo } from "react";
+import { usePipeline } from "@/lib/pipelineContext";
 import Header from "@/components/layout/Header";
 import StepSync from "@/components/pipeline/StepSync";
 import StepShortlist from "@/components/pipeline/StepShortlist";
@@ -7,7 +8,7 @@ import StepExtract from "@/components/pipeline/StepExtract";
 
 const STEPS = [
   { label: "Sync Emails" },
-  { label: "Shortlist Relevant" },
+  { label: "Classify" },
   { label: "Extract Trade Data" },
 ];
 
@@ -17,35 +18,34 @@ const SOURCES = [
 ];
 
 export default function PipelinePage() {
-  const [activeStep, setActiveStep] = useState(0);
-  const [source, setSource] = useState("local");
-  const [syncedEmails, setSyncedEmails] = useState(null);
-  const [shortlistDone, setShortlistDone] = useState(false);
-  const [cases, setCases] = useState(null);
+  // State lives in a context provider mounted in the layout, so it survives
+  // navigating to Configure Agents and back (and a reload, via sessionStorage)
+  // — no more re-syncing / re-classifying every visit.
+  const {
+    source, setSource,
+    activeStep, setActiveStep,
+    syncedEmails, syncTs, setSynced,
+    classified, stats, setClassified,
+  } = usePipeline();
 
-  function handleSynced(emails) {
-    setSyncedEmails(emails);
-    // Stay on current tab; only unlock next tab
-  }
-
-  function handleShortlisted(caseList) {
-    setCases(caseList);
-    setShortlistDone(true);
-    // Stay on current tab; only unlock next tab
-  }
+  const shortlistDone = classified != null;
+  const cases = useMemo(
+    () => (classified ? classified.filter((e) => e.label === "RELEVANT") : null),
+    [classified],
+  );
 
   const pipelineStep = shortlistDone ? 2 : syncedEmails ? 1 : 0;
 
   return (
     <div className="flex flex-col flex-1 min-h-screen">
-      <Header breadcrumbs={["Agentic Workflows", "Compare & Match"]} />
+      <Header breadcrumbs={["Agentic Capabilities", "Classify & Extract"]} />
 
       <main className="flex-1 p-6 overflow-y-auto">
         {/* Page title row */}
         <div className="flex items-start justify-between mb-5 gap-4">
           <div>
             <h1 className="text-base font-semibold text-neutral-900 heading-underline mb-3">
-              Compare &amp; Match Agentic Workflow
+              Classify &amp; Extract Agentic Capability
             </h1>
           </div>
 
@@ -78,7 +78,8 @@ export default function PipelinePage() {
               const done =
                 i < pipelineStep ||
                 (i === 0 && !!syncedEmails) ||
-                (i === 1 && shortlistDone);
+                (i === 1 && shortlistDone) ||
+                (i === 2 && shortlistDone);   // Extract is the terminal step — done once the register is available
               const active = activeStep === i;
               const locked = i > pipelineStep;
 
@@ -118,14 +119,21 @@ export default function PipelinePage() {
           {/* Step panels — all stay mounted; 'hidden' preserves state, CSS fade fires on reveal */}
           <div className="p-5">
             <div className={activeStep === 0 ? "tab-panel-enter" : "hidden"}>
-              <StepSync source={source} onSynced={handleSynced} />
+              <StepSync
+                source={source}
+                onSynced={setSynced}
+                initialEmails={syncedEmails}
+                initialTs={syncTs}
+              />
             </div>
             <div className={activeStep === 1 ? "tab-panel-enter" : "hidden"}>
               <StepShortlist
                 source={source}
                 enabled={!!syncedEmails}
                 syncedEmails={syncedEmails ?? []}
-                onShortlisted={handleShortlisted}
+                initialClassified={classified}
+                initialStats={stats}
+                onShortlisted={setClassified}
               />
             </div>
             <div className={activeStep === 2 ? "tab-panel-enter" : "hidden"}>

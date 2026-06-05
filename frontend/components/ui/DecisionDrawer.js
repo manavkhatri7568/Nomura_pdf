@@ -1,5 +1,6 @@
 'use client';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import { createPortal } from 'react-dom';
 import Badge from '@/components/ui/Badge';
 import ConfidenceBar from '@/components/ui/ConfidenceBar';
 import {
@@ -168,6 +169,8 @@ function ScoreSummary({ signals, email }) {
 
 export default function DecisionDrawer({ email, onClose }) {
   const open = !!email;
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
 
   useEffect(() => {
     const handler = (e) => e.key === 'Escape' && onClose?.();
@@ -189,7 +192,9 @@ export default function DecisionDrawer({ email, onClose }) {
     } catch { return dateStr; }
   }
 
-  return (
+  if (!mounted) return null;
+
+  return createPortal(
     <>
       {/* Backdrop */}
       <div
@@ -201,7 +206,7 @@ export default function DecisionDrawer({ email, onClose }) {
 
       {/* Drawer */}
       <div
-        className={`drawer-slide fixed top-0 right-0 z-50 h-full w-full max-w-lg bg-white border-l border-neutral-200 shadow-2xl flex flex-col ${
+        className={`drawer-slide fixed top-0 right-0 bottom-0 z-50 h-screen w-full max-w-lg bg-white border-l border-neutral-200 shadow-2xl flex flex-col ${
           open ? 'translate-x-0' : 'translate-x-full'
         }`}
       >
@@ -252,7 +257,7 @@ export default function DecisionDrawer({ email, onClose }) {
                   {(email.attachment_count ?? 0) > 0 && (
                     <MetaRow label="Attachments" value={`${email.attachment_count} file(s)`} />
                   )}
-                  {email.skip_reason && (
+                  {email.skip_reason && email.skip_reason !== 'already_processed' && (
                     <MetaRow label="Pipeline" value={`Skipped · ${email.skip_reason.replace(/_/g, ' ')}`} warn />
                   )}
                 </div>
@@ -332,7 +337,8 @@ export default function DecisionDrawer({ email, onClose }) {
           </>
         )}
       </div>
-    </>
+    </>,
+    document.body,
   );
 }
 

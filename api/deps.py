@@ -13,17 +13,24 @@ import httpx
 from fastapi import Depends, Request
 
 from classifier.rule_classifier import RuleClassifier
+from config.config_store import ConfigStore
 from config.settings import EmailAgentConfig
 from connectors.graph_connector import GraphConnector
 from connectors.local_connector import LocalEmailConnector
 from storage.db_index import DBIndex
 from storage.file_store import FileStore
 
-_config = EmailAgentConfig()
+# Single live config, wrapped so /config edits mutate the object the classifier
+# reads (applied immediately; persisted to disk; re-loaded on startup).
+_config_store = ConfigStore(EmailAgentConfig())
 
 
 def get_config() -> EmailAgentConfig:
-    return _config
+    return _config_store.config
+
+
+def get_config_store() -> ConfigStore:
+    return _config_store
 
 
 def get_classifier(cfg: EmailAgentConfig = Depends(get_config)) -> RuleClassifier:

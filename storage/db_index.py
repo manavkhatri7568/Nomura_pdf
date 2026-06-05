@@ -73,6 +73,13 @@ class DBIndex:
         row = cur.fetchone()
         return dict(row) if row else None
 
+    def get_case_by_message_id(self, message_id: str) -> Optional[dict]:
+        cur = self.conn.execute(
+            "SELECT * FROM email_cases WHERE message_id = ? LIMIT 1", (message_id,)
+        )
+        row = cur.fetchone()
+        return dict(row) if row else None
+
     def count_by_status(self) -> dict:
         cur = self.conn.execute(
             "SELECT status, COUNT(*) AS n FROM email_cases GROUP BY status"

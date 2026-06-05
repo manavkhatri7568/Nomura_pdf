@@ -6,10 +6,12 @@ Act    : classify -> (relevant) store case + manifest
 Reflect: log a run summary
 """
 
+import hashlib
 from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Dict, List, Optional
 
+from agent.attachment_extractor import extract_attachment, is_supported
 from classifier.rule_classifier import Classification, RuleClassifier
 from config.settings import EmailAgentConfig
 from connectors.local_connector import LocalEmailConnector
@@ -29,6 +31,7 @@ class RunStats:
     irrelevant: int = 0
     duplicate: int = 0
     already_processed: int = 0
+    extracted_trades: int = 0
     ambiguous_subjects: List[str] = field(default_factory=list)
     classified_emails: List[Dict] = field(default_factory=list)
 
@@ -41,6 +44,20 @@ class EmailAgentRunner:
         self.classifier = classifier
         self.store = store
         self.db = db
+
+    @staticmethod
+    def _fallback_trade_id(message_id: str) -> str:
+        """Stable, collision-free id for a RELEVANT email with no extractable trade id.
+
+        Blotter emails carry their trade ids only inside the attachment, so the
+        subject yields none. A naive ``message_id[:8]`` collides across Outlook
+        emails that share a server prefix (e.g. ``PN2P287M...``) — which would
+        make their case folders overwrite each other. Hash the *full* message id
+        instead: unique per email, identical across re-runs (keeps dedup idempotent).
+        """
+        mid = (message_id or "").strip("<>")
+        digest = hashlib.sha1(mid.encode("utf-8")).hexdigest()[:10]
+        return f"UNKNOWN_{digest}"
 
     def run(self, correlation_id: Optional[str] = None) -> RunStats:
         cid = correlation_id or new_correlation_id()
@@ -76,11 +93,39 @@ class EmailAgentRunner:
                 }
 
             if self.db.message_id_exists(mid):
+                result = self.classifier.classify(mail["subject"], mail["body"])
+                case = self.db.get_case_by_message_id(mid)
+                folder = case.get("case_folder") if case else None
+
+                # Self-heal: if the case was stored before but its folder is now
+                # missing on disk (e.g. the demo reset deletes data/processed),
+                # recreate it at its original path instead of skipping — so a run
+                # always (re)produces the case folders + manifests.
+                if result.label == "RELEVANT" and folder and not Path(folder).exists():
+                    trade_id = (case.get("trade_id") if case else None) \
+                        or result.trade_id or self._fallback_trade_id(mid)
+                    extraction = self._store_case(mail, result, trade_id, case_dir=Path(folder))
+                    stats.relevant += 1
+                    stats.extracted_trades += extraction["trades_extracted"]
+                    logger.info("RESTORED missing case folder | %s | trade_id=%s (%d trade rows)",
+                                mail["subject"], trade_id, extraction["trades_extracted"])
+                    record_audit("case.restored", "success", resource=trade_id,
+                                 correlation_id=cid, log_dir=audit_dir, message_id=mid)
+                    if extraction["trades_extracted"]:
+                        record_audit("attachment.extracted", "success", resource=trade_id,
+                                     correlation_id=cid, log_dir=audit_dir, message_id=mid,
+                                     trades=extraction["trades_extracted"])
+                    stats.classified_emails.append(_email_record(
+                        "RELEVANT", result.confidence, result.reason,
+                        trade_id, result.asset_class,
+                        result.matched_asset, result.matched_subject,
+                    ))
+                    continue
+
                 stats.already_processed += 1
                 logger.debug("Already processed, skipping: %s", mid)
                 record_audit("email.classified", "skipped", resource=mid,
                              correlation_id=cid, log_dir=audit_dir, reason="already_processed")
-                result = self.classifier.classify(mail["subject"], mail["body"])
                 stats.classified_emails.append(_email_record(
                     result.label, result.confidence, result.reason,
                     result.trade_id, result.asset_class,
@@ -121,7 +166,7 @@ class EmailAgentRunner:
                 continue
 
             # RELEVANT
-            trade_id = result.trade_id or f"UNKNOWN_{mid.strip('<>')[:8]}"
+            trade_id = result.trade_id or self._fallback_trade_id(mid)
             if not trade_id.startswith("UNKNOWN") and self.db.trade_id_exists(trade_id):
                 stats.duplicate += 1
                 logger.warning("DUPLICATE trade_id %s — skipping (%s)", trade_id, mail["subject"])
@@ -135,10 +180,12 @@ class EmailAgentRunner:
                 ))
                 continue
 
-            self._store_case(mail, result, trade_id)
+            extraction = self._store_case(mail, result, trade_id)
             stats.relevant += 1
-            logger.info("RELEVANT (%.2f) | %s | trade_id=%s",
-                        result.confidence, mail["subject"], trade_id)
+            stats.extracted_trades += extraction["trades_extracted"]
+            logger.info("RELEVANT (%.2f) | %s | trade_id=%s (%d trade rows)",
+                        result.confidence, mail["subject"], trade_id,
+                        extraction["trades_extracted"])
             stats.classified_emails.append(_email_record(
                 "RELEVANT", result.confidence, result.reason,
                 trade_id, result.asset_class,
@@ -147,6 +194,10 @@ class EmailAgentRunner:
             record_audit("case.stored", "success", resource=trade_id,
                          correlation_id=cid, log_dir=audit_dir,
                          confidence=result.confidence, message_id=mid)
+            if extraction["trades_extracted"]:
+                record_audit("attachment.extracted", "success", resource=trade_id,
+                             correlation_id=cid, log_dir=audit_dir, message_id=mid,
+                             trades=extraction["trades_extracted"])
 
         # -- REFLECT --
         self._log_summary(stats)
@@ -156,8 +207,14 @@ class EmailAgentRunner:
                      already_processed=stats.already_processed)
         return stats
 
-    def _store_case(self, mail: Dict, result: Classification, trade_id: str) -> None:
-        case_dir = self.store.create_case_folder(trade_id, result.asset_class)
+    def _store_case(self, mail: Dict, result: Classification, trade_id: str,
+                    case_dir: Optional[Path] = None) -> Dict:
+        if case_dir is None:
+            case_dir = self.store.create_case_folder(trade_id, result.asset_class)
+        else:
+            # Reuse an existing path (folder-restore) — ensure it + attachments exist.
+            case_dir = Path(case_dir)
+            (case_dir / "attachments").mkdir(parents=True, exist_ok=True)
         self.store.save_email_body(case_dir, mail["body"])
         self.store.save_metadata(case_dir, {
             "message_id": mail["message_id"],
@@ -168,15 +225,46 @@ class EmailAgentRunner:
             "classification": result.__dict__,
         })
 
-        attachments_meta = []
+        # Save every attachment, and parse trades out of supported (.xlsx/.csv) ones.
+        extract_enabled = getattr(self.cfg, "attachment_extract_enabled", True)
+        extract_exts = tuple(getattr(self.cfg, "attachment_extract_exts",
+                                     (".xlsx", ".xlsm", ".csv")))
+        max_rows = getattr(self.cfg, "attachment_max_rows", 10_000)
+
+        attachments_meta: List[Dict] = []
+        all_trades: List[Dict] = []
+        by_attachment: List[Dict] = []
         for att in mail.get("attachments", []):
             saved = self.store.save_attachment(case_dir, att["filename"], att["data"])
-            attachments_meta.append({
+            meta = {
                 "filename": att["filename"],
                 "path": str(saved),
                 "mime_type": att.get("mime_type", ""),
                 "size_bytes": len(att.get("data", b"")),
-            })
+                "extraction_status": "skipped",
+                "extracted_trade_count": 0,
+            }
+            if extract_enabled and is_supported(att["filename"], extract_exts):
+                res = extract_attachment(att["filename"], att.get("data", b"") or b"",
+                                         supported_exts=extract_exts, max_rows=max_rows)
+                meta["extraction_status"] = res.status
+                meta["extracted_trade_count"] = res.trade_count
+                all_trades.extend(res.trades)
+                by_attachment.append(res.as_summary())
+            attachments_meta.append(meta)
+
+        trade_ids = sorted({str(t["trade_id"]) for t in all_trades if t.get("trade_id")})
+        extracted_path = None
+        if all_trades:
+            extracted_path = str(self.store.save_extracted_trades(case_dir, all_trades))
+
+        extraction = {
+            "enabled": extract_enabled,
+            "trades_extracted": len(all_trades),
+            "trade_ids": trade_ids,
+            "extracted_trades_path": extracted_path,
+            "by_attachment": by_attachment,
+        }
 
         manifest = {
             "trade_id": trade_id,
@@ -194,6 +282,7 @@ class EmailAgentRunner:
                 "reason": result.reason,
                 "asset_class": result.asset_class,
             },
+            "extraction": extraction,
             "ready_for_extraction": True,
         }
         self.store.save_manifest(case_dir, manifest)
@@ -210,6 +299,7 @@ class EmailAgentRunner:
             "case_folder": str(case_dir),
             "attachment_count": len(attachments_meta),
         })
+        return extraction
 
     def _log_summary(self, stats: RunStats) -> None:
         logger.info("=" * 56)
@@ -220,6 +310,7 @@ class EmailAgentRunner:
         logger.info("  IRRELEVANT (skipped): %d", stats.irrelevant)
         logger.info("  DUPLICATE (skipped):  %d", stats.duplicate)
         logger.info("  Already processed:    %d", stats.already_processed)
+        logger.info("  Trade rows extracted: %d", stats.extracted_trades)
         if stats.ambiguous_subjects:
             logger.info("  --- Ambiguous emails for manual review ---")
             for subj in stats.ambiguous_subjects:

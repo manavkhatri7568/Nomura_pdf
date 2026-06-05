@@ -10,6 +10,9 @@ success/failure :class:`~api.models.Envelope`:
     GET  /storage/cases               list stored cases
     GET  /storage/cases/{trade_id}    one case + its manifest
     GET  /storage/stats               case counts by status
+    GET  /config                      current tunable classifier config
+    PUT  /config                      update keywords/weights/thresholds (live)
+    POST /config/reset                restore defaults
 
 Cross-cutting concerns handled here:
 * a per-request **correlation id** (honours an inbound ``X-Correlation-ID``,
@@ -29,7 +32,7 @@ from starlette.exceptions import HTTPException as StarletteHTTPException
 
 from api.deps import get_config
 from api.models import failure
-from api.routers import agent, classifier, connector, storage
+from api.routers import agent, classifier, config, connector, extract, storage
 from utils.audit import new_correlation_id, record_audit
 from utils.logger import get_logger, setup_logging
 
@@ -42,6 +45,8 @@ app.include_router(classifier.router)
 app.include_router(connector.router)
 app.include_router(agent.router)
 app.include_router(storage.router)
+app.include_router(config.router)
+app.include_router(extract.router)
 
 
 @app.middleware("http")

@@ -14,15 +14,15 @@ fastapi>=0.115.0          # HTTP API + mock Graph service
 uvicorn[standard]>=0.30.0 # ASGI server to run the FastAPI apps
 httpx>=0.27.0             # GraphConnector HTTP client (also used by tests)
 python-multipart>=0.0.9   # form parsing for the mock OAuth2 token endpoint
+openpyxl>=3.1.0           # .xlsx attachment extraction (/extract/trades)
 
 # --- Testing ---------------------------------------------------------------
 pytest>=8.2.0
 
 # --- Future (Phase 2 attachment extractor) ---------------------------------
-# NOT used yet. Uncomment when the attachment-content extractor is built.
+# NOT used yet. Uncomment when the PDF/DOCX/OCR extractors are built.
 #
-# pdfplumber>=0.11.0      # PDF text + table extraction
-# openpyxl>=3.1.0         # .xlsx reading
+# pdfplumber>=0.11.0      # PDF text + table extraction (SSI reports — needs OCR)
 # python-docx>=1.1.0      # .docx reading
 # pytesseract>=0.3.10     # OCR for inline images (needs Tesseract installed)
 # Pillow>=10.3.0          # image handling for OCR

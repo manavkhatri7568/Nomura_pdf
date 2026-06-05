@@ -40,3 +40,9 @@ class FileStore:
         path = case_dir / "manifest.json"
         path.write_text(json.dumps(manifest, indent=2, default=str), encoding="utf-8")
         return path
+
+    def save_extracted_trades(self, case_dir: Path, trades: list) -> Path:
+        """Write the normalized trade rows parsed from .xlsx/.csv attachments."""
+        path = case_dir / "extracted_trades.json"
+        path.write_text(json.dumps(trades, indent=2, default=str), encoding="utf-8")
+        return path

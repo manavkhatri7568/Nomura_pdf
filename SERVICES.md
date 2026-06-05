@@ -54,14 +54,22 @@ otherwise one is generated and returned in the `X-Correlation-ID` header.
 | `POST /classifier/classify` | Classify `{subject, body}` → label/confidence/reason/trade_id |
 | `POST /connector/fetch` | Fetch (no store) from `{source: local\|graph}` → email summaries |
 | `POST /agent/run` | Run the full pipeline from `{source}` → `RunStats` |
+| `POST /connector/preview` | Single email with full body by `{source, message_id}` (404 if absent) |
 | `GET  /storage/cases` | List stored cases + counts by status |
-| `GET  /storage/cases/{trade_id}` | One case + its `manifest.json` (404 if absent) |
+| `GET  /storage/cases/{trade_id}` | One case + its `manifest.json` + body excerpt (404 if absent) |
 | `GET  /storage/stats` | Case totals by status |
+| `GET  /config` | Current tunable classifier config (keywords, weights, thresholds) |
+| `PUT  /config` | Partial update — applied live (no restart), validated, persisted, audited |
+| `POST /config/reset` | Restore code/env defaults |
 
 ```bash
 curl -s localhost:8000/agent/run -H 'content-type: application/json' -d '{"source":"graph"}'
 curl -s localhost:8000/classifier/classify -H 'content-type: application/json' \
      -d '{"subject":"FX Trade Settlement[FXOPT-2026-00047]","body":"Settlement Instructions ..."}'
+
+# Tune the classifier live, then re-run to see the split change:
+curl -s -X PUT localhost:8000/config -H 'content-type: application/json' \
+     -d '{"asset_keywords":["fx trade settlement","deal reference","ssi verification"]}'
 ```
 
 ## Mock Graph API (`:8001`)

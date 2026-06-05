@@ -39,8 +39,6 @@ function buildRunLogs(stats, emails) {
     logs.push({ level: 'info',    time: t(), message: `${stats.irrelevant} email(s) IRRELEVANT → discarded` });
   if ((stats.duplicate ?? 0) > 0)
     logs.push({ level: 'warn',    time: t(), message: `${stats.duplicate} duplicate trade ID(s) skipped` });
-  if ((stats.already_processed ?? 0) > 0)
-    logs.push({ level: 'info',    time: t(), message: `${stats.already_processed} already-processed message(s) skipped (idempotent)` });
 
   for (const e of (emails ?? [])) {
     const pct  = e.confidence != null ? Math.round(e.confidence * 100) : '?';
@@ -60,12 +58,17 @@ const DOT = { RELEVANT: 'bg-emerald-500', AMBIGUOUS: 'bg-amber-500', IRRELEVANT:
 
 /* ─── component ─────────────────────────────────────────────── */
 
-export default function StepShortlist({ source, enabled, syncedEmails = [], onShortlisted }) {
+export default function StepShortlist({
+  source, enabled, syncedEmails = [], onShortlisted,
+  initialClassified = null, initialStats = null,
+}) {
   const [loading,       setLoading]       = useState(false);
-  const [stats,         setStats]         = useState(null);
-  const [emails,        setEmails]        = useState(null);
+  const [stats,         setStats]         = useState(initialStats);
+  const [emails,        setEmails]        = useState(initialClassified);  // seeded from restored session
   const [error,         setError]         = useState(null);
-  const [logs,          setLogs]          = useState([]);
+  const [logs,          setLogs]          = useState(
+    () => (initialClassified ? buildRunLogs(initialStats ?? {}, initialClassified) : []),
+  );
   const [logsOpen,      setLogsOpen]      = useState(false);
   const [filter,        setFilter]        = useState('ALL');
   const [search,        setSearch]        = useState('');
@@ -143,10 +146,10 @@ export default function StepShortlist({ source, enabled, syncedEmails = [], onSh
       setEmails(classified);
       setLogs(buildRunLogs(runStats, classified));
 
-      /* Pass ALL relevant classified emails to Step 3 (includes duplicates
-         that weren't stored) so both tabs show the same count. */
-      const relevantAll = classified.filter(e => e.label === 'RELEVANT');
-      onShortlisted?.(relevantAll);
+      /* Hand the FULL classified list + stats up to the pipeline context so it
+         persists across navigation; the page derives the relevant subset for
+         Step 3 itself. */
+      onShortlisted?.(classified, runStats);
     } catch (e) {
       setError(e.message);
     } finally {
@@ -186,7 +189,7 @@ export default function StepShortlist({ source, enabled, syncedEmails = [], onSh
       <LogDrawer
         open={logsOpen}
         onClose={() => setLogsOpen(false)}
-        title="Shortlist · Run Logs"
+        title="Classify · Run Logs"
         logs={logs}
       />
 
@@ -204,13 +207,13 @@ export default function StepShortlist({ source, enabled, syncedEmails = [], onSh
             <StatCard label="Relevant"          value={derivedStats.relevant          ?? 0} icon={<CheckCircleIcon />}         color="green"   />
             <StatCard label="Ambiguous"         value={derivedStats.ambiguous         ?? 0} icon={<ExclamationTriangleIcon />} color="amber"   />
             <StatCard label="Irrelevant"        value={derivedStats.irrelevant        ?? 0} icon={<XCircleIcon />}             color="red"     />
-            <StatCard label="Dupl / Processed"  value={`${derivedStats.duplicate ?? 0} / ${derivedStats.already_processed ?? 0}`} icon={<ArrowPathIcon />} color="neutral" />
+            <StatCard label="Duplicates"        value={derivedStats.duplicate ?? 0} icon={<ArrowPathIcon />} color="neutral" />
           </div>
         )}
 
         <Card>
           <CardHeader
-            title="Shortlist Relevant Emails"
+            title="Classify Emails"
             description="Rule-based classifier scores each email: asset keywords (+0.5), subject signals (+0.3), trade ID presence (+0.2). Click any row to open the decision breakdown."
             actions={
               <div className="flex items-center gap-2">
@@ -326,8 +329,8 @@ export default function StepShortlist({ source, enabled, syncedEmails = [], onSh
                 <table className="w-full text-xs data-table">
                   <thead>
                     <tr className="bg-neutral-50 border-b border-neutral-200">
-                      {['Trade ID', 'Subject', 'Sender', 'Decision', 'Confidence', 'Asset Class', '📎', ''].map((h) => (
-                        <th key={h} className="px-3 py-2.5 text-left text-[11px] font-semibold text-neutral-500 uppercase tracking-wide whitespace-nowrap">
+                      {['Trade ID', 'Subject', 'Sender', 'Decision', 'Confidence', 'Asset Class', 'Attachment', ''].map((h) => (
+                        <th key={h} className="px-4 py-2.5 text-left text-[11px] font-semibold text-neutral-500 uppercase tracking-wide whitespace-nowrap">
                           {h}
                         </th>
                       ))}
@@ -351,42 +354,42 @@ export default function StepShortlist({ source, enabled, syncedEmails = [], onSh
                                 : 'hover:bg-neutral-50/70'
                             }`}
                           >
-                            <td className="px-3 py-2.5 font-mono text-brand-700 font-medium whitespace-nowrap">
+                            <td className="px-4 py-2.5 font-mono text-brand-700 font-medium whitespace-nowrap">
                               {e.trade_id ?? <span className="text-neutral-400 font-sans italic">—</span>}
                             </td>
-                            <td className="px-3 py-2.5 max-w-[200px]">
+                            <td className="px-4 py-2.5 max-w-[200px]">
                               <span className="truncate block font-medium text-neutral-800" title={e.subject}>
                                 {e.subject?.slice(0, 52) ?? '—'}{(e.subject?.length ?? 0) > 52 ? '…' : ''}
                               </span>
                             </td>
-                            <td className="px-3 py-2.5 text-neutral-600 max-w-[130px] truncate whitespace-nowrap">
+                            <td className="px-4 py-2.5 text-neutral-600 max-w-[130px] truncate whitespace-nowrap">
                               {e.sender?.replace(/<.*?>/, '').trim() || '—'}
                             </td>
-                            <td className="px-3 py-2.5 whitespace-nowrap">
+                            <td className="px-4 py-2.5 whitespace-nowrap">
                               <div className="flex items-center gap-1.5 flex-wrap">
                                 <Badge variant={(e.label ?? 'pending').toLowerCase()} dot>
                                   {e.label ?? 'Unknown'}
                                 </Badge>
-                                {e.skip_reason && (
+                                {e.skip_reason && e.skip_reason !== 'already_processed' && (
                                   <span className="text-[10px] text-neutral-400 bg-neutral-100 px-1.5 py-0.5 rounded border border-neutral-200">
                                     {e.skip_reason.replace(/_/g, ' ')}
                                   </span>
                                 )}
                               </div>
                             </td>
-                            <td className="px-3 py-2.5 w-32">
+                            <td className="px-4 py-2.5 w-32">
                               <ConfidenceBar value={e.confidence} label={e.label} />
                             </td>
-                            <td className="px-3 py-2.5 text-neutral-600 whitespace-nowrap">
+                            <td className="px-4 py-2.5 text-neutral-600 whitespace-nowrap">
                               {e.asset_class ?? '—'}
                             </td>
-                            <td className="px-3 py-2.5 text-neutral-600 whitespace-nowrap">
+                            <td className="px-4 py-2.5 text-neutral-600 whitespace-nowrap">
                               {(e.attachment_count ?? 0) > 0
-                                ? <span className="flex items-center gap-1">📎 {e.attachment_count}</span>
+                                ? <span className="text-neutral-700">{e.attachment_count}</span>
                                 : <span className="text-neutral-300">—</span>
                               }
                             </td>
-                            <td className="px-3 py-2.5">
+                            <td className="px-4 py-2.5">
                               <span className="flex items-center gap-1 text-brand-500 hover:text-brand-700 whitespace-nowrap font-medium">
                                 <span className="text-[10px]">View</span>
                                 <svg viewBox="0 0 20 20" fill="currentColor" className="w-3.5 h-3.5 flex-shrink-0">

@@ -1,0 +1,1062 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nomura | Classify &amp; Extract — Agentic AI PoC</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --red: #C8102E;
+    --red-light: #fdecea;
+    --red-mid: #f5c0c6;
+    --orange-bg: #fff3e0; --orange-text: #e65100;
+    --gray-bg: #f0f0f0; --gray-text: #555;
+    --indigo-bg: #ede7f6; --indigo-text: #4527a0;
+    --white: #fff;
+    --border: #e0e0e0;
+    --surface: #fafafa;
+    --text: #1a1a1a;
+    --text-sub: #666;
+    --font: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    --drawer-width: 380px;
+  }
+  html, body { height: 100%; font-family: var(--font); color: var(--text); background: var(--white); font-size: 13px; }
+
+  /* ── NAV ── */
+  nav {
+    background: var(--red);
+    height: 52px;
+    display: flex;
+    align-items: center;
+    padding: 0 32px;
+    gap: 40px;
+    position: sticky; top: 0; z-index: 100;
+  }
+  .nav-logo {
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    color: var(--white);
+    text-transform: uppercase;
+    flex-shrink: 0;
+  }
+  .nav-links { display: flex; gap: 28px; margin-left: 8px; }
+  .nav-links a {
+    color: rgba(255,255,255,0.82);
+    text-decoration: none;
+    font-size: 12.5px;
+    font-weight: 500;
+    letter-spacing: 0.03em;
+    transition: color .15s;
+  }
+  .nav-links a:hover, .nav-links a.active { color: #fff; }
+  .nav-right { margin-left: auto; display: flex; align-items: center; gap: 12px; }
+
+  /* source toggle */
+  .src-toggle {
+    display: flex;
+    border: 1px solid rgba(255,255,255,0.35);
+    border-radius: 3px;
+    overflow: hidden;
+    font-size: 11.5px;
+  }
+  .src-toggle button {
+    padding: 5px 13px;
+    background: transparent;
+    border: none;
+    color: rgba(255,255,255,0.75);
+    cursor: pointer;
+    font-family: var(--font);
+    font-size: 11.5px;
+    transition: background .15s, color .15s;
+  }
+  .src-toggle button.active { background: rgba(255,255,255,0.18); color: #fff; font-weight: 600; }
+
+  /* ── BREADCRUMB + HEADER ── */
+  .page-header { padding: 18px 32px 0; }
+  .breadcrumb { font-size: 11.5px; color: var(--text-sub); margin-bottom: 10px; }
+  .breadcrumb span { color: var(--red); cursor: pointer; }
+  .breadcrumb span:hover { text-decoration: underline; }
+  .breadcrumb .sep { margin: 0 6px; color: #bbb; }
+  .page-title {
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: var(--text);
+    display: inline-block;
+    padding-bottom: 6px;
+    border-bottom: 3px solid var(--red);
+    margin-bottom: 20px;
+  }
+
+  /* ── KPI CARDS ── */
+  .kpi-row { display: flex; gap: 14px; padding: 0 32px 20px; }
+  .kpi-card {
+    flex: 1;
+    border: 1px solid var(--border);
+    border-top: 3px solid var(--red);
+    background: var(--white);
+    padding: 14px 16px 12px;
+    min-width: 0;
+  }
+  .kpi-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-sub); margin-bottom: 6px; font-weight: 600; }
+  .kpi-value { font-size: 28px; font-weight: 700; color: var(--text); line-height: 1; }
+  .kpi-value.red { color: var(--red); }
+  .kpi-sub { font-size: 10.5px; color: var(--text-sub); margin-top: 4px; }
+
+  /* ── TABS ── */
+  .tab-bar {
+    display: flex;
+    border-bottom: 2px solid var(--border);
+    padding: 0 32px;
+    gap: 0;
+    margin-bottom: 0;
+  }
+  .tab-btn {
+    padding: 10px 22px;
+    border: none;
+    background: none;
+    font-family: var(--font);
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-sub);
+    cursor: pointer;
+    border-bottom: 3px solid transparent;
+    margin-bottom: -2px;
+    letter-spacing: 0.01em;
+    transition: color .15s;
+  }
+  .tab-btn:hover { color: var(--red); }
+  .tab-btn.active { color: var(--red); border-bottom-color: var(--red); }
+
+  /* ── MAIN CONTENT ── */
+  .main { padding: 20px 32px 0; display: flex; gap: 0; position: relative; }
+  .tab-panel { display: none; width: 100%; }
+  .tab-panel.active { display: block; }
+
+  /* ── TOOLBAR ── */
+  .toolbar { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; flex-wrap: wrap; }
+  .filter-group { display: flex; gap: 4px; }
+  .filter-btn {
+    padding: 5px 13px;
+    border: 1px solid var(--border);
+    background: var(--white);
+    font-family: var(--font);
+    font-size: 12px;
+    cursor: pointer;
+    border-radius: 2px;
+    color: var(--text-sub);
+    font-weight: 500;
+    transition: all .12s;
+  }
+  .filter-btn:hover { border-color: var(--red); color: var(--red); }
+  .filter-btn.active { background: var(--red); color: #fff; border-color: var(--red); }
+  .search-box {
+    margin-left: auto;
+    padding: 5px 10px;
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    font-family: var(--font);
+    font-size: 12px;
+    width: 210px;
+    outline: none;
+    transition: border-color .15s;
+  }
+  .search-box:focus { border-color: var(--red); }
+
+  .run-btn {
+    padding: 6px 18px;
+    background: var(--red);
+    color: #fff;
+    border: none;
+    border-radius: 2px;
+    font-family: var(--font);
+    font-size: 12.5px;
+    font-weight: 600;
+    cursor: pointer;
+    letter-spacing: 0.03em;
+    transition: background .15s;
+    display: flex; align-items: center; gap: 7px;
+  }
+  .run-btn:hover { background: #a50d26; }
+  .run-btn:disabled { background: #ccc; cursor: not-allowed; }
+  .spinner {
+    width: 13px; height: 13px;
+    border: 2px solid rgba(255,255,255,0.35);
+    border-top-color: #fff;
+    border-radius: 50%;
+    animation: spin .6s linear infinite;
+    display: none;
+  }
+  .run-btn.loading .spinner { display: block; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  /* ── TABLE ── */
+  .tbl-wrap { overflow-x: auto; border: 1px solid var(--border); transition: width .3s; }
+  table { width: 100%; border-collapse: collapse; }
+  thead th {
+    background: #f5f5f5;
+    border-bottom: 2px solid var(--border);
+    padding: 9px 12px;
+    text-align: left;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--text-sub);
+    white-space: nowrap;
+  }
+  tbody tr {
+    border-bottom: 1px solid #efefef;
+    cursor: pointer;
+    transition: background .1s;
+  }
+  tbody tr:hover { background: #fdf1f3; }
+  tbody tr.selected { background: #fdecea; }
+  tbody td {
+    padding: 9px 12px;
+    font-size: 12.5px;
+    vertical-align: middle;
+  }
+  .td-subject { max-width: 300px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .td-tradeid { font-family: 'Courier New', monospace; font-size: 11.5px; color: #444; }
+
+  /* badges */
+  .badge {
+    display: inline-block;
+    padding: 2px 8px;
+    font-size: 10.5px;
+    font-weight: 700;
+    border-radius: 2px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    white-space: nowrap;
+  }
+  .badge-RELEVANT   { background: var(--red-light); color: var(--red); border: 1px solid var(--red-mid); }
+  .badge-AMBIGUOUS  { background: var(--orange-bg); color: var(--orange-text); border: 1px solid #ffcc80; }
+  .badge-IRRELEVANT { background: var(--gray-bg); color: var(--gray-text); border: 1px solid #ccc; }
+  .badge-DUPLICATE  { background: var(--indigo-bg); color: var(--indigo-text); border: 1px solid #ce93d8; }
+  .badge-body       { background: #e8f5e9; color: #2e7d32; border: 1px solid #a5d6a7; border-radius: 2px; }
+  .badge-att        { background: #e3f2fd; color: #1565c0; border: 1px solid #90caf9; border-radius: 2px; }
+
+  /* confidence bar */
+  .conf-wrap { display: flex; align-items: center; gap: 7px; }
+  .conf-bar-bg { width: 72px; height: 6px; background: #e8e8e8; border-radius: 1px; overflow: hidden; flex-shrink: 0; }
+  .conf-bar-fill { height: 100%; background: var(--red); border-radius: 1px; }
+  .conf-pct { font-size: 11.5px; color: var(--text-sub); width: 32px; }
+
+  /* ── PAGINATION ── */
+  .pagination { display: flex; align-items: center; gap: 6px; padding: 12px 0 4px; }
+  .pg-btn {
+    padding: 4px 10px;
+    border: 1px solid var(--border);
+    background: var(--white);
+    border-radius: 2px;
+    font-family: var(--font);
+    font-size: 12px;
+    cursor: pointer;
+    color: var(--text-sub);
+    transition: all .12s;
+  }
+  .pg-btn:hover:not(:disabled) { border-color: var(--red); color: var(--red); }
+  .pg-btn.active { background: var(--red); color: #fff; border-color: var(--red); }
+  .pg-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+  .pg-info { font-size: 12px; color: var(--text-sub); margin-left: 8px; }
+
+  /* ── DETAIL DRAWER ── */
+  .drawer-overlay {
+    display: none;
+    position: fixed; top: 52px; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.15);
+    z-index: 90;
+  }
+  .drawer-overlay.open { display: block; }
+  .drawer {
+    position: fixed;
+    top: 52px; right: 0; bottom: 0;
+    width: var(--drawer-width);
+    background: var(--white);
+    border-left: 2px solid var(--red);
+    box-shadow: -4px 0 20px rgba(0,0,0,0.12);
+    z-index: 95;
+    transform: translateX(var(--drawer-width));
+    transition: transform .25s cubic-bezier(.4,0,.2,1);
+    display: flex; flex-direction: column;
+    overflow: hidden;
+  }
+  .drawer.open { transform: translateX(0); }
+  .drawer-header {
+    background: var(--red);
+    padding: 14px 16px;
+    color: #fff;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-shrink: 0;
+  }
+  .drawer-title { font-size: 13px; font-weight: 700; line-height: 1.3; padding-right: 12px; }
+  .drawer-close {
+    background: rgba(255,255,255,0.2);
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    width: 24px; height: 24px;
+    border-radius: 2px;
+    font-size: 16px;
+    line-height: 1;
+    flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    transition: background .15s;
+  }
+  .drawer-close:hover { background: rgba(255,255,255,0.35); }
+  .drawer-body { padding: 16px; overflow-y: auto; flex: 1; }
+  .drawer-field { margin-bottom: 14px; }
+  .drawer-field label {
+    display: block;
+    font-size: 10.5px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: var(--text-sub);
+    margin-bottom: 3px;
+  }
+  .drawer-field .val {
+    font-size: 12.5px;
+    color: var(--text);
+    line-height: 1.4;
+    word-break: break-word;
+  }
+  .drawer-field .val.mono { font-family: 'Courier New', monospace; font-size: 12px; }
+  .drawer-divider { border: none; border-top: 1px solid var(--border); margin: 12px 0; }
+  .conf-detail { display: flex; align-items: center; gap: 10px; }
+  .conf-detail .conf-bar-bg { width: 100px; }
+
+  /* ── SYNC TAB ── */
+  .sync-panel { max-width: 520px; }
+  .sync-card {
+    border: 1px solid var(--border);
+    border-top: 3px solid var(--red);
+    padding: 20px 22px;
+    margin-bottom: 14px;
+  }
+  .sync-card h3 { font-size: 14px; font-weight: 700; margin-bottom: 6px; }
+  .sync-card p { font-size: 12.5px; color: var(--text-sub); margin-bottom: 14px; line-height: 1.5; }
+  .sync-info { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 14px; }
+  .sync-info-item { background: var(--surface); border: 1px solid var(--border); padding: 8px 12px; }
+  .sync-info-item .si-label { font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-sub); margin-bottom: 2px; font-weight: 600; }
+  .sync-info-item .si-val { font-size: 14px; font-weight: 700; color: var(--text); }
+  #sync-count-display .si-val { color: var(--red); }
+  .sync-btn {
+    padding: 7px 20px;
+    background: var(--red);
+    color: #fff;
+    border: none;
+    border-radius: 2px;
+    font-family: var(--font);
+    font-size: 12.5px;
+    font-weight: 600;
+    cursor: pointer;
+    display: inline-flex; align-items: center; gap: 8px;
+    transition: background .15s;
+  }
+  .sync-btn:hover { background: #a50d26; }
+  .sync-progress { display: none; margin-top: 12px; }
+  .progress-bar-wrap { height: 4px; background: #e0e0e0; border-radius: 2px; overflow: hidden; margin-bottom: 6px; }
+  .progress-bar-fill { height: 100%; background: var(--red); border-radius: 2px; width: 0%; transition: width .4s ease; }
+  .sync-status-text { font-size: 11.5px; color: var(--text-sub); }
+
+  /* ── TRADE REGISTER TAB ── */
+  .trade-toolbar { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
+  .trade-count { font-size: 12px; color: var(--text-sub); margin-left: auto; }
+
+  /* ── EMPTY / PLACEHOLDER ── */
+  .empty-state {
+    padding: 40px 20px;
+    text-align: center;
+    color: var(--text-sub);
+    font-size: 13px;
+    border: 1px dashed var(--border);
+  }
+  .empty-state .es-icon { font-size: 28px; margin-bottom: 8px; opacity: 0.4; }
+
+  /* ── FOOTER ── */
+  footer {
+    margin-top: 28px;
+    border-top: 1px solid var(--border);
+    padding: 10px 32px;
+    font-size: 11px;
+    color: #999;
+    letter-spacing: 0.04em;
+    background: var(--surface);
+  }
+  footer strong { color: var(--red); font-weight: 700; }
+
+  /* ── ATTACHMENT CHIP ── */
+  .att-chip {
+    display: inline-flex; align-items: center; gap: 5px;
+    background: #e3f2fd;
+    color: #1565c0;
+    border: 1px solid #90caf9;
+    border-radius: 2px;
+    padding: 3px 8px;
+    font-size: 11px;
+    font-weight: 500;
+    margin-top: 4px;
+  }
+
+  /* ── NOTIFICATIONS (toast) ── */
+  .toast {
+    position: fixed; bottom: 24px; right: 24px;
+    background: #1a1a1a;
+    color: #fff;
+    padding: 10px 18px;
+    font-size: 12.5px;
+    border-left: 3px solid var(--red);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+    z-index: 200;
+    opacity: 0;
+    transform: translateY(8px);
+    transition: opacity .2s, transform .2s;
+    pointer-events: none;
+  }
+  .toast.show { opacity: 1; transform: translateY(0); }
+
+  @media (max-width: 900px) {
+    :root { --drawer-width: 100vw; }
+    .kpi-row { flex-wrap: wrap; }
+    .kpi-card { min-width: calc(50% - 8px); }
+    nav { padding: 0 16px; }
+    .main, .kpi-row, .page-header, .tab-bar, footer { padding-left: 16px; padding-right: 16px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav>
+  <div class="nav-logo">Nomura</div>
+  <div class="nav-links">
+    <a href="#">Markets</a>
+    <a href="#">Investment Banking</a>
+    <a href="#" class="active">Agentic AI</a>
+    <a href="#">Operations</a>
+    <a href="#">Settings</a>
+  </div>
+  <div class="nav-right">
+    <div class="src-toggle">
+      <button id="src-local" class="active" onclick="setSource('local')">Local (.eml)</button>
+      <button id="src-graph" onclick="setSource('graph')">Graph API</button>
+    </div>
+  </div>
+</nav>
+
+<!-- ── PAGE HEADER ── -->
+<div class="page-header">
+  <div class="breadcrumb">
+    <span>Agentic Capabilities</span>
+    <span class="sep">&rsaquo;</span>
+    <span style="color:var(--text)">Classify &amp; Extract</span>
+  </div>
+  <div class="page-title">Classify &amp; Extract</div>
+</div>
+
+<!-- ── KPI CARDS ── -->
+<div class="kpi-row">
+  <div class="kpi-card">
+    <div class="kpi-label">Total Emails</div>
+    <div class="kpi-value" id="kpi-total">29</div>
+    <div class="kpi-sub">In shared mailbox</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-label">Relevant</div>
+    <div class="kpi-value red" id="kpi-rel">14</div>
+    <div class="kpi-sub">Passed to extract</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-label">Ambiguous</div>
+    <div class="kpi-value" style="color:#e65100" id="kpi-amb">3</div>
+    <div class="kpi-sub">Flagged for review</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-label">Irrelevant</div>
+    <div class="kpi-value" style="color:#888" id="kpi-irr">10</div>
+    <div class="kpi-sub">Discarded</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-label">Trades Extracted</div>
+    <div class="kpi-value red" id="kpi-trades">80</div>
+    <div class="kpi-sub">From body &amp; attachments</div>
+  </div>
+</div>
+
+<!-- ── TABS ── -->
+<div class="tab-bar">
+  <button class="tab-btn" onclick="switchTab(1)" id="tab-btn-1">1 &middot; Sync Emails</button>
+  <button class="tab-btn active" onclick="switchTab(2)" id="tab-btn-2">2 &middot; Classify</button>
+  <button class="tab-btn" onclick="switchTab(3)" id="tab-btn-3">3 &middot; Extract Trade Data</button>
+</div>
+
+<!-- ── MAIN ── -->
+<div class="main">
+
+  <!-- ── TAB 1: SYNC ── -->
+  <div class="tab-panel" id="tab-1">
+    <div class="sync-panel">
+      <div class="sync-card">
+        <h3>Email Synchronisation</h3>
+        <p>Connect to the shared FX Settlement mailbox and pull new messages into the processing pipeline. The source can be switched between local <code>.eml</code> files (dev mode) and Microsoft Graph API (production).</p>
+        <div class="sync-info">
+          <div class="sync-info-item">
+            <div class="si-label">Source</div>
+            <div class="si-val" id="sync-src-label">Local (.eml)</div>
+          </div>
+          <div class="sync-info-item">
+            <div class="si-label">Mailbox</div>
+            <div class="si-val">fx-settlement@nomura.com</div>
+          </div>
+          <div class="sync-info-item">
+            <div class="si-label">Last Sync</div>
+            <div class="si-val">26-May-26 10:54</div>
+          </div>
+          <div class="sync-info-item" id="sync-count-display">
+            <div class="si-label">Emails Fetched</div>
+            <div class="si-val" id="sync-count-val">—</div>
+          </div>
+        </div>
+        <button class="sync-btn" id="sync-btn" onclick="doSync()">
+          <span id="sync-spinner" class="spinner"></span>
+          <span id="sync-btn-label">Sync Now</span>
+        </button>
+        <div class="sync-progress" id="sync-progress">
+          <div class="progress-bar-wrap"><div class="progress-bar-fill" id="sync-prog-fill"></div></div>
+          <div class="sync-status-text" id="sync-status-text">Connecting...</div>
+        </div>
+      </div>
+      <div class="sync-card">
+        <h3>Inbox Status</h3>
+        <p>The agent reads every <code>*.eml</code> in the inbox path (or paged messages from Graph) and normalises them into a uniform envelope before classification.</p>
+        <table style="width:100%;border-collapse:collapse">
+          <thead>
+            <tr>
+              <th style="text-align:left;padding:7px 10px;font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:#888;border-bottom:2px solid #e0e0e0;font-weight:700">Parameter</th>
+              <th style="text-align:left;padding:7px 10px;font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:#888;border-bottom:2px solid #e0e0e0;font-weight:700">Value</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom:1px solid #efefef"><td style="padding:7px 10px;font-size:12.5px">Inbox path</td><td style="padding:7px 10px;font-size:12px;font-family:monospace;color:#444">email_agent/data/inbox/</td></tr>
+            <tr style="border-bottom:1px solid #efefef"><td style="padding:7px 10px;font-size:12.5px">Processed path</td><td style="padding:7px 10px;font-size:12px;font-family:monospace;color:#444">email_agent/data/processed/</td></tr>
+            <tr style="border-bottom:1px solid #efefef"><td style="padding:7px 10px;font-size:12.5px">SQLite index</td><td style="padding:7px 10px;font-size:12px;font-family:monospace;color:#444">email_agent/data/email_index.db</td></tr>
+            <tr><td style="padding:7px 10px;font-size:12.5px">Graph base URL</td><td style="padding:7px 10px;font-size:12px;font-family:monospace;color:#444">http://localhost:8001</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── TAB 2: CLASSIFY ── -->
+  <div class="tab-panel active" id="tab-2">
+    <div class="toolbar">
+      <div class="filter-group" id="filter-group">
+        <button class="filter-btn active" onclick="setFilter('ALL',this)">All</button>
+        <button class="filter-btn" onclick="setFilter('RELEVANT',this)">Relevant</button>
+        <button class="filter-btn" onclick="setFilter('AMBIGUOUS',this)">Ambiguous</button>
+        <button class="filter-btn" onclick="setFilter('IRRELEVANT',this)">Irrelevant</button>
+        <button class="filter-btn" onclick="setFilter('DUPLICATE',this)">Duplicate</button>
+      </div>
+      <button class="run-btn" id="run-btn" onclick="runAgent()">
+        <span class="spinner" id="run-spinner"></span>
+        <span id="run-btn-label">&#9654; Run Agent</span>
+      </button>
+      <input class="search-box" id="classify-search" placeholder="Search subject or sender…" oninput="onSearch()" />
+    </div>
+
+    <div id="classify-placeholder" class="empty-state" style="display:none">
+      <div class="es-icon">&#9993;</div>
+      <div>Click <strong>Run Agent</strong> to classify the inbox</div>
+    </div>
+
+    <div id="classify-content">
+      <div class="tbl-wrap" id="email-tbl-wrap">
+        <table id="email-table">
+          <thead>
+            <tr>
+              <th style="width:34%">Subject</th>
+              <th>Sender</th>
+              <th>Received</th>
+              <th>Status</th>
+              <th>Confidence</th>
+              <th>Trade ID</th>
+            </tr>
+          </thead>
+          <tbody id="email-tbody"></tbody>
+        </table>
+      </div>
+      <div class="pagination" id="email-pagination"></div>
+    </div>
+  </div>
+
+  <!-- ── TAB 3: EXTRACT ── -->
+  <div class="tab-panel" id="tab-3">
+    <div class="trade-toolbar">
+      <input class="search-box" id="trade-search" placeholder="Search trade ID, counterparty, pair…" oninput="onTradeSearch()" style="margin-left:0;width:260px" />
+      <div class="trade-count" id="trade-count">Showing 80 trades</div>
+    </div>
+    <div class="tbl-wrap">
+      <table id="trade-table">
+        <thead>
+          <tr>
+            <th>Trade ID</th>
+            <th>Counterparty</th>
+            <th>CCY Pair</th>
+            <th>Buy / Sell</th>
+            <th style="text-align:right">Notional</th>
+            <th>Settlement Date</th>
+            <th>Source</th>
+          </tr>
+        </thead>
+        <tbody id="trade-tbody"></tbody>
+      </table>
+    </div>
+    <div class="pagination" id="trade-pagination"></div>
+  </div>
+
+</div><!-- /main -->
+
+<!-- ── DRAWER ── -->
+<div class="drawer-overlay" id="drawer-overlay" onclick="closeDrawer()"></div>
+<div class="drawer" id="drawer">
+  <div class="drawer-header">
+    <div class="drawer-title" id="drawer-subject">—</div>
+    <button class="drawer-close" onclick="closeDrawer()" title="Close">&times;</button>
+  </div>
+  <div class="drawer-body">
+    <div class="drawer-field">
+      <label>Sender</label>
+      <div class="val" id="d-sender">—</div>
+    </div>
+    <div class="drawer-field">
+      <label>Received</label>
+      <div class="val" id="d-received">—</div>
+    </div>
+    <hr class="drawer-divider">
+    <div class="drawer-field">
+      <label>Classification</label>
+      <div id="d-label-wrap" style="margin-bottom:8px"></div>
+      <div class="conf-detail">
+        <div class="conf-bar-bg" style="width:110px">
+          <div class="conf-bar-fill" id="d-conf-bar"></div>
+        </div>
+        <div class="conf-pct" id="d-conf-pct" style="width:auto"></div>
+      </div>
+    </div>
+    <div class="drawer-field">
+      <label>Scoring Reason</label>
+      <div class="val" id="d-reason" style="font-size:11.5px;color:#555;font-family:monospace;background:#f5f5f5;padding:6px 8px;border:1px solid #e0e0e0">—</div>
+    </div>
+    <hr class="drawer-divider">
+    <div class="drawer-field">
+      <label>Trade ID</label>
+      <div class="val mono" id="d-tradeid">—</div>
+    </div>
+    <div class="drawer-field" id="d-att-wrap">
+      <label>Attachments</label>
+      <div id="d-att-content">—</div>
+    </div>
+    <hr class="drawer-divider">
+    <div class="drawer-field">
+      <label>Case Folder</label>
+      <div class="val mono" id="d-folder" style="font-size:11px;color:#777">—</div>
+    </div>
+    <div class="drawer-field">
+      <label>Phase 2 Ready</label>
+      <div class="val" id="d-ready">—</div>
+    </div>
+  </div>
+</div>
+
+<!-- ── TOAST ── -->
+<div class="toast" id="toast"></div>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <strong>Nomura</strong> SSG &nbsp;&middot;&nbsp; Agentic AI PoC &nbsp;&middot;&nbsp; Phase 1 &nbsp;&middot;&nbsp; Classification &amp; Extraction Pipeline
+</footer>
+
+<script>
+// ── DATA ──────────────────────────────────────────────────────────────────
+const EMAILS = [
+  {id:1,subject:"FX Trade Settlement[FXOPT-2026-00047] – EUR/USD",sender:"Aastha Makkar",received:"26-May-26 09:30",label:"RELEVANT",conf:0.85,trade_id:"FXOPT-2026-00047",atts:0},
+  {id:2,subject:"FX Trade Settlement[FXOPT-2026-00048] – USD/JPY",sender:"Aastha Makkar",received:"26-May-26 09:33",label:"RELEVANT",conf:0.85,trade_id:"FXOPT-2026-00048",atts:0},
+  {id:3,subject:"FX Trade Settlement[FXOPT-2026-00049] – GBP/USD",sender:"Aastha Makkar",received:"26-May-26 09:36",label:"RELEVANT",conf:0.85,trade_id:"FXOPT-2026-00049",atts:0},
+  {id:4,subject:"FX Trade Settlement[FXOPT-2026-00050] – USD/CAD",sender:"Aastha Makkar",received:"26-May-26 09:39",label:"RELEVANT",conf:0.85,trade_id:"FXOPT-2026-00050",atts:0},
+  {id:5,subject:"FX Trade Settlement[FXOPT-2026-00051] – EUR/GBP",sender:"Aastha Makkar",received:"26-May-26 09:42",label:"RELEVANT",conf:0.85,trade_id:"FXOPT-2026-00051",atts:0},
+  {id:6,subject:"FX Trade Settlement[FXOPT-2026-00052] – AUD/USD",sender:"Aastha Makkar",received:"26-May-26 09:45",label:"RELEVANT",conf:0.85,trade_id:"FXOPT-2026-00052",atts:0},
+  {id:7,subject:"FX Trade Settlement[FXOPT-2026-00053] – USD/SGD",sender:"Aastha Makkar",received:"26-May-26 09:48",label:"RELEVANT",conf:0.80,trade_id:"FXOPT-2026-00053",atts:0},
+  {id:8,subject:"FX Trade Settlement[FXOPT-2026-00054] – USD/CHF",sender:"Aastha Makkar",received:"26-May-26 09:51",label:"RELEVANT",conf:0.80,trade_id:"FXOPT-2026-00054",atts:0},
+  {id:9,subject:"FX Trade Settlement[FXOPT-2026-00055] – EUR/USD (partial)",sender:"Aastha Makkar",received:"26-May-26 09:54",label:"RELEVANT",conf:0.75,trade_id:"FXOPT-2026-00055",atts:0},
+  {id:10,subject:"FX Trade Settlement[FXOPT-2026-00056] – USD/JPY (partial)",sender:"Aastha Makkar",received:"26-May-26 09:57",label:"RELEVANT",conf:0.75,trade_id:"FXOPT-2026-00056",atts:0},
+  {id:11,subject:"FX Trade Settlement[FXOPT-2026-00057] – GBP/USD (partial)",sender:"Aastha Makkar",received:"26-May-26 10:00",label:"RELEVANT",conf:0.75,trade_id:"FXOPT-2026-00057",atts:0},
+  {id:12,subject:"FX Trade Settlement[FXOPT-2026-00058] – USD/CAD (partial)",sender:"Aastha Makkar",received:"26-May-26 10:03",label:"RELEVANT",conf:0.75,trade_id:"FXOPT-2026-00058",atts:0},
+  {id:13,subject:"FX Trade Settlements_FXOPT_270526 [Blotter]",sender:"Aastha Makkar",received:"26-May-26 10:06",label:"RELEVANT",conf:0.80,trade_id:"UNKNOWN_a1b2c3",atts:1,att_name:"FX_Options_Blotter_270526.xlsx"},
+  {id:14,subject:"FX Trade Settlements_FXOPT_280526 [Blotter]",sender:"Aastha Makkar",received:"26-May-26 10:09",label:"RELEVANT",conf:0.80,trade_id:"UNKNOWN_f6g7h8",atts:1,att_name:"FX_Options_Blotter_280526.xlsx"},
+  {id:15,subject:"FX Trade Settlement[FXOPT-2026-00047] – EUR/USD (resent)",sender:"Aastha Makkar",received:"26-May-26 10:12",label:"DUPLICATE",conf:0.85,trade_id:"FXOPT-2026-00047",atts:0},
+  {id:16,subject:"FX Trade Settlement[FXOPT-2026-00048] – USD/JPY (resent)",sender:"Aastha Makkar",received:"26-May-26 10:15",label:"DUPLICATE",conf:0.85,trade_id:"FXOPT-2026-00048",atts:0},
+  {id:17,subject:"Settlement query – account reconciliation",sender:"Operations Desk",received:"26-May-26 10:18",label:"AMBIGUOUS",conf:0.30,trade_id:null,atts:0},
+  {id:18,subject:"Re: Confirmation needed",sender:"Rahul Verma",received:"26-May-26 10:21",label:"AMBIGUOUS",conf:0.30,trade_id:null,atts:0},
+  {id:19,subject:"Pending transaction follow-up",sender:"Finance Shared Services",received:"26-May-26 10:24",label:"AMBIGUOUS",conf:0.30,trade_id:null,atts:0},
+  {id:20,subject:"Happy Birthday Akshit!",sender:"Priya Sharma",received:"26-May-26 10:27",label:"IRRELEVANT",conf:0.90,trade_id:null,atts:0},
+  {id:21,subject:"5 Years at Protiviti – Congratulations Manav!",sender:"HR Team",received:"26-May-26 10:30",label:"IRRELEVANT",conf:0.90,trade_id:null,atts:0},
+  {id:22,subject:"Great work on the Q1 presentation!",sender:"Dheeraj Khatri",received:"26-May-26 10:33",label:"IRRELEVANT",conf:0.90,trade_id:null,atts:0},
+  {id:23,subject:"[IT Support] Your request #TKT-44821 resolved",sender:"IT Support",received:"26-May-26 10:36",label:"IRRELEVANT",conf:0.90,trade_id:null,atts:0},
+  {id:24,subject:"Updated Remote Work Policy – June 2026",sender:"HR Team",received:"26-May-26 10:39",label:"IRRELEVANT",conf:0.90,trade_id:null,atts:0},
+  {id:25,subject:"Protiviti Monthly Update – May 2026",sender:"Internal Comms",received:"26-May-26 10:42",label:"IRRELEVANT",conf:0.90,trade_id:null,atts:0},
+  {id:26,subject:"Action Required: Reset your VPN password by 30-May",sender:"IT Security",received:"26-May-26 10:45",label:"IRRELEVANT",conf:0.90,trade_id:null,atts:0},
+  {id:27,subject:"Out of Office: Satyadarshi (returns 2-Jun-2026)",sender:"Satyadarshi Mohanty",received:"26-May-26 10:48",label:"IRRELEVANT",conf:0.90,trade_id:null,atts:0},
+  {id:28,subject:"Team Sync – Phase 1 Review – Friday 3pm",sender:"Aastha Makkar",received:"26-May-26 10:51",label:"IRRELEVANT",conf:0.90,trade_id:null,atts:0},
+  {id:29,subject:"Lunch this Friday at 1pm – Sector 18",sender:"Manav Khatri",received:"26-May-26 10:54",label:"IRRELEVANT",conf:0.90,trade_id:null,atts:0},
+];
+
+const CPTYS = ["Barclays PLC","Goldman Sachs","Deutsche Bank AG","HSBC Bank PLC","JPMorgan Chase","Société Générale","BNP Paribas","Citibank NA"];
+const PAIRS = ["EUR/USD","USD/JPY","GBP/USD","USD/CAD","EUR/GBP","AUD/USD","USD/SGD","USD/CHF"];
+const CCYS  = ["EUR","USD","GBP","USD","EUR","AUD","USD","USD"];
+const NOTS  = [5250000,8750000,3100000,12500000,2800000,6400000,4200000,9800000];
+const DATES = ["13-Oct-2026","25-Aug-2026","11-Nov-2026","05-Sep-2026","22-Oct-2026","19-Aug-2026","30-Nov-2026","08-Sep-2026"];
+const TRADES = [
+  ...Array.from({length:12},(_,i)=>({trade_id:`FXOPT-2026-000${47+i}`,cpty:CPTYS[i%8],pair:PAIRS[i%8],bs:i%2===0?"Buy":"Sell",notional:(NOTS[i%8]).toLocaleString(),ccy:CCYS[i%8],settle:DATES[i%8],source:"Body"})),
+  ...Array.from({length:34},(_,i)=>({trade_id:`FXOPT-2026-${String(i+1).padStart(5,'0')}`,cpty:CPTYS[i%8],pair:PAIRS[i%8],bs:i%2===0?"Buy":"Sell",notional:(NOTS[i%8]).toLocaleString(),ccy:CCYS[i%8],settle:DATES[i%8],source:"Attachment (xlsx)"})),
+  ...Array.from({length:34},(_,i)=>({trade_id:`FXOPT-2026-${String(i+67).padStart(5,'0')}`,cpty:CPTYS[i%8],pair:PAIRS[i%8],bs:i%2===0?"Buy":"Sell",notional:(NOTS[i%8]).toLocaleString(),ccy:CCYS[i%8],settle:DATES[i%8],source:"Attachment (xlsx)"})),
+];
+
+// ── STATE ─────────────────────────────────────────────────────────────────
+let activeTab = 2;
+let activeFilter = 'ALL';
+let emailSearch = '';
+let emailPage = 1;
+let tradeSearch = '';
+let tradePage = 1;
+const PAGE_SIZE = 10;
+let selectedEmailId = null;
+let agentRan = true; // table visible by default
+
+// ── HELPERS ───────────────────────────────────────────────────────────────
+function badge(label) {
+  return `<span class="badge badge-${label}">${label}</span>`;
+}
+
+function confBar(c) {
+  const pct = Math.round(c * 100);
+  return `<div class="conf-wrap">
+    <div class="conf-bar-bg"><div class="conf-bar-fill" style="width:${pct}%"></div></div>
+    <div class="conf-pct">${pct}%</div>
+  </div>`;
+}
+
+function scoringReason(email) {
+  if (email.label === 'IRRELEVANT' && !email.subject.toLowerCase().includes('settlement')) {
+    return `negative_keyword match → early exit (IRRELEVANT)`;
+  }
+  if (email.label === 'AMBIGUOUS') {
+    return `asset[]; subject['settlement','transaction']; score=0.30 (0.30 ≤ s < 0.70)`;
+  }
+  if (email.label === 'DUPLICATE') {
+    return `trade_id_exists('${email.trade_id}') → dedup guard fired (DUPLICATE)`;
+  }
+  if (email.label === 'RELEVANT') {
+    const kws = [];
+    if (email.subject.toLowerCase().includes('settlement')) kws.push("'fx trade settlement'");
+    if (email.atts && email.atts > 0) kws.push("'blotter'");
+    return `asset[${kws.join(',')||"'fx trade settlement'"}]; subject['settlement','trade']; trade_id_regex→match; score=${email.conf.toFixed(2)} (≥0.70)`;
+  }
+  return `score=${email.conf.toFixed(2)}`;
+}
+
+function caseFolder(email) {
+  if (!email.trade_id) return '—';
+  const tid = email.trade_id;
+  const ac = tid.startsWith('FXOPT') ? 'FX_OPTIONS' : 'UNKNOWN';
+  return `data/processed/${tid}_${ac}_20260526/`;
+}
+
+function showToast(msg, dur=2500) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), dur);
+}
+
+// ── SOURCE TOGGLE ─────────────────────────────────────────────────────────
+function setSource(s) {
+  document.getElementById('src-local').classList.toggle('active', s==='local');
+  document.getElementById('src-graph').classList.toggle('active', s==='graph');
+  document.getElementById('sync-src-label').textContent = s==='local' ? 'Local (.eml)' : 'Graph API';
+  showToast(`Source switched to ${s==='local'?'Local (.eml)':'Microsoft Graph API'}`);
+}
+
+// ── TAB SWITCHING ─────────────────────────────────────────────────────────
+function switchTab(n) {
+  [1,2,3].forEach(i => {
+    document.getElementById(`tab-${i}`).classList.toggle('active', i===n);
+    document.getElementById(`tab-btn-${i}`).classList.toggle('active', i===n);
+  });
+  activeTab = n;
+}
+
+// ── SYNC ──────────────────────────────────────────────────────────────────
+function doSync() {
+  const btn = document.getElementById('sync-btn');
+  const spinner = document.getElementById('sync-spinner');
+  const lbl = document.getElementById('sync-btn-label');
+  const prog = document.getElementById('sync-progress');
+  const fill = document.getElementById('sync-prog-fill');
+  const statusTxt = document.getElementById('sync-status-text');
+
+  btn.disabled = true;
+  spinner.style.display = 'block';
+  lbl.textContent = 'Syncing…';
+  prog.style.display = 'block';
+  fill.style.width = '0%';
+
+  const steps = [
+    [200, 15, 'Authenticating…'],
+    [600, 40, 'Fetching message list…'],
+    [1000, 65, 'Downloading 29 messages…'],
+    [1400, 85, 'Parsing MIME headers…'],
+    [1800, 100, 'Done — 29 emails loaded.'],
+  ];
+
+  steps.forEach(([delay, pct, msg]) => {
+    setTimeout(() => {
+      fill.style.width = pct + '%';
+      statusTxt.textContent = msg;
+      if (pct === 100) {
+        document.getElementById('sync-count-val').textContent = '29';
+        btn.disabled = false;
+        spinner.style.display = 'none';
+        lbl.textContent = 'Sync Again';
+        showToast('Sync complete — 29 emails fetched');
+      }
+    }, delay);
+  });
+}
+
+// ── RUN AGENT ─────────────────────────────────────────────────────────────
+function runAgent() {
+  const btn = document.getElementById('run-btn');
+  const spinner = document.getElementById('run-spinner');
+  const lbl = document.getElementById('run-btn-label');
+  btn.disabled = true;
+  btn.classList.add('loading');
+  spinner.style.display = 'block';
+  lbl.textContent = 'Running…';
+
+  setTimeout(() => {
+    btn.disabled = false;
+    btn.classList.remove('loading');
+    spinner.style.display = 'none';
+    lbl.textContent = '✓ Re-run Agent';
+    agentRan = true;
+    document.getElementById('classify-placeholder').style.display = 'none';
+    document.getElementById('classify-content').style.display = '';
+    renderEmailTable();
+    showToast('Agent run complete — 29 emails classified');
+  }, 1500);
+}
+
+// ── EMAIL TABLE ───────────────────────────────────────────────────────────
+function filteredEmails() {
+  let list = EMAILS;
+  if (activeFilter !== 'ALL') list = list.filter(e => e.label === activeFilter);
+  if (emailSearch) {
+    const q = emailSearch.toLowerCase();
+    list = list.filter(e => e.subject.toLowerCase().includes(q) || e.sender.toLowerCase().includes(q));
+  }
+  return list;
+}
+
+function renderEmailTable() {
+  const list = filteredEmails();
+  const total = list.length;
+  const pages = Math.max(1, Math.ceil(total / PAGE_SIZE));
+  if (emailPage > pages) emailPage = 1;
+  const slice = list.slice((emailPage-1)*PAGE_SIZE, emailPage*PAGE_SIZE);
+
+  const tbody = document.getElementById('email-tbody');
+  tbody.innerHTML = slice.map(e => {
+    const tid = e.trade_id
+      ? `<span class="td-tradeid">${e.trade_id}</span>`
+      : `<span style="color:#bbb;font-size:11px">—</span>`;
+    const attIcon = e.atts > 0
+      ? ` <span style="color:#1565c0;font-size:11px" title="${e.att_name}">📎</span>`
+      : '';
+    return `<tr data-id="${e.id}" class="${selectedEmailId===e.id?'selected':''}" onclick="openDrawer(${e.id})">
+      <td class="td-subject" title="${escHtml(e.subject)}">${escHtml(e.subject)}${attIcon}</td>
+      <td>${escHtml(e.sender)}</td>
+      <td style="white-space:nowrap;color:#555">${e.received}</td>
+      <td>${badge(e.label)}</td>
+      <td>${confBar(e.conf)}</td>
+      <td>${tid}</td>
+    </tr>`;
+  }).join('');
+
+  if (slice.length === 0) {
+    tbody.innerHTML = `<tr><td colspan="6" style="text-align:center;padding:24px;color:#aaa;font-size:12px">No emails match this filter.</td></tr>`;
+  }
+
+  renderEmailPagination(pages, total);
+}
+
+function renderEmailPagination(pages, total) {
+  const pg = document.getElementById('email-pagination');
+  if (pages <= 1) { pg.innerHTML = `<span class="pg-info">Showing ${total} email${total!==1?'s':''}</span>`; return; }
+  let html = `<button class="pg-btn" onclick="goEmailPage(${emailPage-1})" ${emailPage===1?'disabled':''}>&#8249;</button>`;
+  for (let i=1; i<=pages; i++) {
+    html += `<button class="pg-btn ${i===emailPage?'active':''}" onclick="goEmailPage(${i})">${i}</button>`;
+  }
+  html += `<button class="pg-btn" onclick="goEmailPage(${emailPage+1})" ${emailPage===pages?'disabled':''}>&#8250;</button>`;
+  html += `<span class="pg-info">Showing ${(emailPage-1)*PAGE_SIZE+1}–${Math.min(emailPage*PAGE_SIZE,total)} of ${total}</span>`;
+  pg.innerHTML = html;
+}
+
+function goEmailPage(p) { emailPage = p; renderEmailTable(); }
+
+function setFilter(f, btn) {
+  activeFilter = f;
+  emailPage = 1;
+  document.querySelectorAll('#filter-group .filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  renderEmailTable();
+}
+
+function onSearch() {
+  emailSearch = document.getElementById('classify-search').value;
+  emailPage = 1;
+  renderEmailTable();
+}
+
+function escHtml(s) {
+  return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+// ── DRAWER ────────────────────────────────────────────────────────────────
+function openDrawer(id) {
+  const email = EMAILS.find(e => e.id === id);
+  if (!email) return;
+  selectedEmailId = id;
+
+  document.getElementById('drawer-subject').textContent = email.subject;
+  document.getElementById('d-sender').textContent = email.sender;
+  document.getElementById('d-received').textContent = email.received;
+
+  document.getElementById('d-label-wrap').innerHTML = badge(email.label);
+  const pct = Math.round(email.conf*100);
+  document.getElementById('d-conf-bar').style.width = pct+'%';
+  document.getElementById('d-conf-pct').textContent = `Confidence: ${pct}%`;
+
+  document.getElementById('d-reason').textContent = scoringReason(email);
+
+  document.getElementById('d-tradeid').textContent = email.trade_id || '— (no trade ID extracted)';
+
+  const attWrap = document.getElementById('d-att-content');
+  if (email.atts > 0 && email.att_name) {
+    attWrap.innerHTML = `<div class="att-chip">&#128196; ${email.att_name}</div>`;
+  } else {
+    attWrap.textContent = 'None';
+  }
+
+  document.getElementById('d-folder').textContent = caseFolder(email);
+  document.getElementById('d-ready').innerHTML = (email.label==='RELEVANT')
+    ? `<span style="color:#2e7d32;font-weight:600">&#10003; ready_for_extraction: true</span>`
+    : `<span style="color:#aaa">— (not passed to Phase 2)</span>`;
+
+  document.getElementById('drawer').classList.add('open');
+  document.getElementById('drawer-overlay').classList.add('open');
+
+  // update selected row highlight
+  document.querySelectorAll('#email-tbody tr').forEach(tr => {
+    tr.classList.toggle('selected', parseInt(tr.dataset.id)===id);
+  });
+}
+
+function closeDrawer() {
+  selectedEmailId = null;
+  document.getElementById('drawer').classList.remove('open');
+  document.getElementById('drawer-overlay').classList.remove('open');
+  document.querySelectorAll('#email-tbody tr').forEach(tr => tr.classList.remove('selected'));
+}
+
+// ── TRADE TABLE ───────────────────────────────────────────────────────────
+function filteredTrades() {
+  if (!tradeSearch) return TRADES;
+  const q = tradeSearch.toLowerCase();
+  return TRADES.filter(t =>
+    t.trade_id.toLowerCase().includes(q) ||
+    t.cpty.toLowerCase().includes(q) ||
+    t.pair.toLowerCase().includes(q)
+  );
+}
+
+function renderTradeTable() {
+  const list = filteredTrades();
+  const total = list.length;
+  const pages = Math.max(1, Math.ceil(total / PAGE_SIZE));
+  if (tradePage > pages) tradePage = 1;
+  const slice = list.slice((tradePage-1)*PAGE_SIZE, tradePage*PAGE_SIZE);
+
+  document.getElementById('trade-count').textContent = `Showing ${total} trade${total!==1?'s':''}`;
+
+  const tbody = document.getElementById('trade-tbody');
+  tbody.innerHTML = slice.map(t => {
+    const srcBadge = t.source === 'Body'
+      ? `<span class="badge badge-body">Body</span>`
+      : `<span class="badge badge-att">Attachment (xlsx)</span>`;
+    const bsColor = t.bs === 'Buy' ? 'color:#1b5e20;font-weight:600' : 'color:#b71c1c;font-weight:600';
+    return `<tr>
+      <td class="td-tradeid">${t.trade_id}</td>
+      <td>${t.cpty}</td>
+      <td style="font-weight:600">${t.pair}</td>
+      <td style="${bsColor}">${t.bs}</td>
+      <td style="text-align:right;font-family:monospace;font-size:12px">${t.ccy} ${t.notional}</td>
+      <td style="white-space:nowrap">${t.settle}</td>
+      <td>${srcBadge}</td>
+    </tr>`;
+  }).join('');
+
+  if (slice.length === 0) {
+    tbody.innerHTML = `<tr><td colspan="7" style="text-align:center;padding:24px;color:#aaa;font-size:12px">No trades match your search.</td></tr>`;
+  }
+
+  renderTradePagination(pages, total);
+}
+
+function renderTradePagination(pages, total) {
+  const pg = document.getElementById('trade-pagination');
+  if (pages <= 1) { pg.innerHTML = ''; return; }
+  let html = `<button class="pg-btn" onclick="goTradePage(${tradePage-1})" ${tradePage===1?'disabled':''}>&#8249;</button>`;
+  // show max 8 page buttons around current
+  const start = Math.max(1, tradePage-3);
+  const end   = Math.min(pages, tradePage+4);
+  if (start > 1) html += `<button class="pg-btn" onclick="goTradePage(1)">1</button><span style="padding:4px;color:#bbb">…</span>`;
+  for (let i=start; i<=end; i++) {
+    html += `<button class="pg-btn ${i===tradePage?'active':''}" onclick="goTradePage(${i})">${i}</button>`;
+  }
+  if (end < pages) html += `<span style="padding:4px;color:#bbb">…</span><button class="pg-btn" onclick="goTradePage(${pages})">${pages}</button>`;
+  html += `<button class="pg-btn" onclick="goTradePage(${tradePage+1})" ${tradePage===pages?'disabled':''}>&#8250;</button>`;
+  html += `<span class="pg-info">${(tradePage-1)*PAGE_SIZE+1}–${Math.min(tradePage*PAGE_SIZE,total)} of ${total}</span>`;
+  pg.innerHTML = html;
+}
+
+function goTradePage(p) { tradePage = p; renderTradeTable(); }
+
+function onTradeSearch() {
+  tradeSearch = document.getElementById('trade-search').value;
+  tradePage = 1;
+  renderTradeTable();
+}
+
+// ── INIT ──────────────────────────────────────────────────────────────────
+renderEmailTable();
+renderTradeTable();
+</script>
+</body>
+</html>

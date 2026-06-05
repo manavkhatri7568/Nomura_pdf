@@ -23,7 +23,7 @@ python tools/generate_test_emails.py --clean   # create the synthetic inbox
 python demo.py                                  # run + prove deduplication
 
 # Tests
-python -m pytest                                # 26 tests
+python -m pytest                                # 38 tests
 
 # Services (two processes; the API calls the mock over HTTP)
 python -m uvicorn mock_graph.app:app --port 8001
@@ -60,6 +60,12 @@ API docs at `http://localhost:8000/docs`. Endpoint reference: [`SERVICES.md`](SE
 Paths and Graph settings are environment-overridable — see `config/settings.py`
 and the table in [`SERVICES.md`](SERVICES.md). No real credentials live in the
 repo; the mock uses placeholder values.
+
+The **classifier itself is tunable at runtime** via the `/config` API (and the
+Schedules screen in the UI): keyword lists, scoring weights and thresholds can be
+edited live — no restart — validated, persisted to `data/runtime_config.json`,
+and audited. Edits take effect on the next pipeline run, so changing a keyword
+visibly changes which emails are classified RELEVANT.
 
 ## Status
 
