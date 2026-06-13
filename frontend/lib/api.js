@@ -55,6 +55,10 @@ export const api = {
   // Trade rows parsed from stored xlsx/csv attachments (one row per trade).
   getExtractedTrades: () => call('GET', '/extract/trades'),
 
+  // Compare & Match: extracted trades reconciled against the golden source —
+  // missing fields populated, present fields compared, status + confidence.
+  matchTrades: () => call('GET', '/match/trades'),
+
   classify: (subject, body) =>
     call('POST', '/classifier/classify', { subject, body }),
 

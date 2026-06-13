@@ -32,7 +32,7 @@ from starlette.exceptions import HTTPException as StarletteHTTPException
 
 from api.deps import get_config
 from api.models import failure
-from api.routers import agent, classifier, config, connector, extract, storage
+from api.routers import agent, classifier, config, connector, extract, match, storage
 from utils.audit import new_correlation_id, record_audit
 from utils.logger import get_logger, setup_logging
 
@@ -47,6 +47,7 @@ app.include_router(agent.router)
 app.include_router(storage.router)
 app.include_router(config.router)
 app.include_router(extract.router)
+app.include_router(match.router)
 
 
 @app.middleware("http")

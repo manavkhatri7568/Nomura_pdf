@@ -1,0 +1,78 @@
+{
+  "trade_id": "UNKNOWN_f686a78dbe",
+  "asset_class": "FX Settlement",
+  "message_id": "<PN2P287MB2876FE756E5DEA755E0038DC95162@PN2P287MB2876.INDP287.PROD.OUTLOOK.COM>",
+  "subject": "FX Trade Settlements_FXOPT_280526",
+  "sender": "\"Aastha Makkar (IND)\" <aastha.makkar@protivitiglobal.in>",
+  "received_at": "Fri, 29 May 2026 07:05:17 +0000",
+  "case_folder": "data\\processed\\UNKNOWN_f686a78dbe_FX_Settlement_20260610",
+  "email_body_path": "data\\processed\\UNKNOWN_f686a78dbe_FX_Settlement_20260610\\email_body.txt",
+  "attachments": [
+    {
+      "filename": "FX_Options_trade_280526.xlsx",
+      "path": "data\\processed\\UNKNOWN_f686a78dbe_FX_Settlement_20260610\\attachments\\FX_Options_trade_280526.xlsx",
+      "mime_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "size_bytes": 16611,
+      "extraction_status": "success",
+      "extracted_trade_count": 34
+    }
+  ],
+  "classification": {
+    "label": "RELEVANT",
+    "confidence": 0.8,
+    "reason": "asset['fx trade settlement', 'fx trade']; subject['settlement', 'trade', 'fx']",
+    "asset_class": "FX Settlement"
+  },
+  "extraction": {
+    "enabled": true,
+    "trades_extracted": 34,
+    "trade_ids": [
+      "FXOPT-2026-00001",
+      "FXOPT-2026-00002",
+      "FXOPT-2026-00003",
+      "FXOPT-2026-00004",
+      "FXOPT-2026-00005",
+      "FXOPT-2026-00006",
+      "FXOPT-2026-00007",
+      "FXOPT-2026-00008",
+      "FXOPT-2026-00009",
+      "FXOPT-2026-00010",
+      "FXOPT-2026-00011",
+      "FXOPT-2026-00012",
+      "FXOPT-2026-00013",
+      "FXOPT-2026-00014",
+      "FXOPT-2026-00015",
+      "FXOPT-2026-00016",
+      "FXOPT-2026-00017",
+      "FXOPT-2026-00018",
+      "FXOPT-2026-00019",
+      "FXOPT-2026-00020",
+      "FXOPT-2026-00021",
+      "FXOPT-2026-00022",
+      "FXOPT-2026-00023",
+      "FXOPT-2026-00024",
+      "FXOPT-2026-00025",
+      "FXOPT-2026-00026",
+      "FXOPT-2026-00027",
+      "FXOPT-2026-00028",
+      "FXOPT-2026-00029",
+      "FXOPT-2026-00030",
+      "FXOPT-2026-00031",
+      "FXOPT-2026-00032",
+      "FXOPT-2026-00033",
+      "FXOPT-2026-00034"
+    ],
+    "extracted_trades_path": "data\\processed\\UNKNOWN_f686a78dbe_FX_Settlement_20260610\\extracted_trades.json",
+    "by_attachment": [
+      {
+        "filename": "FX_Options_trade_280526.xlsx",
+        "file_type": "xlsx",
+        "status": "success",
+        "trade_count": 34,
+        "unmapped_columns": [],
+        "error": null
+      }
+    ]
+  },
+  "ready_for_extraction": true
+}

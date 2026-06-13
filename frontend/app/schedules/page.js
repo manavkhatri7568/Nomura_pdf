@@ -7,6 +7,8 @@ import Badge from "@/components/ui/Badge";
 import Button from "@/components/ui/Button";
 import StatCard from "@/components/ui/StatCard";
 import { CheckCircleIcon, ClockIcon, XCircleIcon } from "@/components/ui/Icons";
+import RunConsole from "@/components/pipeline/RunConsole";
+import WorkflowBuilder from "@/components/workflow/WorkflowBuilder";
 
 const DEFAULT_KEYWORDS = [
   "fx trade settlement",
@@ -29,7 +31,7 @@ const DEFAULT_EXTRACT_FIELDS = [
 const SEED = [
   {
     id: 1,
-    name: "Classify & Extract",
+    name: "FX Trade Settlement",
     description:
       "Sync mailboxes, shortlist FX settlement emails",
     frequency: 24,
@@ -46,7 +48,7 @@ const SEED = [
 /* ─── agent capability templates (the "Agent name" dropdown) ─── */
 const AGENT_TEMPLATES = [
   {
-    name: "Classify & Extract",
+    name: "FX Trade Settlement",
     description: "Sync mailboxes, shortlist FX settlement emails",
     href: "/pipeline",
     frequency: 24,
@@ -265,7 +267,7 @@ function EditModal({ workflow, onSave, onReset, onClose }) {
             <svg viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4 flex-shrink-0 mt-px">
               <path fillRule="evenodd" d="M18 10a8 8 0 1 1-16 0 8 8 0 0 1 16 0Zm-7-4a1 1 0 1 1-2 0 1 1 0 0 1 2 0ZM9 9a.75.75 0 0 0 0 1.5h.253a.25.25 0 0 1 .244.304l-.459 2.066A1.75 1.75 0 0 0 10.747 15H11a.75.75 0 0 0 0-1.5h-.253a.25.25 0 0 1-.244-.304l.459-2.066A1.75 1.75 0 0 0 9.253 9H9Z" clipRule="evenodd" />
             </svg>
-            <span>Shortlisting keywords feed the rule classifier directly (asset-level signal, <strong>+0.5</strong>). Saving updates the live pipeline — re-run <strong>Classify &amp; Extract</strong> to see the new classifications.</span>
+            <span>Shortlisting keywords feed the rule classifier directly (asset-level signal, <strong>+0.5</strong>). Saving updates the live pipeline — re-run <strong>FX Trade Settlement</strong> to see the new classifications.</span>
           </div>
 
           {err && (
@@ -346,7 +348,7 @@ function DeleteModal({ workflow, onConfirm, onClose }) {
   );
 }
 
-/* ─── Add agent modal ───────────────────────────────────────── */
+/* ─── Add workflow modal ───────────────────────────────────────── */
 function AddModal({ templates, onAdd, onClose }) {
   const [templateName, setTemplateName] = useState(templates[0]?.name ?? "");
   const template = templates.find((t) => t.name === templateName) ?? templates[0];
@@ -389,7 +391,7 @@ function AddModal({ templates, onAdd, onClose }) {
       });
       onClose();
     } catch (e) {
-      setErr(e.message || "Failed to add agent.");
+      setErr(e.message || "Failed to add workflow.");
     } finally {
       setSaving(false);
     }
@@ -401,7 +403,7 @@ function AddModal({ templates, onAdd, onClose }) {
       <div className="relative z-10 w-full max-w-lg bg-white rounded-xl shadow-card-lg border border-neutral-200 flex flex-col max-h-[90vh]">
         <div className="px-5 py-4 border-b border-neutral-150 flex items-center justify-between flex-shrink-0">
           <div>
-            <h2 className="text-sm font-semibold text-neutral-900">Add Agent</h2>
+            <h2 className="text-sm font-semibold text-neutral-900">Add Workflow</h2>
             <p className="text-xs text-neutral-400 mt-0.5">Configure a new agent from a capability template</p>
           </div>
           <button onClick={onClose} className="w-7 h-7 rounded hover:bg-neutral-100 flex items-center justify-center text-neutral-400 transition-colors">
@@ -489,7 +491,7 @@ function AddModal({ templates, onAdd, onClose }) {
         <div className="px-5 py-4 border-t border-neutral-150 flex items-center justify-end gap-2 flex-shrink-0">
           <Button variant="secondary" size="sm" onClick={onClose} disabled={saving}>Cancel</Button>
           <Button variant="primary" size="sm" onClick={handleAdd} loading={saving}>
-            {saving ? "Adding…" : "Add agent"}
+            {saving ? "Adding…" : "Add workflow"}
           </Button>
         </div>
       </div>
@@ -506,6 +508,8 @@ export default function SchedulesPage() {
   const [adding, setAdding] = useState(false);
   const [savedMsg, setSavedMsg] = useState(null);
   const [loadErr, setLoadErr] = useState(null);
+  const [running, setRunning] = useState(null);   // workflow being run via the Run console
+  const [builder, setBuilder] = useState(null);   // { mode:'edit'|'add', workflow } → visual builder
 
   function flashSaved(msg) {
     setSavedMsg(msg);
@@ -571,7 +575,7 @@ export default function SchedulesPage() {
         ),
       );
       flashSaved(
-        "Configuration saved and applied to the live pipeline. Re-run Classify & Extract to see the updated classifications.",
+        "Configuration saved and applied to the live pipeline. Re-run FX Trade Settlement to see the updated classifications.",
       );
     } else {
       setWorkflows((ws) =>
@@ -643,7 +647,7 @@ export default function SchedulesPage() {
 
   return (
     <div className="flex flex-col flex-1 min-h-screen">
-      <Header breadcrumbs={["Agentic Capabilities", "Configure Agents"]} />
+      <Header breadcrumbs={["Agentic Capabilities", "Configure Workflows"]} />
 
       {editing && (
         <EditModal
@@ -667,6 +671,20 @@ export default function SchedulesPage() {
           onClose={() => setDeleting(null)}
         />
       )}
+      {running && (
+        <RunConsole
+          workflow={running}
+          source="local"
+          onClose={() => setRunning(null)}
+        />
+      )}
+      {builder && (
+        <WorkflowBuilder
+          mode={builder.mode}
+          workflow={builder.workflow}
+          onClose={() => setBuilder(null)}
+        />
+      )}
 
       <main className="flex-1 p-6 overflow-y-auto">
         {/* Page header */}
@@ -679,14 +697,14 @@ export default function SchedulesPage() {
           <Button
             variant="primary"
             size="sm"
-            onClick={() => setAdding(true)}
+            onClick={() => setBuilder({ mode: "add" })}
             icon={
               <svg viewBox="0 0 20 20" fill="currentColor">
                 <path d="M10.75 4.75a.75.75 0 0 0-1.5 0v4.5h-4.5a.75.75 0 0 0 0 1.5h4.5v4.5a.75.75 0 0 0 1.5 0v-4.5h4.5a.75.75 0 0 0 0-1.5h-4.5v-4.5Z" />
               </svg>
             }
           >
-            Add Agent
+            Add Workflow
           </Button>
         </div>
 
@@ -706,7 +724,7 @@ export default function SchedulesPage() {
         {/* Stats */}
         <div className="grid grid-cols-3 gap-3 mb-5">
           <StatCard
-            label="Total Agents"
+            label="Total Workflows"
             value={total}
             icon={<ClockIcon />}
             color="blue"
@@ -760,7 +778,6 @@ export default function SchedulesPage() {
                       "Agent Name",
                       "Frequency",
                       "Last Executed",
-                      "Health",
                       "Status",
                       "Actions",
                     ].map((h) => (
@@ -799,20 +816,6 @@ export default function SchedulesPage() {
                       <td className="px-4 py-3.5 text-neutral-600 whitespace-nowrap font-mono text-[11px]">
                         {fmtDate(w.lastRun)}
                       </td>
-                      {/* Health */}
-                      <td className="px-4 py-3.5 whitespace-nowrap">
-                        {w.health === "healthy" ? (
-                          <span className="inline-flex items-center gap-1.5 text-xs font-medium text-[#027a48]">
-                            <span className="w-2 h-2 rounded-full bg-[#12b76a] animate-pulse" />
-                            Healthy
-                          </span>
-                        ) : (
-                          <span className="inline-flex items-center gap-1.5 text-xs font-medium text-red-600">
-                            <span className="w-2 h-2 rounded-full bg-red-500" />
-                            Degraded
-                          </span>
-                        )}
-                      </td>
                       {/* Enable/Disable toggle */}
                       <td className="px-4 py-3.5 whitespace-nowrap">
                         <div className="flex items-center gap-2">
@@ -836,6 +839,16 @@ export default function SchedulesPage() {
                       <td className="px-4 py-3.5">
                         <div className="flex items-center gap-1.5">
                           <button
+                            onClick={() => setRunning(w)}
+                            title="Run the full pipeline now"
+                            className="inline-flex items-center gap-1 px-2.5 py-1.5 text-[11px] font-semibold text-emerald-700 bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 rounded-md transition-colors whitespace-nowrap"
+                          >
+                            <svg viewBox="0 0 16 16" fill="currentColor" className="w-3 h-3">
+                              <path d="M4.5 3.2a.75.75 0 0 1 1.14-.64l7 4.8a.75.75 0 0 1 0 1.28l-7 4.8A.75.75 0 0 1 4.5 12.8V3.2Z" />
+                            </svg>
+                            Run
+                          </button>
+                          <button
                             onClick={() => router.push(w.href)}
                             className="inline-flex items-center gap-1 px-2.5 py-1.5 text-[11px] font-semibold text-brand-600 bg-brand-50 hover:bg-brand-100 border border-brand-200 rounded-md transition-colors whitespace-nowrap"
                           >
@@ -853,7 +866,7 @@ export default function SchedulesPage() {
                             </svg>
                           </button>
                           <button
-                            onClick={() => setEditing(w)}
+                            onClick={() => setBuilder({ mode: "edit", workflow: w })}
                             className="inline-flex items-center gap-1 px-2.5 py-1.5 text-[11px] font-medium text-neutral-600 bg-white hover:bg-neutral-50 border border-neutral-200 rounded-md transition-colors"
                           >
                             <svg

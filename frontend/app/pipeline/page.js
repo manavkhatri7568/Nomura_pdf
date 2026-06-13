@@ -5,11 +5,13 @@ import Header from "@/components/layout/Header";
 import StepSync from "@/components/pipeline/StepSync";
 import StepShortlist from "@/components/pipeline/StepShortlist";
 import StepExtract from "@/components/pipeline/StepExtract";
+import StepMatch from "@/components/pipeline/StepMatch";
 
 const STEPS = [
   { label: "Sync Emails" },
   { label: "Classify" },
   { label: "Extract Trade Data" },
+  { label: "Compare & Match" },
 ];
 
 const SOURCES = [
@@ -19,7 +21,7 @@ const SOURCES = [
 
 export default function PipelinePage() {
   // State lives in a context provider mounted in the layout, so it survives
-  // navigating to Configure Agents and back (and a reload, via sessionStorage)
+  // navigating to Configure Workflows and back (and a reload, via sessionStorage)
   // — no more re-syncing / re-classifying every visit.
   const {
     source, setSource,
@@ -34,18 +36,25 @@ export default function PipelinePage() {
     [classified],
   );
 
-  const pipelineStep = shortlistDone ? 2 : syncedEmails ? 1 : 0;
+  // Dataset signature for the Compare & Match cache (same shape as Extract).
+  const datasetKey = useMemo(
+    () => (cases ?? []).map((e) => e.message_id ?? e.trade_id ?? "").join("|"),
+    [cases],
+  );
+
+  // Extract (2) and Compare & Match (3) both unlock once classification is done.
+  const pipelineStep = shortlistDone ? 3 : syncedEmails ? 1 : 0;
 
   return (
     <div className="flex flex-col flex-1 min-h-screen">
-      <Header breadcrumbs={["Agentic Capabilities", "Classify & Extract"]} />
+      <Header breadcrumbs={["Agentic Capabilities", "FX Trade Settlement"]} />
 
       <main className="flex-1 p-6 overflow-y-auto">
         {/* Page title row */}
         <div className="flex items-start justify-between mb-5 gap-4">
           <div>
             <h1 className="text-base font-semibold text-neutral-900 heading-underline mb-3">
-              Classify &amp; Extract Agentic Capability
+              FX Trade Settlement Agentic Capability
             </h1>
           </div>
 
@@ -79,7 +88,8 @@ export default function PipelinePage() {
                 i < pipelineStep ||
                 (i === 0 && !!syncedEmails) ||
                 (i === 1 && shortlistDone) ||
-                (i === 2 && shortlistDone);   // Extract is the terminal step — done once the register is available
+                (i === 2 && shortlistDone) ||
+                (i === 3 && shortlistDone);   // Extract + Compare & Match unlock together
               const active = activeStep === i;
               const locked = i > pipelineStep;
 
@@ -138,6 +148,9 @@ export default function PipelinePage() {
             </div>
             <div className={activeStep === 2 ? "tab-panel-enter" : "hidden"}>
               <StepExtract enabled={shortlistDone} preloadedCases={cases} />
+            </div>
+            <div className={activeStep === 3 ? "tab-panel-enter" : "hidden"}>
+              <StepMatch enabled={shortlistDone} datasetKey={datasetKey} />
             </div>
           </div>
         </div>

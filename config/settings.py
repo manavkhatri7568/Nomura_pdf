@@ -110,3 +110,22 @@ class EmailAgentConfig:
 
     # -- Pipeline source selection: "local" (.eml folder) or "graph" (Graph API) --
     default_source: str = field(default_factory=lambda: _env("EMAIL_SOURCE", "local"))
+
+    # -- Compare & Match: the "golden source" (mock master trade dataset) --
+    # After extraction, each trade is matched by trade_id against this trusted
+    # blotter; fields the email didn't carry are populated from it, and the
+    # fields it did carry are compared (agree / break) with a confidence score.
+    # Stands in for GLOSS / OBI / FO systems; swap path + loader for production.
+    golden_source_path: str = field(default_factory=lambda: _env(
+        "GOLDEN_SOURCE_PATH", "data/golden/FX_Options_Trade_masterDataset.xlsx"))
+    golden_source_sheet: str = field(default_factory=lambda: _env(
+        "GOLDEN_SOURCE_SHEET", "FX Options Trade Blotter"))
+    match_key: str = "trade_id"          # the field both sides are keyed on
+    # The fields compared for agreement (everything else is fill-only enrichment).
+    match_fields: List[str] = field(default_factory=lambda: [
+        "currency_pair", "buy_sell", "notional_amount",
+        "counterparty", "settlement_date", "strike_rate",
+    ])
+    match_numeric_tolerance: float = 0.01   # relative tolerance for numeric agreement (1%)
+    match_break_threshold: float = 0.6      # field-agreement < this => BREAK, else NEAR_MATCH
+    match_enrich_enabled: bool = True       # populate missing fields from the golden source

@@ -7,7 +7,7 @@ const nav = [
     section: 'Workflows',
     items: [
       {
-        label: 'Classify & Extract',
+        label: 'FX Trade Settlement',
         href: '/pipeline',
         icon: (
           <svg viewBox="0 0 20 20" fill="currentColor" className="w-[15px] h-[15px]">
@@ -21,7 +21,7 @@ const nav = [
     section: 'System',
     items: [
       {
-        label: 'Configure Agents',
+        label: 'Configure Workflows',
         href: '/schedules',
         icon: (
           <svg viewBox="0 0 20 20" fill="currentColor" className="w-[15px] h-[15px]">

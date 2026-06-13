@@ -1,0 +1,9 @@
+11:57:35 | INFO    | api                    | GET /health -> 200 (0.6ms) cid=f01c1603-f968-4a09-b6f2-d4bfc1b05979
+11:57:35 | INFO    | api                    | GET /config -> 200 (3.6ms) cid=0060250a-2108-4f92-b37d-00a85497c3b7
+11:57:35 | INFO    | api                    | GET /health -> 200 (0.2ms) cid=d277bbaa-3065-416a-9041-9a043b6f4af5
+11:57:35 | INFO    | api                    | GET /config -> 200 (0.7ms) cid=a92ddefc-99df-4c00-b9f2-615174b54a8c
+11:59:24 | INFO    | api                    | GET /health -> 200 (0.3ms) cid=c12dae86-6025-4ad1-b5a7-96126d6b772f
+16:34:21 | INFO    | api                    | GET / -> 404 (0.4ms) cid=e64ee535-bceb-453b-9229-c9f4bdd7266b
+16:34:22 | INFO    | api                    | GET / -> 404 (0.3ms) cid=9e5733fd-1b9c-4fcf-aab3-83e8612394f8
+16:34:22 | INFO    | api                    | GET /favicon.ico -> 404 (0.3ms) cid=011fccc6-aa0b-4e40-92c6-13d241b7d9bb
+16:34:29 | INFO    | api                    | GET / -> 404 (0.3ms) cid=da20dfaf-e0ed-4874-9478-13c9e4745ac6

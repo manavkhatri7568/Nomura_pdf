@@ -73,7 +73,7 @@ At volume, this is hours of repetitive reading per day, with operational-risk co
 
 ## 3. What the Platform Does
 
-The product surfaces one core capability — **Classify & Extract** — as a guided, three-step pipeline, plus a **Configure Agents** screen where the business tunes the agent's behaviour.
+The product surfaces one core capability — **FX Trade Settlement** — as a guided, three-step pipeline, plus a **Configure Workflows** screen where the business tunes the agent's behaviour.
 
 ### The three steps
 
@@ -88,7 +88,7 @@ The product surfaces one core capability — **Classify & Extract** — as a gui
 - **Explainable, not a black box.** Classification is rule-based scoring. Each result shows the exact signals (keywords, trade-ID match) that produced it. A reviewer can always answer "why was this email kept / dropped?"
 - **Human-in-the-loop by design.** Anything that scores in the middle band is labelled **Ambiguous** and **held for human review** — it is logged, never discarded.
 - **Idempotent & safe.** Re-running the pipeline never creates duplicates or double-counts a trade. The same trade ID is captured once.
-- **Tunable by the business.** On **Configure Agents**, an operations user edits the agent's keyword vocabulary live; the next classification reflects it immediately, with no code change or redeploy.
+- **Tunable by the business.** On **Configure Workflows**, an operations user edits the agent's keyword vocabulary live; the next classification reflects it immediately, with no code change or redeploy.
 - **Audit-ready.** Every business action writes a structured, append-only audit event — the trail a risk/compliance function expects.
 
 ---
@@ -113,7 +113,7 @@ The whole stack starts with one double-click of **`launch.bat`**, which opens th
    - **68 rows** parsed from **Excel attachments** (two "blotter" emails, each carrying ~34 trades) — `Source = Attachment (xlsx)`.
    Columns: Trade ID · UTI · Trade Date · Counterparty · Currency Pair · Buy/Sell · Notional Amount · Notional Ccy · Settlement Date · **Source**. Click any row for the full trade detail (option type, strike, expiry, premium, settlement status, trader, book, and its source file). Search filters across trade ID, UTI, counterparty, and currency pair.
 
-5. **Configure Agents.** The operations view of the agent. Edit the agent's **shortlisting keywords** (which drive classification *live*), the fields-to-extract list, and the sync cadence. Saving applies keyword changes to the running classifier immediately.
+5. **Configure Workflows.** The operations view of the agent. Edit the agent's **shortlisting keywords** (which drive classification *live*), the fields-to-extract list, and the sync cadence. Saving applies keyword changes to the running classifier immediately.
 
 > **Demo tip:** delete `data/processed/` and re-run Classify — the agent **self-heals**, rebuilding every case folder and manifest from scratch. This is the "clean run" you can showcase repeatedly.
 
@@ -126,8 +126,8 @@ The system is two cooperating tiers: a **Python backend** (the agent + its API +
 ```
 ┌──────────────────────────────────────────────────────────────────────┐
 │                          Browser — Next.js UI (:3000)                  │
-│   Login → Classify & Extract (Sync → Classify → Extract)               │
-│           Configure Agents · Settings                                  │
+│   Login → FX Trade Settlement (Sync → Classify → Extract)               │
+│           Configure Workflows · Settings                                  │
 └───────────────┬──────────────────────────────────────────────────────┘
                 │  /api/backend/*   (Next.js rewrite proxy → :8000, no CORS)
                 ▼
@@ -221,7 +221,7 @@ Each `Classification` returns the **label, confidence, a human-readable reason, 
 
 ### Tunable live
 
-The keyword lists, weights, and thresholds are not constants in code — they are read from a live config object that the **Configure Agents** screen edits via the API. Add `"office picnic"` to the asset keywords and re-classify, and an email that was irrelevant becomes relevant — no redeploy. This is the "business owns the rules" story.
+The keyword lists, weights, and thresholds are not constants in code — they are read from a live config object that the **Configure Workflows** screen edits via the API. Add `"office picnic"` to the asset keywords and re-classify, and an email that was irrelevant becomes relevant — no redeploy. This is the "business owns the rules" story.
 
 ---
 
@@ -372,13 +372,13 @@ A modern single-page application (`frontend/`) that makes the pipeline tangible 
 ### Pages
 
 - **Login** (`/login`) — branded sign-in (placeholder auth for the PoC).
-- **Classify & Extract** (`/pipeline`) — the three-step pipeline (Sync → Classify → Extract). The flagship screen.
-- **Configure Agents** (`/schedules`) — define/edit agents: shortlisting keywords (drive classification live), fields to extract, sync cadence.
+- **FX Trade Settlement** (`/pipeline`) — the three-step pipeline (Sync → Classify → Extract). The flagship screen.
+- **Configure Workflows** (`/schedules`) — define/edit agents: shortlisting keywords (drive classification live), fields to extract, sync cadence.
 - **Settings**, **Match Queue**, **Records** — present as labelled **"coming soon"** placeholders for Phase 2.
 
 ### State persistence (a real UX detail)
 
-The pipeline's state (synced emails, classification results, the enriched trade register, the active step) lives in a **React Context provider mounted in the root layout** and mirrored to `sessionStorage`. Because the layout does not unmount on navigation, **moving to Configure Agents and back does not re-sync or re-extract** — and the state even survives a page reload within the session. The enriched trade register is cached keyed to its dataset, so revisiting the Extract step is instant; an explicit **Refresh** re-runs it.
+The pipeline's state (synced emails, classification results, the enriched trade register, the active step) lives in a **React Context provider mounted in the root layout** and mirrored to `sessionStorage`. Because the layout does not unmount on navigation, **moving to Configure Workflows and back does not re-sync or re-extract** — and the state even survives a page reload within the session. The enriched trade register is cached keyed to its dataset, so revisiting the Extract step is instant; an explicit **Refresh** re-runs it.
 
 ---
 
@@ -395,7 +395,7 @@ Honesty about scope is part of the deliverable.
 - **Body extraction** of single-trade emails, combined with attachment trades into one register with a **Source** column.
 - **Structured case storage** (case folder + `manifest.json` + `extracted_trades.json`) — the Phase-2 contract.
 - A full **FastAPI service** (every module an endpoint, uniform envelope, correlation IDs, developer + audit logging).
-- **Runtime-tunable configuration** via `/config`, driven from the **Configure Agents** UI (live, persisted to disk).
+- **Runtime-tunable configuration** via `/config`, driven from the **Configure Workflows** UI (live, persisted to disk).
 - A **Next.js UI**: login, the three-step pipeline, configure-agents, persistent pipeline state, account/logout.
 - One-command **`launch.bat` / `stop.bat`** orchestration; **61 automated tests** passing.
 
@@ -418,7 +418,7 @@ A pragmatic, value-ordered path from this PoC to a production capability.
 ### Tier 1 — Close the extraction loop
 
 1. **PDF / SSI extraction (OCR).** Render the SSI PDFs to images and OCR them (Tesseract), then reuse the same normalization layer so PDF trades flow into the identical register with `Source = Attachment (pdf)`. This unlocks the SSI-heavy real mailbox.
-2. **A real backend extraction agent.** Move field extraction behind a service that **consumes the editable `extract_fields`** — so editing the fields-to-extract list in *Configure Agents* genuinely changes what is pulled, making that screen fully "live" like the keywords already are.
+2. **A real backend extraction agent.** Move field extraction behind a service that **consumes the editable `extract_fields`** — so editing the fields-to-extract list in *Configure Workflows* genuinely changes what is pulled, making that screen fully "live" like the keywords already are.
 3. **Compare & Match (the Match Queue).** Reconcile each extracted trade against a golden trade source / counterparty SSIs; surface matches, breaks, and exceptions for an analyst — the natural Phase-2 capability the placeholders point at.
 
 ### Tier 2 — Productionize

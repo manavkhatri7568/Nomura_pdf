@@ -21,6 +21,8 @@ const EMPTY = {
   stats: null, // RunStats from the last shortlist run
   extractRows: null, // enriched trade register rows (body-parsed), cached so the
   extractKey: null,  // Extract step doesn't re-fetch/re-parse on every revisit
+  matchData: null,   // Compare & Match result {trades, summary, golden_source}, cached
+  matchKey: null,    // dataset signature the cached match is keyed to
 };
 
 const PipelineCtx = createContext(null);
@@ -61,10 +63,13 @@ export function PipelineProvider({ children }) {
     setSynced: (syncedEmails, syncTs) =>
       setState((s) => ({ ...s, syncedEmails, syncTs })),
     setClassified: (classified, stats) =>
-      // New classification → invalidate the cached extract rows.
-      setState((s) => ({ ...s, classified, stats, extractRows: null, extractKey: null })),
+      // New classification → invalidate the cached extract + match results.
+      setState((s) => ({ ...s, classified, stats, extractRows: null, extractKey: null,
+        matchData: null, matchKey: null })),
     setExtract: (extractRows, extractKey) =>
       setState((s) => ({ ...s, extractRows, extractKey })),
+    setMatch: (matchData, matchKey) =>
+      setState((s) => ({ ...s, matchData, matchKey })),
     resetPipeline: () => setState(EMPTY),
   };
 

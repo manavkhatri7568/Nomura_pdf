@@ -58,9 +58,9 @@ A presenter-ready script for a live walkthrough of what we've built. It gives yo
 
 ## Scene 1 — Login  *(20 sec)*
 
-🖥️ Click **Sign In**. Land on **Classify & Extract**.
+🖥️ Click **Sign In**. Land on **FX Trade Settlement**.
 
-🗣️ *"This is the operations console. Branded sign-in — for the proof of concept the login is a placeholder; in production this is your single sign-on. The left nav has two things we'll use: **Classify & Extract**, the pipeline, and **Configure Agents**, where the business tunes it."*
+🗣️ *"This is the operations console. Branded sign-in — for the proof of concept the login is a placeholder; in production this is your single sign-on. The left nav has two things we'll use: **FX Trade Settlement**, the pipeline, and **Configure Workflows**, where the business tunes it."*
 
 💡 Don't dwell. The login is polish, not the point.
 
@@ -126,9 +126,9 @@ A presenter-ready script for a live walkthrough of what we've built. It gives yo
 
 💡 The blotter moment — *one attachment, 34 trades* — is your headline. Say it with energy.
 
-## Scene 5 — Configure Agents: the business owns the rules  *(90 sec)* ⭐ *differentiator*
+## Scene 5 — Configure Workflows: the business owns the rules  *(90 sec)* ⭐ *differentiator*
 
-🖥️ Left nav → **Configure Agents**. Open the agent's editor.
+🖥️ Left nav → **Configure Workflows**. Open the agent's editor.
 
 🗣️ *"Last thing, and this is what makes it genuinely operational rather than a fixed script. The agent's behaviour isn't buried in code — the operations team owns it. These are the **shortlisting keywords** that drive classification. Let me prove they're live."*
 
@@ -136,11 +136,11 @@ A presenter-ready script for a live walkthrough of what we've built. It gives yo
 
 🗣️ *"I've just told the agent that 'office picnic' is a meaningful settlement signal — deliberately wrong, to make the point. I save it... and that change is applied to the running agent immediately. No code change, no redeploy."*
 
-🖥️ Go back to **Classify & Extract → Classify → Re-run** (Sync again first if needed).
+🖥️ Go back to **FX Trade Settlement → Classify → Re-run** (Sync again first if needed).
 
 🗣️ *"Re-run the classification, and an email that mentions an office picnic — which used to be dropped as noise — now scores as relevant. The business changed the agent's behaviour in ten seconds, live."*
 
-🖥️ *(Tidy up:)* Go back to Configure Agents and **remove** the `office picnic` keyword (or click **Reset to defaults**), so the demo is clean for next time.
+🖥️ *(Tidy up:)* Go back to Configure Workflows and **remove** the `office picnic` keyword (or click **Reset to defaults**), so the demo is clean for next time.
 
 🗣️ *"I'll undo that. The point stands: this is a system the operations team can own and tune, with every change still fully explainable and audited."*
 
@@ -248,7 +248,7 @@ A presenter-ready script for a live walkthrough of what we've built. It gives yo
 | 2 | Scene 2 — Sync | 0:45 | No |
 | 2 | Scene 3 — Classify ⭐ | 2:00 | No |
 | 2 | Scene 4 — Extract ⭐ | 2:00 | No |
-| 2 | Scene 5 — Configure Agents ⭐ | 1:30 | Shorten to verbal |
+| 2 | Scene 5 — Configure Workflows ⭐ | 1:30 | Shorten to verbal |
 | 2 | Scene 6 — Self-heal | 0:45 | ⏭️ Optional |
 | 2 | Scene 7 — Logout | 0:10 | ⏭️ Optional |
 | 3 | Under the hood | 2:00 | Compress for biz |

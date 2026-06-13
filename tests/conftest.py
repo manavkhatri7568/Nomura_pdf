@@ -33,6 +33,7 @@ os.environ["EMAIL_LOG_DIR"] = str(TMP / "logs")
 os.environ["EMAIL_AUDIT_LOG_DIR"] = str(TMP / "logs")
 os.environ["EMAIL_INBOX_PATH"] = str(PROJ / "data" / "raw_emails" / "inbox")
 os.environ["EMAIL_CONFIG_PATH"] = str(TMP / "runtime_config.json")
+os.environ["GOLDEN_SOURCE_PATH"] = str(PROJ / "data" / "golden" / "FX_Options_Trade_masterDataset.xlsx")
 
 import httpx  # noqa: E402
 import uvicorn  # noqa: E402
