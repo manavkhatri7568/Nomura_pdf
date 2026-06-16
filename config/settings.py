@@ -82,7 +82,7 @@ class EmailAgentConfig:
     # When enabled, RELEVANT emails have their .xlsx/.csv attachments parsed into
     # normalized trade rows written to the case folder + summarized in the manifest.
     attachment_extract_enabled: bool = True
-    attachment_extract_exts: List[str] = field(default_factory=lambda: [".xlsx", ".xlsm", ".csv"])
+    attachment_extract_exts: List[str] = field(default_factory=lambda: [".xlsx", ".xlsm", ".csv", ".pdf"])
     attachment_max_rows: int = 10_000
 
     # -- Fields the (future) extraction agent should pull from each case. --

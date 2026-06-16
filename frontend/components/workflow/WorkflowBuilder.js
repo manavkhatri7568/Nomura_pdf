@@ -52,7 +52,7 @@ const NODE_TYPES = {
   },
   extract: {
     label: 'Trade Extractor', accent: '#e11d48', tint: '#fff1f3',
-    defaults: { input: 'from upstream', formats: '.eml,.xlsx,.csv', fields: 'trade_id, currency_pair, notional_amount, settlement_date, counterparty, rate', method: 'Regex Rules' },
+    defaults: { input: 'from upstream', formats: '.eml,.xlsx,.csv,.pdf', fields: 'trade_id, currency_pair, notional_amount, settlement_date, counterparty, rate', method: 'Regex Rules' },
     summary: (c) => [['FIELDS', c.fields], ['FORMATS', c.formats], ['METHOD', c.method]],
   },
   match: {
@@ -557,7 +557,7 @@ function ConfigPanel({ node, onChange, onClose, onDelete }) {
 
         {node.type === 'extract' && (<>
           <Field label="Input Source" hint="Upstream node or a file/folder"><input className={inputCls} placeholder="from upstream" value={c.input} onChange={(e) => onChange('input', e.target.value)} /></Field>
-          <Field label="File Formats" hint="Comma-separated"><input className={inputCls} placeholder=".eml,.xlsx,.csv" value={c.formats} onChange={(e) => onChange('formats', e.target.value)} /></Field>
+          <Field label="File Formats" hint="Comma-separated"><input className={inputCls} placeholder=".eml,.xlsx,.csv,.pdf" value={c.formats} onChange={(e) => onChange('formats', e.target.value)} /></Field>
           <Field label="Fields to Extract" hint="Comma-separated field names"><textarea rows={3} className={inputCls} placeholder="trade_id, …" value={c.fields} onChange={(e) => onChange('fields', e.target.value)} /></Field>
           <Field label="Method"><Sel value={c.method} onChange={(v) => onChange('method', v)} placeholder="Select method…" options={['NLP Pattern Matching', 'Regex Rules', 'AI Extraction']} /></Field>
         </>)}

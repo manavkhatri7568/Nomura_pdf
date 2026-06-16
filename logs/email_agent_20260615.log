@@ -1,0 +1,1278 @@
+18:00:18 | INFO    | api                    | GET /health -> 200 (2.3ms) cid=ebc55115-6136-433c-819d-cedf0347d0f6
+18:00:18 | INFO    | api                    | GET /config -> 200 (27.9ms) cid=28aa3d70-8d1b-40d1-b57f-41a546c0d91a
+18:00:18 | INFO    | api                    | GET /health -> 200 (0.5ms) cid=1cbc0780-bbd8-43d5-a964-b6dec4b7521f
+18:00:18 | INFO    | api                    | GET /config -> 200 (3.8ms) cid=0f0124fd-c953-4c4c-ab7d-341fcab62852
+18:00:23 | INFO    | api                    | GET /health -> 200 (1.0ms) cid=41d329a6-8be1-4621-a156-6407ddfc2387
+18:00:23 | INFO    | api                    | GET /health -> 200 (1.3ms) cid=3c8e250f-ad60-415f-b86a-2d086db829e3
+18:00:25 | INFO    | connectors.local_connector | Fetched 29 emails from data\raw_emails\inbox
+18:00:25 | INFO    | api.connector          | connector.fetch source=local -> 29 emails cid=ebf289a7-7973-43d4-acb3-248a9add4048
+18:00:25 | INFO    | api                    | POST /connector/fetch -> 200 (73.8ms) cid=ebf289a7-7973-43d4-acb3-248a9add4048
+18:00:44 | INFO    | connectors.local_connector | Fetched 29 emails from data\raw_emails\inbox
+18:00:44 | WARNING | email_agent            | AMBIGUOUS (0.30) | Settlement query – account reconciliation | subject['settlement']
+18:00:44 | WARNING | email_agent            | AMBIGUOUS (0.30) | Re: Confirmation needed | subject['confirm']
+18:00:44 | WARNING | email_agent            | AMBIGUOUS (0.30) | Pending transaction follow-up | subject['transaction']
+18:00:44 | WARNING | email_agent            | DUPLICATE trade_id FXOPT-2026-00053 — skipping (FX Trade Settlement[FXOPT-2026-00053] – USD/CAD – 26_05_26 - UTIY6WKTAKPUXQPHR62GDSW0053)
+18:00:44 | WARNING | email_agent            | DUPLICATE trade_id FXOPT-2026-00056 — skipping (FX Trade Settlement FXOPT-2026-00056 – 26/05/26 – UTIPTK93TYT7D5J60FKHMY40056)
+18:00:44 | INFO    | email_agent            | ========================================================
+18:00:44 | INFO    | email_agent            | [Phase 1 Run Complete]
+18:00:44 | INFO    | email_agent            |   Emails read:          29
+18:00:44 | INFO    | email_agent            |   RELEVANT (stored):    0
+18:00:44 | INFO    | email_agent            |   AMBIGUOUS (skipped):  3
+18:00:44 | INFO    | email_agent            |   IRRELEVANT (skipped): 10
+18:00:44 | INFO    | email_agent            |   DUPLICATE (skipped):  2
+18:00:44 | INFO    | email_agent            |   Already processed:    14
+18:00:44 | INFO    | email_agent            |   Trade rows extracted: 0
+18:00:44 | INFO    | email_agent            |   --- Ambiguous emails for manual review ---
+18:00:44 | INFO    | email_agent            |     • Settlement query – account reconciliation
+18:00:44 | INFO    | email_agent            |     • Re: Confirmation needed
+18:00:44 | INFO    | email_agent            |     • Pending transaction follow-up
+18:00:44 | INFO    | email_agent            | ========================================================
+18:00:44 | INFO    | api.agent              | agent.run source=local -> relevant=0 ambiguous=3 irrelevant=10 duplicate=2 cid=3ce5cf67-3881-4b55-9fbf-4aaf5b5b6911
+18:00:44 | INFO    | api                    | POST /agent/run -> 200 (147.6ms) cid=3ce5cf67-3881-4b55-9fbf-4aaf5b5b6911
+18:00:47 | INFO    | api.extract            | extract.trades -> 0 trade(s) from 2 file(s) across 14 case(s) cid=c8a23b23-e945-445f-84ca-0215603884cc
+18:00:47 | INFO    | api                    | GET /extract/trades -> 200 (30.4ms) cid=c8a23b23-e945-445f-84ca-0215603884cc
+18:00:47 | ERROR   | api                    | Unhandled error cid=5d259098-ff83-4244-84d1-ce733e48dd24
+  + Exception Group Traceback (most recent call last):
+  |   File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\_utils.py", line 79, in collapse_excgroups
+  |     yield
+  |   File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\middleware\base.py", line 183, in __call__
+  |     async with anyio.create_task_group() as task_group:
+  |                ~~~~~~~~~~~~~~~~~~~~~~~^^
+  |   File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\anyio\_backends\_asyncio.py", line 799, in __aexit__
+  |     raise BaseExceptionGroup(
+  |         "unhandled errors in a TaskGroup", self._exceptions
+  |     ) from None
+  | ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
+  +-+---------------- 1 ----------------
+    | Traceback (most recent call last):
+    |   File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\middleware\errors.py", line 164, in __call__
+    |     await self.app(scope, receive, _send)
+    |   File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\middleware\base.py", line 182, in __call__
+    |     with recv_stream, send_stream, collapse_excgroups():
+    |                                    ~~~~~~~~~~~~~~~~~~^^
+    |   File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\contextlib.py", line 162, in __exit__
+    |     self.gen.throw(value)
+    |     ~~~~~~~~~~~~~~^^^^^^^
+    |   File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\_utils.py", line 85, in collapse_excgroups
+    |     raise exc
+    |   File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\middleware\base.py", line 184, in __call__
+    |     response = await self.dispatch_func(request, call_next)
+    |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\Manav_personal\Arshi Project\New folder\Nomura\api\app.py", line 59, in correlation_and_audit
+    |     response = await call_next(request)
+    |                ^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\middleware\base.py", line 159, in call_next
+    |     raise app_exc
+    |   File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\middleware\base.py", line 144, in coro
+    |     await self.app(scope, receive_or_disconnect, send_no_error)
+    |   File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\middleware\exceptions.py", line 63, in __call__
+    |     await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+    |   File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    |     raise exc
+    |   File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    |     await app(scope, receive, sender)
+    |   File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 716, in __call__
+    |     await self.middleware_stack(scope, receive, send)
+    |   File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 736, in app
+    |     await route.handle(scope, receive, send)
+    |   File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 290, in handle
+    |     await self.app(scope, receive, send)
+    |   File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 78, in app
+    |     await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+    |   File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    |     raise exc
+    |   File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    |     await app(scope, receive, sender)
+    |   File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 75, in app
+    |     response = await f(request)
+    |                ^^^^^^^^^^^^^^^^
+    |   File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\fastapi\routing.py", line 302, in app
+    |     raw_response = await run_endpoint_function(
+    |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |     ...<3 lines>...
+    |     )
+    |     ^
+    |   File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\fastapi\routing.py", line 215, in run_endpoint_function
+    |     return await run_in_threadpool(dependant.call, **values)
+    |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\concurrency.py", line 38, in run_in_threadpool
+    |     return await anyio.to_thread.run_sync(func)
+    |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\anyio\to_thread.py", line 63, in run_sync
+    |     return await get_async_backend().run_sync_in_worker_thread(
+    |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |         func, args, abandon_on_cancel=abandon_on_cancel, limiter=limiter
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |     )
+    |     ^
+    |   File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\anyio\_backends\_asyncio.py", line 2518, in run_sync_in_worker_thread
+    |     return await future
+    |            ^^^^^^^^^^^^
+    |   File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\anyio\_backends\_asyncio.py", line 1002, in run
+    |     result = context.run(func, *args)
+    |   File "C:\Manav_personal\Arshi Project\New folder\Nomura\api\routers\match.py", line 116, in match_trades
+    |     results = matcher.match(extracted)
+    |   File "C:\Manav_personal\Arshi Project\New folder\Nomura\agent\compare_match.py", line 226, in match
+    |     return [self.match_one(t) for t in trades]
+    |             ~~~~~~~~~~~~~~^^^
+    |   File "C:\Manav_personal\Arshi Project\New folder\Nomura\agent\compare_match.py", line 184, in match_one
+    |     golden = self.golden.lookup(tid)
+    |   File "C:\Manav_personal\Arshi Project\New folder\Nomura\agent\compare_match.py", line 121, in lookup
+    |     return self._index().get(str(trade_id).strip())
+    |            ~~~~~~~~~~~^^
+    |   File "C:\Manav_personal\Arshi Project\New folder\Nomura\agent\compare_match.py", line 113, in _index
+    |     return _load_golden(str(self.path), self.sheet, self.key, mtime)
+    |   File "C:\Manav_personal\Arshi Project\New folder\Nomura\agent\compare_match.py", line 73, in _load_golden
+    |     import openpyxl  # lazy import (only Compare & Match needs it)
+    |     ^^^^^^^^^^^^^^^
+    | ModuleNotFoundError: No module named 'openpyxl'
+    +------------------------------------
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\middleware\errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\middleware\base.py", line 182, in __call__
+    with recv_stream, send_stream, collapse_excgroups():
+                                   ~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\_utils.py", line 85, in collapse_excgroups
+    raise exc
+  File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\middleware\base.py", line 184, in __call__
+    response = await self.dispatch_func(request, call_next)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Manav_personal\Arshi Project\New folder\Nomura\api\app.py", line 59, in correlation_and_audit
+    response = await call_next(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\middleware\base.py", line 159, in call_next
+    raise app_exc
+  File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\middleware\base.py", line 144, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\middleware\exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 78, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 75, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\fastapi\routing.py", line 302, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\fastapi\routing.py", line 215, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\concurrency.py", line 38, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\anyio\to_thread.py", line 63, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        func, args, abandon_on_cancel=abandon_on_cancel, limiter=limiter
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\anyio\_backends\_asyncio.py", line 2518, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\anyio\_backends\_asyncio.py", line 1002, in run
+    result = context.run(func, *args)
+  File "C:\Manav_personal\Arshi Project\New folder\Nomura\api\routers\match.py", line 116, in match_trades
+    results = matcher.match(extracted)
+  File "C:\Manav_personal\Arshi Project\New folder\Nomura\agent\compare_match.py", line 226, in match
+    return [self.match_one(t) for t in trades]
+            ~~~~~~~~~~~~~~^^^
+  File "C:\Manav_personal\Arshi Project\New folder\Nomura\agent\compare_match.py", line 184, in match_one
+    golden = self.golden.lookup(tid)
+  File "C:\Manav_personal\Arshi Project\New folder\Nomura\agent\compare_match.py", line 121, in lookup
+    return self._index().get(str(trade_id).strip())
+           ~~~~~~~~~~~^^
+  File "C:\Manav_personal\Arshi Project\New folder\Nomura\agent\compare_match.py", line 113, in _index
+    return _load_golden(str(self.path), self.sheet, self.key, mtime)
+  File "C:\Manav_personal\Arshi Project\New folder\Nomura\agent\compare_match.py", line 73, in _load_golden
+    import openpyxl  # lazy import (only Compare & Match needs it)
+    ^^^^^^^^^^^^^^^
+ModuleNotFoundError: No module named 'openpyxl'
+18:00:47 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00050 -> 200 (30.1ms) cid=851b936f-36cd-41e7-8289-f6fe1f2dd955
+18:00:47 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00056 -> 200 (35.1ms) cid=efb74ff7-4df5-4b22-9c30-0f962b4dce76
+18:00:47 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00057 -> 200 (35.2ms) cid=4f67cbd7-104c-4e12-b58e-51eb4c366c0f
+18:00:47 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00053 -> 200 (36.4ms) cid=0969ff70-86c1-4fda-ac71-c6c48ff0669f
+18:00:47 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00055 -> 200 (54.6ms) cid=865d515d-f76c-402f-99df-41c203d87a56
+18:00:47 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00049 -> 200 (44.4ms) cid=4e4e842c-a199-401d-beed-d38d93037583
+18:00:47 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00048 -> 200 (28.4ms) cid=47c314ee-9095-4abc-a7cd-edbbc3c906c3
+18:00:47 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00054 -> 200 (39.3ms) cid=523e90f4-6999-4050-ba91-812799974832
+18:00:47 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00047 -> 200 (39.5ms) cid=a2167441-14aa-4def-9e49-fcb386091c81
+18:00:47 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00052 -> 200 (33.5ms) cid=c089d390-7b32-4c75-9967-e4d09c707eee
+18:00:47 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00051 -> 200 (44.1ms) cid=e812714c-e237-4527-954a-9ba20d670bce
+18:00:47 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00058 -> 200 (44.3ms) cid=686a09d1-9c76-458f-b7bb-41dd8a89c40c
+18:02:34 | INFO    | api                    | GET /health -> 200 (0.8ms) cid=769bac8f-9d4e-424a-b529-f0a1e19d5a92
+18:02:34 | INFO    | api                    | GET /health -> 200 (0.9ms) cid=c7c4467f-5d2a-4ba3-af00-c910dd12849b
+18:02:34 | ERROR   | api                    | Unhandled error cid=82f6972e-7314-44c1-941b-ae44e49fd7c7
+  + Exception Group Traceback (most recent call last):
+  |   File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\_utils.py", line 79, in collapse_excgroups
+  |     yield
+  |   File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\middleware\base.py", line 183, in __call__
+  |     async with anyio.create_task_group() as task_group:
+  |                ~~~~~~~~~~~~~~~~~~~~~~~^^
+  |   File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\anyio\_backends\_asyncio.py", line 799, in __aexit__
+  |     raise BaseExceptionGroup(
+  |         "unhandled errors in a TaskGroup", self._exceptions
+  |     ) from None
+  | ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
+  +-+---------------- 1 ----------------
+    | Traceback (most recent call last):
+    |   File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\middleware\errors.py", line 164, in __call__
+    |     await self.app(scope, receive, _send)
+    |   File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\middleware\base.py", line 182, in __call__
+    |     with recv_stream, send_stream, collapse_excgroups():
+    |                                    ~~~~~~~~~~~~~~~~~~^^
+    |   File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\contextlib.py", line 162, in __exit__
+    |     self.gen.throw(value)
+    |     ~~~~~~~~~~~~~~^^^^^^^
+    |   File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\_utils.py", line 85, in collapse_excgroups
+    |     raise exc
+    |   File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\middleware\base.py", line 184, in __call__
+    |     response = await self.dispatch_func(request, call_next)
+    |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\Manav_personal\Arshi Project\New folder\Nomura\api\app.py", line 59, in correlation_and_audit
+    |     response = await call_next(request)
+    |                ^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\middleware\base.py", line 159, in call_next
+    |     raise app_exc
+    |   File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\middleware\base.py", line 144, in coro
+    |     await self.app(scope, receive_or_disconnect, send_no_error)
+    |   File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\middleware\exceptions.py", line 63, in __call__
+    |     await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+    |   File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    |     raise exc
+    |   File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    |     await app(scope, receive, sender)
+    |   File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 716, in __call__
+    |     await self.middleware_stack(scope, receive, send)
+    |   File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 736, in app
+    |     await route.handle(scope, receive, send)
+    |   File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 290, in handle
+    |     await self.app(scope, receive, send)
+    |   File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 78, in app
+    |     await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+    |   File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    |     raise exc
+    |   File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    |     await app(scope, receive, sender)
+    |   File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 75, in app
+    |     response = await f(request)
+    |                ^^^^^^^^^^^^^^^^
+    |   File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\fastapi\routing.py", line 302, in app
+    |     raw_response = await run_endpoint_function(
+    |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |     ...<3 lines>...
+    |     )
+    |     ^
+    |   File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\fastapi\routing.py", line 215, in run_endpoint_function
+    |     return await run_in_threadpool(dependant.call, **values)
+    |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\concurrency.py", line 38, in run_in_threadpool
+    |     return await anyio.to_thread.run_sync(func)
+    |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\anyio\to_thread.py", line 63, in run_sync
+    |     return await get_async_backend().run_sync_in_worker_thread(
+    |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |         func, args, abandon_on_cancel=abandon_on_cancel, limiter=limiter
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |     )
+    |     ^
+    |   File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\anyio\_backends\_asyncio.py", line 2518, in run_sync_in_worker_thread
+    |     return await future
+    |            ^^^^^^^^^^^^
+    |   File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\anyio\_backends\_asyncio.py", line 1002, in run
+    |     result = context.run(func, *args)
+    |   File "C:\Manav_personal\Arshi Project\New folder\Nomura\api\routers\match.py", line 116, in match_trades
+    |     results = matcher.match(extracted)
+    |   File "C:\Manav_personal\Arshi Project\New folder\Nomura\agent\compare_match.py", line 226, in match
+    |     return [self.match_one(t) for t in trades]
+    |             ~~~~~~~~~~~~~~^^^
+    |   File "C:\Manav_personal\Arshi Project\New folder\Nomura\agent\compare_match.py", line 184, in match_one
+    |     golden = self.golden.lookup(tid)
+    |   File "C:\Manav_personal\Arshi Project\New folder\Nomura\agent\compare_match.py", line 121, in lookup
+    |     return self._index().get(str(trade_id).strip())
+    |            ~~~~~~~~~~~^^
+    |   File "C:\Manav_personal\Arshi Project\New folder\Nomura\agent\compare_match.py", line 113, in _index
+    |     return _load_golden(str(self.path), self.sheet, self.key, mtime)
+    |   File "C:\Manav_personal\Arshi Project\New folder\Nomura\agent\compare_match.py", line 73, in _load_golden
+    |     import openpyxl  # lazy import (only Compare & Match needs it)
+    |     ^^^^^^^^^^^^^^^
+    | ModuleNotFoundError: No module named 'openpyxl'
+    +------------------------------------
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\middleware\errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\middleware\base.py", line 182, in __call__
+    with recv_stream, send_stream, collapse_excgroups():
+                                   ~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\_utils.py", line 85, in collapse_excgroups
+    raise exc
+  File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\middleware\base.py", line 184, in __call__
+    response = await self.dispatch_func(request, call_next)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Manav_personal\Arshi Project\New folder\Nomura\api\app.py", line 59, in correlation_and_audit
+    response = await call_next(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\middleware\base.py", line 159, in call_next
+    raise app_exc
+  File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\middleware\base.py", line 144, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\middleware\exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 78, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 75, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\fastapi\routing.py", line 302, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\fastapi\routing.py", line 215, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\concurrency.py", line 38, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\anyio\to_thread.py", line 63, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        func, args, abandon_on_cancel=abandon_on_cancel, limiter=limiter
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\anyio\_backends\_asyncio.py", line 2518, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\anyio\_backends\_asyncio.py", line 1002, in run
+    result = context.run(func, *args)
+  File "C:\Manav_personal\Arshi Project\New folder\Nomura\api\routers\match.py", line 116, in match_trades
+    results = matcher.match(extracted)
+  File "C:\Manav_personal\Arshi Project\New folder\Nomura\agent\compare_match.py", line 226, in match
+    return [self.match_one(t) for t in trades]
+            ~~~~~~~~~~~~~~^^^
+  File "C:\Manav_personal\Arshi Project\New folder\Nomura\agent\compare_match.py", line 184, in match_one
+    golden = self.golden.lookup(tid)
+  File "C:\Manav_personal\Arshi Project\New folder\Nomura\agent\compare_match.py", line 121, in lookup
+    return self._index().get(str(trade_id).strip())
+           ~~~~~~~~~~~^^
+  File "C:\Manav_personal\Arshi Project\New folder\Nomura\agent\compare_match.py", line 113, in _index
+    return _load_golden(str(self.path), self.sheet, self.key, mtime)
+  File "C:\Manav_personal\Arshi Project\New folder\Nomura\agent\compare_match.py", line 73, in _load_golden
+    import openpyxl  # lazy import (only Compare & Match needs it)
+    ^^^^^^^^^^^^^^^
+ModuleNotFoundError: No module named 'openpyxl'
+18:02:39 | INFO    | connectors.local_connector | Fetched 29 emails from data\raw_emails\inbox
+18:02:39 | INFO    | api.connector          | connector.fetch source=local -> 29 emails cid=2dd3933a-1210-44a9-bf2c-72ed35c4c155
+18:02:39 | INFO    | api                    | POST /connector/fetch -> 200 (110.7ms) cid=2dd3933a-1210-44a9-bf2c-72ed35c4c155
+18:02:45 | INFO    | connectors.local_connector | Fetched 29 emails from data\raw_emails\inbox
+18:02:45 | WARNING | email_agent            | AMBIGUOUS (0.30) | Settlement query – account reconciliation | subject['settlement']
+18:02:45 | WARNING | email_agent            | AMBIGUOUS (0.30) | Re: Confirmation needed | subject['confirm']
+18:02:45 | WARNING | email_agent            | AMBIGUOUS (0.30) | Pending transaction follow-up | subject['transaction']
+18:02:45 | WARNING | email_agent            | DUPLICATE trade_id FXOPT-2026-00053 — skipping (FX Trade Settlement[FXOPT-2026-00053] – USD/CAD – 26_05_26 - UTIY6WKTAKPUXQPHR62GDSW0053)
+18:02:45 | WARNING | email_agent            | DUPLICATE trade_id FXOPT-2026-00056 — skipping (FX Trade Settlement FXOPT-2026-00056 – 26/05/26 – UTIPTK93TYT7D5J60FKHMY40056)
+18:02:45 | INFO    | email_agent            | ========================================================
+18:02:45 | INFO    | email_agent            | [Phase 1 Run Complete]
+18:02:45 | INFO    | email_agent            |   Emails read:          29
+18:02:45 | INFO    | email_agent            |   RELEVANT (stored):    0
+18:02:45 | INFO    | email_agent            |   AMBIGUOUS (skipped):  3
+18:02:45 | INFO    | email_agent            |   IRRELEVANT (skipped): 10
+18:02:45 | INFO    | email_agent            |   DUPLICATE (skipped):  2
+18:02:45 | INFO    | email_agent            |   Already processed:    14
+18:02:45 | INFO    | email_agent            |   Trade rows extracted: 0
+18:02:45 | INFO    | email_agent            |   --- Ambiguous emails for manual review ---
+18:02:45 | INFO    | email_agent            |     • Settlement query – account reconciliation
+18:02:45 | INFO    | email_agent            |     • Re: Confirmation needed
+18:02:45 | INFO    | email_agent            |     • Pending transaction follow-up
+18:02:45 | INFO    | email_agent            | ========================================================
+18:02:45 | INFO    | api.agent              | agent.run source=local -> relevant=0 ambiguous=3 irrelevant=10 duplicate=2 cid=7c135bad-a5b2-4c53-a396-3cb6d03d3ed3
+18:02:45 | INFO    | api                    | POST /agent/run -> 200 (173.4ms) cid=7c135bad-a5b2-4c53-a396-3cb6d03d3ed3
+18:02:48 | INFO    | api.extract            | extract.trades -> 0 trade(s) from 2 file(s) across 14 case(s) cid=7711318d-1fa2-4a32-a044-2ef2c7e6bdc7
+18:02:49 | INFO    | api                    | GET /extract/trades -> 200 (23.7ms) cid=7711318d-1fa2-4a32-a044-2ef2c7e6bdc7
+18:02:49 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00055 -> 200 (61.1ms) cid=9fda8180-3358-4480-94cc-1e79d6e0ee41
+18:02:49 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00057 -> 200 (67.0ms) cid=8845fd0c-6b93-4219-bac3-b372bf33ed63
+18:02:49 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00049 -> 200 (73.7ms) cid=045a5c4b-eba1-43bf-aea8-b5e75080543b
+18:02:49 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00053 -> 200 (82.1ms) cid=c0253a81-6448-4125-8509-d4064d4b9bc9
+18:02:49 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00056 -> 200 (95.3ms) cid=a42c5e73-0cc5-4500-98d9-a6983b42555b
+18:02:49 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00050 -> 200 (99.4ms) cid=902c4231-1303-4396-9674-97f1c43af4ff
+18:02:49 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00054 -> 200 (15.0ms) cid=7d32a0bd-2906-42d1-92f1-78ae4aa2425b
+18:02:49 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00048 -> 200 (14.0ms) cid=9828c90b-de23-4d2e-b135-e44ecd0da91a
+18:02:49 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00047 -> 200 (32.4ms) cid=febee354-17e0-4b98-9cfe-d32c35238cfb
+18:02:49 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00052 -> 200 (39.0ms) cid=df76f615-c535-4fd4-bf1d-131c3a535db1
+18:02:49 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00051 -> 200 (42.5ms) cid=95b34cb3-47cd-4de7-a3d7-15c58a955b76
+18:02:49 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00058 -> 200 (41.8ms) cid=f0577b87-e468-4ac8-81c8-c024bcff7e44
+18:02:59 | INFO    | api                    | GET /health -> 200 (0.9ms) cid=00cf7c15-b057-4a18-8a45-a99b5c332174
+18:02:59 | INFO    | api                    | GET /health -> 200 (0.7ms) cid=c294c8dc-6a07-401b-ab1c-e0599b60a14a
+18:02:59 | ERROR   | api                    | Unhandled error cid=7c97ee4b-7cc2-475a-a1fd-9bfa561c05b2
+  + Exception Group Traceback (most recent call last):
+  |   File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\_utils.py", line 79, in collapse_excgroups
+  |     yield
+  |   File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\middleware\base.py", line 183, in __call__
+  |     async with anyio.create_task_group() as task_group:
+  |                ~~~~~~~~~~~~~~~~~~~~~~~^^
+  |   File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\anyio\_backends\_asyncio.py", line 799, in __aexit__
+  |     raise BaseExceptionGroup(
+  |         "unhandled errors in a TaskGroup", self._exceptions
+  |     ) from None
+  | ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
+  +-+---------------- 1 ----------------
+    | Traceback (most recent call last):
+    |   File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\middleware\errors.py", line 164, in __call__
+    |     await self.app(scope, receive, _send)
+    |   File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\middleware\base.py", line 182, in __call__
+    |     with recv_stream, send_stream, collapse_excgroups():
+    |                                    ~~~~~~~~~~~~~~~~~~^^
+    |   File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\contextlib.py", line 162, in __exit__
+    |     self.gen.throw(value)
+    |     ~~~~~~~~~~~~~~^^^^^^^
+    |   File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\_utils.py", line 85, in collapse_excgroups
+    |     raise exc
+    |   File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\middleware\base.py", line 184, in __call__
+    |     response = await self.dispatch_func(request, call_next)
+    |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\Manav_personal\Arshi Project\New folder\Nomura\api\app.py", line 59, in correlation_and_audit
+    |     response = await call_next(request)
+    |                ^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\middleware\base.py", line 159, in call_next
+    |     raise app_exc
+    |   File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\middleware\base.py", line 144, in coro
+    |     await self.app(scope, receive_or_disconnect, send_no_error)
+    |   File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\middleware\exceptions.py", line 63, in __call__
+    |     await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+    |   File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    |     raise exc
+    |   File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    |     await app(scope, receive, sender)
+    |   File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 716, in __call__
+    |     await self.middleware_stack(scope, receive, send)
+    |   File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 736, in app
+    |     await route.handle(scope, receive, send)
+    |   File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 290, in handle
+    |     await self.app(scope, receive, send)
+    |   File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 78, in app
+    |     await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+    |   File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    |     raise exc
+    |   File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    |     await app(scope, receive, sender)
+    |   File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 75, in app
+    |     response = await f(request)
+    |                ^^^^^^^^^^^^^^^^
+    |   File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\fastapi\routing.py", line 302, in app
+    |     raw_response = await run_endpoint_function(
+    |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |     ...<3 lines>...
+    |     )
+    |     ^
+    |   File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\fastapi\routing.py", line 215, in run_endpoint_function
+    |     return await run_in_threadpool(dependant.call, **values)
+    |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\concurrency.py", line 38, in run_in_threadpool
+    |     return await anyio.to_thread.run_sync(func)
+    |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\anyio\to_thread.py", line 63, in run_sync
+    |     return await get_async_backend().run_sync_in_worker_thread(
+    |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |         func, args, abandon_on_cancel=abandon_on_cancel, limiter=limiter
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |     )
+    |     ^
+    |   File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\anyio\_backends\_asyncio.py", line 2518, in run_sync_in_worker_thread
+    |     return await future
+    |            ^^^^^^^^^^^^
+    |   File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\anyio\_backends\_asyncio.py", line 1002, in run
+    |     result = context.run(func, *args)
+    |   File "C:\Manav_personal\Arshi Project\New folder\Nomura\api\routers\match.py", line 116, in match_trades
+    |     results = matcher.match(extracted)
+    |   File "C:\Manav_personal\Arshi Project\New folder\Nomura\agent\compare_match.py", line 226, in match
+    |     return [self.match_one(t) for t in trades]
+    |             ~~~~~~~~~~~~~~^^^
+    |   File "C:\Manav_personal\Arshi Project\New folder\Nomura\agent\compare_match.py", line 184, in match_one
+    |     golden = self.golden.lookup(tid)
+    |   File "C:\Manav_personal\Arshi Project\New folder\Nomura\agent\compare_match.py", line 121, in lookup
+    |     return self._index().get(str(trade_id).strip())
+    |            ~~~~~~~~~~~^^
+    |   File "C:\Manav_personal\Arshi Project\New folder\Nomura\agent\compare_match.py", line 113, in _index
+    |     return _load_golden(str(self.path), self.sheet, self.key, mtime)
+    |   File "C:\Manav_personal\Arshi Project\New folder\Nomura\agent\compare_match.py", line 73, in _load_golden
+    |     import openpyxl  # lazy import (only Compare & Match needs it)
+    |     ^^^^^^^^^^^^^^^
+    | ModuleNotFoundError: No module named 'openpyxl'
+    +------------------------------------
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\middleware\errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\middleware\base.py", line 182, in __call__
+    with recv_stream, send_stream, collapse_excgroups():
+                                   ~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\_utils.py", line 85, in collapse_excgroups
+    raise exc
+  File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\middleware\base.py", line 184, in __call__
+    response = await self.dispatch_func(request, call_next)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Manav_personal\Arshi Project\New folder\Nomura\api\app.py", line 59, in correlation_and_audit
+    response = await call_next(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\middleware\base.py", line 159, in call_next
+    raise app_exc
+  File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\middleware\base.py", line 144, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\middleware\exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 78, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 75, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\fastapi\routing.py", line 302, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\fastapi\routing.py", line 215, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\concurrency.py", line 38, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\anyio\to_thread.py", line 63, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        func, args, abandon_on_cancel=abandon_on_cancel, limiter=limiter
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\anyio\_backends\_asyncio.py", line 2518, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\anyio\_backends\_asyncio.py", line 1002, in run
+    result = context.run(func, *args)
+  File "C:\Manav_personal\Arshi Project\New folder\Nomura\api\routers\match.py", line 116, in match_trades
+    results = matcher.match(extracted)
+  File "C:\Manav_personal\Arshi Project\New folder\Nomura\agent\compare_match.py", line 226, in match
+    return [self.match_one(t) for t in trades]
+            ~~~~~~~~~~~~~~^^^
+  File "C:\Manav_personal\Arshi Project\New folder\Nomura\agent\compare_match.py", line 184, in match_one
+    golden = self.golden.lookup(tid)
+  File "C:\Manav_personal\Arshi Project\New folder\Nomura\agent\compare_match.py", line 121, in lookup
+    return self._index().get(str(trade_id).strip())
+           ~~~~~~~~~~~^^
+  File "C:\Manav_personal\Arshi Project\New folder\Nomura\agent\compare_match.py", line 113, in _index
+    return _load_golden(str(self.path), self.sheet, self.key, mtime)
+  File "C:\Manav_personal\Arshi Project\New folder\Nomura\agent\compare_match.py", line 73, in _load_golden
+    import openpyxl  # lazy import (only Compare & Match needs it)
+    ^^^^^^^^^^^^^^^
+ModuleNotFoundError: No module named 'openpyxl'
+18:03:02 | INFO    | api                    | GET /health -> 200 (1.1ms) cid=28080089-2692-434d-aa64-6ae924ed47ba
+18:03:02 | INFO    | api                    | GET /health -> 200 (1.0ms) cid=b0d7ea20-13b4-4e33-be41-1436b960d228
+18:03:02 | ERROR   | api                    | Unhandled error cid=23adc6d9-e536-4305-9c5c-e77a462b93f1
+  + Exception Group Traceback (most recent call last):
+  |   File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\_utils.py", line 79, in collapse_excgroups
+  |     yield
+  |   File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\middleware\base.py", line 183, in __call__
+  |     async with anyio.create_task_group() as task_group:
+  |                ~~~~~~~~~~~~~~~~~~~~~~~^^
+  |   File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\anyio\_backends\_asyncio.py", line 799, in __aexit__
+  |     raise BaseExceptionGroup(
+  |         "unhandled errors in a TaskGroup", self._exceptions
+  |     ) from None
+  | ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
+  +-+---------------- 1 ----------------
+    | Traceback (most recent call last):
+    |   File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\middleware\errors.py", line 164, in __call__
+    |     await self.app(scope, receive, _send)
+    |   File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\middleware\base.py", line 182, in __call__
+    |     with recv_stream, send_stream, collapse_excgroups():
+    |                                    ~~~~~~~~~~~~~~~~~~^^
+    |   File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\contextlib.py", line 162, in __exit__
+    |     self.gen.throw(value)
+    |     ~~~~~~~~~~~~~~^^^^^^^
+    |   File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\_utils.py", line 85, in collapse_excgroups
+    |     raise exc
+    |   File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\middleware\base.py", line 184, in __call__
+    |     response = await self.dispatch_func(request, call_next)
+    |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\Manav_personal\Arshi Project\New folder\Nomura\api\app.py", line 59, in correlation_and_audit
+    |     response = await call_next(request)
+    |                ^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\middleware\base.py", line 159, in call_next
+    |     raise app_exc
+    |   File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\middleware\base.py", line 144, in coro
+    |     await self.app(scope, receive_or_disconnect, send_no_error)
+    |   File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\middleware\exceptions.py", line 63, in __call__
+    |     await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+    |   File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    |     raise exc
+    |   File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    |     await app(scope, receive, sender)
+    |   File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 716, in __call__
+    |     await self.middleware_stack(scope, receive, send)
+    |   File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 736, in app
+    |     await route.handle(scope, receive, send)
+    |   File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 290, in handle
+    |     await self.app(scope, receive, send)
+    |   File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 78, in app
+    |     await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+    |   File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    |     raise exc
+    |   File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    |     await app(scope, receive, sender)
+    |   File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 75, in app
+    |     response = await f(request)
+    |                ^^^^^^^^^^^^^^^^
+    |   File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\fastapi\routing.py", line 302, in app
+    |     raw_response = await run_endpoint_function(
+    |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |     ...<3 lines>...
+    |     )
+    |     ^
+    |   File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\fastapi\routing.py", line 215, in run_endpoint_function
+    |     return await run_in_threadpool(dependant.call, **values)
+    |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\concurrency.py", line 38, in run_in_threadpool
+    |     return await anyio.to_thread.run_sync(func)
+    |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\anyio\to_thread.py", line 63, in run_sync
+    |     return await get_async_backend().run_sync_in_worker_thread(
+    |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |         func, args, abandon_on_cancel=abandon_on_cancel, limiter=limiter
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |     )
+    |     ^
+    |   File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\anyio\_backends\_asyncio.py", line 2518, in run_sync_in_worker_thread
+    |     return await future
+    |            ^^^^^^^^^^^^
+    |   File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\anyio\_backends\_asyncio.py", line 1002, in run
+    |     result = context.run(func, *args)
+    |   File "C:\Manav_personal\Arshi Project\New folder\Nomura\api\routers\match.py", line 116, in match_trades
+    |     results = matcher.match(extracted)
+    |   File "C:\Manav_personal\Arshi Project\New folder\Nomura\agent\compare_match.py", line 226, in match
+    |     return [self.match_one(t) for t in trades]
+    |             ~~~~~~~~~~~~~~^^^
+    |   File "C:\Manav_personal\Arshi Project\New folder\Nomura\agent\compare_match.py", line 184, in match_one
+    |     golden = self.golden.lookup(tid)
+    |   File "C:\Manav_personal\Arshi Project\New folder\Nomura\agent\compare_match.py", line 121, in lookup
+    |     return self._index().get(str(trade_id).strip())
+    |            ~~~~~~~~~~~^^
+    |   File "C:\Manav_personal\Arshi Project\New folder\Nomura\agent\compare_match.py", line 113, in _index
+    |     return _load_golden(str(self.path), self.sheet, self.key, mtime)
+    |   File "C:\Manav_personal\Arshi Project\New folder\Nomura\agent\compare_match.py", line 73, in _load_golden
+    |     import openpyxl  # lazy import (only Compare & Match needs it)
+    |     ^^^^^^^^^^^^^^^
+    | ModuleNotFoundError: No module named 'openpyxl'
+    +------------------------------------
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\middleware\errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\middleware\base.py", line 182, in __call__
+    with recv_stream, send_stream, collapse_excgroups():
+                                   ~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\_utils.py", line 85, in collapse_excgroups
+    raise exc
+  File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\middleware\base.py", line 184, in __call__
+    response = await self.dispatch_func(request, call_next)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Manav_personal\Arshi Project\New folder\Nomura\api\app.py", line 59, in correlation_and_audit
+    response = await call_next(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\middleware\base.py", line 159, in call_next
+    raise app_exc
+  File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\middleware\base.py", line 144, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\middleware\exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 78, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 75, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\fastapi\routing.py", line 302, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\fastapi\routing.py", line 215, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\concurrency.py", line 38, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\anyio\to_thread.py", line 63, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        func, args, abandon_on_cancel=abandon_on_cancel, limiter=limiter
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\anyio\_backends\_asyncio.py", line 2518, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\anyio\_backends\_asyncio.py", line 1002, in run
+    result = context.run(func, *args)
+  File "C:\Manav_personal\Arshi Project\New folder\Nomura\api\routers\match.py", line 116, in match_trades
+    results = matcher.match(extracted)
+  File "C:\Manav_personal\Arshi Project\New folder\Nomura\agent\compare_match.py", line 226, in match
+    return [self.match_one(t) for t in trades]
+            ~~~~~~~~~~~~~~^^^
+  File "C:\Manav_personal\Arshi Project\New folder\Nomura\agent\compare_match.py", line 184, in match_one
+    golden = self.golden.lookup(tid)
+  File "C:\Manav_personal\Arshi Project\New folder\Nomura\agent\compare_match.py", line 121, in lookup
+    return self._index().get(str(trade_id).strip())
+           ~~~~~~~~~~~^^
+  File "C:\Manav_personal\Arshi Project\New folder\Nomura\agent\compare_match.py", line 113, in _index
+    return _load_golden(str(self.path), self.sheet, self.key, mtime)
+  File "C:\Manav_personal\Arshi Project\New folder\Nomura\agent\compare_match.py", line 73, in _load_golden
+    import openpyxl  # lazy import (only Compare & Match needs it)
+    ^^^^^^^^^^^^^^^
+ModuleNotFoundError: No module named 'openpyxl'
+18:03:04 | INFO    | connectors.local_connector | Fetched 29 emails from data\raw_emails\inbox
+18:03:04 | INFO    | api.connector          | connector.fetch source=local -> 29 emails cid=2d06bf2f-dd3e-4a3a-8c2e-929cfcb177e3
+18:03:04 | INFO    | api                    | POST /connector/fetch -> 200 (125.2ms) cid=2d06bf2f-dd3e-4a3a-8c2e-929cfcb177e3
+18:03:10 | INFO    | api                    | GET /health -> 200 (2.6ms) cid=ae747e4c-5fd4-4ec5-aeec-5d139b7d55b9
+18:03:10 | INFO    | api                    | GET /config -> 200 (15.3ms) cid=30f461dc-fad0-4c06-905c-b9eb5add1f71
+18:03:10 | INFO    | api                    | GET /health -> 200 (0.7ms) cid=657dd687-60fd-4990-99b0-94b19f248323
+18:03:10 | INFO    | api                    | GET /config -> 200 (3.5ms) cid=19e14045-4127-48e1-8a78-8e7e0a14faff
+18:03:14 | INFO    | connectors.local_connector | Fetched 29 emails from data\raw_emails\inbox
+18:03:14 | INFO    | api.connector          | connector.fetch source=local -> 29 emails cid=3b3caac5-44fb-4e5a-92d8-76f943e25a78
+18:03:14 | INFO    | api                    | POST /connector/fetch -> 200 (65.6ms) cid=3b3caac5-44fb-4e5a-92d8-76f943e25a78
+18:03:16 | INFO    | connectors.local_connector | Fetched 29 emails from data\raw_emails\inbox
+18:03:16 | WARNING | email_agent            | AMBIGUOUS (0.30) | Settlement query – account reconciliation | subject['settlement']
+18:03:16 | WARNING | email_agent            | AMBIGUOUS (0.30) | Re: Confirmation needed | subject['confirm']
+18:03:16 | WARNING | email_agent            | AMBIGUOUS (0.30) | Pending transaction follow-up | subject['transaction']
+18:03:16 | WARNING | email_agent            | DUPLICATE trade_id FXOPT-2026-00053 — skipping (FX Trade Settlement[FXOPT-2026-00053] – USD/CAD – 26_05_26 - UTIY6WKTAKPUXQPHR62GDSW0053)
+18:03:16 | WARNING | email_agent            | DUPLICATE trade_id FXOPT-2026-00056 — skipping (FX Trade Settlement FXOPT-2026-00056 – 26/05/26 – UTIPTK93TYT7D5J60FKHMY40056)
+18:03:16 | INFO    | email_agent            | ========================================================
+18:03:16 | INFO    | email_agent            | [Phase 1 Run Complete]
+18:03:16 | INFO    | email_agent            |   Emails read:          29
+18:03:16 | INFO    | email_agent            |   RELEVANT (stored):    0
+18:03:16 | INFO    | email_agent            |   AMBIGUOUS (skipped):  3
+18:03:16 | INFO    | email_agent            |   IRRELEVANT (skipped): 10
+18:03:16 | INFO    | email_agent            |   DUPLICATE (skipped):  2
+18:03:16 | INFO    | email_agent            |   Already processed:    14
+18:03:16 | INFO    | email_agent            |   Trade rows extracted: 0
+18:03:16 | INFO    | email_agent            |   --- Ambiguous emails for manual review ---
+18:03:16 | INFO    | email_agent            |     • Settlement query – account reconciliation
+18:03:16 | INFO    | email_agent            |     • Re: Confirmation needed
+18:03:16 | INFO    | email_agent            |     • Pending transaction follow-up
+18:03:16 | INFO    | email_agent            | ========================================================
+18:03:16 | INFO    | api.agent              | agent.run source=local -> relevant=0 ambiguous=3 irrelevant=10 duplicate=2 cid=721bcd43-fddd-4e17-952a-8d6ca1c16527
+18:03:16 | INFO    | api                    | POST /agent/run -> 200 (106.1ms) cid=721bcd43-fddd-4e17-952a-8d6ca1c16527
+18:03:17 | ERROR   | api                    | Unhandled error cid=ff6e667f-7f36-4510-95bc-f49ec40ca9c8
+  + Exception Group Traceback (most recent call last):
+  |   File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\_utils.py", line 79, in collapse_excgroups
+  |     yield
+  |   File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\middleware\base.py", line 183, in __call__
+  |     async with anyio.create_task_group() as task_group:
+  |                ~~~~~~~~~~~~~~~~~~~~~~~^^
+  |   File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\anyio\_backends\_asyncio.py", line 799, in __aexit__
+  |     raise BaseExceptionGroup(
+  |         "unhandled errors in a TaskGroup", self._exceptions
+  |     ) from None
+  | ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
+  +-+---------------- 1 ----------------
+    | Traceback (most recent call last):
+    |   File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\middleware\errors.py", line 164, in __call__
+    |     await self.app(scope, receive, _send)
+    |   File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\middleware\base.py", line 182, in __call__
+    |     with recv_stream, send_stream, collapse_excgroups():
+    |                                    ~~~~~~~~~~~~~~~~~~^^
+    |   File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\contextlib.py", line 162, in __exit__
+    |     self.gen.throw(value)
+    |     ~~~~~~~~~~~~~~^^^^^^^
+    |   File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\_utils.py", line 85, in collapse_excgroups
+    |     raise exc
+    |   File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\middleware\base.py", line 184, in __call__
+    |     response = await self.dispatch_func(request, call_next)
+    |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\Manav_personal\Arshi Project\New folder\Nomura\api\app.py", line 59, in correlation_and_audit
+    |     response = await call_next(request)
+    |                ^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\middleware\base.py", line 159, in call_next
+    |     raise app_exc
+    |   File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\middleware\base.py", line 144, in coro
+    |     await self.app(scope, receive_or_disconnect, send_no_error)
+    |   File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\middleware\exceptions.py", line 63, in __call__
+    |     await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+    |   File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    |     raise exc
+    |   File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    |     await app(scope, receive, sender)
+    |   File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 716, in __call__
+    |     await self.middleware_stack(scope, receive, send)
+    |   File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 736, in app
+    |     await route.handle(scope, receive, send)
+    |   File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 290, in handle
+    |     await self.app(scope, receive, send)
+    |   File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 78, in app
+    |     await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+    |   File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    |     raise exc
+    |   File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    |     await app(scope, receive, sender)
+    |   File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 75, in app
+    |     response = await f(request)
+    |                ^^^^^^^^^^^^^^^^
+    |   File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\fastapi\routing.py", line 302, in app
+    |     raw_response = await run_endpoint_function(
+    |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |     ...<3 lines>...
+    |     )
+    |     ^
+    |   File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\fastapi\routing.py", line 215, in run_endpoint_function
+    |     return await run_in_threadpool(dependant.call, **values)
+    |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\concurrency.py", line 38, in run_in_threadpool
+    |     return await anyio.to_thread.run_sync(func)
+    |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\anyio\to_thread.py", line 63, in run_sync
+    |     return await get_async_backend().run_sync_in_worker_thread(
+    |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |         func, args, abandon_on_cancel=abandon_on_cancel, limiter=limiter
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |     )
+    |     ^
+    |   File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\anyio\_backends\_asyncio.py", line 2518, in run_sync_in_worker_thread
+    |     return await future
+    |            ^^^^^^^^^^^^
+    |   File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\anyio\_backends\_asyncio.py", line 1002, in run
+    |     result = context.run(func, *args)
+    |   File "C:\Manav_personal\Arshi Project\New folder\Nomura\api\routers\match.py", line 116, in match_trades
+    |     results = matcher.match(extracted)
+    |   File "C:\Manav_personal\Arshi Project\New folder\Nomura\agent\compare_match.py", line 226, in match
+    |     return [self.match_one(t) for t in trades]
+    |             ~~~~~~~~~~~~~~^^^
+    |   File "C:\Manav_personal\Arshi Project\New folder\Nomura\agent\compare_match.py", line 184, in match_one
+    |     golden = self.golden.lookup(tid)
+    |   File "C:\Manav_personal\Arshi Project\New folder\Nomura\agent\compare_match.py", line 121, in lookup
+    |     return self._index().get(str(trade_id).strip())
+    |            ~~~~~~~~~~~^^
+    |   File "C:\Manav_personal\Arshi Project\New folder\Nomura\agent\compare_match.py", line 113, in _index
+    |     return _load_golden(str(self.path), self.sheet, self.key, mtime)
+    |   File "C:\Manav_personal\Arshi Project\New folder\Nomura\agent\compare_match.py", line 73, in _load_golden
+    |     import openpyxl  # lazy import (only Compare & Match needs it)
+    |     ^^^^^^^^^^^^^^^
+    | ModuleNotFoundError: No module named 'openpyxl'
+    +------------------------------------
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\middleware\errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\middleware\base.py", line 182, in __call__
+    with recv_stream, send_stream, collapse_excgroups():
+                                   ~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\_utils.py", line 85, in collapse_excgroups
+    raise exc
+  File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\middleware\base.py", line 184, in __call__
+    response = await self.dispatch_func(request, call_next)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Manav_personal\Arshi Project\New folder\Nomura\api\app.py", line 59, in correlation_and_audit
+    response = await call_next(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\middleware\base.py", line 159, in call_next
+    raise app_exc
+  File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\middleware\base.py", line 144, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\middleware\exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 78, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\routing.py", line 75, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\fastapi\routing.py", line 302, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\fastapi\routing.py", line 215, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\starlette\concurrency.py", line 38, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\anyio\to_thread.py", line 63, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        func, args, abandon_on_cancel=abandon_on_cancel, limiter=limiter
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\anyio\_backends\_asyncio.py", line 2518, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "C:\Users\manav.khatri\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\anyio\_backends\_asyncio.py", line 1002, in run
+    result = context.run(func, *args)
+  File "C:\Manav_personal\Arshi Project\New folder\Nomura\api\routers\match.py", line 116, in match_trades
+    results = matcher.match(extracted)
+  File "C:\Manav_personal\Arshi Project\New folder\Nomura\agent\compare_match.py", line 226, in match
+    return [self.match_one(t) for t in trades]
+            ~~~~~~~~~~~~~~^^^
+  File "C:\Manav_personal\Arshi Project\New folder\Nomura\agent\compare_match.py", line 184, in match_one
+    golden = self.golden.lookup(tid)
+  File "C:\Manav_personal\Arshi Project\New folder\Nomura\agent\compare_match.py", line 121, in lookup
+    return self._index().get(str(trade_id).strip())
+           ~~~~~~~~~~~^^
+  File "C:\Manav_personal\Arshi Project\New folder\Nomura\agent\compare_match.py", line 113, in _index
+    return _load_golden(str(self.path), self.sheet, self.key, mtime)
+  File "C:\Manav_personal\Arshi Project\New folder\Nomura\agent\compare_match.py", line 73, in _load_golden
+    import openpyxl  # lazy import (only Compare & Match needs it)
+    ^^^^^^^^^^^^^^^
+ModuleNotFoundError: No module named 'openpyxl'
+18:03:59 | INFO    | api                    | GET /health -> 200 (2.0ms) cid=36e28feb-e21b-4205-85c4-c9eaf5b9ddc6
+18:03:59 | INFO    | api                    | GET /config -> 200 (9.5ms) cid=8ad81354-d3cf-4ca3-90de-b50d322ebb26
+18:03:59 | INFO    | api                    | GET /health -> 200 (1.6ms) cid=908c50f1-09b4-43da-8960-f1de7dfde814
+18:03:59 | INFO    | api                    | GET /config -> 200 (6.1ms) cid=0feede70-52d8-4993-9347-9b5df5814f45
+18:04:01 | INFO    | connectors.local_connector | Fetched 29 emails from data\raw_emails\inbox
+18:04:01 | INFO    | api.connector          | connector.fetch source=local -> 29 emails cid=37f9b16c-1a9b-4840-90f7-415082e67605
+18:04:01 | INFO    | api                    | POST /connector/fetch -> 200 (77.3ms) cid=37f9b16c-1a9b-4840-90f7-415082e67605
+18:04:03 | INFO    | connectors.local_connector | Fetched 29 emails from data\raw_emails\inbox
+18:04:03 | WARNING | email_agent            | AMBIGUOUS (0.30) | Settlement query – account reconciliation | subject['settlement']
+18:04:03 | WARNING | email_agent            | AMBIGUOUS (0.30) | Re: Confirmation needed | subject['confirm']
+18:04:03 | WARNING | email_agent            | AMBIGUOUS (0.30) | Pending transaction follow-up | subject['transaction']
+18:04:03 | WARNING | email_agent            | DUPLICATE trade_id FXOPT-2026-00053 — skipping (FX Trade Settlement[FXOPT-2026-00053] – USD/CAD – 26_05_26 - UTIY6WKTAKPUXQPHR62GDSW0053)
+18:04:03 | WARNING | email_agent            | DUPLICATE trade_id FXOPT-2026-00056 — skipping (FX Trade Settlement FXOPT-2026-00056 – 26/05/26 – UTIPTK93TYT7D5J60FKHMY40056)
+18:04:03 | INFO    | email_agent            | ========================================================
+18:04:03 | INFO    | email_agent            | [Phase 1 Run Complete]
+18:04:03 | INFO    | email_agent            |   Emails read:          29
+18:04:03 | INFO    | email_agent            |   RELEVANT (stored):    0
+18:04:03 | INFO    | email_agent            |   AMBIGUOUS (skipped):  3
+18:04:03 | INFO    | email_agent            |   IRRELEVANT (skipped): 10
+18:04:03 | INFO    | email_agent            |   DUPLICATE (skipped):  2
+18:04:03 | INFO    | email_agent            |   Already processed:    14
+18:04:03 | INFO    | email_agent            |   Trade rows extracted: 0
+18:04:03 | INFO    | email_agent            |   --- Ambiguous emails for manual review ---
+18:04:03 | INFO    | email_agent            |     • Settlement query – account reconciliation
+18:04:03 | INFO    | email_agent            |     • Re: Confirmation needed
+18:04:03 | INFO    | email_agent            |     • Pending transaction follow-up
+18:04:03 | INFO    | email_agent            | ========================================================
+18:04:03 | INFO    | api.agent              | agent.run source=local -> relevant=0 ambiguous=3 irrelevant=10 duplicate=2 cid=64279b8d-67b3-4288-8e6d-72d614445127
+18:04:03 | INFO    | api                    | POST /agent/run -> 200 (142.9ms) cid=64279b8d-67b3-4288-8e6d-72d614445127
+18:04:05 | INFO    | api.match              | match.trades -> 80 trade(s) | {'MATCHED': 68, 'BREAK': 12} | golden=True(100) cid=429c46f7-dc33-4746-b203-6fcd4295bbec
+18:04:05 | INFO    | api                    | GET /match/trades -> 200 (1200.9ms) cid=429c46f7-dc33-4746-b203-6fcd4295bbec
+18:04:10 | INFO    | api                    | GET /health -> 200 (1.2ms) cid=1b5cec15-6e60-48d2-b281-7263d18304c7
+18:04:10 | INFO    | api                    | GET /health -> 200 (1.0ms) cid=e87814bc-057e-46c1-8b80-a0e90189ac27
+18:04:10 | INFO    | api.extract            | extract.trades -> 68 trade(s) from 2 file(s) across 14 case(s) cid=3e1451d3-45f8-4b6f-b56c-ee992a90b64b
+18:04:10 | INFO    | api                    | GET /extract/trades -> 200 (119.8ms) cid=3e1451d3-45f8-4b6f-b56c-ee992a90b64b
+18:04:10 | INFO    | api.extract            | extract.trades -> 68 trade(s) from 2 file(s) across 14 case(s) cid=7c18b955-0bdf-4b3c-a7a0-0b836465eb38
+18:04:10 | INFO    | api                    | GET /extract/trades -> 200 (107.1ms) cid=7c18b955-0bdf-4b3c-a7a0-0b836465eb38
+18:04:10 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00055 -> 200 (75.1ms) cid=a56399b0-fcf4-4624-86f1-cf9944dc88ad
+18:04:10 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00056 -> 200 (79.3ms) cid=2be2142b-b290-4adc-b5b2-967f764070f3
+18:04:10 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00057 -> 200 (64.0ms) cid=4515516e-10a8-4819-a22d-d4f1539f7e92
+18:04:10 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00053 -> 200 (54.1ms) cid=b956a9b0-3702-4135-9e49-348819670cb0
+18:04:10 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00050 -> 200 (61.3ms) cid=f163b24a-9bf2-449f-8cae-2d370db723f4
+18:04:10 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00049 -> 200 (23.8ms) cid=c8102af1-1a40-4b5d-93c8-562ea0f30f1c
+18:04:10 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00054 -> 200 (14.0ms) cid=2bc9f49f-0dfa-4dc8-86f2-fd54fa03474d
+18:04:10 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00048 -> 200 (15.3ms) cid=7adaaa60-d2cc-4475-ac29-68fb9a500838
+18:04:10 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00047 -> 200 (13.8ms) cid=34239370-3b09-43cf-a811-96641ce29974
+18:04:10 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00052 -> 200 (17.5ms) cid=53448aaf-3c0d-469f-8e3d-a043737cfb06
+18:04:10 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00051 -> 200 (29.8ms) cid=1ed6288f-6798-49b5-aed8-ef2a9f4b7547
+18:04:10 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00058 -> 200 (30.1ms) cid=29bd1d3b-7324-4040-a855-1a5c649a1010
+18:04:10 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00055 -> 200 (12.8ms) cid=96a06e02-fbfa-4854-ad53-f2377ad1afdb
+18:04:10 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00057 -> 200 (14.8ms) cid=98561efd-cc6d-4ca8-b058-8aca063fdfed
+18:04:10 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00056 -> 200 (32.5ms) cid=ccb0a490-b952-4c77-bbb8-19f121c781e7
+18:04:10 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00053 -> 200 (21.3ms) cid=27167ef6-6b39-4d01-8448-686445518f3b
+18:04:10 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00050 -> 200 (43.3ms) cid=657d7956-04de-4337-a0d4-f49fa98dff28
+18:04:10 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00049 -> 200 (27.5ms) cid=8f75b502-708e-4ad3-9aa3-95d560f5ee69
+18:04:10 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00054 -> 200 (27.4ms) cid=e0a605a8-efa6-4005-b45f-ed50053cf75e
+18:04:10 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00048 -> 200 (20.6ms) cid=5079c6f1-c2ba-459e-9a08-cb0765edf09a
+18:04:10 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00047 -> 200 (21.7ms) cid=4921ae9a-5cf8-42a1-9a5d-6c5fb2d478b6
+18:04:10 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00051 -> 200 (19.2ms) cid=ac1c979d-fc81-4b15-8e9e-72d08cfeb940
+18:04:10 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00058 -> 200 (19.7ms) cid=098c0f5a-96fc-458f-8037-8ca2004a0040
+18:04:10 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00052 -> 200 (13.2ms) cid=41585ba3-c970-47fa-b486-2bcc51448344
+18:31:14 | INFO    | api                    | GET /health -> 200 (0.8ms) cid=cb81333f-4415-4f3a-873f-cea9164d5c5a
+18:31:14 | INFO    | api                    | GET /health -> 200 (0.8ms) cid=e217f289-9474-42cb-af5c-a1f7bb740639
+19:07:28 | INFO    | api                    | GET /health -> 200 (1.8ms) cid=cd335b96-3ec0-4a73-a391-a2ac5c2d0394
+19:07:28 | INFO    | api                    | GET /config -> 200 (25.3ms) cid=a00d773c-e9b5-48d7-b5a2-ebd4c4e391eb
+19:07:28 | INFO    | api                    | GET /health -> 200 (0.7ms) cid=4cfd4be4-d9fd-47d2-9aba-6b96fd2ace52
+19:07:28 | INFO    | api                    | GET /config -> 200 (5.6ms) cid=58d921d0-e946-49df-8bd1-96945d36f4ce
+19:07:30 | INFO    | connectors.local_connector | Fetched 30 emails from data\raw_emails\inbox
+19:07:30 | INFO    | api.connector          | connector.fetch source=local -> 30 emails cid=3a7fac0b-cd7d-4fcf-9da0-a3d2b2cb955b
+19:07:30 | INFO    | api                    | POST /connector/fetch -> 200 (77.7ms) cid=3a7fac0b-cd7d-4fcf-9da0-a3d2b2cb955b
+19:07:32 | INFO    | connectors.local_connector | Fetched 30 emails from data\raw_emails\inbox
+19:07:32 | WARNING | email_agent            | AMBIGUOUS (0.30) | Settlement query – account reconciliation | subject['settlement']
+19:07:32 | WARNING | email_agent            | AMBIGUOUS (0.30) | Re: Confirmation needed | subject['confirm']
+19:07:32 | WARNING | email_agent            | AMBIGUOUS (0.30) | Pending transaction follow-up | subject['transaction']
+19:07:32 | WARNING | email_agent            | DUPLICATE trade_id FXOPT-2026-00053 — skipping (FX Trade Settlement[FXOPT-2026-00053] – USD/CAD – 26_05_26 - UTIY6WKTAKPUXQPHR62GDSW0053)
+19:07:32 | WARNING | email_agent            | DUPLICATE trade_id FXOPT-2026-00056 — skipping (FX Trade Settlement FXOPT-2026-00056 – 26/05/26 – UTIPTK93TYT7D5J60FKHMY40056)
+19:07:32 | INFO    | email_agent            | ========================================================
+19:07:32 | INFO    | email_agent            | [Phase 1 Run Complete]
+19:07:32 | INFO    | email_agent            |   Emails read:          30
+19:07:32 | INFO    | email_agent            |   RELEVANT (stored):    0
+19:07:32 | INFO    | email_agent            |   AMBIGUOUS (skipped):  3
+19:07:32 | INFO    | email_agent            |   IRRELEVANT (skipped): 10
+19:07:32 | INFO    | email_agent            |   DUPLICATE (skipped):  2
+19:07:32 | INFO    | email_agent            |   Already processed:    15
+19:07:32 | INFO    | email_agent            |   Trade rows extracted: 0
+19:07:32 | INFO    | email_agent            |   --- Ambiguous emails for manual review ---
+19:07:32 | INFO    | email_agent            |     • Settlement query – account reconciliation
+19:07:32 | INFO    | email_agent            |     • Re: Confirmation needed
+19:07:32 | INFO    | email_agent            |     • Pending transaction follow-up
+19:07:32 | INFO    | email_agent            | ========================================================
+19:07:32 | INFO    | api.agent              | agent.run source=local -> relevant=0 ambiguous=3 irrelevant=10 duplicate=2 cid=eca7ccdd-d3d9-4399-ad49-1fde57455bb6
+19:07:32 | INFO    | api                    | POST /agent/run -> 200 (127.9ms) cid=eca7ccdd-d3d9-4399-ad49-1fde57455bb6
+19:07:34 | INFO    | api.match              | match.trades -> 80 trade(s) | {'MATCHED': 68, 'BREAK': 12} | golden=True(100) cid=891606ff-6f47-4b22-9336-d7e692165377
+19:07:34 | INFO    | api                    | GET /match/trades -> 200 (1080.2ms) cid=891606ff-6f47-4b22-9336-d7e692165377
+19:07:39 | INFO    | api                    | GET /health -> 200 (2.5ms) cid=87a41003-eca5-4cb2-b0df-3a8890393f7c
+19:07:39 | INFO    | api                    | GET /health -> 200 (5.2ms) cid=b4059458-3fee-4032-9d4a-da3fa6cb39de
+19:07:39 | INFO    | api.extract            | extract.trades -> 68 trade(s) from 2 file(s) across 14 case(s) cid=44f05993-b078-41bc-b4bb-8f7ee8a297f9
+19:07:39 | INFO    | api                    | GET /extract/trades -> 200 (121.5ms) cid=44f05993-b078-41bc-b4bb-8f7ee8a297f9
+19:07:39 | INFO    | api.extract            | extract.trades -> 68 trade(s) from 2 file(s) across 14 case(s) cid=ae175b10-60d5-4a29-b70e-c2f4bff35ffe
+19:07:40 | INFO    | api                    | GET /extract/trades -> 200 (133.4ms) cid=ae175b10-60d5-4a29-b70e-c2f4bff35ffe
+19:07:40 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00055 -> 200 (89.1ms) cid=e38b47d9-82a3-4993-a264-ad0d326a6a8c
+19:07:40 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00053 -> 200 (51.0ms) cid=9ededf27-e1b9-4263-b15e-748ccebdbbbe
+19:07:40 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00056 -> 200 (95.7ms) cid=58331c64-c34f-43e1-886a-fc6f7ae24666
+19:07:40 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00057 -> 200 (73.8ms) cid=713d1ff4-7766-4d8c-bc0f-cff80526e4de
+19:07:40 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00050 -> 200 (68.6ms) cid=6e5bc48a-923b-4b4c-b2e6-319a40527f9b
+19:07:40 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00049 -> 200 (11.5ms) cid=3eea90a3-f561-4361-bb6f-e98ed0e23814
+19:07:40 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00054 -> 200 (16.1ms) cid=8c7e900d-2bbe-4823-958f-61116a48144d
+19:07:40 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00048 -> 200 (13.8ms) cid=a588345a-c184-4f62-8655-88aa834e71a8
+19:07:40 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00047 -> 200 (21.4ms) cid=69a26fa5-e353-434f-bad2-842946aac9c9
+19:07:40 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00058 -> 200 (21.7ms) cid=8265da1c-4cc0-445b-afc1-5f26ed4b0391
+19:07:40 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00051 -> 200 (30.4ms) cid=a530e6b1-4501-4fa8-a3bd-d41abcbb89c4
+19:07:40 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00052 -> 200 (28.5ms) cid=a83e83e6-aad4-4629-a277-d6713c0c59d7
+19:07:40 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00055 -> 200 (18.7ms) cid=1dba45d6-be45-435e-b062-aa4f28ff52a5
+19:07:40 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00053 -> 200 (22.6ms) cid=40a193e2-b8de-4396-9531-079d5fb29063
+19:07:40 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00056 -> 200 (16.1ms) cid=be24e83b-0269-446e-9e90-2fcba8e86e9e
+19:07:40 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00057 -> 200 (22.0ms) cid=16f87562-0725-4d3e-ab60-a67f527e0094
+19:07:40 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00050 -> 200 (13.7ms) cid=8f83ae31-bd26-43e4-98c9-77b0c0f07087
+19:07:40 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00049 -> 200 (15.2ms) cid=ef303447-6bcc-4bdb-b0dc-93ed83da5606
+19:07:40 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00054 -> 200 (13.5ms) cid=a2969d06-2660-4ecb-82b4-f24b31dd3147
+19:07:40 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00048 -> 200 (13.0ms) cid=8b71217a-1111-4b85-a8e6-5225a4fbf469
+19:07:40 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00047 -> 200 (18.0ms) cid=6e1e4697-275e-4b36-be17-494b89536fac
+19:07:40 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00058 -> 200 (25.2ms) cid=2013121b-9234-405d-8b82-0af95824062e
+19:07:40 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00051 -> 200 (18.3ms) cid=8a6e9e9e-c956-42e8-8a83-f4838df06d1e
+19:07:40 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00052 -> 200 (20.9ms) cid=9650844a-c4bf-4724-b0d6-5a6505fd4015
+19:24:06 | INFO    | api                    | GET /health -> 200 (1.7ms) cid=3d1237b4-adcb-4460-971f-b58d34bec885
+19:24:06 | INFO    | api                    | GET /config -> 200 (23.9ms) cid=17bd9c69-4aa9-4bb0-b656-420ca64b2a04
+19:24:06 | INFO    | api                    | GET /health -> 200 (0.9ms) cid=8c738853-4fab-4aac-bb09-b61a3dddb6b2
+19:24:06 | INFO    | api                    | GET /config -> 200 (4.1ms) cid=abe9f6cd-250c-4a32-95b7-aebd81c686c8
+19:24:08 | INFO    | connectors.local_connector | Fetched 31 emails from data\raw_emails\inbox
+19:24:08 | INFO    | api.connector          | connector.fetch source=local -> 31 emails cid=9d606a07-355e-4d3b-8b37-c3a22e1ae9b9
+19:24:08 | INFO    | api                    | POST /connector/fetch -> 200 (121.9ms) cid=9d606a07-355e-4d3b-8b37-c3a22e1ae9b9
+19:24:09 | INFO    | connectors.local_connector | Fetched 31 emails from data\raw_emails\inbox
+19:24:09 | WARNING | email_agent            | AMBIGUOUS (0.30) | Settlement query – account reconciliation | subject['settlement']
+19:24:09 | WARNING | email_agent            | AMBIGUOUS (0.30) | Re: Confirmation needed | subject['confirm']
+19:24:09 | WARNING | email_agent            | AMBIGUOUS (0.30) | Pending transaction follow-up | subject['transaction']
+19:24:09 | INFO    | email_agent            | RELEVANT (0.80) | FX Trade Settlements_[FXOPT]_SSI_TD: 26/05/26 | trade_id=UNKNOWN_9e09e9fe22 (0 trade rows)
+19:24:09 | WARNING | email_agent            | DUPLICATE trade_id FXOPT-2026-00053 — skipping (FX Trade Settlement[FXOPT-2026-00053] – USD/CAD – 26_05_26 - UTIY6WKTAKPUXQPHR62GDSW0053)
+19:24:09 | WARNING | email_agent            | DUPLICATE trade_id FXOPT-2026-00056 — skipping (FX Trade Settlement FXOPT-2026-00056 – 26/05/26 – UTIPTK93TYT7D5J60FKHMY40056)
+19:24:09 | INFO    | email_agent            | ========================================================
+19:24:09 | INFO    | email_agent            | [Phase 1 Run Complete]
+19:24:09 | INFO    | email_agent            |   Emails read:          31
+19:24:09 | INFO    | email_agent            |   RELEVANT (stored):    1
+19:24:09 | INFO    | email_agent            |   AMBIGUOUS (skipped):  3
+19:24:09 | INFO    | email_agent            |   IRRELEVANT (skipped): 10
+19:24:09 | INFO    | email_agent            |   DUPLICATE (skipped):  2
+19:24:09 | INFO    | email_agent            |   Already processed:    15
+19:24:09 | INFO    | email_agent            |   Trade rows extracted: 0
+19:24:09 | INFO    | email_agent            |   --- Ambiguous emails for manual review ---
+19:24:09 | INFO    | email_agent            |     • Settlement query – account reconciliation
+19:24:09 | INFO    | email_agent            |     • Re: Confirmation needed
+19:24:09 | INFO    | email_agent            |     • Pending transaction follow-up
+19:24:09 | INFO    | email_agent            | ========================================================
+19:24:09 | INFO    | api.agent              | agent.run source=local -> relevant=1 ambiguous=3 irrelevant=10 duplicate=2 cid=617fd48d-95f4-4090-bc3a-78fd627c2cc7
+19:24:09 | INFO    | api                    | POST /agent/run -> 200 (221.2ms) cid=617fd48d-95f4-4090-bc3a-78fd627c2cc7
+19:24:12 | INFO    | api.match              | match.trades -> 80 trade(s) | {'MATCHED': 68, 'BREAK': 12} | golden=True(100) cid=fa86ca6e-003e-4dd5-b338-afb5f10397e6
+19:24:12 | INFO    | api                    | GET /match/trades -> 200 (1102.9ms) cid=fa86ca6e-003e-4dd5-b338-afb5f10397e6
+19:24:17 | INFO    | api                    | GET /health -> 200 (1.4ms) cid=7b9c55f1-9235-48a9-a765-4892ba00964c
+19:24:17 | INFO    | api                    | GET /health -> 200 (0.9ms) cid=c24aa93c-afe5-425c-8707-f8e2849eed08
+19:24:17 | INFO    | api.extract            | extract.trades -> 68 trade(s) from 3 file(s) across 15 case(s) cid=a21eedf3-0b3f-496e-8869-ef1c34602701
+19:24:17 | INFO    | api                    | GET /extract/trades -> 200 (129.5ms) cid=a21eedf3-0b3f-496e-8869-ef1c34602701
+19:24:17 | INFO    | api.extract            | extract.trades -> 68 trade(s) from 3 file(s) across 15 case(s) cid=6ef1fe08-4967-46b8-95fb-1b099473f817
+19:24:17 | INFO    | api                    | GET /extract/trades -> 200 (121.8ms) cid=6ef1fe08-4967-46b8-95fb-1b099473f817
+19:24:17 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00053 -> 200 (34.6ms) cid=a40086db-d757-4704-82b8-62f143aaab30
+19:24:17 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00050 -> 200 (40.1ms) cid=ed798c4c-4a98-4f57-85bc-086693567609
+19:24:17 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00056 -> 200 (85.6ms) cid=ca1117ad-b912-4941-b2a2-1cfd620ea530
+19:24:17 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00057 -> 200 (66.7ms) cid=f1ceea38-2a9a-45e2-8d97-650794084f99
+19:24:17 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00055 -> 200 (92.5ms) cid=400c5dbd-9c82-4f5b-8deb-788927127901
+19:24:17 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00049 -> 200 (10.2ms) cid=99e3da82-d47e-447e-ba7f-a32d4e517df0
+19:24:17 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00047 -> 200 (37.4ms) cid=8748d4d0-e15a-45d5-ac01-0e5911a886d0
+19:24:17 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00054 -> 200 (41.4ms) cid=5337d912-f183-4c18-bc3d-914748a2f8d8
+19:24:17 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00052 -> 200 (40.3ms) cid=f60379b4-f351-4397-8d1f-440f3280f3ea
+19:24:17 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00058 -> 200 (46.1ms) cid=71b62473-6ea6-4a89-b93f-35aa3c60b32c
+19:24:17 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00048 -> 200 (56.2ms) cid=360b7399-ff09-4b4e-b763-169562b77f3f
+19:24:17 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00051 -> 200 (58.3ms) cid=f409dcdc-ff04-4cd3-bf28-bfe06b9128a5
+19:24:17 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00050 -> 200 (15.8ms) cid=9c4ccc5a-6562-45fc-b696-a47b3e93bd30
+19:24:17 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00053 -> 200 (25.7ms) cid=64cdd6cb-843a-40a5-a47e-fd15e2ca73fc
+19:24:17 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00056 -> 200 (32.5ms) cid=993eb7ed-23c0-46b5-8488-4b69b3afe572
+19:24:17 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00057 -> 200 (24.6ms) cid=56528b1f-04a5-4bb6-a055-e587fa69607f
+19:24:17 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00055 -> 200 (23.9ms) cid=8cd372b2-847b-4bf9-aacc-863c93d5056d
+19:24:17 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00049 -> 200 (19.7ms) cid=582ceb66-c5f2-4772-9f85-84a0e5a90a9d
+19:24:17 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00054 -> 200 (11.8ms) cid=5181c953-e442-4646-a806-e6f9d2431167
+19:24:17 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00047 -> 200 (18.8ms) cid=7d55b619-749e-49ef-9976-0ad8b46d9258
+19:24:17 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00052 -> 200 (14.4ms) cid=56746374-e4a0-4002-9236-16665e52702d
+19:24:17 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00058 -> 200 (15.6ms) cid=2587b2e8-7b4a-4c7a-8893-7d9c3c1d4e3a
+19:24:17 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00048 -> 200 (16.2ms) cid=884c9198-36fb-43c8-a34c-f2d82106443e
+19:24:17 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00051 -> 200 (22.1ms) cid=d186703f-a8f9-4773-ac5a-9bfdb29f66ef
+19:25:58 | INFO    | connectors.local_connector | Fetched 31 emails from data\raw_emails\inbox
+19:25:58 | INFO    | api                    | POST /connector/preview -> 200 (132.6ms) cid=d8f6cafc-3d48-4e75-86ec-e707f45f0d7c
+12:16:14 | INFO    | api                    | GET /health -> 200 (13.8ms) cid=fa1e171e-6623-4809-92b8-ac38230cbaf5
+12:16:14 | INFO    | api                    | GET /health -> 200 (1.2ms) cid=7bc94a8d-3f97-49f7-a628-0898bdbb42f8
+12:16:17 | INFO    | api                    | GET /health -> 200 (5.6ms) cid=f233ec1f-1d56-4f22-9a4c-c72cf1df1ba1
+12:16:17 | INFO    | api                    | GET /health -> 200 (1.0ms) cid=e6859116-e97b-424c-bb4c-244b285774ca
+12:16:17 | INFO    | api                    | GET /config -> 200 (68.4ms) cid=8e3875bc-127a-4581-85e0-60357ecea229
+12:16:17 | INFO    | api                    | GET /config -> 200 (5.2ms) cid=b8352031-68f9-4613-8fa8-a143e21f36aa
+12:16:18 | INFO    | connectors.local_connector | Fetched 32 emails from data\raw_emails\inbox
+12:16:18 | INFO    | api.connector          | connector.fetch source=local -> 32 emails cid=81376966-1a03-4a47-92d9-ba2d5c20c3d3
+12:16:18 | INFO    | api                    | POST /connector/fetch -> 200 (199.4ms) cid=81376966-1a03-4a47-92d9-ba2d5c20c3d3
+12:16:20 | INFO    | connectors.local_connector | Fetched 32 emails from data\raw_emails\inbox
+12:16:20 | WARNING | email_agent            | AMBIGUOUS (0.30) | Settlement query – account reconciliation | subject['settlement']
+12:16:20 | WARNING | email_agent            | AMBIGUOUS (0.30) | Re: Confirmation needed | subject['confirm']
+12:16:20 | WARNING | email_agent            | AMBIGUOUS (0.30) | Pending transaction follow-up | subject['transaction']
+12:16:20 | WARNING | email_agent            | DUPLICATE trade_id FXOPT-2026-00053 — skipping (FX Trade Settlement[FXOPT-2026-00053] – USD/CAD – 26_05_26 - UTIY6WKTAKPUXQPHR62GDSW0053)
+12:16:20 | WARNING | email_agent            | DUPLICATE trade_id FXOPT-2026-00056 — skipping (FX Trade Settlement FXOPT-2026-00056 – 26/05/26 – UTIPTK93TYT7D5J60FKHMY40056)
+12:16:20 | INFO    | email_agent            | ========================================================
+12:16:20 | INFO    | email_agent            | [Phase 1 Run Complete]
+12:16:20 | INFO    | email_agent            |   Emails read:          32
+12:16:20 | INFO    | email_agent            |   RELEVANT (stored):    0
+12:16:20 | INFO    | email_agent            |   AMBIGUOUS (skipped):  3
+12:16:20 | INFO    | email_agent            |   IRRELEVANT (skipped): 10
+12:16:20 | INFO    | email_agent            |   DUPLICATE (skipped):  2
+12:16:20 | INFO    | email_agent            |   Already processed:    17
+12:16:20 | INFO    | email_agent            |   Trade rows extracted: 0
+12:16:20 | INFO    | email_agent            |   --- Ambiguous emails for manual review ---
+12:16:20 | INFO    | email_agent            |     • Settlement query – account reconciliation
+12:16:20 | INFO    | email_agent            |     • Re: Confirmation needed
+12:16:20 | INFO    | email_agent            |     • Pending transaction follow-up
+12:16:20 | INFO    | email_agent            | ========================================================
+12:16:20 | INFO    | api.agent              | agent.run source=local -> relevant=0 ambiguous=3 irrelevant=10 duplicate=2 cid=eb3e6214-404c-4625-b8f8-64009b007bbe
+12:16:20 | INFO    | api                    | POST /agent/run -> 200 (219.7ms) cid=eb3e6214-404c-4625-b8f8-64009b007bbe
+12:16:21 | INFO    | api.match              | match.trades -> 81 trade(s) | {'MATCHED': 68, 'BREAK': 12, 'UNMATCHED': 1} | golden=True(100) cid=9b73b186-e7b7-4087-aa82-972d270c3080
+12:16:21 | INFO    | api                    | GET /match/trades -> 200 (201.7ms) cid=9b73b186-e7b7-4087-aa82-972d270c3080
+12:16:46 | INFO    | api                    | GET /health -> 200 (1.4ms) cid=121b01f2-3bb8-45c4-b987-24549d9fc724
+12:16:46 | INFO    | api                    | GET /health -> 200 (0.8ms) cid=a192e59c-ba76-48c9-a4cf-b0e1566fc81a
+12:16:46 | INFO    | api.extract            | extract.trades -> 68 trade(s) from 4 file(s) across 16 case(s) cid=2d127f7b-4683-4b62-9722-c17c9a6fe90f
+12:16:46 | INFO    | api                    | GET /extract/trades -> 200 (110.5ms) cid=2d127f7b-4683-4b62-9722-c17c9a6fe90f
+12:16:46 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00055 -> 200 (50.3ms) cid=b30533fb-392d-4e89-8a50-bcdc75bcdad8
+12:16:47 | INFO    | api.extract            | extract.trades -> 68 trade(s) from 4 file(s) across 16 case(s) cid=bb554c1c-6656-44d1-98e3-2b3ec6d37d53
+12:16:47 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00057 -> 200 (87.8ms) cid=1b2416e0-991b-4d7e-82f5-bf26b7d88dd9
+12:16:47 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00049 -> 200 (79.9ms) cid=6b98cf1b-2364-4255-9046-eb897aba68e1
+12:16:47 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00050 -> 200 (88.6ms) cid=d4fee788-ef1f-47cd-a455-8610fecfb83c
+12:16:47 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00053 -> 200 (92.5ms) cid=cfc3ec2a-c04b-4ab8-a801-ff1a5eb83108
+12:16:47 | INFO    | api                    | GET /extract/trades -> 200 (171.0ms) cid=bb554c1c-6656-44d1-98e3-2b3ec6d37d53
+12:16:47 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00054 -> 200 (16.3ms) cid=50a85a07-88da-4a47-bed5-2f0371588fd6
+12:16:47 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00047 -> 200 (27.0ms) cid=9c8ed44d-7fb6-4b88-b5f3-f6ca633c3891
+12:16:47 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00048 -> 200 (30.8ms) cid=c14e061b-c755-4283-9e91-9c8eec1181a8
+12:16:47 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00058 -> 200 (28.8ms) cid=3eec96fc-b268-436d-a5c8-13e1481289a5
+12:16:47 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00051 -> 200 (34.8ms) cid=7078686e-76d9-4801-87fc-b3164d201dfc
+12:16:47 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00052 -> 200 (31.7ms) cid=4d77a9a7-7047-4ba4-8060-b82140ae4e31
+12:16:47 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00056 -> 200 (27.1ms) cid=e1e57df1-1623-46d3-9c30-1d4967aeb4a3
+12:16:47 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00055 -> 200 (15.1ms) cid=b761001f-926d-46e7-87ac-3675b7edc5cc
+12:16:47 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00057 -> 200 (16.8ms) cid=053cb6b2-825b-41c3-be31-60a8b19aeeb0
+12:16:47 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00049 -> 200 (19.7ms) cid=bc8e1cc1-140c-441f-a360-bb63070e5a84
+12:16:47 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00054 -> 200 (21.2ms) cid=c881497a-4a72-43e6-84ad-8f5d449c128e
+12:16:47 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00050 -> 200 (29.1ms) cid=e75fe625-607b-433e-80dc-f8431c6c3bcf
+12:16:47 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00053 -> 200 (38.7ms) cid=dd8d65ed-c13f-4f96-8b37-934b8cd953f7
+12:16:47 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00048 -> 200 (34.0ms) cid=e5a75c0d-e217-416a-852c-768b69037ab7
+12:16:47 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00047 -> 200 (39.7ms) cid=eb25fda0-012d-4d0f-9aa1-88abe435e7d6
+12:16:47 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00051 -> 200 (19.0ms) cid=8fb316b3-d35a-4ff1-8cdf-6f7c07fda141
+12:16:47 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00058 -> 200 (22.1ms) cid=4c2e7867-5088-4d7e-9a81-5f37645845ab
+12:16:47 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00052 -> 200 (23.0ms) cid=e3f4c6ba-4065-4ea1-9a72-524d443e02e2
+12:16:47 | INFO    | api                    | GET /storage/cases/FXOPT-2026-00056 -> 200 (22.0ms) cid=2c326df6-bb09-4ac3-bb49-e09b14648b0f

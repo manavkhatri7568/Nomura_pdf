@@ -26,13 +26,34 @@ class RuleClassifier:
         self.neg_kws = [k.lower() for k in config.negative_keywords]
         self.trade_patterns = [re.compile(p, re.IGNORECASE) for p in config.trade_id_patterns]
 
-    def classify(self, subject: str, body: str) -> Classification:
+    def classify(self, subject: str, body: str, attachments: Optional[List[dict]] = None) -> Classification:
         subject_l = (subject or "").lower()
         body_l = (body or "").lower()
         full = f"{subject_l} {body_l}"
 
-        asset_hits = [k for k in self.asset_kws if k in full]
-        neg_hits = [k for k in self.neg_kws if k in full]
+        # Extract text from any PDF attachments to look for asset keywords
+        pdf_text = ""
+        if attachments:
+            for att in attachments:
+                filename = att.get("filename", "")
+                if filename.lower().endswith(".pdf") and att.get("data"):
+                    try:
+                        import pdfplumber
+                        import io
+                        with pdfplumber.open(io.BytesIO(att["data"])) as pdf:
+                            pages_text = []
+                            for page in pdf.pages:
+                                page_text = page.extract_text()
+                                if page_text:
+                                    pages_text.append(page_text)
+                            pdf_text = " ".join(pages_text).lower()
+                    except Exception:
+                        pass
+
+        full_with_pdf = f"{full} {pdf_text}"
+
+        asset_hits = [k for k in self.asset_kws if k in full_with_pdf]
+        neg_hits = [k for k in self.neg_kws if k in full_with_pdf]
 
         # Hard negative: noise keyword and no FX-settlement signal at all.
         if neg_hits and not asset_hits:
@@ -44,7 +65,7 @@ class RuleClassifier:
             )
 
         subject_hits = [k for k in self.subject_kws if k in subject_l]
-        trade_id = self.extract_trade_id(subject, body)
+        trade_id = self.extract_trade_id(subject, body, attachments)
 
         score = 0.0
         reasons: List[str] = []
@@ -75,10 +96,30 @@ class RuleClassifier:
             trade_id=trade_id,
         )
 
-    def extract_trade_id(self, subject: str, body: str) -> Optional[str]:
+    def extract_trade_id(self, subject: str, body: str, attachments: Optional[List[dict]] = None) -> Optional[str]:
         text = f"{subject or ''} {(body or '')[: self.cfg.max_body_scan_chars]}"
         for pattern in self.trade_patterns:
             m = pattern.search(text)
             if m:
                 return m.group(0)
+
+        # Fallback to scanning PDF attachments
+        if attachments:
+            for att in attachments:
+                filename = att.get("filename", "")
+                if filename.lower().endswith(".pdf") and att.get("data"):
+                    try:
+                        import pdfplumber
+                        import io
+                        with pdfplumber.open(io.BytesIO(att["data"])) as pdf:
+                            for page in pdf.pages:
+                                page_text = page.extract_text()
+                                if page_text:
+                                    for pattern in self.trade_patterns:
+                                        m = pattern.search(page_text)
+                                        if m:
+                                            return m.group(0)
+                    except Exception:
+                        pass
         return None
+

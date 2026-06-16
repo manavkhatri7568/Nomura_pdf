@@ -103,10 +103,10 @@ def test_rows_without_trade_id_are_dropped():
 
 
 @pytest.mark.parametrize("name,data,status", [
-    ("report.pdf", b"%PDF-1.4 ...", "unsupported"),
-    ("notes.txt", b"hello", "unsupported"),
+    ("report.txt", b"hello", "unsupported"),
     ("empty.csv", b"Trade ID,UTI\n", "empty"),
     ("broken.xlsx", b"this is not a real workbook", "error"),
+    ("broken.pdf", b"this is not a real pdf", "error"),
 ])
 def test_status_paths_never_raise(name, data, status):
     r = extract_attachment(name, data)
@@ -119,14 +119,37 @@ def test_status_paths_never_raise(name, data, status):
 # Endpoint: /extract/trades
 # --------------------------------------------------------------------------
 
-def test_extract_trades_endpoint(clean_state, api_client):
+def test_extract_trades_endpoint(clean_state, api_client, monkeypatch):
     from api.deps import get_config, open_db
+
+    class MockPage:
+        def extract_tables(self):
+            return []
+        def extract_text(self):
+            return (
+                "Standard Settlement Instructions | FX Blotter Generated: 26/05/26\n"
+                "Trade 08  FXOPT-2026-00008 AUD/USD Put American  Buy\n"
+                "Counterparty : BNP Paribas S.A LEI : ROMUWSFPU8MPRO8K5P83 Domicile: Paris, France\n"
+                "UTI : UTI9CHJ755NF4ZW9XA3KX7E0008 Notional (base) : 52910016 AUD Settlement date : 12/12/2026\n"
+                "Trader : V.Rao Book : FXOPT-BOOK1 Portfolio: FX-DESK-A\n"
+                "Settelement status - Matched Premium settle - 28/05/2026 Strike :0.9658"
+            )
+
+    class MockPDF:
+        def __init__(self, *args, **kwargs):
+            self.pages = [MockPage()]
+        def __enter__(self):
+            return self
+        def __exit__(self, exc_type, exc_val, exc_tb):
+            pass
+
+    import pdfplumber
+    monkeypatch.setattr(pdfplumber, "open", MockPDF)
 
     cfg = get_config()
     case_dir = pathlib.Path(cfg.processed_path) / "UNKNOWN_test_FX_Settlement_20260603"
     (case_dir / "attachments").mkdir(parents=True, exist_ok=True)
     (case_dir / "attachments" / "blotter.csv").write_bytes(CSV.encode())
-    # a PDF in the same case must be ignored by the extractor
     (case_dir / "attachments" / "ssi.pdf").write_bytes(b"%PDF-1.4 vector only")
 
     db = open_db(cfg)
@@ -148,11 +171,15 @@ def test_extract_trades_endpoint(clean_state, api_client):
     body = resp.json()
     assert body["status"] == "success"
     data = body["data"]
-    assert data["count"] == 2
-    assert {t["trade_id"] for t in data["trades"]} == {"FXOPT-2026-00001", "FXOPT-2026-00002"}
-    # only the CSV was parsed (PDF ignored)
-    assert {s["file"] for s in data["sources"]} == {"blotter.csv"}
-    assert data["trades"][0]["source_file"] == "blotter.csv"
+    assert data["count"] == 3
+    assert {t["trade_id"] for t in data["trades"]} == {"FXOPT-2026-00001", "FXOPT-2026-00002", "FXOPT-2026-00008"}
+    assert {s["file"] for s in data["sources"]} == {"blotter.csv", "ssi.pdf"}
+    # Verify sources list properties
+    pdf_src = next(s for s in data["sources"] if s["file"] == "ssi.pdf")
+    assert pdf_src["status"] == "success"
+    assert pdf_src["file_type"] == "pdf"
+    assert pdf_src["trade_count"] == 1
+
 
 
 def test_extract_trades_dedups_across_files(clean_state, api_client):

@@ -93,17 +93,20 @@ class EmailAgentRunner:
                 }
 
             if self.db.message_id_exists(mid):
-                result = self.classifier.classify(mail["subject"], mail["body"])
-                case = self.db.get_case_by_message_id(mid)
-                folder = case.get("case_folder") if case else None
+                case = self.db.get_case_by_message_id(mid) or {}
+                folder = case.get("case_folder")
+                trade_id = case.get("trade_id")
+                label = case.get("classification_label") or "RELEVANT"
+                conf = case.get("classification_confidence") or 0.95
+                asset_class = case.get("asset_class") or self.cfg.default_asset_class
 
                 # Self-heal: if the case was stored before but its folder is now
                 # missing on disk (e.g. the demo reset deletes data/processed),
                 # recreate it at its original path instead of skipping — so a run
                 # always (re)produces the case folders + manifests.
-                if result.label == "RELEVANT" and folder and not Path(folder).exists():
-                    trade_id = (case.get("trade_id") if case else None) \
-                        or result.trade_id or self._fallback_trade_id(mid)
+                if label == "RELEVANT" and folder and not Path(folder).exists():
+                    result = self.classifier.classify(mail["subject"], mail["body"], mail.get("attachments", []))
+                    trade_id = trade_id or result.trade_id or self._fallback_trade_id(mid)
                     extraction = self._store_case(mail, result, trade_id, case_dir=Path(folder))
                     stats.relevant += 1
                     stats.extracted_trades += extraction["trades_extracted"]
@@ -116,9 +119,9 @@ class EmailAgentRunner:
                                      correlation_id=cid, log_dir=audit_dir, message_id=mid,
                                      trades=extraction["trades_extracted"])
                     stats.classified_emails.append(_email_record(
-                        "RELEVANT", result.confidence, result.reason,
-                        trade_id, result.asset_class,
-                        result.matched_asset, result.matched_subject,
+                        "RELEVANT", conf, "restored case from index",
+                        trade_id, asset_class,
+                        [], [],
                     ))
                     continue
 
@@ -127,14 +130,14 @@ class EmailAgentRunner:
                 record_audit("email.classified", "skipped", resource=mid,
                              correlation_id=cid, log_dir=audit_dir, reason="already_processed")
                 stats.classified_emails.append(_email_record(
-                    result.label, result.confidence, result.reason,
-                    result.trade_id, result.asset_class,
-                    result.matched_asset, result.matched_subject,
+                    label, conf, "already processed",
+                    trade_id, asset_class,
+                    [], [],
                     skip_reason="already_processed",
                 ))
                 continue
 
-            result = self.classifier.classify(mail["subject"], mail["body"])
+            result = self.classifier.classify(mail["subject"], mail["body"], mail.get("attachments", []))
 
             if result.label == "IRRELEVANT":
                 stats.irrelevant += 1
@@ -228,7 +231,7 @@ class EmailAgentRunner:
         # Save every attachment, and parse trades out of supported (.xlsx/.csv) ones.
         extract_enabled = getattr(self.cfg, "attachment_extract_enabled", True)
         extract_exts = tuple(getattr(self.cfg, "attachment_extract_exts",
-                                     (".xlsx", ".xlsm", ".csv")))
+                                     (".xlsx", ".xlsm", ".csv", ".pdf")))
         max_rows = getattr(self.cfg, "attachment_max_rows", 10_000)
 
         attachments_meta: List[Dict] = []

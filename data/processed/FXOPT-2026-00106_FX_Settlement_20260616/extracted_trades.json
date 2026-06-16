@@ -1,0 +1,19 @@
+[
+  {
+    "trade_id": "FXOPT-2026-00106",
+    "uti": "UTI9CHJ755NF4ZW9XA3KX7E0008",
+    "counterparty": "BNP Paribas S.A",
+    "currency_pair": "AUD/USD",
+    "buy_sell": "Buy",
+    "notional_amount": 52910016,
+    "strike_rate": 0.9658,
+    "settlement_date": "12-Dec-2026",
+    "premium_settle_date": "29-May-2026",
+    "trader": "V.Rao",
+    "book": "FXOPT-BOOK1",
+    "portfolio": "FX-DESK-A",
+    "settlement_status": "Matched",
+    "option_type": "Put",
+    "exercise_style": "American"
+  }
+]

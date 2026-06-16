@@ -1,0 +1,23 @@
+{
+  "message_id": "<PN2P287MB2876FE756E5DEA755E0038DC95162@PN2P287MB2876.INDP287.PROD.OUTLOOK.COM>",
+  "subject": "FX Trade Settlements_FXOPT_280526",
+  "sender": "Aastha Makkar (IND) <aastha.makkar@protivitiglobal.in>",
+  "received_at": "2026-05-29T07:05:17Z",
+  "source_file": "https://outlook.office365.com/owa/?ItemID=PEx2Gomo9rSn0wrvG0lLuZHA5H5RTZxMTnagfvsTvE4&exvsurl=1&viewmodel=ReadMessageItem",
+  "classification": {
+    "label": "RELEVANT",
+    "confidence": 0.8,
+    "reason": "asset['fx trade settlement', 'fx trade']; subject['settlement', 'trade', 'fx']",
+    "asset_class": "FX Settlement",
+    "matched_asset": [
+      "fx trade settlement",
+      "fx trade"
+    ],
+    "matched_subject": [
+      "settlement",
+      "trade",
+      "fx"
+    ],
+    "trade_id": null
+  }
+}

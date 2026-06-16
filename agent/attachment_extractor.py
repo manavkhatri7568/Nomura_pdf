@@ -22,11 +22,12 @@ with no text layer and would need OCR — a separate workstream).
 
 import csv
 import io
+import re
 from dataclasses import dataclass, field
 from datetime import date, datetime
 from typing import Any, Dict, List, Optional, Tuple
 
-SUPPORTED_EXTS: Tuple[str, ...] = (".xlsx", ".xlsm", ".csv")
+SUPPORTED_EXTS: Tuple[str, ...] = (".xlsx", ".xlsm", ".csv", ".pdf")
 DEFAULT_MAX_ROWS = 10_000
 
 # How many leading rows to scan when locating the header (handles a title /
@@ -130,6 +131,8 @@ def file_type_for(filename: str) -> str:
         return "csv"
     if name.endswith((".xlsx", ".xlsm")):
         return "xlsx"
+    if name.endswith(".pdf"):
+        return "pdf"
     return "unsupported"
 
 
@@ -290,6 +293,97 @@ def _rows_to_dicts(rows: List[List[Any]], max_rows: int) -> Tuple[List[Dict[str,
 # Public API
 # --------------------------------------------------------------------------
 
+def _read_pdf_trades(data: bytes, max_rows: int) -> Tuple[List[Dict[str, Any]], List[str], List[str]]:
+    import pdfplumber
+
+    trades: List[Dict[str, Any]] = []
+    canonical_cols = set()
+    unmapped = set()
+
+    with pdfplumber.open(io.BytesIO(data)) as pdf:
+        # First attempt: tabular extraction
+        for page in pdf.pages:
+            tables = page.extract_tables() or []
+            for table in tables:
+                if not table:
+                    continue
+                dict_rows, cols, unmapped_cols = _rows_to_dicts(table, max_rows - len(trades))
+                rows_with_tid = [r for r in dict_rows if str(r.get("trade_id") or "").strip()]
+                if rows_with_tid:
+                    trades.extend(rows_with_tid)
+                    canonical_cols.update(cols)
+                    unmapped.update(unmapped_cols)
+                    if len(trades) >= max_rows:
+                        break
+            if len(trades) >= max_rows:
+                break
+
+        # Second attempt (fallback): text-based parser
+        if not trades:
+            labels_regex = r"(?:Book\b|Portfolio\b|UTI\b|Notional(?:\s*\([^)]*\))?|Settlement(?:\s*date\b|\s*status\b)?|Settelement(?:\s*status\b)?|Value(?:\s*date\b)?|Premium(?:\s*settle\b)?|Strike\b|Trader\b|LEI\b|Domicile\b)"
+            
+            patterns = {
+                "trade_id": r"\bFXOPT-\d{4}-\d{5}\b",
+                "uti": rf"UTI\s*[:\-]\s*(.*?)(?:\s+{labels_regex}\s*[:\-\u2013\u2014]|[;\n]|$)",
+                "counterparty": rf"(?:Counterparty|Counterparty Name|Cpty)\s*[:\-]\s*(.*?)(?:\s+{labels_regex}\s*[:\-\u2013\u2014]|[;\n]|$)",
+                "currency_pair": r"\b([A-Z]{3}/[A-Z]{3})\b",
+                "buy_sell": r"\b(Buy|Sell)\b",
+                "notional_amount": rf"(?:Notional\s*(?:\([^)]*\))?|Amount)\s*[:\-]\s*(.*?)(?:\s+{labels_regex}\s*[:\-\u2013\u2014]|[;\n]|$)",
+                "strike_rate": rf"(?:Strike|Strike Rate|Strike\s*Rate)\s*[:\-]\s*(.*?)(?:\s+{labels_regex}\s*[:\-\u2013\u2014]|[;\n]|$)",
+                "settlement_date": rf"(?:Settlement\s*date|Value\s*Date|Value\s*date)\s*[:\-\u2013\u2014]\s*(.*?)(?:\s+{labels_regex}\s*[:\-\u2013\u2014]|[;\n]|$)",
+                "premium_settle_date": rf"(?:Premium\s*settle|Premium\s*Settle\s*Date|Premium\s*Settle)\s*[:\-\u2013\u2014]\s*(.*?)(?:\s+{labels_regex}\s*[:\-\u2013\u2014]|[;\n]|$)",
+                "trader": rf"Trader\s*[:\-]\s*(.*?)(?:\s+{labels_regex}\s*[:\-\u2013\u2014]|[;\n]|$)",
+                "book": rf"Book\s*[:\-]\s*(.*?)(?:\s+{labels_regex}\s*[:\-\u2013\u2014]|[;\n]|$)",
+                "portfolio": rf"Portfolio\s*[:\-]\s*(.*?)(?:\s+{labels_regex}\s*[:\-\u2013\u2014]|[;\n]|$)",
+                "settlement_status": rf"(?:Settlement\s*status|Settelement\s*status|Status)\s*[:\-\u2013\u2014]\s*(.*?)(?:\s+{labels_regex}\s*[:\-\u2013\u2014]|[;\n]|$)",
+            }
+
+            for page in pdf.pages:
+                text = page.extract_text()
+                if not text:
+                    continue
+                
+                # Check if page has a trade_id to confirm it's a trade ticket
+                trade_id_m = re.search(patterns["trade_id"], text)
+                if not trade_id_m:
+                    trade_id_m = re.search(r"\b[A-Z]{2,5}-\d{4}-\d{4,6}\b", text)
+                    if not trade_id_m:
+                        continue
+                
+                raw_extracted = {}
+                for field, pat in patterns.items():
+                    m = re.search(pat, text, re.IGNORECASE)
+                    if m:
+                        val = m.group(1) if m.groups() else m.group(0)
+                        raw_extracted[field] = val.strip()
+
+                raw_extracted["trade_id"] = trade_id_m.group(0)
+
+                if "notional_amount" in raw_extracted:
+                    num_m = re.search(r"[\d,]+(?:\.\d+)?", raw_extracted["notional_amount"])
+                    if num_m:
+                        raw_extracted["notional_amount"] = num_m.group(0)
+
+                opt_type_m = re.search(r"\b(Call|Put)\b", text, re.IGNORECASE)
+                if opt_type_m:
+                    raw_extracted["option_type"] = opt_type_m.group(0)
+
+                ex_style_m = re.search(r"\b(American|European)\b", text, re.IGNORECASE)
+                if ex_style_m:
+                    raw_extracted["exercise_style"] = ex_style_m.group(0)
+
+                normalized = _normalize_row(raw_extracted)
+                if normalized.get("trade_id"):
+                    trades.append(normalized)
+                    for k, v in normalized.items():
+                        if v != "" and k in _KNOWN_FIELDS:
+                            canonical_cols.add(k)
+                    if len(trades) >= max_rows:
+                        break
+
+    return trades, sorted(list(canonical_cols)), sorted(list(unmapped))
+
+
 def extract_attachment(
     filename: str,
     data: bytes,
@@ -309,14 +403,18 @@ def extract_attachment(
     try:
         if ftype == "csv":
             rows = _read_csv_rows(data or b"", max_rows)
-        else:
+            dict_rows, canonical_cols, unmapped = _rows_to_dicts(rows, max_rows)
+            trades = [r for r in dict_rows if str(r.get("trade_id") or "").strip()]
+        elif ftype == "xlsx":
             rows = _read_xlsx_rows(data or b"", max_rows)
+            dict_rows, canonical_cols, unmapped = _rows_to_dicts(rows, max_rows)
+            trades = [r for r in dict_rows if str(r.get("trade_id") or "").strip()]
+        elif ftype == "pdf":
+            trades, canonical_cols, unmapped = _read_pdf_trades(data or b"", max_rows)
+        else:
+            return ExtractionResult(filename=filename, file_type=ftype, status="unsupported")
     except Exception as exc:  # noqa: BLE001 - one bad file must not stop the batch
         return ExtractionResult(filename=filename, file_type=ftype, status="error", error=str(exc))
-
-    dict_rows, canonical_cols, unmapped = _rows_to_dicts(rows, max_rows)
-    # Keep only rows that actually carry a trade id (drops totals/footers/noise).
-    trades = [r for r in dict_rows if str(r.get("trade_id") or "").strip()]
 
     status = "success" if trades else "empty"
     return ExtractionResult(

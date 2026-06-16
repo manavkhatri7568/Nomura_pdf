@@ -81,9 +81,8 @@ def _xlsx_bytes(header=HEADER, rows=CSV_ROWS, *, native_types=False, title_row=F
 def test_file_type_and_support():
     assert file_type_for("a.CSV") == "csv"
     assert file_type_for("b.xlsx") == "xlsx"
-    assert file_type_for("c.pdf") == "unsupported"
-    assert is_supported("x.xlsm") and is_supported("x.csv")
-    assert not is_supported("x.pdf")
+    assert file_type_for("c.pdf") == "pdf"
+    assert is_supported("x.xlsm") and is_supported("x.csv") and is_supported("x.pdf")
 
 
 # ---- CSV --------------------------------------------------------------------
@@ -141,8 +140,15 @@ def test_xlsx_with_title_row_above_header():
 # ---- robustness / never-raises ---------------------------------------------
 
 def test_unsupported_type_returns_empty():
-    res = extract_attachment("ssi_report.pdf", b"%PDF-1.4 ...")
+    res = extract_attachment("ssi_report.txt", b"hello world")
     assert res.status == "unsupported"
+    assert res.trades == []
+
+
+def test_corrupt_pdf_returns_error_not_raise():
+    res = extract_attachment("broken.pdf", b"%PDF-1.4 corrupt pdf content")
+    assert res.status == "error"
+    assert res.error
     assert res.trades == []
 
 
@@ -169,3 +175,116 @@ def test_max_rows_cap_is_respected():
     many = CSV_ROWS * 50  # 100 rows
     res = extract_attachment("x.csv", _csv_bytes(rows=many), max_rows=10)
     assert res.trade_count == 10
+
+
+def test_pdf_tabular_extraction(monkeypatch):
+    class MockPage:
+        def extract_tables(self):
+            return [
+                [
+                    ["Trade ID", "UTI", "Counterparty Name", "Currency Pair", "Notional Amount"],
+                    ["FXOPT-2026-00001", "UTI1", "Bank A", "EUR/USD", "1,000,000"]
+                ]
+            ]
+        def extract_text(self):
+            return ""
+
+    class MockPDF:
+        def __init__(self, *args, **kwargs):
+            self.pages = [MockPage()]
+        def __enter__(self):
+            return self
+        def __exit__(self, exc_type, exc_val, exc_tb):
+            pass
+
+    import pdfplumber
+    monkeypatch.setattr(pdfplumber, "open", MockPDF)
+
+    res = extract_attachment("mock_tabular.pdf", b"%PDF-1.4 ...")
+    assert res.status == "success"
+    assert res.trade_count == 1
+    t = res.trades[0]
+    assert t["trade_id"] == "FXOPT-2026-00001"
+    assert t["counterparty"] == "Bank A"
+    assert t["notional_amount"] == 1000000
+
+
+def test_pdf_text_extraction_fallback(monkeypatch):
+    class MockPage:
+        def extract_tables(self):
+            return [[["Some Header", "Some Value"]]]
+        def extract_text(self):
+            return (
+                "Standard Settlement Instructions | FX Blotter Generated: 26/05/26\n"
+                "Trade 08  FXOPT-2026-00008 AUD/USD Put American  Buy\n"
+                "Counterparty : BNP Paribas S.A LEI : ROMUWSFPU8MPRO8K5P83 Domicile: Paris, France\n"
+                "UTI : UTI9CHJ755NF4ZW9XA3KX7E0008 Notional (base) : 52910016 AUD Settlement date : 12/12/2026\n"
+                "Trader : V.Rao Book : FXOPT-BOOK1 Portfolio: FX-DESK-A\n"
+                "Settelement status - Matched Premium settle - 28/05/2026 Strike :0.9658"
+            )
+
+    class MockPDF:
+        def __init__(self, *args, **kwargs):
+            self.pages = [MockPage()]
+        def __enter__(self):
+            return self
+        def __exit__(self, exc_type, exc_val, exc_tb):
+            pass
+
+    import pdfplumber
+    monkeypatch.setattr(pdfplumber, "open", MockPDF)
+
+    res = extract_attachment("mock_text.pdf", b"%PDF-1.4 ...")
+    assert res.status == "success"
+    assert res.trade_count == 1
+    t = res.trades[0]
+    assert t["trade_id"] == "FXOPT-2026-00008"
+    assert t["counterparty"] == "BNP Paribas S.A"
+    assert t["currency_pair"] == "AUD/USD"
+    assert t["buy_sell"] == "Buy"
+    assert t["notional_amount"] == 52910016
+    assert t["settlement_date"] == "12-Dec-2026"
+    assert t["premium_settle_date"] == "28-May-2026"
+    assert t["strike_rate"] == 0.9658
+    assert t["trader"] == "V.Rao"
+    assert t["book"] == "FXOPT-BOOK1"
+    assert t["portfolio"] == "FX-DESK-A"
+    assert t["settlement_status"] == "Matched"
+    assert t["option_type"] == "Put"
+    assert t["exercise_style"] == "American"
+
+
+def test_classifier_pdf_fallback(monkeypatch):
+    from config.settings import EmailAgentConfig
+    from classifier.rule_classifier import RuleClassifier
+
+    class MockPage:
+        def extract_text(self):
+            return "Standard Settlement Instructions | FX Blotter\nTrade 106  FXOPT-2026-00106 AUD/USD Put\nfx trade settlement"
+
+    class MockPDF:
+        def __init__(self, *args, **kwargs):
+            self.pages = [MockPage()]
+        def __enter__(self):
+            return self
+        def __exit__(self, exc_type, exc_val, exc_tb):
+            pass
+
+    import pdfplumber
+    monkeypatch.setattr(pdfplumber, "open", MockPDF)
+
+    cfg = EmailAgentConfig()
+    classifier = RuleClassifier(cfg)
+
+    # Classify an email that only has signals inside the PDF attachment
+    result = classifier.classify(
+        subject="SSI Update",
+        body="Please find attached SSI details.",
+        attachments=[{"filename": "details.pdf", "data": b"%PDF-1.4"}]
+    )
+
+    assert result.label == "RELEVANT"
+    assert result.trade_id == "FXOPT-2026-00106"
+    assert "fx trade settlement" in result.matched_asset
+
+

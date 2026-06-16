@@ -1,0 +1,25 @@
+{
+  "trade_id": "FXOPT-2026-00049",
+  "asset_class": "FX Settlement",
+  "message_id": "<FXOPT-2026-00049-UTIQJ7YH@synthetic.local>",
+  "subject": "FX Trade Settlement[FXOPT-2026-00049] \u2013 GBP/USD \u2013 26/05/26 - UTIQJ7YHL1C32OC6UZHR5XF0049",
+  "sender": "Aastha Makkar (IND) <aastha.makkar@protivitiglobal.in>",
+  "received_at": "2026-05-26T10:30:00Z",
+  "case_folder": "data\\processed\\FXOPT-2026-00049_FX_Settlement_20260616",
+  "email_body_path": "data\\processed\\FXOPT-2026-00049_FX_Settlement_20260616\\email_body.txt",
+  "attachments": [],
+  "classification": {
+    "label": "RELEVANT",
+    "confidence": 0.95,
+    "reason": "asset['fx trade settlement', 'settlement instructions', 'deal reference', 'fx trade', 'currency pair']; subject['settlement', 'trade', 'fx']; trade_id=FXOPT-2026-00049",
+    "asset_class": "FX Settlement"
+  },
+  "extraction": {
+    "enabled": true,
+    "trades_extracted": 0,
+    "trade_ids": [],
+    "extracted_trades_path": null,
+    "by_attachment": []
+  },
+  "ready_for_extraction": true
+}

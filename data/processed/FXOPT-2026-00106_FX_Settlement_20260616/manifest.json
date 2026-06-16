@@ -1,0 +1,45 @@
+{
+  "trade_id": "FXOPT-2026-00106",
+  "asset_class": "FX Settlement",
+  "message_id": "<PN2P287MB28763DACE8A1C4F2259E771495E52@PN2P287MB2876.INDP287.PROD.OUTLOOK.COM>",
+  "subject": "FX Trade Settlements_[FXOPT]_SSI_TD: 27/05/26",
+  "sender": "Aastha Makkar (IND) <aastha.makkar@protivitiglobal.in>",
+  "received_at": "2026-06-16T05:34:40Z",
+  "case_folder": "data\\processed\\FXOPT-2026-00106_FX_Settlement_20260616",
+  "email_body_path": "data\\processed\\FXOPT-2026-00106_FX_Settlement_20260616\\email_body.txt",
+  "attachments": [
+    {
+      "filename": "FX Option_SSI Report270526.pdf",
+      "path": "data\\processed\\FXOPT-2026-00106_FX_Settlement_20260616\\attachments\\FX_Option_SSI_Report270526.pdf",
+      "mime_type": "application/pdf",
+      "size_bytes": 268498,
+      "extraction_status": "success",
+      "extracted_trade_count": 1
+    }
+  ],
+  "classification": {
+    "label": "RELEVANT",
+    "confidence": 0.95,
+    "reason": "asset['fx trade settlement', 'settlement instructions', 'fx trade']; subject['settlement', 'trade', 'fx']; trade_id=FXOPT-2026-00106",
+    "asset_class": "FX Settlement"
+  },
+  "extraction": {
+    "enabled": true,
+    "trades_extracted": 1,
+    "trade_ids": [
+      "FXOPT-2026-00106"
+    ],
+    "extracted_trades_path": "data\\processed\\FXOPT-2026-00106_FX_Settlement_20260616\\extracted_trades.json",
+    "by_attachment": [
+      {
+        "filename": "FX Option_SSI Report270526.pdf",
+        "file_type": "pdf",
+        "status": "success",
+        "trade_count": 1,
+        "unmapped_columns": [],
+        "error": null
+      }
+    ]
+  },
+  "ready_for_extraction": true
+}

@@ -1,0 +1,26 @@
+{
+  "message_id": "<FXOPT-2026-00047-UTIIFD0T@synthetic.local>",
+  "subject": "FX Trade Settlement[FXOPT-2026-00047] \u2013 USD/JPY \u2013 26_05_26 - UTIIFD0TVBDIVUZZPQK51FP0047",
+  "sender": "Aastha Makkar (IND) <aastha.makkar@protivitiglobal.in>",
+  "received_at": "2026-05-26T10:45:00Z",
+  "source_file": "https://outlook.office365.com/owa/?ItemID=AfR1-GFlQ6LB8VAnnhVO9Y89ZJCuLEjOlQkGqkt17SU&exvsurl=1&viewmodel=ReadMessageItem",
+  "classification": {
+    "label": "RELEVANT",
+    "confidence": 0.95,
+    "reason": "asset['fx trade settlement', 'settlement instructions', 'deal reference', 'fx trade', 'currency pair']; subject['settlement', 'trade', 'fx']; trade_id=FXOPT-2026-00047",
+    "asset_class": "FX Settlement",
+    "matched_asset": [
+      "fx trade settlement",
+      "settlement instructions",
+      "deal reference",
+      "fx trade",
+      "currency pair"
+    ],
+    "matched_subject": [
+      "settlement",
+      "trade",
+      "fx"
+    ],
+    "trade_id": "FXOPT-2026-00047"
+  }
+}

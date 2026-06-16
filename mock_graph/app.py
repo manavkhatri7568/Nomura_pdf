@@ -130,6 +130,7 @@ def create_mock_app(inbox_path: Optional[str] = None) -> FastAPI:
 
     # ---- Message collection -------------------------------------------------
     def _list(request: Request, mailbox: str, prefer: Optional[str]):
+        request.app.state.mailbox.reload()
         p = _parse_list_params(request)
         records = request.app.state.mailbox.records
         page = records[p["skip"]: p["skip"] + p["top"]]
@@ -166,6 +167,7 @@ def create_mock_app(inbox_path: Optional[str] = None) -> FastAPI:
     async def get_message(mailbox: str, message_id: str, request: Request,
                           prefer: Optional[str] = Header(default=None),
                           _: str = Depends(require_bearer)):
+        request.app.state.mailbox.reload()
         record = request.app.state.mailbox.by_id.get(message_id)
         if record is None:
             raise HTTPException(404, {"code": "ErrorItemNotFound",
@@ -182,6 +184,7 @@ def create_mock_app(inbox_path: Optional[str] = None) -> FastAPI:
     @app.get("/v1.0/users/{mailbox}/messages/{message_id}/attachments")
     async def list_attachments(mailbox: str, message_id: str, request: Request,
                                _: str = Depends(require_bearer)):
+        request.app.state.mailbox.reload()
         record = request.app.state.mailbox.by_id.get(message_id)
         if record is None:
             raise HTTPException(404, {"code": "ErrorItemNotFound",
@@ -197,6 +200,7 @@ def create_mock_app(inbox_path: Optional[str] = None) -> FastAPI:
     @app.get("/v1.0/users/{mailbox}/messages/{message_id}/attachments/{attachment_id}")
     async def get_attachment(mailbox: str, message_id: str, attachment_id: str, request: Request,
                              _: str = Depends(require_bearer)):
+        request.app.state.mailbox.reload()
         record = request.app.state.mailbox.by_id.get(message_id)
         if record is None:
             raise HTTPException(404, {"code": "ErrorItemNotFound",
