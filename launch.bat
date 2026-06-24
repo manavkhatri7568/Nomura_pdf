@@ -29,11 +29,11 @@ if exist "%ROOT%\venv\Scripts\python.exe" (
   set "PYTHON=%ROOT%\venv\Scripts\python.exe"
 )
 
-%PYTHON% -c "import fastapi, uvicorn, httpx" 1>nul 2>nul
+"%PYTHON%" -c "import fastapi, uvicorn, httpx" 1>nul 2>nul
 if errorlevel 1 (
   echo.
   echo [setup] installing Python dependencies ^(first run only^)...
-  %PYTHON% -m pip install -r "%ROOT%\requirements.txt"
+  "%PYTHON%" -m pip install -r "%ROOT%\requirements.txt"
 )
 
 REM --- first run only: install frontend deps if node_modules is missing ---
@@ -58,10 +58,10 @@ echo Starting services in separate windows...
 echo Using Python: %PYTHON%
 
 REM --- 1) Mock Microsoft Graph API on :8001 ---
-start "Mock Graph API :8001" /d "%ROOT%" cmd /k "%PYTHON%" -m uvicorn mock_graph.app:app --port 8001
+start "Mock Graph API :8001" /d "%ROOT%" cmd /k ""%PYTHON%"" -m uvicorn mock_graph.app:app --port 8001
 
 REM --- 2) Agent API on :8000 (inherits GRAPH_BASE_URL) ---
-start "Agent API :8000" /d "%ROOT%" cmd /k "%PYTHON%" -m uvicorn api.app:app --port 8000
+start "Agent API :8000" /d "%ROOT%" cmd /k ""%PYTHON%"" -m uvicorn api.app:app --port 8000
 
 REM --- 3) Frontend (Next.js dev server) on :3000 ---
 start "Frontend :3000" /d "%ROOT%\frontend" cmd /k npm run dev

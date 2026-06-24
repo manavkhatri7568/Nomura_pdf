@@ -38,15 +38,9 @@ class RuleClassifier:
                 filename = att.get("filename", "")
                 if filename.lower().endswith(".pdf") and att.get("data"):
                     try:
-                        import pdfplumber
-                        import io
-                        with pdfplumber.open(io.BytesIO(att["data"])) as pdf:
-                            pages_text = []
-                            for page in pdf.pages:
-                                page_text = page.extract_text()
-                                if page_text:
-                                    pages_text.append(page_text)
-                            pdf_text = " ".join(pages_text).lower()
+                        from agent.attachment_extractor import extract_pdf_pages_text
+                        pages_text = extract_pdf_pages_text(att["data"])
+                        pdf_text = " ".join(pages_text).lower()
                     except Exception:
                         pass
 
@@ -109,16 +103,14 @@ class RuleClassifier:
                 filename = att.get("filename", "")
                 if filename.lower().endswith(".pdf") and att.get("data"):
                     try:
-                        import pdfplumber
-                        import io
-                        with pdfplumber.open(io.BytesIO(att["data"])) as pdf:
-                            for page in pdf.pages:
-                                page_text = page.extract_text()
-                                if page_text:
-                                    for pattern in self.trade_patterns:
-                                        m = pattern.search(page_text)
-                                        if m:
-                                            return m.group(0)
+                        from agent.attachment_extractor import extract_pdf_pages_text
+                        pages_text = extract_pdf_pages_text(att["data"])
+                        for page_text in pages_text:
+                            if page_text:
+                                for pattern in self.trade_patterns:
+                                    m = pattern.search(page_text)
+                                    if m:
+                                        return m.group(0)
                     except Exception:
                         pass
         return None

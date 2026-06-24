@@ -292,6 +292,60 @@ def _rows_to_dicts(rows: List[List[Any]], max_rows: int) -> Tuple[List[Dict[str,
 # --------------------------------------------------------------------------
 # Public API
 # --------------------------------------------------------------------------
+from functools import lru_cache
+
+@lru_cache(maxsize=16)
+def extract_pdf_pages_text(pdf_data: bytes) -> List[str]:
+    """Extract text from a PDF's pages, falling back to PaddleOCR if scanned/image-only."""
+    import pdfplumber
+    import io
+    import os
+    pages_text = []
+    try:
+        with pdfplumber.open(io.BytesIO(pdf_data)) as pdf:
+            for page in pdf.pages:
+                text = page.extract_text() or ""
+                pages_text.append(text)
+    except Exception:
+        pass
+    
+    total_len = sum(len(t.strip()) for t in pages_text)
+    if total_len < 50:
+        pages_text = []
+        import tempfile
+        
+        with tempfile.NamedTemporaryFile(suffix=".pdf", delete=False) as tmp:
+            tmp.write(pdf_data)
+            tmp_path = tmp.name
+        
+        try:
+            # Set environment variables to disable MKLDNN and prevent NotImplementedError on Windows CPU
+            os.environ["FLAGS_use_mkldnn"] = "0"
+            os.environ["PADDLE_PDX_ENABLE_MKLDNN_BYDEFAULT"] = "0"
+            from paddleocr import PaddleOCR
+            ocr = PaddleOCR(
+                lang="en",
+                use_doc_orientation_classify=False,
+                use_doc_unwarping=False,
+                use_textline_orientation=False,
+                enable_mkldnn=False,
+            )
+            results = ocr.predict(input=tmp_path)
+            for res in results:
+                try:
+                    texts = res["rec_texts"]
+                except Exception:
+                    texts = getattr(res, "rec_texts", []) or []
+                pages_text.append("\n".join(texts))
+        except Exception:
+            pass
+        finally:
+            try:
+                os.remove(tmp_path)
+            except Exception:
+                pass
+    return pages_text
+
 
 def _read_pdf_trades(data: bytes, max_rows: int) -> Tuple[List[Dict[str, Any]], List[str], List[str]]:
     import pdfplumber
@@ -300,8 +354,8 @@ def _read_pdf_trades(data: bytes, max_rows: int) -> Tuple[List[Dict[str, Any]], 
     canonical_cols = set()
     unmapped = set()
 
+    # First attempt: digital tabular extraction
     with pdfplumber.open(io.BytesIO(data)) as pdf:
-        # First attempt: tabular extraction
         for page in pdf.pages:
             tables = page.extract_tables() or []
             for table in tables:
@@ -318,57 +372,120 @@ def _read_pdf_trades(data: bytes, max_rows: int) -> Tuple[List[Dict[str, Any]], 
             if len(trades) >= max_rows:
                 break
 
-        # Second attempt (fallback): text-based parser
-        if not trades:
-            labels_regex = r"(?:Book\b|Portfolio\b|UTI\b|Notional(?:\s*\([^)]*\))?|Settlement(?:\s*date\b|\s*status\b)?|Settelement(?:\s*status\b)?|Value(?:\s*date\b)?|Premium(?:\s*settle\b)?|Strike\b|Trader\b|LEI\b|Domicile\b)"
-            
-            patterns = {
-                "trade_id": r"\bFXOPT-\d{4}-\d{5}\b",
-                "uti": rf"UTI\s*[:\-]\s*(.*?)(?:\s+{labels_regex}\s*[:\-\u2013\u2014]|[;\n]|$)",
-                "counterparty": rf"(?:Counterparty|Counterparty Name|Cpty)\s*[:\-]\s*(.*?)(?:\s+{labels_regex}\s*[:\-\u2013\u2014]|[;\n]|$)",
-                "currency_pair": r"\b([A-Z]{3}/[A-Z]{3})\b",
-                "buy_sell": r"\b(Buy|Sell)\b",
-                "notional_amount": rf"(?:Notional\s*(?:\([^)]*\))?|Amount)\s*[:\-]\s*(.*?)(?:\s+{labels_regex}\s*[:\-\u2013\u2014]|[;\n]|$)",
-                "strike_rate": rf"(?:Strike|Strike Rate|Strike\s*Rate)\s*[:\-]\s*(.*?)(?:\s+{labels_regex}\s*[:\-\u2013\u2014]|[;\n]|$)",
-                "settlement_date": rf"(?:Settlement\s*date|Value\s*Date|Value\s*date)\s*[:\-\u2013\u2014]\s*(.*?)(?:\s+{labels_regex}\s*[:\-\u2013\u2014]|[;\n]|$)",
-                "premium_settle_date": rf"(?:Premium\s*settle|Premium\s*Settle\s*Date|Premium\s*Settle)\s*[:\-\u2013\u2014]\s*(.*?)(?:\s+{labels_regex}\s*[:\-\u2013\u2014]|[;\n]|$)",
-                "trader": rf"Trader\s*[:\-]\s*(.*?)(?:\s+{labels_regex}\s*[:\-\u2013\u2014]|[;\n]|$)",
-                "book": rf"Book\s*[:\-]\s*(.*?)(?:\s+{labels_regex}\s*[:\-\u2013\u2014]|[;\n]|$)",
-                "portfolio": rf"Portfolio\s*[:\-]\s*(.*?)(?:\s+{labels_regex}\s*[:\-\u2013\u2014]|[;\n]|$)",
-                "settlement_status": rf"(?:Settlement\s*status|Settelement\s*status|Status)\s*[:\-\u2013\u2014]\s*(.*?)(?:\s+{labels_regex}\s*[:\-\u2013\u2014]|[;\n]|$)",
-            }
+    # Second attempt (fallback): text-based hybrid layout + regex parser
+    if not trades:
+        labels_regex = r"(?:Book\b|Portfolio\b|UTI\b|Notional(?:\s*\([^)]*\))?|Settlement(?:\s*date\b|\s*status\b)?|Settelement(?:\s*status\b)?|Value(?:\s*date\b)?|Premium(?:\s*settle\b)?|Strike\b|Trader\b|LEI\b|Domicile\b)"
+        
+        patterns = {
+            "trade_id": r"\bFXOPT-\d{4}-\d{5}\b",
+            "uti": rf"UTI\s*[:\-]\s*(.*?)(?:\s+{labels_regex}\s*[:\-\u2013\u2014]|[;\n]|$)",
+            "counterparty": rf"(?:Counterparty|Counterparty Name|Cpty)\s*[:\-]\s*(.*?)(?:\s+{labels_regex}\s*[:\-\u2013\u2014]|[;\n]|$)",
+            "currency_pair": r"\b([A-Z]{3}/[A-Z]{3})\b",
+            "buy_sell": r"\b(Buy|Sell)\b",
+            "notional_amount": rf"(?:Notional\s*(?:\([^)]*\))?|Amount)\s*[:\-]\s*(.*?)(?:\s+{labels_regex}\s*[:\-\u2013\u2014]|[;\n]|$)",
+            "strike_rate": rf"(?:Strike|Strike Rate|Strike\s*Rate)\s*[:\-]\s*(.*?)(?:\s+{labels_regex}\s*[:\-\u2013\u2014]|[;\n]|$)",
+            "settlement_date": rf"(?:Settlement\s*date|Value\s*Date|Value\s*date)\s*[:\-\u2013\u2014]\s*(.*?)(\s+{labels_regex}\s*[:\-\u2013\u2014]|[;\n]|$)",
+            "premium_settle_date": rf"(?:Premium\s*settle|Premium\s*Settle\s*Date|Premium\s*Settle)\s*[:\-\u2013\u2014]\s*(.*?)(?:\s+{labels_regex}\s*[:\-\u2013\u2014]|[;\n]|$)",
+            "trader": rf"Trader\s*[:\-]\s*(.*?)(?:\s+{labels_regex}\s*[:\-\u2013\u2014]|[;\n]|$)",
+            "book": rf"Book\s*[:\-]\s*(.*?)(?:\s+{labels_regex}\s*[:\-\u2013\u2014]|[;\n]|$)",
+            "portfolio": rf"Portfolio\s*[:\-]\s*(.*?)(?:\s+{labels_regex}\s*[:\-\u2013\u2014]|[;\n]|$)",
+            "settlement_status": rf"(?:Settlement\s*status|Settelement\s*status|Status)\s*[:\-\u2013\u2014]\s*(.*?)(?:\s+{labels_regex}\s*[:\-\u2013\u2014]|[;\n]|$)",
+        }
 
-            for page in pdf.pages:
-                text = page.extract_text()
-                if not text:
-                    continue
-                
-                # Check if page has a trade_id to confirm it's a trade ticket
-                trade_id_m = re.search(patterns["trade_id"], text)
+        pages_text = extract_pdf_pages_text(data)
+        for page_text in pages_text:
+            if not page_text:
+                continue
+            
+            # Split page text by "Trade <digits>" to handle multiple trades per page/block
+            trade_starts = [m.start() for m in re.finditer(r"\bTrade\s+\d+", page_text, re.IGNORECASE)]
+            sections = []
+            if trade_starts:
+                for idx, start in enumerate(trade_starts):
+                    end = trade_starts[idx + 1] if idx + 1 < len(trade_starts) else len(page_text)
+                    sections.append(page_text[start:end])
+            else:
+                sections = [page_text]
+
+            for section in sections:
+                trade_id_m = re.search(patterns["trade_id"], section)
                 if not trade_id_m:
-                    trade_id_m = re.search(r"\b[A-Z]{2,5}-\d{4}-\d{4,6}\b", text)
+                    trade_id_m = re.search(r"\b[A-Z]{2,5}-\d{4}-\d{4,6}\b", section)
                     if not trade_id_m:
                         continue
                 
                 raw_extracted = {}
-                for field, pat in patterns.items():
-                    m = re.search(pat, text, re.IGNORECASE)
-                    if m:
-                        val = m.group(1) if m.groups() else m.group(0)
-                        raw_extracted[field] = val.strip()
-
                 raw_extracted["trade_id"] = trade_id_m.group(0)
 
+                # 1. Layout-aware offset parser for OCR block layouts
+                sec_lines = [line.strip() for line in section.split("\n") if line.strip()]
+                label_to_field = {
+                    "counterparty": "counterparty",
+                    "lei": "lei",
+                    "domicile": "domicile",
+                    "settlement status": "settlement_status",
+                    "settelement status": "settlement_status",
+                    "status": "settlement_status",
+                    "uti": "uti",
+                    "notional": "notional_amount",
+                    "settlement date": "settlement_date",
+                    "value date": "settlement_date",
+                    "premium settle": "premium_settle_date",
+                    "trader": "trader",
+                    "book": "book",
+                    "portfolio": "portfolio",
+                    "strike": "strike_rate"
+                }
+                
+                for i in range(len(sec_lines) - 4):
+                    hits = 0
+                    block_fields = []
+                    for offset in range(4):
+                        item = sec_lines[i + offset].lower()
+                        found_field = None
+                        for kw, fld in label_to_field.items():
+                            if kw in ("book", "trader", "strike", "portfolio", "lei", "uti", "status"):
+                                if item == kw:
+                                    found_field = fld
+                                    break
+                            else:
+                                if kw in item:
+                                    found_field = fld
+                                    break
+                        if found_field:
+                            hits += 1
+                            block_fields.append(found_field)
+                        else:
+                            block_fields.append(None)
+                    
+                    if hits >= 3:
+                        for offset in range(4):
+                            fld = block_fields[offset]
+                            if fld and (i + 4 + offset < len(sec_lines)):
+                                val = sec_lines[i + 4 + offset].strip()
+                                # Avoid matching another label as a value
+                                is_val_label = val.lower().strip() in label_to_field
+                                if not is_val_label:
+                                    raw_extracted[fld] = val
+
+                # 2. Fallback to Regex parser for missing fields
+                for field, pat in patterns.items():
+                    if field not in raw_extracted or not raw_extracted[field]:
+                        m = re.search(pat, section, re.IGNORECASE)
+                        if m:
+                            val = m.group(1) if m.groups() else m.group(0)
+                            raw_extracted[field] = val.strip()
+
                 if "notional_amount" in raw_extracted:
-                    num_m = re.search(r"[\d,]+(?:\.\d+)?", raw_extracted["notional_amount"])
+                    num_m = re.search(r"[\d,]+(?:\.\d+)?", str(raw_extracted["notional_amount"]))
                     if num_m:
                         raw_extracted["notional_amount"] = num_m.group(0)
 
-                opt_type_m = re.search(r"\b(Call|Put)\b", text, re.IGNORECASE)
+                opt_type_m = re.search(r"\b(Call|Put)\b", section, re.IGNORECASE)
                 if opt_type_m:
                     raw_extracted["option_type"] = opt_type_m.group(0)
 
-                ex_style_m = re.search(r"\b(American|European)\b", text, re.IGNORECASE)
+                ex_style_m = re.search(r"\b(American|European)\b", section, re.IGNORECASE)
                 if ex_style_m:
                     raw_extracted["exercise_style"] = ex_style_m.group(0)
 
@@ -380,6 +497,8 @@ def _read_pdf_trades(data: bytes, max_rows: int) -> Tuple[List[Dict[str, Any]], 
                             canonical_cols.add(k)
                     if len(trades) >= max_rows:
                         break
+            if len(trades) >= max_rows:
+                break
 
     return trades, sorted(list(canonical_cols)), sorted(list(unmapped))
 
