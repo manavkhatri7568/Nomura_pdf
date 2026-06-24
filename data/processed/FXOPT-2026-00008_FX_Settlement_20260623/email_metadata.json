@@ -1,9 +1,9 @@
 {
-  "message_id": "<PN0P287MB28709A26BB23009FCF632205951A2@PN0P287MB2870.INDP287.PROD.OUTLOOK.COM>",
+  "message_id": "<PN0P287MB28709A26BB23009FCF632205951A2-Scanned-Synthetic@PN0P287MB2870.INDP287.PROD.OUTLOOK.COM>",
   "subject": "FX Trade Settlements_[FXOPT]_SSI_TD: 26/05/26",
   "sender": "Aastha Makkar (IND) <aastha.makkar@protivitiglobal.in>",
-  "received_at": "2026-06-10T10:59:04Z",
-  "source_file": "https://outlook.office365.com/owa/?ItemID=HXLcpdD6hr_sPTtS4hln5I5PsCIZ2ATiJXNu19YGEtE&exvsurl=1&viewmodel=ReadMessageItem",
+  "received_at": "Fri, 29 May 2026 08:22:25 +0000",
+  "source_file": "data\\raw_emails\\inbox\\31.eml",
   "classification": {
     "label": "RELEVANT",
     "confidence": 0.95,

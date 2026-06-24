@@ -1,0 +1,40 @@
+[
+  {
+    "trade_id": "FXOPT-2026-00008",
+    "counterparty": "BNP Paribas S,A,",
+    "lei": "R0MUWSFPU8MPRO8K5P83",
+    "domicile": "Paris, France",
+    "settlement_status": "Matched",
+    "uti": "UTI9CHJ755NF4ZW9XA3KX7E0008",
+    "notional_amount": 52910016,
+    "settlement_date": "12-Dec-2026",
+    "premium_settle_date": "28-May-2026",
+    "trader": "V.Rao",
+    "book": "FXOPT-BOOK1",
+    "portfolio": "FX-DESK-A",
+    "strike_rate": 0.9658,
+    "currency_pair": "AUD/USD",
+    "buy_sell": "Buy",
+    "option_type": "Put",
+    "exercise_style": "American"
+  },
+  {
+    "trade_id": "FXOPT-2026-00009",
+    "counterparty": "Citibank N.A.",
+    "lei": "E57ODZWZ7FF32TWEFA76",
+    "domicile": "New York, United States",
+    "settlement_status": "Matched",
+    "uti": "UTIJA1WJ0TPAC56T4UFEL620009",
+    "notional_amount": 52684759,
+    "settlement_date": "06-Oct-2026",
+    "premium_settle_date": "28-May-2026",
+    "trader": "R.Singh",
+    "book": "FXOPT-BOOK3",
+    "portfolio": "PROP-FX",
+    "strike_rate": 0.8112,
+    "currency_pair": "USD/CHF",
+    "buy_sell": "Buy",
+    "option_type": "Call",
+    "exercise_style": "American"
+  }
+]
